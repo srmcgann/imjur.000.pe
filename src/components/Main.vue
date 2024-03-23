@@ -1,5 +1,5 @@
 <template>
-  <div class="main">
+  <div class="main" ref="main">
     <div class="dropTarget" @click="loadFiles()" @drop="dropHandler(event)" @dragOver="dragOverHandler">
       throw sum filez [drag/click]<br><br>
       accepted: gif, web[p/m], png, jp[e]g, mp4, mp3<br>
@@ -52,9 +52,11 @@ export default {
             this.addLink(data[2], data[3], i, location.origin + '/' + v)
           })
         }
+        this.$refs.main.classList.toggle('loading')
       })
     },
     loadFiles(){
+      this.$refs.main.className += 'loading'
       let fd = new FormData()
       fd.append('title', 'uploading assets...')
       let files = document.createElement('input')
