@@ -18,8 +18,8 @@ export default {
     }
   },
   methods: {
-    async uploadFiles(fd){
-      let res = await fetch('upload.php',{
+    uploadFiles(fd){
+      let res = await fetch('upload.php', {
         method: "POST", body: fd
       }).then(res=>res.json()).then(data=>{
         console.log('response from upload.php: ', data)
@@ -28,7 +28,7 @@ export default {
         })
       })
     },
-    async loadFiles(){
+    loadFiles(){
       let fd = new FormData()
       let files = document.createElement('input')
       files.type = 'file'
@@ -36,7 +36,7 @@ export default {
       files.multiple = true
       files.accept = 'image/gif, image/jiff, image/jpeg, image/jpg, image/png, image/webp, video/mp4, video/webm, video/mkv, audio/mp3'
       files.click()
-      //console.log(files)
+      console.log('sending files: ', files)
       for ([i, file] of Array.from(files.files).entries()){
         fd.append(`uploads_${i}`, file`)
       }
