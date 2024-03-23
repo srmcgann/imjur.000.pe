@@ -1,6 +1,6 @@
 <template>
   <a :href="link.href" target="_blank" class="link">
-    <div class="linkThumb" :style="`background-image: url(${link.href})`"></div>
+    <div class="linkThumb" :style="`background-image: url(${link.href})`" @click.stop="null"></div>
     #{{link.ct}}<br>
     href: {{link.href}}<br>
     type: {{link.type}}<br>
@@ -15,11 +15,99 @@ export default {
   props: [ 'state', 'link' ],
   data(){
     return {
+      c: document.createElement('canvas'),
+      x: ,
+      linkType: '',
+      img: null,
     }
   },
   methods: {
+    Draw(){
+      this.x.globalAlpha = 1
+      this.x.fillStyle='#0008'
+      this.x.fillRect(0,0,this.c.width,this.c.height)
+      let fillStyle = 'contain'
+      let scl
+      switch(fillStyle){
+        case 'contain':
+          scl = this.c.width/this.c.height <= 1.777777778 ? this.c.width/this.img.width : this.c.height/this.img.height
+          break
+        case 'cover':
+          scl = this.c.width/this.c.height > 1.777777778 ? this.c.width/this.img.width : this.c.height/this.img.height
+          break
+      }
+      w = this.img.width * scl
+      h = this.img.height * scl
+      this.x.drawImage(bg,this.c.width/2-w/2,this.c.height/2-h/2,w,h)
+      requestAnimationFrame(this.Draw())
+    }
   },
   mounted(){
+    
+    this.x = c.getContext('2d')
+    switch(this.link.type){
+      case 'image/jpg':
+        this.linkType = 'image';
+        break
+      case 'image/jpeg':
+        this.linkType = 'image';
+        break
+      case 'image/webp':
+        this.linkType = 'image';
+        break
+      case 'image/png': 
+        this.linkType = 'image';
+        break
+      case 'image/gif':
+        this.linkType = 'image';
+        break
+      case 'video/mp4':
+        this.linkType = 'video';
+        break
+      case 'video/mkv':
+        this.linkType = 'video';
+        break
+      case 'video/webm':
+        this.linkType = 'video';
+        break
+      case 'audio/mp3':
+        this.linkType = 'audio';
+        break
+    }
+    if(this.linkType == 'video'){
+      this.img = document.createElement('video')
+      this.img.loop = true
+      this.img.muted = true
+      this.img.oncanplay = () => {
+        this.img.play()
+        this.c.width = img.videoWidth
+        this.c.height = img.videoHeight
+        this.c.style.width = '40px'
+        this.c.style.height = '40px'
+      }
+      this.img.src = this.link.href
+    }
+    if(this.linkType == 'image'){
+      this.img = new Image
+      this.img.onload = () => {
+        this.c.width = img.width
+        this.c.height = img.height
+        this.c.style.width = '40px'
+        this.c.style.height = '40px'
+      }
+      this.img.src = this.link.href
+    }
+    if(this.linkType == 'audio'){
+      this.img = new Image
+      this.img.onload = () => {
+        this.c.width = img.width
+        this.c.height = img.height
+        this.c.style.width = '40px'
+        this.c.style.height = '40px'
+      }
+      this.img.src = '../assets/musicNote.png'
+    }
+    this.Draw()
   }
 }
 </script>
