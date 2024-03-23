@@ -1,6 +1,6 @@
 <template>
   <div class="header">
-    <span class="title" v-html="state.headerMsg"></span>
+    <div class="headerImg"></div>
   </div>
 </template>
 
@@ -21,12 +21,18 @@ export default {
 
 <style scoped>
   .header{
-    height: 32px;
+    height: 52px;
     background: #0f44;
     color: #4fa;
     font-size: 20px;
   }
-  .title{
-    font-weight: 900;
+  .headerImg{
+    height: 50px;
+    width: 100%;
+    background-position: 0 50%;
+    background-image: url(../assets/header.png);
+    background-color: linear-gradient(90deg, #000, #206, #088);
+    background-repeat: no-repeat;
+    background-size: auto 50px;
   }
 </style>

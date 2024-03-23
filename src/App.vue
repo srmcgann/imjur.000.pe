@@ -21,7 +21,6 @@ export default {
   data(){
     return {
       state: {
-        headerMsg: 'da header',
         footerMsg: '<b>IMJUR</b><br>A FREE DIGITAL ASSET HOSTING SERVICE - ©'+(new Date()).getFullYear() + `<br>contact: <a href="mailto:whitehotrobot@gmail.com">whitehotrobot@gmail.com</a>`,
       }
     }

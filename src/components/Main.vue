@@ -27,7 +27,7 @@ export default {
     font-size: 20px;
     overflow-y: auto;
     overflow-x: hidden;
-    height: calc(100vh - 102px);
+    height: calc(100vh - 122px);
     padding: 20px;
     padding-top: 100px;
     box-sizing: boorder-box;
