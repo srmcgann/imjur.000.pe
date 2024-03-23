@@ -30,7 +30,7 @@ export default {
     height: calc(100vh - 122px);
     padding: 20px;
     padding-top: 100px;
-    box-sizing: boorder-box;
+    box-sizing: border-box;
     text-align: center;
   }
   .dropTarget:hover{
