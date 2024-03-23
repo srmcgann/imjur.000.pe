@@ -1,6 +1,6 @@
 <template>
   <div class="main">
-    <div class="dropTarget">
+    <div class="dropTarget" @click="loadFiles()">
       throw sum filez [drag/click]<br><br>
       accepted: most images & video web formats. feeling lucky?<br>
       max size: 100MB<br>
@@ -18,6 +18,23 @@ export default {
     }
   },
   methods: {
+    async uploadFiles(fd){
+      let res = await fetch('upload.php',{
+        method: "POST", body: fd
+      })
+    },
+    async loadFiles(){
+      let fd = new FormData()
+      let files = document.createElement('input')
+      files.type = 'file'
+      files.multiple = true
+      files.accept = 'image/gif, image/jpg, image/png, image/webp, video/mp4, video/webm, video/mkv'
+      files.click()
+      console.log(files)
+      //Array.from(files.files).entries()){
+      //  fd.append(`uploads_${
+      //})
+    }
   },
   mounted(){
   }
@@ -37,6 +54,7 @@ export default {
   }
   .dropTarget:hover{
     background-color: #0648;
+    cursor: pointer;
   }
   .dropTarget{
     color: #0ff;
