@@ -1,6 +1,6 @@
 <template>
   <a :href="link.href" target="_blank" class="link" ref="anchor">
-    <div class="linkThumb" ref="linkThumb" @click.stop="null"></div>
+    <div class="linkThumb" ref="linkThumb" @click="clickHandler(event)"></div>
     #{{link.ct}}<br>
     href: {{link.href}}<br>
     type: {{link.type}}<br>
@@ -22,6 +22,10 @@ export default {
     }
   },
   methods: {
+    clickHandler(e){
+      e.stopPropagation()
+      e.preventDefault()
+    },
     Draw(){
       this.x.globalAlpha = 1
       this.x.fillStyle='#0008'
@@ -39,7 +43,7 @@ export default {
       let w = this.img.width * scl
       let h = this.img.height * scl
       this.x.drawImage(this.img,this.c.width/2-w/2,this.c.height/2-h/2,w,h)
-      requestAnimationFrame(this.Draw())
+      requestAnimationFrame(this.Draw)
     }
   },
   mounted(){
