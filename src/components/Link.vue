@@ -1,6 +1,6 @@
 <template>
   <a :href="link.href" target="_blank" class="link" ref="anchor">
-    <div class="linkThumb" @click.stop="null"></div>
+    <div class="linkThumb" ref="linkThumb" @click.stop="null"></div>
     #{{link.ct}}<br>
     href: {{link.href}}<br>
     type: {{link.type}}<br>
@@ -36,14 +36,14 @@ export default {
           scl = this.c.width/this.c.height > 1.777777778 ? this.c.width/this.img.width : this.c.height/this.img.height
           break
       }
-      w = this.img.width * scl
-      h = this.img.height * scl
+      let w = this.img.width * scl
+      let h = this.img.height * scl
       this.x.drawImage(bg,this.c.width/2-w/2,this.c.height/2-h/2,w,h)
       requestAnimationFrame(this.Draw())
     }
   },
   mounted(){
-    this.$refs.anchor.appendChild(this.c)
+    this.$refs.linkThumb.appendChild(this.c)
     this.x = this.c.getContext('2d')
     switch(this.link.type){
       case 'image/jpg':
