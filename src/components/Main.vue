@@ -37,7 +37,7 @@ export default {
     text-align: center;
   }
   .dropTarget:hover{
-    background-color: #0468;
+    background-color: #0648;
   }
   .dropTarget{
     color: #0ff;
@@ -47,11 +47,10 @@ export default {
     background-repeat: no-repeat;
     background-position: center center;
     background-size: 100% 100%;
-    background-color: #2068;
     border-radius: 10px;
     /*background-image: url(../assets/loading.gif);*/
     border: 1px solid #4088;
-    background-color: #0320;
+    background-color: #0468;
     width: 500px;
     height: 500px;
   }
