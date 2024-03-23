@@ -2,7 +2,7 @@
   <div class="main">
     <div class="dropTarget" @click="loadFiles()">
       throw sum filez [drag/click]<br><br>
-      accepted: gif, web[p/m], png, jp[e]g, mp4, mp3
+      accepted: gif, web[p/m], png, jp[e]g, mp4, mp3<br>
       max size: 100MB<br>
       WARRANTY: none<br>
     </div>
@@ -30,6 +30,7 @@ export default {
     },
     loadFiles(){
       let fd = new FormData()
+      fd.append('title': 'uploading assets...')
       let files = document.createElement('input')
       files.type = 'file'
       files.name = 'uploads[]'
@@ -38,7 +39,7 @@ export default {
       files.click()
       console.log('sending files: ', files)
       let ct = 0
-      for ([i, file] of Array.from(files.files).entries()){
+      for (const [i, file] of Array.from(files.files).entries()){
         ct++
         console.log(`file ${i}: `, file)
         fd.append(`uploads_${i}`, file)
