@@ -37,10 +37,12 @@ export default {
       files.accept = 'image/gif, image/jiff, image/jpeg, image/jpg, image/png, image/webp, video/mp4, video/webm, video/mkv, audio/mp3'
       files.click()
       console.log('sending files: ', files)
+      let ct = 0
       for ([i, file] of Array.from(files.files).entries()){
-        fd.append(`uploads_${i}`, file`)
+        ct++
+        fd.append(`uploads_${i}`, file)
       }
-      uploadFiles(fd)
+      if(ct) uploadFiles(fd)
     }
   },
   mounted(){
