@@ -7,7 +7,7 @@
       WARRANTY: none<br>
       <div v-if="state.links.length" class="links">
         links<br>
-        <Link :state="state" v-for="link in state.links" :links="link" />
+        <Link :state="state" v-for="link in state.links" :link="link" />
       </div>
     </div>
   </div>
