@@ -32,7 +32,6 @@ export default {
     overflow-x: hidden;
     height: calc(100vh - 122px);
     padding: 20px;
-    padding-top: 100px;
     box-sizing: border-box;
     text-align: center;
   }
@@ -51,8 +50,9 @@ export default {
     /*background-image: url(../assets/loading.gif);*/
     border: 1px solid #4088;
     background-color: #0468;
-    width: 500px;
-    height: 500px;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
   }
 </style>
 
