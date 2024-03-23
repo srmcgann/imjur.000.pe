@@ -21,9 +21,11 @@ export default {
 
 <style scoped>
   .main{
-    height: 40px;
     background: #123;
     color: #ff0;
     font-size: 32px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: calc(100vh - 102px);
   }
 </style>
