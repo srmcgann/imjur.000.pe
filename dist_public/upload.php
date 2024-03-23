@@ -32,22 +32,56 @@
     global $link;
     $rndmax = getrandmax();
     do{
-      $newid = decToAlpha($rndmax/2+rand();
+      $newid = decToAlpha(floor($rndmax/2+rand()));
       $sql = "SELECT id FROM uploads WHERE id = $newid";
       $res = mysqli_query($link, $sql);
-    }while(mysqli_num_rows($res);
+    }while(mysqli_num_rows($res));
     return $newid;
   }
 
   $success = false;
   $uploadDir = 'uploads';
+  $slug = '';
   if(sizeof($_FILES['uploads'])){
-    forEach($_FILES['uploads']['error']) as $key => $error){
+    forEach($_FILES['uploads']['error'] as $key => $error){
       if($error == UPLOAD_ERR_OK){
         $tmp_name = $_FILES['uploads']['tmp_name'][$key];
         $slug = genSlug();
-        move_uploaded_file($tmp_name, "$uploadDir/$name";
-        $success = true;
+        move_uploaded_file($tmp_name, "$uploadDir/$slug");
+        $type = mime_content_type("$uploadDir/$slug");
+        $continue = false;
+        $size = filesize("$uploadDir/$slug");
+        if($size < 1e8){ //~100MB
+          switch($type){
+            case 'image/jpg': $continue = true; break;
+            case 'image/jpeg': $continue = true; break;
+            case 'image/png': $continue = true; break;
+            case 'image/gif': $continue = true; break;
+            case 'image/webp': $continue = true; break;
+            case 'video/webm': $continue = true; break;
+            case 'video/mkv': $continue = true; break;
+            case 'video/mp4': $continue = true; break;
+            case 'audio/wav': $continue = true; break;
+            case 'audio/mp3': $continue = true; break;
+          }
+          if($continue){
+            $hash = hash_file('md5', "$uploadDir/$slug");
+            $id = alphaToDec($slug);
+            $original_name = basename($_FILES["uploads"]["name"][$key]);
+            $meta = json_encode([
+              "file size" => $size,
+              "sender IP" => $_SERVER['REMOTE_ADDR'],
+              "original name" => $original_name
+            ]);
+            $meta = '';
+            $sql = "INSERT INTO uploads (id, slug, meta, filehash, filetype) VALUES($id, \"$slug\", \"$meta\", \"$hash\", \"$type\")";
+            $success = true;
+          }else{
+            unlink("$uploadDir/$slug");
+          }
+        }else{
+          unlink("$uploadDir/$slug");
+        }
       }
     }
   }
