@@ -14,7 +14,7 @@
 </template>
 
 <script>
-import Link from './components/Link'
+import Link from './Link'
 
 export default {
   name: 'Main',
