@@ -41,7 +41,7 @@ export default {
     height: 40px;
     margin: 5px;
     background-size: contain;
-    background-position 20px 20px;
+    background-position: 20px 20px;
     background-repeat: no-repeat;
     background-color: #000;
   }
