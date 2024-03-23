@@ -19,12 +19,12 @@ export default {
   },
   methods: {
     uploadFiles(fd){
-      let res = await fetch('upload.php', {
+      fetch('upload.php', {
         method: "POST", body: fd
       }).then(res=>res.json()).then(data=>{
         console.log('response from upload.php: ', data)
         if(data[0]){
-          
+          console.log(`success! slug is: ${data[1]}`
         })
       })
     },
