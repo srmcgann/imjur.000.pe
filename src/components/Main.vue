@@ -41,6 +41,8 @@ export default {
     background-image: url(../assets/loading.gif);
     border: 1px solid #4f84;
     background-color: #0320;
+    width: 500px;
+    height: 500px;
   }
 </style>
 
