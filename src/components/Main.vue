@@ -57,24 +57,26 @@ export default {
     },
     loadFiles(){
       this.$refs.main.className += 'loading'
-      let fd = new FormData()
-      fd.append('title', 'uploading assets...')
-      let files = document.createElement('input')
-      files.type = 'file'
-      files.name = 'uploads[]'
-      files.multiple = true
-      files.accept = 'image/gif, image/jiff, image/jpeg, image/jpg, image/png, image/webp, video/mp4, video/webm, video/mkv, audio/mp3'
-      files.onchange = () => {
-        console.log('sending files: ', files)
-        let ct = 0
-        Array.from(files.files).map((file, i) => {
-          ct++
-          console.log(`file ${i}: `, file)
-          fd.append(`uploads_${i}`, file)
-        })
-        if(ct) this.uploadFiles(fd)
-      }
-      files.click()
+      this.$nextTick(()=>{
+        let fd = new FormData()
+        fd.append('title', 'uploading assets...')
+        let files = document.createElement('input')
+        files.type = 'file'
+        files.name = 'uploads[]'
+        files.multiple = true
+        files.accept = 'image/gif, image/jiff, image/jpeg, image/jpg, image/png, image/webp, video/mp4, video/webm, video/mkv, audio/mp3'
+        files.onchange = () => {
+          console.log('sending files: ', files)
+          let ct = 0
+          Array.from(files.files).map((file, i) => {
+            ct++
+            console.log(`file ${i}: `, file)
+            fd.append(`uploads_${i}`, file)
+          })
+          if(ct) this.uploadFiles(fd)
+        }
+        files.click()
+      })
     }
   },
   mounted(){
