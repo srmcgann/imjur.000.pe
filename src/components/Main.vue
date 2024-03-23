@@ -1,30 +1,53 @@
 <template>
   <div class="main">
-    <div class="dropTarget" @click="loadFiles()">
+    <div class="dropTarget" @click="loadFiles()" @drop="dropHandler(event)" @dragOver="">
       throw sum filez [drag/click]<br><br>
       accepted: gif, web[p/m], png, jp[e]g, mp4, mp3<br>
       max size: 100MB<br>
       WARRANTY: none<br>
+      <div class="links">
+        links<br>
+        <Link :state="state" v-for="link in state.links" :links="link" />
+      </div>
     </div>
   </div>
 </template>
 
 <script>
+import Link from './components/Link'
+
 export default {
   name: 'Main',
   props: [ 'state' ],
+  components: {
+    Link
+  },
   data(){
     return {
     }
   },
   methods: {
+    dropHandlerr(event){
+      console.log('file(s) dropped: ', event)
+    },
+    addLink(size, type, ct, href){
+      let obj = {
+        size,
+        type,
+        ct,
+        href,
+      }
+      this.state.links = [...this.state.links, obj]
+    },
     uploadFiles(fd){
       fetch('upload.php', {
         method: "POST", body: fd
       }).then(res=>res.json()).then(data=>{
         console.log('response from upload.php: ', data)
         if(data[0]){
-          console.log(`success! slug is: ${data[1]}`)
+          data[1].map((v, i)=>{
+            this.addLink(data[2], data[3], i, location.origin + '/' + v)
+          })
         }
       })
     },
@@ -84,6 +107,11 @@ export default {
     width: 100%;
     height: 100%;
     box-sizing: border-box;
+  }
+  .links{
+    margin: 10px;
+    box-sizeing: border-box;
+    background: #3338;
   }
 </style>
 
