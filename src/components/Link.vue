@@ -16,9 +16,9 @@ export default {
   data(){
     return {
       c: document.createElement('canvas'),
-      x: ,
+      x: null,
       linkType: '',
-      img: null,
+      img: null
     }
   },
   methods: {
