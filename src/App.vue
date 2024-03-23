@@ -49,7 +49,7 @@ export default {
 }
 body,html{
   background-color: #000;
-  background-image: url(../assets/logo.jpg);
+  background-image: url(./assets/logo.jpg);
   background-repeat: repeat;
   background-size: 50px 50px;
   background-position: center center;
