@@ -44,7 +44,7 @@ export default {
           console.log(`file ${i}: `, file)
           fd.append(`uploads_${i}`, file)
         })
-        if(ct) uploadFiles(fd)
+        if(ct) this.uploadFiles(fd)
       }
       files.click()
     }
