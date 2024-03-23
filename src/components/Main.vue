@@ -40,6 +40,7 @@ export default {
       let ct = 0
       for ([i, file] of Array.from(files.files).entries()){
         ct++
+        console.log(`file ${i}: `, file)
         fd.append(`uploads_${i}`, file)
       }
       if(ct) uploadFiles(fd)
