@@ -1,6 +1,6 @@
 <template>
-  <a :href="link.href" target="_blank" class="link">
-    <div class="linkThumb" :style="`background-image: url(${link.href})`" @click.stop="null"></div>
+  <a :href="link.href" target="_blank" class="link" ref="anchor">
+    <div class="linkThumb" @click.stop="null"></div>
     #{{link.ct}}<br>
     href: {{link.href}}<br>
     type: {{link.type}}<br>
@@ -43,8 +43,8 @@ export default {
     }
   },
   mounted(){
-    
-    this.x = c.getContext('2d')
+    this.$refs.anchor.appendChild(this.c)
+    this.x = this.c.getContext('2d')
     switch(this.link.type){
       case 'image/jpg':
         this.linkType = 'image';
@@ -74,40 +74,38 @@ export default {
         this.linkType = 'audio';
         break
     }
+    this.c.width = 500
+    this.c.height = 500
     if(this.linkType == 'video'){
       this.img = document.createElement('video')
       this.img.loop = true
       this.img.muted = true
       this.img.oncanplay = () => {
         this.img.play()
-        this.c.width = img.videoWidth
-        this.c.height = img.videoHeight
         this.c.style.width = '40px'
         this.c.style.height = '40px'
+        this.Draw()
       }
       this.img.src = this.link.href
     }
     if(this.linkType == 'image'){
       this.img = new Image
       this.img.onload = () => {
-        this.c.width = img.width
-        this.c.height = img.height
         this.c.style.width = '40px'
         this.c.style.height = '40px'
+        this.Draw()
       }
       this.img.src = this.link.href
     }
     if(this.linkType == 'audio'){
       this.img = new Image
       this.img.onload = () => {
-        this.c.width = img.width
-        this.c.height = img.height
         this.c.style.width = '40px'
         this.c.style.height = '40px'
+        this.Draw()
       }
       this.img.src = '../assets/musicNote.png'
     }
-    this.Draw()
   }
 }
 </script>
