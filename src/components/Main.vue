@@ -5,7 +5,7 @@
       accepted: gif, web[p/m], png, jp[e]g, mp4, mp3<br>
       max size: 100MB<br>
       WARRANTY: none<br>
-      <div class="links">
+      <div v-if="state.links.length" class="links">
         links<br>
         <Link :state="state" v-for="link in state.links" :links="link" />
       </div>
@@ -37,7 +37,7 @@ export default {
         ct,
         href,
       }
-      this.state.links = [...this.state.links, obj]
+      this.state.links.push(obj)
     },
     uploadFiles(fd){
       fetch('upload.php', {
