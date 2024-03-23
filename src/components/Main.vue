@@ -39,7 +39,7 @@ export default {
       files.onchange = () => {
         console.log('sending files: ', files)
         let ct = 0
-        Array.from(files.files).map(file=>{
+        Array.from(files.files).map((file, i) => {
           ct++
           console.log(`file ${i}: `, file)
           fd.append(`uploads_${i}`, file)
