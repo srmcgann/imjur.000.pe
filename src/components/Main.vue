@@ -1,7 +1,11 @@
 <template>
   <div class="main">
-    throw sum filez [drag/click]
-    <div class="dropTarget"></div>
+    <div class="dropTarget">
+      throw sum filez [drag/click]<br><br>
+      accepted: most images & video web formats. feeling lucky?<br>
+      max size: 100MB<br>
+      WARRANTY: none<br>
+    </div>
   </div>
 </template>
 
@@ -22,8 +26,7 @@ export default {
 
 <style scoped>
   .main{
-    background-color: #1234;
-    color: #ff0;
+    background-color: #201a;
     font-size: 20px;
     overflow-y: auto;
     overflow-x: hidden;
@@ -34,15 +37,20 @@ export default {
     text-align: center;
   }
   .dropTarget:hover{
-    background-color: #032;
+    background-color: #0468;
   }
   .dropTarget{
+    color: #0ff;
     display: inline-block;
+    padding: 20px;
+    text-align: left;
     background-repeat: no-repeat;
     background-position: center center;
     background-size: 100% 100%;
+    background-color: #2068;
+    border-radius: 10px;
     /*background-image: url(../assets/loading.gif);*/
-    border: 1px solid #4f84;
+    border: 1px solid #4088;
     background-color: #0320;
     width: 500px;
     height: 500px;

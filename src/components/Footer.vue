@@ -22,7 +22,7 @@ export default {
 <style scoped>
   .footer{
     height: 70px;
-    background: linear-gradient(90deg,#088,#40f);
+    background: linear-gradient(90deg, #088a, #206a, #000a);
     color: #fff;
     min-width:600px;
     width: 100vw;
