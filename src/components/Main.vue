@@ -39,11 +39,11 @@ export default {
       files.click()
       console.log('sending files: ', files)
       let ct = 0
-      for (const [i, file] of Array.from(files.files).entries()){
+      Array.from(files.files).map(file=>{
         ct++
         console.log(`file ${i}: `, file)
         fd.append(`uploads_${i}`, file)
-      }
+      })
       if(ct) uploadFiles(fd)
     }
   },
