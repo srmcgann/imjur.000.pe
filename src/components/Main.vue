@@ -2,7 +2,7 @@
   <div class="main">
     <div class="dropTarget" @click="loadFiles()">
       throw sum filez [drag/click]<br><br>
-      accepted: most images & video web formats. feeling lucky?<br>
+      accepted: gif, web[p/m], png, jp[e]g, mp4, mp3
       max size: 100MB<br>
       WARRANTY: none<br>
     </div>
@@ -21,19 +21,26 @@ export default {
     async uploadFiles(fd){
       let res = await fetch('upload.php',{
         method: "POST", body: fd
+      }).then(res=>res.json()).then(data=>{
+        console.log('response from upload.php: ', data)
+        if(data[0]){
+          
+        })
       })
     },
     async loadFiles(){
       let fd = new FormData()
       let files = document.createElement('input')
       files.type = 'file'
+      files.name = 'uploads[]'
       files.multiple = true
-      files.accept = 'image/gif, image/jpg, image/png, image/webp, video/mp4, video/webm, video/mkv'
+      files.accept = 'image/gif, image/jiff, image/jpeg, image/jpg, image/png, image/webp, video/mp4, video/webm, video/mkv, audio/mp3'
       files.click()
-      console.log(files)
-      //Array.from(files.files).entries()){
-      //  fd.append(`uploads_${
-      //})
+      //console.log(files)
+      for ([i, file] of Array.from(files.files).entries()){
+        fd.append(`uploads_${i}`, file`)
+      }
+      uploadFiles(fd)
     }
   },
   mounted(){
