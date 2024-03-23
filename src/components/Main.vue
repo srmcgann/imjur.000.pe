@@ -22,7 +22,7 @@ export default {
 
 <style scoped>
   .main{
-    background: #123;
+    background-color: #1234;
     color: #ff0;
     font-size: 20px;
     overflow-y: auto;

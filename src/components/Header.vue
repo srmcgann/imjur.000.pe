@@ -27,11 +27,11 @@ export default {
     font-size: 20px;
   }
   .headerImg{
-    height: 50px;
+    height: 52px;
     width: 100%;
     background-position: 0 50%;
     background-image: url(../assets/header.png);
     background-repeat: no-repeat;
-    background-size: auto 50px;
+    background-size: auto 52px;
   }
 </style>
