@@ -28,13 +28,16 @@ export default {
     overflow-y: auto;
     overflow-x: hidden;
     height: calc(100vh - 102px);
-    padding: 50px;
+    padding: 20px;
+    padding-top: 100px;
     box-sizing: boorder-box;
+    text-align: center;
   }
   .dropTarget:hover{
     background-color: #032;
   }
   .dropTarget{
+    display: inline-block;
     background-repeat: no-repeat;
     background-position: center center;
     background-size: 100% 100%;
