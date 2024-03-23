@@ -36,15 +36,17 @@ export default {
       files.name = 'uploads[]'
       files.multiple = true
       files.accept = 'image/gif, image/jiff, image/jpeg, image/jpg, image/png, image/webp, video/mp4, video/webm, video/mkv, audio/mp3'
+      files.onchange = () => {
+        console.log('sending files: ', files)
+        let ct = 0
+        Array.from(files.files).map(file=>{
+          ct++
+          console.log(`file ${i}: `, file)
+          fd.append(`uploads_${i}`, file)
+        })
+        if(ct) uploadFiles(fd)
+      }
       files.click()
-      console.log('sending files: ', files)
-      let ct = 0
-      Array.from(files.files).map(file=>{
-        ct++
-        console.log(`file ${i}: `, file)
-        fd.append(`uploads_${i}`, file)
-      })
-      if(ct) uploadFiles(fd)
     }
   },
   mounted(){
