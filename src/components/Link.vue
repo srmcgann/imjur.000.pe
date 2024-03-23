@@ -1,6 +1,6 @@
 <template>
   <a :href="link.href" target="_blank" class="link">
-    <div class="linkThumb" :style="background-image: url(link.href)"></div>
+    <div class="linkThumb" :style="`background-image: url(${link.href})`"></div>
     #{{link.ct}}<br>
     href: {{link.href}}<br>
     type: {{link.type}}<br>
