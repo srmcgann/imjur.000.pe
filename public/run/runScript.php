@@ -1,6 +1,6 @@
 <?php
   error_reporting(E_ALL);
-  require_once('../db.php');
+  require_once('db.php');
   $data = json_decode(file_get_contents('php://input'));
   $password = mysqli_real_escape_string($link, $data->{'pass'});
   $success = false;
