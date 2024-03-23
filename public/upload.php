@@ -91,5 +91,5 @@
     }
   }
   
-  echo json_encode([$success, $links]);
+  echo json_encode([$success, $links, $size, $type, $ct]);
 ?>

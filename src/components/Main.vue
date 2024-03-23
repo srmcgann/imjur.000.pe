@@ -1,6 +1,6 @@
 <template>
   <div class="main">
-    <div class="dropTarget" @click="loadFiles()" @drop="dropHandler(event)" @dragOver="">
+    <div class="dropTarget" @click="loadFiles()" @drop="dropHandler(event)" @dragOver="dragOverHandler">
       throw sum filez [drag/click]<br><br>
       accepted: gif, web[p/m], png, jp[e]g, mp4, mp3<br>
       max size: 100MB<br>
@@ -27,6 +27,9 @@ export default {
     }
   },
   methods: {
+    dragOverHandler(e){
+      e.preventDefault()
+    },
     dropHandlerr(event){
       console.log('file(s) dropped: ', event)
     },
@@ -87,6 +90,12 @@ export default {
     padding: 20px;
     box-sizing: border-box;
     text-align: center;
+  }
+  .loading{
+    background-image: url(../assets/loading.gif);
+    background-size: contain;
+    background-position: center center;
+    background-repeat: no-repeat;
   }
   .dropTarget:hover{
     background-color: #0648;
