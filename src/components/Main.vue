@@ -38,7 +38,7 @@ export default {
     background-repeat: no-repeat;
     background-position: center center;
     background-size: 100% 100%;
-    background-image: url(loading.gif);
+    background-image: url(../assets/loading.gif);
     border: 1px solid #4f84;
     background-color: #0320;
   }
