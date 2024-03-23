@@ -30,7 +30,7 @@ export default {
     },
     loadFiles(){
       let fd = new FormData()
-      fd.append('title': 'uploading assets...')
+      fd.append('title', 'uploading assets...')
       let files = document.createElement('input')
       files.type = 'file'
       files.name = 'uploads[]'
