@@ -77,6 +77,9 @@ export default {
       case 'audio/mp3':
         this.linkType = 'audio';
         break
+      case 'audio/mpeg':
+        this.linkType = 'audio';
+        break
     }
     this.c.width = 500
     this.c.height = 500
