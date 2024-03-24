@@ -2,9 +2,9 @@
   <a :href="link.href" target="_blank" class="link" ref="anchor">
     <div class="linkThumb" ref="linkThumb" @click="clickHandler(event)"></div>
     #{{link.ct}}<br>
-    href: {{link.href}}<br>
-    type: {{link.type}}<br>
-    size: {{link.size.toLocaleString('en-us')}}<br>
+    &nbsp;href: {{link.href}}<br>
+    &nbsp;type: {{link.type}}<br>
+    &nbsp;size: {{link.size.toLocaleString('en-us')}}<br>
   </a>
 </template>
 
@@ -122,6 +122,7 @@ export default {
     background-color: #80fa;
   }
   .link{
+    color: #acd;
     background-color: #408a;
     font-size: 20px;
     height: 50px;
