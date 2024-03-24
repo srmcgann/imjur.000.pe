@@ -65,6 +65,7 @@
           case 'video/mp4': $continue = true; $suffix = 'mp4';  break;
           case 'audio/wav': $continue = true; $suffix = 'wav';  break;
           case 'audio/mp3': $continue = true; $suffix = 'mp3';  break;
+          case 'audio/mpeg': $continue = true; $suffix = 'mp3';  break;
         }
         if($continue){
           $hash = hash_file('md5', "$uploadDir/$slug");
