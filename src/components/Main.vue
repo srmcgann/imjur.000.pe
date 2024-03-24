@@ -16,15 +16,15 @@
 <script>
 import Link from './Link'
 
-dragenter = e => {
+var dragenter = e => {
   console.log('dragenter: ', e)
 }
 
-dragover = e => {
+var dragover = e => {
   console.log('dragover: ', e)
 }
 
-drop = e => {
+var drop = e => {
   e.preventDefault()
   console.log('drop: ', e)
 }
