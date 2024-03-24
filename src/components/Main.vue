@@ -56,6 +56,7 @@ export default {
       })
     },
     loadFiles(){
+      if(state.links.length) return
       this.$refs.main.className += 'loading'
       this.$nextTick(()=>{
         let fd = new FormData()

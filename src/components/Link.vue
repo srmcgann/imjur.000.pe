@@ -115,6 +115,9 @@ export default {
 </script>
 
 <style scoped>
+  .link:hover{
+    background-color: #80fa;
+  }
   .link{
     background-color: #408a;
     font-size: 20px;
