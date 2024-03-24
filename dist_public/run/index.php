@@ -1,6 +1,6 @@
 <?php
   require('db.php');
-  $sql = "SELECT * FROM orbsMirrors";
+  $sql = "SELECT * FROM imjurServers";
   $res = mysqli_query($link, $sql);
   $servers = [];
   for($i=0; $i<mysqli_num_rows($res); ++$i){
@@ -108,7 +108,7 @@
   <body>
     <div id="header">
       deploy PHP script
-      <button id="deployButton" title="deploy (below script) to all ORBS servers" onclick="conf()">deploy</button>
+      <button id="deployButton" title="deploy (below script)" onclick="conf()">deploy</button>
     </div>
     <textarea spellcheck="false" class="codeInput" placeholder="text"></textarea>
     <div id="outputModal">
