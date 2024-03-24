@@ -51,8 +51,19 @@ export default {
       })
       if(ct) this.uploadFiles(fd)
     },
-    dropFiles(e){
-      this.processUpload([...e.dataTransfer[e.dataTransfer.items ? 'items' : 'files']])
+    dropFiles(e)
+      let files = []
+      if(e.dataTransfer.items){
+        e.[...v.dataTransfer.items].forEach((item, i) => {
+          if (item.kind === "file") {
+            const file = item.getAsFile()
+            files = [...files, file]
+          }
+        })
+      }else{
+        files = Array.from(v.dataTransfer.files)
+      }
+      this.processUpload(files)
     },
     addLink(size, type, ct, href){
       let obj = {
