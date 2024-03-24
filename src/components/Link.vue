@@ -1,8 +1,8 @@
 <!--
 todo
+  ✔ dropable files
   * file hash unifies same-upload sources
   * fix video & audio thumbnails
-  * dropable files
   * optional autodelete
   * tile-able cards (flex)
   * lightbox sim / previews
