@@ -1,5 +1,5 @@
 <template>
-  <div class="main" ref="main" :class={'loading': state.uploadInProgress}>
+  <div class="main" ref="main" :class="{'loading': state.uploadInProgress}">
     <div class="dropTarget" @click="loadFiles()" @drop="dropHandler(event)" @dragOver="dragOverHandler(event)">
       throw sum filez [drag/click]<br><br>
       accepted: gif, web[p/m], png, jp[e]g, mp4, mp3<br>
