@@ -89,6 +89,7 @@ export default {
     font-size: 20px;
     overflow-y: auto;
     overflow-x: hidden;
+    height: calc(100vh - 122px);
     min-height: calc(100vh - 122px);
     padding: 20px;
     box-sizing: border-box;
@@ -100,7 +101,7 @@ export default {
     background-position: center center;
     background-repeat: no-repeat;
   }
-  .dropTarget:dragover, .dropTarget:hover{
+  .dropTarget:dragover .dropTarget:hover{
     background-color: #0648;
     cursor: pointer;
   }
