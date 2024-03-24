@@ -86,8 +86,8 @@ export default {
       this.img.muted = true
       this.img.oncanplay = () => {
         this.img.play()
-        this.c.style.width = '40px'
-        this.c.style.height = '40px'
+        this.c.style.width = '100px'
+        this.c.style.height = '100px'
         this.Draw()
       }
       this.img.src = this.link.href
@@ -95,8 +95,8 @@ export default {
     if(this.linkType == 'image'){
       this.img = new Image
       this.img.onload = () => {
-        this.c.style.width = '40px'
-        this.c.style.height = '40px'
+        this.c.style.width = '100px'
+        this.c.style.height = '100px'
         this.Draw()
       }
       this.img.src = this.link.href
@@ -104,8 +104,8 @@ export default {
     if(this.linkType == 'audio'){
       this.img = new Image
       this.img.onload = () => {
-        this.c.style.width = '40px'
-        this.c.style.height = '40px'
+        this.c.style.width = '100px'
+        this.c.style.height = '100px'
         this.Draw()
       }
       this.img.src = '../assets/musicNote.png'
@@ -130,8 +130,8 @@ export default {
   }
   .linkThumb{
     float: left;
-    width: 40px;
-    height: 40px;
+    width: 100px;
+    height: 100px;
     margin: 5px;
     background-size: contain;
     background-position: 20px 20px;
