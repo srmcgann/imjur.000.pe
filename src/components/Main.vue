@@ -39,13 +39,6 @@ export default {
     dropFiles(e){
       processUpload(e.dataTransfer[e.dataTransfer.items ? 'items' : 'files'])
     }
-    dragStartHandler(evt){
-      evt.dataTransfer.dropEffect = 'move'
-      evt.dataTransfer.effectAllowed = 'move'
-    },
-    dropHandler(event){
-      console.log('files dropped: ', event)
-    },
     addLink(size, type, ct, href){
       let obj = {
         size,
