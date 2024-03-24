@@ -18,11 +18,13 @@ import Link from './Link'
 
 window.dragenter = e => {
   console.log('dragenter: ', e)
+  e.dataTransfer.dropEffect = 'move'
+  e.dataTransfer.effectAllowed = 'move'
 }
 
 window.drop = e => {
-//  e.preventDefault()
-  e.stopPropagation()
+  e.preventDefault()
+  //e.stopPropagation()
   console.log('drop: ', e)
 }
 
