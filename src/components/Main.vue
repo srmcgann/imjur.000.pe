@@ -89,7 +89,7 @@ export default {
     font-size: 20px;
     overflow-y: auto;
     overflow-x: hidden;
-    height: calc(100vh - 122px);
+    min-height: calc(100vh - 122px);
     padding: 20px;
     box-sizing: border-box;
     text-align: center;
