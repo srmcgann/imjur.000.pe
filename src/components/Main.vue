@@ -61,7 +61,7 @@ export default {
           }
         })
       }else{
-        files = Array.from(v.dataTransfer.files)
+        files = [...e.dataTransfer.files]
       }
       this.processUpload(files)
     },
