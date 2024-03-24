@@ -61,7 +61,7 @@ export default {
           }
         })
       }else{
-        files = [...e.dataTransfer.files]
+        files = Array.from(e.dataTransfer.files)
       }
       this.processUpload(files)
     },
@@ -82,7 +82,7 @@ export default {
       files.name = 'uploads[]'
       files.multiple = true
       files.accept = 'image/gif, image/jiff, image/jpeg, image/jpg, image/png, image/webp, video/mp4, video/webm, video/mkv, audio/mp3'
-      files.onchange = () => this.processUpload([...files.files])
+      files.onchange = () => this.processUpload(Array.from(files.files))
       files.click()
     }
   },
