@@ -43,8 +43,8 @@
   $uploadDir = 'uploads';
   $ct = 0;
   $links = [];
-  $type = '';
-  $size = '';
+  $types = [];
+  $sizes = [];
   if(sizeof($_FILES)){
     forEach($_FILES as $key => $val){
       $tmp_name = $_FILES["uploads_$ct"]['tmp_name'];
@@ -81,6 +81,8 @@
           mysqli_query($link, $sql);
           $success = true;
           $links[] = "$uploadDir/$slug.$suffix";
+          $sizes[] = $size;
+          $types[] = $type;
           rename("$uploadDir/$slug", "$uploadDir/$slug.$suffix");
         }else{
           unlink("$uploadDir/$slug");
@@ -92,5 +94,5 @@
     }
   }
   
-  echo json_encode([$success, $links, $size, $type, $ct]);
+  echo json_encode([$success, $links, $sizes, $types, $ct]);
 ?>
