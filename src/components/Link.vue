@@ -31,7 +31,7 @@ export default {
       this.x.globalAlpha = 1
       this.x.fillStyle='#0008'
       this.x.fillRect(0,0,this.c.width,this.c.height)
-      let fillStyle = 'cover'
+      let fillStyle = 'contain'
       let scl
       switch(fillStyle){
         case 'contain':
@@ -116,12 +116,13 @@ export default {
 
 <style scoped>
   .link:hover{
-    background-color: #80fa;
+    background-color: #408a;
   }
   .link{
-    display: block;
+    display: table;
+    width: 100%;
     color: #acd;
-    background-color: #408a;
+    background-color: #204a;
     font-size: 20px;
     height: 50px;
     min-width: 400px;
@@ -129,6 +130,7 @@ export default {
     box-sizing: border-box;
     text-align: left;
     margin: 10px;
+    word-break: break-word;
   }
   .linkThumb{
     float: left;
