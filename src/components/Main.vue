@@ -1,6 +1,6 @@
 <template>
   <div class="main" ref="main" :class="{'loading': state.uploadInProgress}">
-    <div class="dropTarget" ondragenter="dragenter(event)" ondragover="dragenter(event)" ondrop="dragenter(event)">
+    <div class="dropTarget" ondragenter="window.dragenter(event)" ondragover="window.dragover(event)" ondrop="window.drop(event)">
       throw sum filez [drag/click]<br><br>
       accepted: gif, web[p/m], png, jp[e]g, mp4, mp3<br>
       max size: 100MB<br>
@@ -16,15 +16,15 @@
 <script>
 import Link from './Link'
 
-var dragenter = e => {
+window.dragenter = e => {
   console.log('dragenter: ', e)
 }
 
-var dragover = e => {
+window.dragover = e => {
   console.log('dragover: ', e)
 }
 
-var drop = e => {
+window.drop = e => {
   e.preventDefault()
   console.log('drop: ', e)
 }
