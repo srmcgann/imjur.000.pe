@@ -1,6 +1,6 @@
 <template>
   <div class="main" ref="main" :class="{'loading': state.uploadInProgress}">
-    <div id="dropTarget" class="dropTarget" ondragover="window.allowDrop(event)"  ondrop="window.drop(event)">
+    <div id="dropTarget" class="dropTarget" @dragover.prevent @drop.prevent="dropFiles($event)">
       throw sum filez [drag/click]<br><br>
       accepted: gif, web[p/m], png, jp[e]g, mp4, mp3<br>
       max size: 100MB<br>
@@ -16,36 +16,6 @@
 <script>
 import Link from './Link'
 
-window.dragenter = e => {
-  console.log('dragenter: ', e)
-  e.dataTransfer.dropEffect = 'move'
-  e.dataTransfer.effectAllowed = 'move'
-  e.dataTransfer.setData('text', e.target.id)
-}
-
-window.allowDrop = e => {
-  e.preventDefault()
-}
-
-window.drop = e => {
-  e.preventDefault()
-  if (e.dataTransfer.items) {
-    // Use DataTransferItemList interface to access the file(s)
-    [...e.dataTransfer.items].forEach((item, i) => {
-      // If dropped items aren't files, reject them
-      if (item.kind === "file") {
-        const file = item.getAsFile();
-        console.log(`… file[${i}].name = ${file.name}`);
-      }
-    });
-  } else {
-    // Use DataTransfer interface to access the file(s)
-    [...e.dataTransfer.files].forEach((file, i) => {
-      console.log(`… file[${i}].name = ${file.name}`);
-    });
-  }
-}
-
 export default {
   name: 'Main',
   props: [ 'state' ],
@@ -57,6 +27,18 @@ export default {
     }
   },
   methods: {
+    processUpload(files){
+      let ct = 0
+      Array.from(files.files).map((file, i) => {
+        ct++
+        console.log(`file ${i}: `, file)
+        fd.append(`uploads_${i}`, file)
+      })
+      if(ct) this.uploadFiles(fd)
+    },
+    dropFiles(e){
+      processUpload(e.dataTransfer[e.dataTransfer.items ? 'items' : 'files'])
+    }
     dragStartHandler(evt){
       evt.dataTransfer.dropEffect = 'move'
       evt.dataTransfer.effectAllowed = 'move'
@@ -96,16 +78,7 @@ export default {
       files.name = 'uploads[]'
       files.multiple = true
       files.accept = 'image/gif, image/jiff, image/jpeg, image/jpg, image/png, image/webp, video/mp4, video/webm, video/mkv, audio/mp3'
-      files.onchange = () => {
-        console.log('sending files: ', files)
-        let ct = 0
-        Array.from(files.files).map((file, i) => {
-          ct++
-          console.log(`file ${i}: `, file)
-          fd.append(`uploads_${i}`, file)
-        })
-        if(ct) this.uploadFiles(fd)
-      }
+      files.onchange = () => this.processUpload(files)
       files.click()
     }
   },
