@@ -42,7 +42,7 @@
           ]));
           $meta = '';
           $description = $_FILES["uploads_$ct"]["description"];
-          $origin = mysqli_real_escape_string($link, "user file: $original_name");
+          $origin = "user file: $original_name";
           $userID = -1;
           
 $sql = <<<SQL
@@ -87,5 +87,5 @@ SQL;
     }
   }
   
-  echo json_encode([$success, $links, $sizes, $types, $ct]);
+  echo json_encode([$success, $links, $sizes, $types, $ct, $sql]);
 ?>
