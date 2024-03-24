@@ -3,7 +3,7 @@
     <div id="dropTarget" class="dropTarget" @dragover.prevent @drop.prevent="dropFiles($event)" @click="loadFiles()">
       throw sum filez [drag/click]<br><br>
       accepted: gif, web[p/m], png, jp[e]g, mp4, mp3<br>
-      max size: 100MB<br>
+      max size: 25MB<br>
       WARRANTY: none<br>
       <div v-if="state.links.length" class="links">
         links<br>
