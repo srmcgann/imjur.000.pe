@@ -54,7 +54,7 @@ export default {
     dropFiles(e)
       let files = []
       if(e.dataTransfer.items){
-        e.[...v.dataTransfer.items].forEach((item, i) => {
+        [...e.dataTransfer.items].forEach((item, i) => {
           if (item.kind === "file") {
             const file = item.getAsFile()
             files = [...files, file]
