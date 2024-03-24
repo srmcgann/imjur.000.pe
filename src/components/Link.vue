@@ -1,10 +1,11 @@
 <template>
   <a :href="link.href" target="_blank" class="link" ref="anchor">
     <div class="linkThumb" ref="linkThumb" @click="clickHandler(event)"></div>
-    #{{link.ct}}<br>
-    &nbsp;href: {{link.href}}<br>
-    &nbsp;type: {{link.type}}<br>
-    &nbsp;size: {{link.size.toLocaleString('en-us')}}<br>
+    #{{link.ct+1}}<br>
+    href: {{link.href}}<br>
+    type: {{link.type}}<br>
+    size: {{link.size.toLocaleString('en-us')}}<br>
+    <div style="clear: both;"></div>
   </a>
 </template>
 
@@ -30,7 +31,7 @@ export default {
       this.x.globalAlpha = 1
       this.x.fillStyle='#0008'
       this.x.fillRect(0,0,this.c.width,this.c.height)
-      let fillStyle = 'contain'
+      let fillStyle = 'cover'
       let scl
       switch(fillStyle){
         case 'contain':
@@ -83,14 +84,14 @@ export default {
     }
     this.c.width = 500
     this.c.height = 500
+    this.c.style.width = '200px'
+    this.c.style.height = '200px'
     if(this.linkType == 'video'){
       this.img = document.createElement('video')
       this.img.loop = true
       this.img.muted = true
       this.img.oncanplay = () => {
         this.img.play()
-        this.c.style.width = '100px'
-        this.c.style.height = '100px'
         this.Draw()
       }
       this.img.src = this.link.href
@@ -98,8 +99,6 @@ export default {
     if(this.linkType == 'image'){
       this.img = new Image
       this.img.onload = () => {
-        this.c.style.width = '100px'
-        this.c.style.height = '100px'
         this.Draw()
       }
       this.img.src = this.link.href
@@ -107,8 +106,6 @@ export default {
     if(this.linkType == 'audio'){
       this.img = new Image
       this.img.onload = () => {
-        this.c.style.width = '100px'
-        this.c.style.height = '100px'
         this.Draw()
       }
       this.img.src = '../assets/musicNote.png'
@@ -122,6 +119,7 @@ export default {
     background-color: #80fa;
   }
   .link{
+    display: block;
     color: #acd;
     background-color: #408a;
     font-size: 20px;
@@ -134,8 +132,8 @@ export default {
   }
   .linkThumb{
     float: left;
-    width: 100px;
-    height: 100px;
+    width: 200px;
+    height: 200px;
     margin: 5px;
     background-size: contain;
     background-position: 20px 20px;

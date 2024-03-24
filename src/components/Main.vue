@@ -1,5 +1,5 @@
 <template>
-  <div class="main" ref="main">
+  <div class="main" ref="main" :class={'loading': state.links.length}>
     <div class="dropTarget" @click="loadFiles()" @drop="dropHandler(event)" @dragOver="dragOverHandler">
       throw sum filez [drag/click]<br><br>
       accepted: gif, web[p/m], png, jp[e]g, mp4, mp3<br>
@@ -52,12 +52,10 @@ export default {
             this.addLink(data[2], data[3], i, location.origin + '/' + v)
           })
         }
-        this.$refs.main.classList.toggle('loading')
       })
     },
     loadFiles(){
       if(this.state.links.length) return
-      this.$refs.main.className += 'loading'
       this.$nextTick(()=>{
         let fd = new FormData()
         fd.append('title', 'uploading assets...')
