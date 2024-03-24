@@ -37,7 +37,7 @@ export default {
       if(ct) this.uploadFiles(fd)
     },
     dropFiles(e){
-      processUpload(e.dataTransfer[e.dataTransfer.items ? 'items' : 'files'])
+      this.processUpload(e.dataTransfer[e.dataTransfer.items ? 'items' : 'files'])
     },
     addLink(size, type, ct, href){
       let obj = {
