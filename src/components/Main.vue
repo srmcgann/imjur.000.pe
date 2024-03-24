@@ -1,6 +1,6 @@
 <template>
   <div class="main" ref="main" :class="{'loading': state.uploadInProgress}">
-    <div class="dropTarget" draggable @click="loadFiles()" @drop.prevent="dropHandler($event)" @dragover.prevent @dragstart="dragStartHandler($event)" @dragenter.prevent>
+    <div class="dropTarget" draggable @click="loadFiles()" @drop.prevent="dropHandler($event)" @dragover.prevent @dragstart="dragStartHandler($event)" @dragenter.prevent="dragStartHandler($event)">
       throw sum filez [drag/click]<br><br>
       accepted: gif, web[p/m], png, jp[e]g, mp4, mp3<br>
       max size: 100MB<br>
