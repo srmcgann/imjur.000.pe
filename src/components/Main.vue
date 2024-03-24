@@ -27,8 +27,23 @@ export default {
     }
   },
   methods: {
+    uploadFiles(fd){
+      fetch('upload.php', {
+        method: "POST", body: fd
+      }).then(res=>res.json()).then(data=>{
+        console.log('response from upload.php: ', data)
+        if(data[0]){
+          data[1].map((v, i)=>{
+            this.addLink(data[2][i], data[3][i], i, location.origin + '/' + v)
+          })
+        }
+      })
+      this.state.uploadInprogress = false
+    },
     processUpload(files){
       let ct = 0
+      let fd = new FormData()
+      fd.append('description', 'no description')
       files.map((file, i) => {
         ct++
         console.log(`file ${i}: `, file)
@@ -48,24 +63,9 @@ export default {
       }
       this.state.links.push(obj)
     },
-    uploadFiles(fd){
-      fetch('upload.php', {
-        method: "POST", body: fd
-      }).then(res=>res.json()).then(data=>{
-        console.log('response from upload.php: ', data)
-        if(data[0]){
-          data[1].map((v, i)=>{
-            this.addLink(data[2][i], data[3][i], i, location.origin + '/' + v)
-          })
-        }
-      })
-      this.state.uploadInprogress = false
-    },
     loadFiles(){
       this.state.uploadInprogress = true
       if(this.state.links.length) return
-      let fd = new FormData()
-      fd.append('description', 'no description')
       let files = document.createElement('input')
       files.type = 'file'
       files.name = 'uploads[]'
