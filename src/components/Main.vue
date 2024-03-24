@@ -1,6 +1,6 @@
 <template>
   <div class="main" ref="main" :class="{'loading': state.uploadInProgress}">
-    <div class="dropTarget" @click="loadFiles()" @drop.prevent="dropHandler($event)" @dragover.prevent @dragenter.prevent>
+    <div class="dropTarget" draggable @click="loadFiles()" @drop.prevent="dropHandler($event)" @dragover.prevent @dragstart="dragStartHandler($event)" @dragenter.prevent>
       throw sum filez [drag/click]<br><br>
       accepted: gif, web[p/m], png, jp[e]g, mp4, mp3<br>
       max size: 100MB<br>
@@ -27,8 +27,12 @@ export default {
     }
   },
   methods: {
+    dragStartHandler(evt){
+      evt.dataTransfer.dropEffect = 'move'
+      evt.dataTransfer.effectAllowed = 'move'
+    },
     dropHandler(event){
-      console.log('file(s) dropped: ', event)
+      console.log('files dropped: ', event)
     },
     addLink(size, type, ct, href){
       let obj = {
