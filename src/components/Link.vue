@@ -1,3 +1,26 @@
+<!--
+todo
+  * file hash unifies same-upload sources
+  * fix video & audio thumbnails
+  * dropable files
+  * optional autodelete
+  * tile-able cards (flex)
+  * lightbox sim / previews
+  * log & display asset origin
+  * URL uploads
+  * log original file name
+  * users, optional logins/profiles
+    └-> * comments
+        * votes
+        * collections
+        * login button
+        * profile page
+        
+  * gallery / trending
+  * load/resource balancing
+  
+-->
+
 <template>
   <a :href="link.href" target="_blank" class="link" ref="anchor">
     <div class="linkThumb" ref="linkThumb" @click="clickHandler(event)"></div>

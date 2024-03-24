@@ -30,7 +30,7 @@ export default {
     dragOverHandler(e){
       e.preventDefault()
     },
-    dropHandlerr(event){
+    dropHandler(event){
       console.log('file(s) dropped: ', event)
     },
     addLink(size, type, ct, href){
@@ -59,7 +59,7 @@ export default {
       this.state.uploadInprogress = true
       if(this.state.links.length) return
       let fd = new FormData()
-      fd.append('title', 'uploading assets...')
+      fd.append('description', 'no description')
       let files = document.createElement('input')
       files.type = 'file'
       files.name = 'uploads[]'
@@ -100,7 +100,7 @@ export default {
     background-position: center center;
     background-repeat: no-repeat;
   }
-  .dropTarget:hover{
+  .dropTarget:dragover, .dropTarget:hover{
     background-color: #0648;
     cursor: pointer;
   }
