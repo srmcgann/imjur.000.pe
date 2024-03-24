@@ -23,7 +23,7 @@ todo
 
 <template>
   <a :href="link.href" target="_blank" class="link" ref="anchor">
-    <div class="linkThumb" ref="linkThumb" @click="clickHandler(event)"></div>
+    <div class="linkThumb" ref="linkThumb" @click.prevent.stop></div>
     #{{link.ct+1}}<br>
     href: {{link.href}}<br>
     type: {{link.type}}<br>
@@ -46,10 +46,6 @@ export default {
     }
   },
   methods: {
-    clickHandler(e){
-      e.stopPropagation()
-      e.preventDefault()
-    },
     Draw(){
       this.x.globalAlpha = 1
       this.x.fillStyle='#0008'
