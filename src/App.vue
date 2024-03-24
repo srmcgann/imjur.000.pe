@@ -22,7 +22,8 @@ export default {
     return {
       state: {
         footerMsg: '<b>IMJUR</b><br>A FREE DIGITAL ASSET HOSTING SERVICE - ©'+(new Date()).getFullYear() + `<br>contact: <a href="mailto:whitehotrobot@gmail.com">whitehotrobot@gmail.com</a>`,
-        links: []
+        links: [],
+        uploadInProgress: false,
       }
     }
   }

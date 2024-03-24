@@ -5,8 +5,8 @@
     href: {{link.href}}<br>
     type: {{link.type}}<br>
     size: {{link.size.toLocaleString('en-us')}}<br>
-    <div style="clear: both;"></div>
   </a>
+  <div style="clear: both;"></div>
 </template>
 
 <script>

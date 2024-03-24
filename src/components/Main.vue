@@ -1,5 +1,5 @@
 <template>
-  <div class="main" ref="main" :class={'loading': state.links.length}>
+  <div class="main" ref="main" :class={'loading': state.uploadInProgress}>
     <div class="dropTarget" @click="loadFiles()" @drop="dropHandler(event)" @dragOver="dragOverHandler">
       throw sum filez [drag/click]<br><br>
       accepted: gif, web[p/m], png, jp[e]g, mp4, mp3<br>
@@ -49,33 +49,33 @@ export default {
         console.log('response from upload.php: ', data)
         if(data[0]){
           data[1].map((v, i)=>{
-            this.addLink(data[2], data[3], i, location.origin + '/' + v)
+            this.addLink(data[2][i], data[3][i], i, location.origin + '/' + v)
           })
         }
       })
+      this.state.uploadInprogress = false
     },
     loadFiles(){
+      this.state.uploadInprogress = true
       if(this.state.links.length) return
-      this.$nextTick(()=>{
-        let fd = new FormData()
-        fd.append('title', 'uploading assets...')
-        let files = document.createElement('input')
-        files.type = 'file'
-        files.name = 'uploads[]'
-        files.multiple = true
-        files.accept = 'image/gif, image/jiff, image/jpeg, image/jpg, image/png, image/webp, video/mp4, video/webm, video/mkv, audio/mp3'
-        files.onchange = () => {
-          console.log('sending files: ', files)
-          let ct = 0
-          Array.from(files.files).map((file, i) => {
-            ct++
-            console.log(`file ${i}: `, file)
-            fd.append(`uploads_${i}`, file)
-          })
-          if(ct) this.uploadFiles(fd)
-        }
-        files.click()
-      })
+      let fd = new FormData()
+      fd.append('title', 'uploading assets...')
+      let files = document.createElement('input')
+      files.type = 'file'
+      files.name = 'uploads[]'
+      files.multiple = true
+      files.accept = 'image/gif, image/jiff, image/jpeg, image/jpg, image/png, image/webp, video/mp4, video/webm, video/mkv, audio/mp3'
+      files.onchange = () => {
+        console.log('sending files: ', files)
+        let ct = 0
+        Array.from(files.files).map((file, i) => {
+          ct++
+          console.log(`file ${i}: `, file)
+          fd.append(`uploads_${i}`, file)
+        })
+        if(ct) this.uploadFiles(fd)
+      }
+      files.click()
     }
   },
   mounted(){
@@ -122,8 +122,9 @@ export default {
   }
   .links{
     margin: 10px;
-    box-sizeing: border-box;
+    box-sizing: border-box;
     background: #3338;
+    display: block;
   }
 </style>
 
