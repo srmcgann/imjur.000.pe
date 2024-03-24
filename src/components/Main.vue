@@ -29,7 +29,7 @@ export default {
   methods: {
     processUpload(files){
       let ct = 0
-      Array.from(files.files).map((file, i) => {
+      files.map((file, i) => {
         ct++
         console.log(`file ${i}: `, file)
         fd.append(`uploads_${i}`, file)
@@ -71,7 +71,7 @@ export default {
       files.name = 'uploads[]'
       files.multiple = true
       files.accept = 'image/gif, image/jiff, image/jpeg, image/jpg, image/png, image/webp, video/mp4, video/webm, video/mkv, audio/mp3'
-      files.onchange = () => this.processUpload(files)
+      files.onchange = () => this.processUpload([...files.files])
       files.click()
     }
   },
