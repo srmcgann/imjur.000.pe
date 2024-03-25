@@ -2,6 +2,9 @@
 todo
   ✔ dropable files
   * file hash unifies same-upload sources
+  * social media metadata
+  * youtube field
+  * admin panel
   * fix video & audio thumbnails
   * optional autodelete
   * tile-able cards (flex)
