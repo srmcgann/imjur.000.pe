@@ -37,8 +37,8 @@ export default {
             this.addLink(data[2][i], data[3][i], i, location.origin + '/' + v)
           })
         }
+        this.state.uploadInprogress = false
       })
-      this.state.uploadInprogress = false
     },
     processUpload(files){
       this.state.uploadInprogress = true
