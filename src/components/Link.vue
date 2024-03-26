@@ -102,7 +102,7 @@ export default {
         this.h = this.img.height
         this.Draw()
       }
-      this.img.src = this.linkType == 'audio' ? '../assets/musicNote.png' : this.link.href
+      this.img.src = this.linkType == 'audio' ? 'musicNote.png' : this.link.href
     }
   }
 }
