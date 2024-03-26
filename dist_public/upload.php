@@ -41,6 +41,7 @@ error_reporting(E_ALL);
         if($continue){
           if($type == 'video/mp4' && strpos($_FILES["uploads_$ct"]["name"], '.mp3') !== false){
             $type = 'audio/mp3';
+            $suffix = 'mp3';
           }
           $hash = hash_file('md5', "$uploadDir/$slug");
           $id = alphaToDec($slug);
