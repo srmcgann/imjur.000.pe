@@ -52,7 +52,7 @@ export default {
           fd.append(`uploads_${i}`, file)
         })
         if(ct) this.uploadFiles(fd)
-      }
+      })
     },
     dropFiles(e){
       let files = []
