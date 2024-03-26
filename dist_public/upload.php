@@ -9,7 +9,7 @@ error_reporting(E_ALL);
 
   $success = false;
   $uploadDir = 'uploads';
-  $ct = 0;
+  $ct = 1;
   $links = [];
   $types = [];
   $sizes = [];
@@ -23,17 +23,19 @@ error_reporting(E_ALL);
       $size = filesize("$uploadDir/$slug");
       if($size < 1e8){ //~100MB
         switch($type){
+          case 'audio/wav': $continue = true; $suffix = 'wav';  break;
+          case 'audio/mp3': $continue = true; $suffix = 'mp3';  break;
+          case 'audio/mpeg': $continue = true; $suffix = 'mp3';  break;
+
           case 'image/jpg': $continue = true; $suffix = 'jpg'; break;
           case 'image/jpeg': $continue = true; $suffix = 'jpeg';  break;
           case 'image/png': $continue = true; $suffix = 'png';  break;
           case 'image/gif': $continue = true; $suffix = 'gif';  break;
           case 'image/webp': $continue = true; $suffix = 'webp';  break;
+
           case 'video/webm': $continue = true; $suffix = 'webm';  break;
           case 'video/mkv': $continue = true; $suffix = 'mkv';  break;
           case 'video/mp4': $continue = true; $suffix = 'mp4';  break;
-          case 'audio/wav': $continue = true; $suffix = 'wav';  break;
-          case 'audio/mp3': $continue = true; $suffix = 'mp3';  break;
-          case 'audio/mpeg': $continue = true; $suffix = 'mp3';  break;
         }
         if($continue){
           $hash = hash_file('md5', "$uploadDir/$slug");
