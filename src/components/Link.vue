@@ -74,40 +74,10 @@ export default {
   mounted(){
     this.$refs.linkThumb.appendChild(this.c)
     this.x = this.c.getContext('2d')
-    switch(this.link.type){
-      case 'image/jpg':
-        this.linkType = 'image';
-        break
-      case 'image/jpeg':
-        this.linkType = 'image';
-        break
-      case 'image/webp':
-        this.linkType = 'image';
-        break
-      case 'image/png': 
-        this.linkType = 'image';
-        break
-      case 'image/gif':
-        this.linkType = 'image';
-        break
-      case 'video/mp4':
-        this.linkType = 'video';
-        break
-      case 'video/mkv':
-        this.linkType = 'video';
-        break
-      case 'video/webm':
-        this.linkType = 'video';
-        break
-      case 'audio/mp3':
-        this.linkType = 'audio';
-        break
-      case 'audio/wav':
-        this.linkType = 'audio';
-        break
-      case 'audio/mpeg':
-        this.linkType = 'audio';
-        break
+    switch(this.link.type.split('/')[0]){
+      case 'image': this.linkType = 'image'; break
+      case 'audio': this.linkType = 'audio'; break
+      case 'video': this.linkType = 'video'; break
     }
     this.c.width = 500
     this.c.height = 500
