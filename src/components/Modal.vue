@@ -12,10 +12,6 @@
 export default {
   name: 'Modal',
   props: [ 'state', 'content' ],
-  data(){
-    return {
-    }
-  },
   methods: {
     close(){
       this.state.showModal = false
