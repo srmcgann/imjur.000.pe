@@ -45,7 +45,9 @@ export default {
       c: document.createElement('canvas'),
       x: null,
       linkType: '',
-      img: null
+      img: null,
+      w: 0,
+      h: 0
     }
   },
   methods: {
@@ -57,14 +59,14 @@ export default {
       let scl
       switch(fillStyle){
         case 'contain':
-          scl = this.c.width/this.c.height <= 1.777777778 ? this.c.width/this.img.width : this.c.height/this.img.height
+          scl = this.c.width/this.c.height <= 1.777777778 ? this.c.width/this.w : this.c.height/this.h
           break
         case 'cover':
-          scl = this.c.width/this.c.height > 1.777777778 ? this.c.width/this.img.width : this.c.height/this.img.height
+          scl = this.c.width/this.c.height > 1.777777778 ? this.c.width/this.w : this.c.height/this.h
           break
       }
-      let w = this.img.width * scl
-      let h = this.img.height * scl
+      let w = this.w * scl
+      let h = this.h * scl
       this.x.drawImage(this.img,this.c.width/2-w/2,this.c.height/2-h/2,w,h)
       requestAnimationFrame(this.Draw)
     }
@@ -113,6 +115,8 @@ export default {
       this.img.loop = true
       this.img.muted = true
       this.img.oncanplay = () => {
+        this.w = this.img.videoWidth
+        this.h = this.img.videoHeight
         this.img.play()
         this.Draw()
       }
@@ -121,6 +125,8 @@ export default {
     if(this.linkType == 'image'){
       this.img = new Image
       this.img.onload = () => {
+        this.w = this.img.width
+        this.h = this.img.height
         this.Draw()
       }
       this.img.src = this.link.href
@@ -128,6 +134,8 @@ export default {
     if(this.linkType == 'audio'){
       this.img = new Image
       this.img.onload = () => {
+        this.w = 400
+        this.h = 400
         this.Draw()
       }
       this.img.src = '../assets/musicNote.png'
