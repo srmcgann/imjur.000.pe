@@ -24,6 +24,7 @@ error_reporting(E_ALL);
       if($size < 1e8){ //~100MB
         switch($type){
           case 'audio/wav': $continue = true; $suffix = 'wav';  break;
+          case 'audio/x-wav': $continue = true; $suffix = 'wav';  break;
           case 'audio/mp3': $continue = true; $suffix = 'mp3';  break;
           case 'audio/mpeg': $continue = true; $suffix = 'mp3';  break;
 
@@ -38,6 +39,9 @@ error_reporting(E_ALL);
           case 'video/mp4': $continue = true; $suffix = 'mp4';  break;
         }
         if($continue){
+          if($type == 'video/mp4' && strpos($_FILES["uploads_$ct"]["name"], '.mp3' !== false){
+            $type = 'audio/mp3';
+          }
           $hash = hash_file('md5', "$uploadDir/$slug");
           $id = alphaToDec($slug);
           $original_name = basename($_FILES["uploads_$ct"]["name"]);
