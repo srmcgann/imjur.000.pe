@@ -83,7 +83,7 @@ export default {
       files.type = 'file'
       files.name = 'uploads[]'
       files.multiple = true
-      files.accept = 'image/gif, image/jiff, image/jpeg, image/jpg, image/png, image/webp, video/mp4, video/webm, video/mkv, audio/mp3, audio/mpeg'
+      files.accept = 'image/gif, image/jiff, image/jpeg, image/jpg, image/png, image/webp, video/mp4, video/webm, video/mkv, audio/mp3, audio/wav, audio/mpeg'
       files.onchange = () => this.processUpload(Array.from(files.files))
       files.click()
     }
