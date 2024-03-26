@@ -102,6 +102,9 @@ export default {
       case 'audio/mp3':
         this.linkType = 'audio';
         break
+      case 'audio/wav':
+        this.linkType = 'audio';
+        break
       case 'audio/mpeg':
         this.linkType = 'audio';
         break
