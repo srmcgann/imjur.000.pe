@@ -104,7 +104,7 @@ export default {
     text-align: center;
   }
   .loading{
-    background-image: url(../assets/loading.gif);
+    /* background-image: url(../assets/loading.gif); */
     background-size: contain;
     background-position: center center;
     background-repeat: no-repeat;
