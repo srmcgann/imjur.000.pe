@@ -41,15 +41,18 @@ export default {
       this.state.uploadInprogress = false
     },
     processUpload(files){
-      let ct = 0
-      let fd = new FormData()
-      fd.append('description', 'no description')
-      files.map((file, i) => {
-        ct++
-        console.log(`file ${i}: `, file)
-        fd.append(`uploads_${i}`, file)
-      })
-      if(ct) this.uploadFiles(fd)
+      this.state.uploadInprogress = true
+      this.$nextTick(()=>{
+        let ct = 0
+        let fd = new FormData()
+        fd.append('description', 'no description')
+        files.map((file, i) => {
+          ct++
+          console.log(`file ${i}: `, file)
+          fd.append(`uploads_${i}`, file)
+        })
+        if(ct) this.uploadFiles(fd)
+      }
     },
     dropFiles(e){
       let files = []
@@ -63,7 +66,7 @@ export default {
       }else{
         files = Array.from(e.dataTransfer.files)
       }
-      this.processUpload(files)
+      if(files.length) this.processUpload(files)
     },
     addLink(size, type, ct, href){
       let obj = {
@@ -75,7 +78,6 @@ export default {
       this.state.links.push(obj)
     },
     loadFiles(){
-      this.state.uploadInprogress = true
       if(this.state.links.length) return
       let files = document.createElement('input')
       files.type = 'file'

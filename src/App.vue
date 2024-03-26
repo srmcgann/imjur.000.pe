@@ -3,6 +3,11 @@
     <Header :state="state" />
     <Main   :state="state" />
     <Footer :state="state" />
+    <Modal
+      :state="state"
+      v-if="state.showModal"
+      :content="state.modalContent"
+    />
   </div>
 </template>
 
@@ -10,13 +15,15 @@
 import Header from './components/Header'
 import Main from './components/Main'
 import Footer from './components/Footer'
+import Modal from './components/Modal'
 
 export default {
   name: 'App',
   components: {
     Header,
     Main,
-    Footer
+    Footer,
+    Modal,
   },
   data(){
     return {
@@ -24,6 +31,21 @@ export default {
         footerMsg: '<b>IMJUR</b><br>A FREE DIGITAL ASSET HOSTING SERVICE - ©'+(new Date()).getFullYear() + `<br>contact: <a href="mailto:whitehotrobot@gmail.com">whitehotrobot@gmail.com</a>`,
         links: [],
         uploadInProgress: false,
+        showModal: false,
+        modalContent: ''
+      }
+    }
+  },
+  watch: {
+    'state.uploadInProgress'(val){
+      if(val){
+        state.modalContent = `
+          loading...
+        `
+        state.showModal = true
+      }else{
+        state.modalContent = ''
+        state.showModal = false
       }
     }
   }
