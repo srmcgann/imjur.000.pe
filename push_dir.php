@@ -2,37 +2,57 @@
 
   // RECURSIVE DIRECTORY FTP PUSH
 
-  $ftp_server  = "ftpupload.net";
-  $ftp_user    = 'if0_35882111';
-  $ftp_pass    = 'GNS1oMHbsX';
-  $local_dir   = '/home/whitehotrobot/imjur.000.pe/dist_public';
-  $remote_dir  = '/imjur.000.pe/htdocs';
+  $servers = [
+    {
+      'ftp_server'  => "ftpupload.net";
+      'ftp_user'    => 'if0_35882111';
+      'ftp_pass'    => 'GNS1oMHbsX';
+      'local_dir'   => '/home/whitehotrobot/imjur.000.pe/dist_public';
+      'remote_dir'  => '/imjur.000.pe/htdocs'
+    ],
+      'ftp_server': => 'files.000webhost.com',
+      'ftp_user' => 'gummier-fish',
+      'ftp_pass' = 'Chrome57253!*',
+      'local_dir' = '/home/whitehotrobot/imjur.000.pe/dist_public',
+      'remote_dir' = '/public_html/imjur',
+  ];
 
-  $ftp = ftp_connect($ftp_server) or die("Couldn't connect to $ftp_server"); 
+  function push($ftp_server, $ftp_user, $ftp_pass, $local_dir, $remote_dir){
+    $ftp = ftp_connect($ftp_server) or die("Couldn't connect to $ftp_server"); 
 
-  if (@ftp_login($ftp, $ftp_user, $ftp_pass)) {
-    echo "Connected as $ftp_user@$ftp_server\n";
-  } else {
-    echo "Couldn't connect as $ftp_user\n";
-  }
+    if (@ftp_login($ftp, $ftp_user, $ftp_pass)) {
+      echo "Connected as $ftp_user@$ftp_server\n";
+    } else {
+      echo "Couldn't connect as $ftp_user\n";
+    }
 
-  ftp_pasv($ftp, true);
+    ftp_pasv($ftp, true);
 
-  function recurse($dir){
-    global $remote_dir, $local_dir, $ftp;
-    forEach(glob("$dir/*") as $entry){
-      if(is_dir($entry)){
-        $mkdir = $remote_dir . '/' . explode("$local_dir/", $entry)[1];
-        @ftp_mkdir($ftp, $mkdir);
-        recurse($entry);
-      }else{
-        $local_file = explode("$local_dir/", $entry)[1];
-        $remote_file = "$remote_dir/$local_file";
-        echo "uploading: $local_file -> $remote_file\n";
-        ftp_put($ftp, $remote_file, $entry, FTP_BINARY);
+    function recurse($dir){
+      global $remote_dir, $local_dir, $ftp;
+      forEach(glob("$dir/*") as $entry){
+        if(is_dir($entry)){
+          $mkdir = $remote_dir . '/' . explode("$local_dir/", $entry)[1];
+          @ftp_mkdir($ftp, $mkdir);
+          recurse($entry);
+        }else{
+          $local_file = explode("$local_dir/", $entry)[1];
+          $remote_file = "$remote_dir/$local_file";
+          echo "uploading: $local_file -> $remote_file\n";
+          ftp_put($ftp, $remote_file, $entry, FTP_BINARY);
+        }
       }
     }
+    @ftp_mkdir($ftp, $remote_dir);
+    recurse($local_dir);
   }
 
-  recurse($local_dir);
+  forEach($servers as $server){
+    $ftp_server = $server['ftp_server'];
+    $ftp_user = $server['ftp_user'];
+    $ftp_pass = $server['ftp_pass'];
+    $local_dir = $server['local_dir'];
+    $remote_dir = $server['remote_dir'];
+    push($ftp_server, $ftp_user, $ftp_pass, $local_dir, $remote_dir);
+  }
 ?>
