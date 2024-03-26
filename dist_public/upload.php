@@ -39,7 +39,7 @@ error_reporting(E_ALL);
           case 'video/mp4': $continue = true; $suffix = 'mp4';  break;
         }
         if($continue){
-          if($type == 'video/mp4' && strpos($_FILES["uploads_$ct"]["name"], '.mp3' !== false){
+          if($type == 'video/mp4' && strpos($_FILES["uploads_$ct"]["name"], '.mp3') !== false){
             $type = 'audio/mp3';
           }
           $hash = hash_file('md5', "$uploadDir/$slug");
