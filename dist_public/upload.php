@@ -9,7 +9,7 @@ error_reporting(E_ALL);
 
   $success = false;
   $uploadDir = 'uploads';
-  $ct = 1;
+  $ct = 0;
   $links = [];
   $types = [];
   $sizes = [];
