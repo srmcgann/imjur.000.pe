@@ -105,7 +105,7 @@ export default {
       this.img.src = this.link.href
     }
     if(this.linkType == 'audio'){
-      this.img = new Image
+      this.img = new Image()
       this.img.onload = () => {
         this.w = 400
         this.h = 400
