@@ -90,11 +90,11 @@ export default {
           let tgt_ar = this.w/this.h
           let margin = 20
           if(ar > tgt_ar){
-            c.style.height = (el.clientHeight - margin) + 'px'
-            c.style.width = (el.clientHeight * tgt_ar - margin) + 'px'
+            this.c.style.height = (el.clientHeight - margin) + 'px'
+            this.c.style.width = (el.clientHeight * tgt_ar - margin) + 'px'
           }else{
-            c.style.width = (el.clientWidth - margin) + 'px'
-            c.style.height = (el.clientWidth / tgt_ar - margin) + 'px'
+            this.c.style.width = (el.clientWidth - margin) + 'px'
+            this.c.style.height = (el.clientWidth / tgt_ar - margin) + 'px'
           }
         }
         rsz()
@@ -115,25 +115,25 @@ export default {
         this.$refs.slideshow.appendChild(audio)
         audio.src = this.link.href
       }
-      if(this.linkType == 'video'){
-        let vid = document.createElement('video')
-        vid.controls = true
-        vid.style.position = 'absolute'
-        vid.style.left = '50%'
-        vid.style.top = '50%'
-        vid.style.width = '100%'
-        vid.style.height = '100%'
-        vid.style.objectFit = 'contain'
-        vid.loop = true
-        vid.style.transform = 'translate(-50%, -50%)'
-        vid.oncanplay = () => {
-          vid.play()
-        }
-        this.$refs.slideshow.appendChild(audio)
-        vid.src = this.link.href
-      }
       let l
       this.img.src = this.linkType == 'audio' ? 'musicNote.png' : 'thumb.php?res=uploads/' + (l=this.link.href.split('/'))[l.length-1].split('?')[0]
+    }
+    if(this.linkType == 'video'){
+      let vid = document.createElement('video')
+      vid.controls = true
+      vid.style.position = 'absolute'
+      vid.style.left = '50%'
+      vid.style.top = '50%'
+      vid.style.width = '100%'
+      vid.style.height = '100%'
+      vid.style.objectFit = 'contain'
+      vid.loop = true
+      vid.style.transform = 'translate(-50%, -50%)'
+      vid.oncanplay = () => {
+        vid.play()
+      }
+      this.$refs.slideshow.appendChild(audio)
+      vid.src = this.link.href
     }
   }
 }
