@@ -31,7 +31,7 @@ export default {
     uploadFiles(fd){
       fetch('upload.php', {
         method: "POST", body: fd
-      }).then(res=>res.json()).then(data=>{
+      }).then(res=>res.json()).then(data => {
         console.log('response from upload.php: ', data)
         if(data[0]){
           data[1].map((v, i)=>{
@@ -100,7 +100,7 @@ export default {
     ]
     this.preload.map(v => {
       v[0].src = v[1]
-    }
+    })
   }
 }
 </script>
