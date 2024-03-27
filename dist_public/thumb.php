@@ -39,7 +39,7 @@
   }
   
   $thumb = imagecreatetruecolor($newWidth, $newHeight);
-  imagecopyresized($thumb, $src, 0,0,0,0,$newWidth, $newHeight, $width, $height);
+  imagecopyresized($thumb, $src, 0, 0, 0, 0, $newWidth, $newHeight, $width, $height);
   
   header('Content-Type: image/jpeg');
   imagejpeg($thumb);
