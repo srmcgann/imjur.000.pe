@@ -1,6 +1,6 @@
 <template>
   <div class="modal">
-    <button @click="close()" class="cancelButton">
+    <button @click="close()" class="cancelButton" title="close this view">
       close/cancel
     </button>
     <div class="modalInner" v-html="content"></div>
@@ -34,7 +34,9 @@ export default {
   .cancelButton{
     background: #822;
     color: #f88;
-    width: 150px;
+    text-shadow: 1px 1px 2px #000;
+    font-weight: 900;
+    width: 125px;
     font-family: Courier Prime;
     font-size: 14px;
     border: none;
@@ -43,7 +45,7 @@ export default {
     position: absolute;
     z-index: 1100;
     right: 20px;
-    top: 20px;
+    top: 14px;
   }
   .modalInner{
     text-align: center;
@@ -53,6 +55,6 @@ export default {
     font-size: 25px;
     color: #fff;
     text-shadow: 2px 2px 2px #000;
-    background: #0008;
+    background: #001b;
   }
 </style>
