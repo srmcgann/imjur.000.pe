@@ -33,8 +33,8 @@ todo
     #{{link.ct+1}}
     <div class="copyLinkButton" @click.prevent.stop="copy()" title="copy link"></div><br>
     <span class="href" v-html="link.href.split('//')[1]" ref="href"></span><br>
-    <span class="href" style="font-size: 1.5em" v-html="link.type"></span><br>
-    <span class="href" style="font-size: 1.5em" v-html="'size: ' + link.size.toLocaleString('en-us')"></span><br>
+    <!-- <span class="href" style="font-size: 1em" v-html="link.type"></span><br> -->
+    <!-- <span class="href" style="font-size: 1em" v-html="'size: ' + link.size.toLocaleString('en-us')"></span><br> -->
   </a>
 </template>
 
@@ -89,6 +89,7 @@ export default {
     this.c.height = 500/1.77777778
     this.c.style.width = '200px'
     this.c.style.height = '113px'
+    this.c.style.borderRadius = '20px'
     if(this.linkType == 'video'){
       this.img = document.createElement('video')
       this.img.loop = true
@@ -133,11 +134,11 @@ export default {
     margin: 10px;
     word-break: break-word;
     max-width: 450px;
+    border-radius: 20px;
   }
   .href{
-    font-size: .5em;
-    background: #4f8a;
-    color: #024;
+    font-size: .6em;
+    color: #0ff;
     margin: 5px;
     padding: 3px;
     width: calc(100% - 10px);
@@ -167,6 +168,7 @@ export default {
     background-position: 20px 20px;
     background-repeat: no-repeat;
     background-color: #000;
+    border-radius: 20px;
   }
 </style>
 
