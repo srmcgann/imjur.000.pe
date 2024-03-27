@@ -45,7 +45,7 @@ export default {
     processUpload(files){
       this.state.uploadInprogress = true
       this.state.modalContent = `
-        loading...
+        <video src="../assets/loading.mp4" style="object-fit: fill; width: 100%; height: 100%; pointer-events: none; opacity: .5;" loop autoplay muted></video>
       `
       this.state.showModal = true
       

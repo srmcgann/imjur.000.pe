@@ -47,6 +47,8 @@ export default {
   .modalInner{
     text-align: center;
     padding: 25px;
+    width: 100%;
+    height: 100%;
     font-size: 25px;
     color: #fff;
     text-shadow: 2px 2px 2px #000;
