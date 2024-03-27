@@ -24,6 +24,7 @@ export default {
   },
   data(){
     return {
+      preload: []
     }
   },
   methods: {
@@ -44,7 +45,7 @@ export default {
     },
     processUpload(files){
       this.state.uploadInprogress = true
-      this.state.modalContent = `<video src="loading.mp4?2" style="min-width:60vw; min-height: 60vh; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); pointer-events: none; opacity: .5;" loop autoplay muted></video>`
+      this.state.modalContent = `<video src="loading.mp4" style="min-width:60vw; min-height: 60vh; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); pointer-events: none; opacity: .5;" loop autoplay muted></video>`
       this.state.showModal = true
       
       this.$nextTick(()=>{
@@ -94,6 +95,12 @@ export default {
     }
   },
   mounted(){
+    this.preload = [ ...this.preload,
+      [new Video(), 'loading.mp4'],
+    ]
+    this.preload.map(v => {
+      v[0].src = v[1]
+    }
   }
 }
 </script>
