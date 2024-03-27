@@ -5,7 +5,7 @@
     </button>
     <div class="previewInner">
       {{link.href}}
-    <div>
+    </div>
   </div>
 </template>
 
