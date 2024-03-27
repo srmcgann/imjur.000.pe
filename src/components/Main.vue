@@ -16,7 +16,7 @@
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;jp[e]g<br>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mp4<br>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mp3<br><br>
-        max size: 25MB<br>
+        max size: 25MB<br><br>
         <div style="font-size: .7em;">
         WARRANTY: none<br><br>
         this is a work-in-progress.<br>
@@ -82,7 +82,7 @@ export default {
             fd.append(`uploads_${i}`, file)
           }
         })
-        rejects.map(reject=>{
+        this.rejects.map(reject=>{
           let sz = (file.size/1e6|0).toLocaleString('en-us') + ' MB'
           this.state.modalContent += `oversized/rejected: size: ${sz}, ${file.name} <br>`
         })
