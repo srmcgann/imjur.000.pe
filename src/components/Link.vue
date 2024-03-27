@@ -31,8 +31,8 @@ todo
   <a :href="link.href" target="_blank" class="link" ref="anchor">
     <div class="linkThumb" ref="linkThumb" @click.prevent.stop></div>
     #{{link.ct+1}}
-    <span class="href" v-html="link.href" ref="href"></span><br>
     <div class="copyLinkButton" @click="copy()"></div><br>
+    <span class="href" v-html="link.href" ref="href"></span><br>
     <!-- type: {{link.type}}<br> -->
     <!-- size: {{link.size.toLocaleString('en-us')}}<br> -->
   </a>
@@ -55,7 +55,7 @@ export default {
     }
   },
   methods: {
-    copy{
+    copy(){
       this.state.copy(this.$refs.href)
     },
     Draw(){
