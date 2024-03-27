@@ -96,13 +96,13 @@ export default {
       this.img.src = this.link.href
     }
     if(this.linkType == 'image' || this.linkType == 'audio'){
-      this.img = new Image
+      this.img = new Image()
       this.img.onload = () => {
         this.w = this.img.width
         this.h = this.img.height
         this.Draw()
       }
-      this.img.src = this.linkType == 'audio' ? 'musicNote.png' : this.link.href
+      this.img.src = this.linkType == 'audio' ? 'musicNote.png' : 'thumb.php?res=' + this.link.href
     }
   }
 }
