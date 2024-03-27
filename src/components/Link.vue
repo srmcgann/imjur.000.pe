@@ -4,8 +4,10 @@ todo
   ✔ fix video & audio thumbnails
   ✔ file hash unifies same-upload sources
   ✔ fix loading animations
-  *  preload loading (and other) assets
-  *  display errors
+  ✔  preload loading (and other) assets
+  ✔  display errors
+  ✔ tile-able cards (flex)
+  ✔ log original file name
   * users, optional logins/profiles
     └-> * comments
         * votes
@@ -16,11 +18,9 @@ todo
   * youtube field
   * admin panel
   * optional autodelete
-  * tile-able cards (flex)
   * lightbox sim / previews
   * log & display asset origin
   * URL uploads
-  * log original file name
   * social media metadata
   * gallery / trending
   * load/resource balancing
@@ -29,7 +29,7 @@ todo
 
 <template>
   <div class="link" ref="anchor">
-    <div class="linkThumb" ref="linkThumb" @click.prevent.stop></div>
+    <div class="linkThumb" ref="linkThumb" @click.prevent.stop="preview()"></div>
     <!--#{{link.ct+1}}-->
     <div class="copyLinkButton" @click.prevent.stop="copy()" title="copy link"></div><br>
     <a :href="link.href" class="openButton" @click.prevent.stop="open()" title="open link"></a>
@@ -61,6 +61,10 @@ export default {
     },
     open(){
       open(this.link.href, '_blank')
+    },
+    preview(){
+      this.state.modalContent = `<iframe class="previewFrame" src="${this.link.href}"></iframe>`
+      this.state.showModal = true
     },
     Draw(){
       this.x.globalAlpha = 1

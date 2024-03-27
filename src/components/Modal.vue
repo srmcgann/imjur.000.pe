@@ -34,16 +34,16 @@ export default {
   .cancelButton{
     background: #822;
     color: #f88;
-    width: 200px;
+    width: 150px;
     font-family: Courier Prime;
-    font-size: 16px;
+    font-size: 14px;
     border: none;
     border-radius: 10px;
     padding: 5px;
     position: absolute;
     z-index: 1100;
-    left: 10px;
-    top: 10px;
+    right: 20px;
+    top: 20px;
   }
   .modalInner{
     text-align: center;
