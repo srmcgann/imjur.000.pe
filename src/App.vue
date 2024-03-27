@@ -109,6 +109,9 @@ a{
   text-decoration: none;
   color: #08f;
 }
+.buttons:focus{
+  outline: none;
+}
 .buttons{
   border: none;
   border-radius: 5px;

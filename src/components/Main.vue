@@ -58,7 +58,7 @@ export default {
             this.addLink(data[2][i], data[3][i], i, location.href.split('?')[0] + v)
           })
           this.state.modalContent = ''
-          this.state.closeModal
+          this.state.closeModal()
         }else{
           this.state.modalContent = '<div style="min-width:90vw; min-height: 50vh; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);background: #8002; color: #f88; padding-top: 100px;">' + data[5] + '</div>'
         }
@@ -87,7 +87,9 @@ export default {
           let sz = (reject.size/1e6|0).toLocaleString('en-us') + ' MB'
           rej += `oversized/rejected: size: ${sz}, ${reject.name} <br>`
         })
-        if(this.rejects.length) this.state.modalQueue = [...this.state.modalQueue, rej + '</div>']
+        if(this.rejects.length) {
+          this.state.modalQueue = [...this.state.modalQueue, rej + '</div>']
+        }
         if(ct) this.uploadFiles(fd)
       })
     },

@@ -29,6 +29,7 @@ export default {
     z-index: 1000;
     width: 100vw;
     height: 100vh;
+    font-size: 14px;
   }
   .cancelButton{
     background: #822;
