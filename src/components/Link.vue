@@ -84,8 +84,8 @@ export default {
     }
     this.c.width = 500
     this.c.height = 500/1.77777778
-    this.c.style.width = '150px'
-    this.c.style.height = '85px'
+    this.c.style.width = '200px'
+    this.c.style.height = '113px'
     if(this.linkType == 'video'){
       this.img = document.createElement('video')
       this.img.loop = true
@@ -132,8 +132,8 @@ export default {
   }
   .linkThumb{
     float: left;
-    width: 150px;
-    height: 85px;
+    width: 200px;
+    height: 113px;
     margin: 5px;
     background-size: contain;
     background-position: 20px 20px;

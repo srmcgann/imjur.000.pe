@@ -119,7 +119,7 @@ SQL;
       $ct++;
     }
   } else {
-    $error = 'ERROR: no files were received';
+    $error = 'ERROR: no files were received.<br><br>This usually means that the transfer was blocked by the server due to one or more files being too large...<br><br>Check your file sizes';
   }
   
   echo json_encode([$success, $links, $sizes, $types, $ct, $error]);
