@@ -1,11 +1,11 @@
 <!--
 todo
   ✔ dropable files
+  ✔ fix video & audio thumbnails
   * file hash unifies same-upload sources
   * social media metadata
   * youtube field
   * admin panel
-  * fix video & audio thumbnails
   * optional autodelete
   * tile-able cards (flex)
   * lightbox sim / previews
@@ -129,8 +129,8 @@ export default {
   }
   .linkThumb{
     float: left;
-    width: 200px;
-    height: 200px;
+    width: 150px;
+    height: 85px;
     margin: 5px;
     background-size: contain;
     background-position: 20px 20px;

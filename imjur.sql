@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: sql309.infinityfree.com
--- Generation Time: Mar 24, 2024 at 04:55 PM
+-- Generation Time: Mar 26, 2024 at 09:04 PM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 7.2.22
 
@@ -21,6 +21,8 @@ SET time_zone = "+00:00";
 --
 -- Database: `if0_35882111_imjur`
 --
+CREATE DATABASE IF NOT EXISTS `if0_35882111_imjur` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `if0_35882111_imjur`;
 
 -- --------------------------------------------------------
 
@@ -28,7 +30,6 @@ SET time_zone = "+00:00";
 -- Table structure for table `imjurComments`
 --
 
-DROP TABLE IF EXISTS `imjurComments`;
 CREATE TABLE IF NOT EXISTS `imjurComments` (
   `id` int(11) NOT NULL,
   `userID` int(11) NOT NULL,
@@ -44,7 +45,6 @@ CREATE TABLE IF NOT EXISTS `imjurComments` (
 -- Table structure for table `imjurServers`
 --
 
-DROP TABLE IF EXISTS `imjurServers`;
 CREATE TABLE IF NOT EXISTS `imjurServers` (
   `id` bigint(11) NOT NULL,
   `topURL` varchar(1024) NOT NULL,
@@ -62,7 +62,6 @@ CREATE TABLE IF NOT EXISTS `imjurServers` (
 -- Table structure for table `imjurUploads`
 --
 
-DROP TABLE IF EXISTS `imjurUploads`;
 CREATE TABLE IF NOT EXISTS `imjurUploads` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `slug` varchar(64) NOT NULL,
@@ -76,6 +75,7 @@ CREATE TABLE IF NOT EXISTS `imjurUploads` (
   `downvotes` int(11) NOT NULL,
   `views` int(11) NOT NULL,
   `description` mediumtext NOT NULL,
+  `originalSlug` varchar(64) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
@@ -85,7 +85,6 @@ CREATE TABLE IF NOT EXISTS `imjurUploads` (
 -- Table structure for table `imjurUsers`
 --
 
-DROP TABLE IF EXISTS `imjurUsers`;
 CREATE TABLE IF NOT EXISTS `imjurUsers` (
   `id` int(11) NOT NULL,
   `dateJoined` datetime NOT NULL DEFAULT current_timestamp(),
@@ -100,7 +99,6 @@ CREATE TABLE IF NOT EXISTS `imjurUsers` (
 -- Table structure for table `imjurVotes`
 --
 
-DROP TABLE IF EXISTS `imjurVotes`;
 CREATE TABLE IF NOT EXISTS `imjurVotes` (
   `id` int(11) NOT NULL,
   `userID` int(11) NOT NULL,

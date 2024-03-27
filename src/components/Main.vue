@@ -128,7 +128,7 @@ export default {
     border: 1px solid #4088;
     background-color: #0468;
     width: 100%;
-    height: 100%;
+    min-height: 100%;
     box-sizing: border-box;
   }
   .links{
