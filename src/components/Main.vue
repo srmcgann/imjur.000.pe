@@ -82,13 +82,14 @@ export default {
             fd.append(`uploads_${i}`, file)
           }
         })
-        let rej = '<div style="min-width:90vw; min-height: 50vh; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);background: #8002; color: #f88; padding-top: 100px;">'
+        let rej = '<div style="min-width:90vw; min-height: 50vh; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);background: #4008; color: #f88; padding-top: 100px;">'
         this.rejects.map(reject=>{
-          let sz = (reject.size/1e6|0).toLocaleString('en-us') + ' MB'
-          rej += `oversized/rejected: size: ${sz}, ${reject.name} <br>`
+          let sz = (reject.size/1e6|0).toLocaleString('en-us') + ' MB<br>'
+          rej += `oversized/rejected: size: ${sz}, "${reject.name}" <br><br>`
         })
         if(this.rejects.length) {
           this.state.modalQueue = [...this.state.modalQueue, rej + '</div>']
+          this.state.closeModal()
         }
         if(ct) this.uploadFiles(fd)
       })
