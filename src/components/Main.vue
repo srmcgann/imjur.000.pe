@@ -8,10 +8,12 @@
       @click="loadFiles()"
       ref="dropTarget"
     >
-      throw sum filez [drag/click]<br><br>
-      accepted: gif, web[p/m], png, jp[e]g, mp4, mp3<br>
-      max size: 25MB<br>
-      WARRANTY: none<br>[this is a work-in-progress. your files will likely be deleted]<br>
+      <div ref="dropTargetCaption">
+        throw sum filez [drag/click]<br><br>
+        accepted: gif, web[p/m], png, jp[e]g, mp4, mp3<br>
+        max size: 25MB<br>
+        WARRANTY: none<br>[this is a work-in-progress. your files will likely be deleted]<br>
+      </div>
       <div v-if="state.links.length" class="links">
         links<br>
         <Link :state="state" v-for="link in state.links" :link="link" />
@@ -42,7 +44,7 @@ export default {
         console.log('response from upload.php: ', data)
         this.state.uploadInprogress = false
         if(data[0]){
-          this.$refs.dropTarget.innerHTML = ''
+          this.$refs.dropTargetCaption.style.display = 'none'
           data[1].map((v, i)=>{
             this.addLink(data[2][i], data[3][i], i, location.href.split('?')[0] + v)
           })
