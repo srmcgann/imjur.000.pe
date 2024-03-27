@@ -1,5 +1,5 @@
 <template>
-  <div class="main" ref="main" :class="{'loading': state.uploadInProgress}">
+  <div class="main" ref="main">
     <div id="dropTarget" class="dropTarget" @dragover.prevent @drop.prevent="dropFiles($event)" @click="loadFiles()">
       throw sum filez [drag/click]<br><br>
       accepted: gif, web[p/m], png, jp[e]g, mp4, mp3<br>
@@ -104,12 +104,6 @@ export default {
     padding: 20px;
     box-sizing: border-box;
     text-align: center;
-  }
-  .loading{
-    /* background-image: url(../assets/loading.gif); */
-    background-size: contain;
-    background-position: center center;
-    background-repeat: no-repeat;
   }
   .dropTarget:hover{
     background-color: #0648;
