@@ -39,15 +39,13 @@ export default {
   watch: {
     'state.uploadInProgress'(val){
       if(val){
-        state.modalContent = `
+        this.state.modalContent = `
           loading...
         `
-        state.showModal = true
-        console.log('showing Modal')
+        this.state.showModal = true
       }else{
-        state.modalContent = ''
-        state.showModal = false
-        console.log('hiding Modal')
+        this.state.modalContent = ''
+        this.state.showModal = false
       }
     }
   }
