@@ -96,7 +96,7 @@ export default {
   },
   mounted(){
     this.preload = [ ...this.preload,
-      [new Video(), 'loading.mp4'],
+      [document.createElement('video'), 'loading.mp4'],
     ]
     this.preload.map(v => {
       v[0].src = v[1]
