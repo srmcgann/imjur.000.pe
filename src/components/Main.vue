@@ -34,7 +34,7 @@ export default {
         console.log('response from upload.php: ', data)
         if(data[0]){
           data[1].map((v, i)=>{
-            this.addLink(data[2][i], data[3][i], i, location.pathname + 'uploads/' + v)
+            this.addLink(data[2][i], data[3][i], i, location.href.split('?')[0] + v)
           })
         }
         this.state.uploadInprogress = false

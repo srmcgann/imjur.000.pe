@@ -102,7 +102,7 @@ export default {
         this.h = this.img.height
         this.Draw()
       }
-      this.img.src = this.linkType == 'audio' ? 'musicNote.png' : 'thumb.php?res=' + this.link.href
+      this.img.src = this.linkType == 'audio' ? 'musicNote.png' : 'thumb.php?res=uploads/' + (l=this.link.href.split('/'))[l.length-1].split('?')[0]
     }
   }
 }
