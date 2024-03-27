@@ -80,7 +80,7 @@ export default {
       case 'video': this.linkType = 'video'; break
     }
     this.c.width = 500
-    this.c.height = 500
+    this.c.height = 500/1.77777778
     this.c.style.width = '150px'
     this.c.style.height = '85px'
     if(this.linkType == 'video'){
