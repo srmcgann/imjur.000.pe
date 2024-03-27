@@ -4,6 +4,15 @@ todo
   ✔ fix video & audio thumbnails
   ✔ file hash unifies same-upload sources
   ✔ fix loading animations
+  *  preload loading (and other) assets
+  *  display errors
+  * users, optional logins/profiles
+    └-> * comments
+        * votes
+        * collections
+        * login button
+        * profile page
+        
   * youtube field
   * admin panel
   * optional autodelete
@@ -13,13 +22,6 @@ todo
   * URL uploads
   * log original file name
   * social media metadata
-  * users, optional logins/profiles
-    └-> * comments
-        * votes
-        * collections
-        * login button
-        * profile page
-        
   * gallery / trending
   * load/resource balancing
   

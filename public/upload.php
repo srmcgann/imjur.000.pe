@@ -7,12 +7,14 @@ error_reporting(E_ALL);
   require_once('db.php');
   require_once('functions.php');
 
-  $success = false;
-  $uploadDir = 'uploads';
   $ct = 0;
   $links = [];
   $types = [];
   $sizes = [];
+  $error = '';
+  $success = false;
+  $maxFileSize = 1e8/4;
+  $uploadDir = 'uploads';
   if(sizeof($_FILES)){
     forEach($_FILES as $key => $val){
       $unlink = false;
@@ -22,7 +24,7 @@ error_reporting(E_ALL);
       $type = mime_content_type("$uploadDir/$slug");
       $continue = false;
       $size = filesize("$uploadDir/$slug");
-      if($size < 1e8){ //~100MB
+      if($size < $maxFileSize){
         switch($type){
           case 'audio/wav': $continue = true; $suffix = 'wav';  break;
           case 'audio/x-wav': $continue = true; $suffix = 'wav';  break;
@@ -107,14 +109,19 @@ SQL;
             rename("$uploadDir/$slug", "$uploadDir/$slug.$suffix");
           }
         }else{
+          $error = "ERROR: one or more files had an unrecognized or unsupported file type";
           unlink("$uploadDir/$slug");
         }
       }else{
+        $error = "ERROR: one or more files were too large. $maxFileSize max";
         unlink("$uploadDir/$slug");
       }
       $ct++;
+    }else{
     }
+  } else {
+    $error = 'ERROR: no files were received';
   }
   
-  echo json_encode([$success, $links, $sizes, $types, $ct, $sql]);
+  echo json_encode([$success, $links, $sizes, $types, $ct, $error]);
 ?>
