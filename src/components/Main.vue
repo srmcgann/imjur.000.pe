@@ -4,7 +4,7 @@
       throw sum filez [drag/click]<br><br>
       accepted: gif, web[p/m], png, jp[e]g, mp4, mp3<br>
       max size: 25MB<br>
-      WARRANTY: none<br>
+      WARRANTY: none [this is a work-in-progress. your files will likely be deleted]<br>
       <div v-if="state.links.length" class="links">
         links<br>
         <Link :state="state" v-for="link in state.links" :link="link" />
@@ -44,7 +44,7 @@ export default {
     },
     processUpload(files){
       this.state.uploadInprogress = true
-      this.state.modalContent = `<video src="loading.mp4?2" style="min-width:60vw; min-height: 60vh; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); pointer-events: none; opacity: .75;" loop autoplay muted></video>`
+      this.state.modalContent = `<video src="loading.mp4?2" style="min-width:60vw; min-height: 60vh; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); pointer-events: none; opacity: .5;" loop autoplay muted></video>`
       this.state.showModal = true
       
       this.$nextTick(()=>{

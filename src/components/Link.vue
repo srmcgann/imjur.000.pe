@@ -3,7 +3,7 @@ todo
   ✔ dropable files
   ✔ fix video & audio thumbnails
   ✔ file hash unifies same-upload sources
-  * fix loading animations
+  ✔ fix loading animations
   * youtube field
   * admin panel
   * optional autodelete
