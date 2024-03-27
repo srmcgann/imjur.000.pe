@@ -33,7 +33,7 @@ todo
     <!--#{{link.ct+1}}-->
     <div class="copyLinkButton" @click.prevent.stop="copy()" title="copy link"></div><br>
     <a :href="link.href" class="openButton" @click.prevent.stop="open()" title="open link"></a>
-    <span style="display: none;" v-html="link.href" ref="href"></span>
+    <span style="visibility: hidden; position: absolute;" v-html="link.href" ref="href"></span>
     <!-- <span class="href" style="font-size: 1em" v-html="link.type"></span><br> -->
     <!-- <span class="href" style="font-size: 1em" v-html="'size: ' + link.size.toLocaleString('en-us')"></span><br> -->
   </div>
@@ -157,18 +157,17 @@ export default {
     background-position: center center;
     background-repeat: no-repeat;
     background-image: url(../assets/link.png);
-    background-color: #40f;
     width: 45px;
     height: 45px;
     border-radius: 10px;
     border: none;
     cursor: pointer;
-    margin-top: 9px;
-    margin-left: 4px;
+    margin-top: 8px;
+    margin-left: 3px;
   }
   .openButton{
     background-image: url(../assets/open.png);
-    background-color: #0df;
+    background-color: #40f;
   }
   .copyLinkButton{
     background-image: url(../assets/link.png);
