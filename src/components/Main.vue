@@ -51,7 +51,7 @@ export default {
           this.state.modalContent = ''
           this.state.showModal = false
         }else{
-          this.state.modalContent = '<div src="loading.mp4" style="min-width:90vw; min-height: 50vh; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);background: #4008; color: #f88;">' + data[5] + '</div>'
+          this.state.modalContent = '<div src="loading.mp4" style="min-width:90vw; min-height: 50vh; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);background: #8002; color: #f88; padding-top: 100px;">' + data[5] + '</div>'
         }
       })
     },

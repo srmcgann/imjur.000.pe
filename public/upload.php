@@ -13,7 +13,7 @@ error_reporting(E_ALL);
   $sizes = [];
   $error = '';
   $success = false;
-  $maxFileSize = 1e8/4;
+  $maxFileSize = 25000000;
   $uploadDir = 'uploads';
   if(sizeof($_FILES)){
     forEach($_FILES as $key => $val){
@@ -109,17 +109,17 @@ SQL;
             rename("$uploadDir/$slug", "$uploadDir/$slug.$suffix");
           }
         }else{
-          $error = "ERROR: one or more files had an unrecognized or unsupported file type";
+          $error = "ERROR<br>one or more files had an unrecognized or unsupported file type";
           unlink("$uploadDir/$slug");
         }
       }else{
-        $error = "ERROR: one or more files were too large. $maxFileSize max";
+        $error = "ERROR<br>one or more files were too large. $maxFileSize max";
         unlink("$uploadDir/$slug");
       }
       $ct++;
     }
   } else {
-    $error = 'ERROR: no files were received.<br><br>This usually means that the transfer was blocked by the server due to one or more files being too large...<br><br>Check your file sizes';
+    $error = 'ERROR<br>no files were received.<br><br>This usually means that the transfer was blocked by the server due to one or more files being too large...<br><br>Check your file sizes';
   }
   
   echo json_encode([$success, $links, $sizes, $types, $ct, $error]);
