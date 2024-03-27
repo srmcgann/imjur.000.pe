@@ -13,7 +13,7 @@ export default {
   props: [ 'state', 'content' ],
   methods: {
     close(){
-      this.state.showModal = false
+      this.state.closeModal()
     }
   },
   mounted(){

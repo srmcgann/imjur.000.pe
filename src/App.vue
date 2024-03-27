@@ -33,7 +33,18 @@ export default {
         links: [],
         uploadInProgress: false,
         showModal: false,
-        modalContent: ''
+        modalContent: '',
+        modalQueue: [],
+        closeModal: null,
+      }
+    }
+  },
+  methods:{
+    closeModal(){
+      if(this.modalQueue.length){
+        this.state.modalContent = this.modalQueue.shift()
+      }else{
+        this.state.showModal = false
       }
     }
   },
@@ -51,6 +62,9 @@ export default {
       }
       */
     }
+  },
+  mounted(){
+    this.state.closeModal = this.closeModal
   }
 }
 </script>
@@ -118,7 +132,7 @@ a{
   display: inline-block;
   width: 30px;
   height: 30px;
-  background-image: url(/games_shared_assets/clippy.png);
+  background-image: url(./assets/link.png);
   cursor: pointer;
   z-index: 500;
   background-size: 90% 90%;
