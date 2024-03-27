@@ -130,7 +130,7 @@ export default {
     color: #acd;
     background-color: #204a;
     font-size: 20px;
-    min-width: 306px;
+    min-width: 268px;
     box-sizing: border-box;
     text-align: left;
     margin: 10px;
@@ -157,11 +157,11 @@ export default {
     border-radius: 10px;
     border: none;
     cursor: pointer;
-    margin-top: 5px;
-    margin-left: 20px;
+    margin-top: 9px;
+    margin-left: 4px;
   }
   .openButton{
-    background-image: url(../assets/link.png);
+    background-image: url(../assets/open.png);
     background-color: #0df;
   }
   .copyLinkButton{
