@@ -52,6 +52,6 @@ export default {
     font-size: 25px;
     color: #fff;
     text-shadow: 2px 2px 2px #000;
-    background: #000d;
+    background: #0004;
   }
 </style>

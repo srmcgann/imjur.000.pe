@@ -12,7 +12,7 @@
         throw sum filez [drag/click]<br><br>
         accepted: gif, web[p/m], png, jp[e]g, mp4, mp3<br>
         max size: 25MB<br>
-        WARRANTY: none<br>[this is a work-in-progress. your files will likely be deleted]<br>
+        <span style="font-size: .7em;">WARRANTY: none<br>[this is a work-in-progress. your files will likely be deleted]</span><br>
       </div>
       <div v-if="state.links.length" class="links">
         links<br>
@@ -33,7 +33,8 @@ export default {
   },
   data(){
     return {
-      preload: []
+      preload: [],
+      rejects: []
     }
   },
   methods: {
@@ -65,9 +66,17 @@ export default {
         let fd = new FormData()
         fd.append('description', 'no description')
         files.map((file, i) => {
-          ct++
           console.log(`file ${i}: `, file)
-          fd.append(`uploads_${i}`, file)
+          if(file.size > 25000000){
+            this.rejects = [...rejects, file]
+          }else{
+            ct++
+            fd.append(`uploads_${i}`, file)
+          }
+        })
+        rejects.map(reject=>{
+          let sz = (file.size/1e6|0).toLocaleString('en-us') + ' MB'
+          this.state.modalContent += `oversized/rejected: size: ${sz}, ${file.name} <br>`
         })
         if(ct) this.uploadFiles(fd)
       })
