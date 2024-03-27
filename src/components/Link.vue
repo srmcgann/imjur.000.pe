@@ -84,7 +84,7 @@ export default {
       let h = this.h * scl
       this.x.drawImage(this.img,this.c.width/2-w/2,this.c.height/2-h/2,w,h)
       this.t += 1/60
-      if(t<2 || this.linkType == 'video') requestAnimationFrame(this.Draw)
+      if(this.t<2 || this.linkType == 'video') requestAnimationFrame(this.Draw)
     }
   },
   mounted(){
