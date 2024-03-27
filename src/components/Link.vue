@@ -63,8 +63,8 @@ export default {
       open(this.link.href, '_blank')
     },
     preview(){
-      this.state.modalContent = `<iframe class="previewFrame" src="${this.link.href}"></iframe>`
-      this.state.showModal = true
+      this.state.previewLink = this.link
+      this.state.showPreview = true
     },
     Draw(){
       this.x.globalAlpha = 1
@@ -153,7 +153,6 @@ export default {
   }
   .copyLinkButton, .openButton{
     display: inline-block;
-    background-size: contain;
     background-position: center center;
     background-repeat: no-repeat;
     background-image: url(../assets/link.png);
@@ -167,9 +166,11 @@ export default {
   }
   .openButton{
     background-image: url(../assets/open.png);
-    background-color: #40f;
+    background-color: #08f;
+    background-size: 80% 80%;
   }
   .copyLinkButton{
+    background-size: contain;
     background-image: url(../assets/link.png);
     background-color: #f06;
   }

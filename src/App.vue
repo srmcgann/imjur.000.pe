@@ -8,6 +8,11 @@
       v-if="state.showModal"
       :content="state.modalContent"
     />
+    <Preview
+      :state="state"
+      v-if="state.showPreview"
+      :link="state.previewLink"
+    />
     <div id="copyConfirmation"><div id="innerCopied">COPIED!</div></div>
   </div>
 </template>
@@ -17,6 +22,7 @@ import Header from './components/Header'
 import Main from './components/Main'
 import Footer from './components/Footer'
 import Modal from './components/Modal'
+import Preview from './components/Preview'
 
 export default {
   name: 'App',
@@ -25,6 +31,7 @@ export default {
     Main,
     Footer,
     Modal,
+    Preview,
   },
   data(){
     return {
@@ -33,9 +40,12 @@ export default {
         links: [],
         uploadInProgress: false,
         showModal: false,
+        showPreview: false,
         modalContent: '',
         modalQueue: [],
+        previewLink: null,
         closeModal: null,
+        closePreview: null,
         copy: null,
       }
     }
@@ -73,6 +83,10 @@ export default {
         this.state.showModal = false
         this.state.modalContent = ''
       }
+    },
+    closePreview(){
+      this.state.showPreview = false
+      this.state.previewLink = null
     }
   },
   watch: {
@@ -92,6 +106,7 @@ export default {
   },
   mounted(){
     this.state.closeModal = this.closeModal
+    this.state.closePreview = this.closePreview
     this.state.copy = this.copy
   }
 }
