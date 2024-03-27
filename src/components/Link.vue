@@ -28,11 +28,12 @@ todo
 -->
 
 <template>
-  <a :href="link.href" target="_blank" class="link" ref="anchor">
+  <div class="link" ref="anchor">
     <div class="linkThumb" ref="linkThumb" @click.prevent.stop></div>
     <!--#{{link.ct+1}}-->
     <div class="copyLinkButton" @click.prevent.stop="copy()" title="copy link"></div><br>
-    <span class="href" style="display: none;" v-html="link.href.split('//')[1]" ref="href"></span><br>
+    <a :href="link.href" class="openButton" @click.prevent.stop="open()" title="open link"></div><br>
+    <a style="display: none;" v-html="link.href.split('//')[1]" ref="href"></span><br>
     <!-- <span class="href" style="font-size: 1em" v-html="link.type"></span><br> -->
     <!-- <span class="href" style="font-size: 1em" v-html="'size: ' + link.size.toLocaleString('en-us')"></span><br> -->
   </a>
@@ -56,6 +57,9 @@ export default {
   methods: {
     copy(){
       this.state.copy(this.$refs.href)
+    },
+    open(){
+      open(this.$refs.href, '_blank')
     },
     Draw(){
       this.x.globalAlpha = 1
@@ -141,20 +145,28 @@ export default {
     padding: 3px;
     width: calc(100% - 10px);
   }
-  .copyLinkButton{
+  .copyLinkButton, .openButton{
     display: inline-block;
     background-size: contain;
     background-position: center center;
     background-repeat: no-repeat;
     background-image: url(../assets/link.png);
     background-color: #40f;
-    width: 50px;
-    height: 50px;
+    width: 45px;
+    height: 45px;
     border-radius: 10px;
     border: none;
     cursor: pointer;
-    margin-top: 35px;
+    margin-top: 5px;
     margin-left: 20px;
+  }
+  .copyLinkButton{
+    background-image: url(../assets/link.png);
+    background-color: #0df;
+  }
+  .copyLinkButton{
+    background-image: url(../assets/link.png);
+    background-color: #f06;
   }
   .linkThumb{
     float: left;
