@@ -3,49 +3,42 @@
   // RECURSIVE DIRECTORY FTP PUSH
 
   $servers = [
-    [
       'ftp_server'  => "ftpupload.net",
       'ftp_user'    => 'if0_35882111',
       'ftp_pass'    => 'GNS1oMHbsX',
       'local_dir'   => '/home/whitehotrobot/imjur.000.pe/dist_public',
       'remote_dir'  => '/imjur.000.pe/htdocs'
     ],[
-    [
       'ftp_server'  => "ftpupload.net",
       'ftp_user'    => 'if0_35615011',
       'ftp_pass'    => 'ouVkeSu5FegeH',
       'local_dir'   => '/home/whitehotrobot/imjur.000.pe/dist_public',
       'remote_dir'  => '/imjur.000.pe/htdocs'
     ],[
-    [
       'ftp_server'  => "ftpupload.net",
       'ftp_user'    => 'if0_35680091',
       'ftp_pass'    => 'kjiGQM2DqnhUAuU',
       'local_dir'   => '/home/whitehotrobot/imjur.000.pe/dist_public',
       'remote_dir'  => '/imjur.000.pe/htdocs'
     ],[
-    [
       'ftp_server'  => "ftpupload.net",
       'ftp_user'    => 'if0_35680402',
       'ftp_pass'    => 'nBbQv0M3POyp',
       'local_dir'   => '/home/whitehotrobot/imjur.000.pe/dist_public',
       'remote_dir'  => '/imjur.000.pe/htdocs'
     ],[
-    [
       'ftp_server'  => "ftpupload.net",
       'ftp_user'    => 'if0_35680488',
       'ftp_pass'    => '9K12EE4mmF3yi',
       'local_dir'   => '/home/whitehotrobot/imjur.000.pe/dist_public',
       'remote_dir'  => '/imjur.000.pe/htdocs'
     ],[
-    [
       'ftp_server'  => "ftpupload.net",
       'ftp_user'    => 'if0_35681218',
       'ftp_pass'    => 'siann2ji7AGh',
       'local_dir'   => '/home/whitehotrobot/imjur.000.pe/dist_public',
       'remote_dir'  => '/imjur.000.pe/htdocs'
     ],[
-    [
       'ftp_server'  => "ftpupload.net",
       'ftp_user'    => 'if0_35686192',
       'ftp_pass'    => 'iOFWM03Om1SRTI',
@@ -57,49 +50,42 @@
       'ftp_pass'   => 'Chrome57253!*',
       'local_dir'  => '/home/whitehotrobot/imjur.000.pe/dist_public',
       'remote_dir' => '/public_html/imjur',
-    ]
     ],[
       'ftp_server' => 'files.000webhost.com',
       'ftp_user'   => 'orbs2',
       'ftp_pass'   => 'Chrome57253!*',
       'local_dir'  => '/home/whitehotrobot/imjur.000.pe/dist_public',
       'remote_dir' => '/public_html/imjur',
-    ]
     ],[
       'ftp_server' => 'files.000webhost.com',
       'ftp_user'   => 'orbs4',
       'ftp_pass'   => 'Chrome57253!*',
       'local_dir'  => '/home/whitehotrobot/imjur.000.pe/dist_public',
       'remote_dir' => '/public_html/imjur',
-    ]
     ],[
       'ftp_server' => 'files.000webhost.com',
       'ftp_user'   => 'efx2',
       'ftp_pass'   => 'Chrome57253!*',
       'local_dir'  => '/home/whitehotrobot/imjur.000.pe/dist_public',
       'remote_dir' => '/public_html/imjur',
-    ]
     ],[
       'ftp_server' => 'files.000webhost.com',
       'ftp_user'   => 'efx3',
       'ftp_pass'   => 'Chrome57253!*',
       'local_dir'  => '/home/whitehotrobot/imjur.000.pe/dist_public',
       'remote_dir' => '/public_html/imjur',
-    ]
     ],[
       'ftp_server' => 'files.000webhost.com',
       'ftp_user'   => 'warpspeed',
       'ftp_pass'   => 'Chrome57253!*',
       'local_dir'  => '/home/whitehotrobot/imjur.000.pe/dist_public',
       'remote_dir' => '/public_html/imjur',
-    ]
     ],[
       'ftp_server' => 'files.000webhost.com',
       'ftp_user'   => 'orbstools',
       'ftp_pass'   => 'Chrome57253!*',
       'local_dir'  => '/home/whitehotrobot/imjur.000.pe/dist_public',
       'remote_dir' => '/public_html/imjur',
-    ]
     ],[
       'ftp_server' => 'files.000webhost.com',
       'ftp_user'   => 'gummier-fish',
@@ -108,6 +94,7 @@
       'remote_dir' => '/public_html/imjur',
     ],
   ];
+
   function recurse($dir){
     global $remote_dir, $local_dir, $ftp;
     forEach(glob("$dir/*") as $entry){
