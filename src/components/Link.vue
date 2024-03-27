@@ -127,12 +127,11 @@ export default {
     color: #acd;
     background-color: #204a;
     font-size: 20px;
-    min-width: 400px;
+    min-width: 306px;
     box-sizing: border-box;
     text-align: left;
     margin: 10px;
     word-break: break-word;
-    max-width: 450px;
     border-radius: 20px;
     vertical-align: top;
   }
@@ -156,8 +155,8 @@ export default {
     border-radius: 10px;
     border: none;
     cursor: pointer;
-    margin-top: 3px;
-    margin-left: 50px;
+    margin-top: 35px;
+    margin-left: 0;
   }
   .linkThumb{
     float: left;
