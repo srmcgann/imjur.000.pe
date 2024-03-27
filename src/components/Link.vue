@@ -32,8 +32,8 @@ todo
     <div class="linkThumb" ref="linkThumb" @click.prevent.stop></div>
     #{{link.ct+1}}<br>
     <span class="href" v-html="link.href"></span><br>
-    <!--type: {{link.type}}<br>
-    size: {{link.size.toLocaleString('en-us')}}<br>-->
+    <!-- type: {{link.type}}<br> -->
+    <!-- size: {{link.size.toLocaleString('en-us')}}<br> -->
   </a>
   <div style="clear: both;"></div>
 </template>

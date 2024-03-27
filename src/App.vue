@@ -8,6 +8,7 @@
       v-if="state.showModal"
       :content="state.modalContent"
     />
+    <div id="copyConfirmation"><div id="innerCopied">COPIED!</div></div>
   </div>
 </template>
 
@@ -93,5 +94,77 @@ button{
 a{
   text-decoration: none;
   color: #08f;
+}
+.buttons{
+  border: none;
+  border-radius: 5px;
+  background: #4f8;
+  color: #000;
+  text-shadow: 3px 3px 3px #000;
+  font-size: 18px;
+  min-width: 80px;
+}
+.buttons{
+  border: none;
+  border-radius: 5px;
+  background: #4f88;
+  color: #fff;
+  padding: 3px;
+  min-width: 200px;
+  cursor: pointer;
+  font-family: Courier Prime;
+}
+.copyButton{
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  background-image: url(/games_shared_assets/clippy.png);
+  cursor: pointer;
+  z-index: 500;
+  background-size: 90% 90%;
+  left: calc(50% + 180px);
+  background-position: center center;
+  background-repeat: no-repeat;
+  border: none;
+  background-color: #8fcc;
+  margin: 5px;
+  border-radius: 5px;
+  vertical-align: middle;
+}
+#copyConfirmation{
+  display: none;
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  background: #012d;
+  color: #8ff;
+  opacity: 1;
+  text-shadow: 0 0 5px #fff;
+  font-size: 46px;
+  text-align: center;
+  z-index: 10000;
+}
+#innerCopied{
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  z-index: 1020;
+  text-align: center;
+  transform: translate(0, -50%) scale(2.0, 1);
+}
+.resultLink{
+  text-decoration: none;
+  color: #fff;
+  background: #4f86;
+  padding: 10px;
+  display: inline-block;
+}
+#resultDiv{
+  position: absolute;
+  margin-top: 50px;
+  left: 50%;
+  transform: translate(-50%);
 }
 </style>

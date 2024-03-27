@@ -8,8 +8,8 @@
       @click="loadFiles()"
       ref="dropTarget"
     >
-      <div ref="dropTargetCaption">
-        throw sum filez [drag/click]<br><br>
+      <div ref="dropTargetCaption" id="dropTargetCaption">
+        throw sum filez [click/drop]<br><br>
         accepted: gif<br>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;web[p/m]<br>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;png<br>
@@ -72,12 +72,12 @@ export default {
       this.$nextTick(()=>{
         let ct = 0
         let fd = new FormData()
-        fd.append('description', 'no description')
+        //fd.append('description', 'no description')
         files.map((file, i) => {
           console.log(`file ${i}: `, file)
           if(file.size > 25000000){
             this.rejects = [...this.rejects, file]
-          }else{
+          } else {
             ct++
             fd.append(`uploads_${i}`, file)
           }
@@ -102,6 +102,31 @@ export default {
         files = Array.from(e.dataTransfer.files)
       }
       if(files.length) this.processUpload(files)
+    },
+    copy(copyEl){
+      var range = document.createRange()
+      range.selectNode(copyEl)
+      window.getSelection().removeAllRanges()
+      window.getSelection().addRange(range)
+      document.execCommand("copy")
+      window.getSelection().removeAllRanges()
+      let el = document.querySelector('#copyConfirmation')
+      el.style.display = 'block';
+      el.style.opacity = 1
+      reduceOpacity = () => {
+        if(+el.style.opacity > 0){
+          el.style.opacity -= .02 * (launched ? 4 : 1)
+          if(+el.style.opacity<.1){
+            el.style.opacity = 1
+            el.style.display = 'none'
+          }else{
+            setTimeout(()=>{
+              reduceOpacity()
+            }, 10)
+          }
+        }
+      }
+      setTimeout(()=>{reduceOpacity()}, 250)
     },
     addLink(size, type, ct, href){
       let obj = {
@@ -170,6 +195,21 @@ export default {
     margin: 10px;
     box-sizing: border-box;
     background: #3338;
+  }
+  #dropTargetCaption{
+    display: inline-block;
+    width: 340px;
+    position: fixed;
+    left: 50%;
+    top: 49%;
+    transform: translate(-50%, -50%);
+    padding: 38px;
+    border-radius: 32%;
+    background: #0f02;
+    box-shadow: 0 0 150px 150px #0f02;
+    height: 264px;
+    padding-top: 0;
+    padding-right: 28px;
   }
 </style>
 
