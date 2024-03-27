@@ -32,8 +32,8 @@ todo
     <div class="linkThumb" ref="linkThumb" @click.prevent.stop></div>
     <!--#{{link.ct+1}}-->
     <div class="copyLinkButton" @click.prevent.stop="copy()" title="copy link"></div><br>
-    <a :href="link.href" class="openButton" @click.prevent.stop="open()" title="open link"></div><br>
-    <a style="display: none;" v-html="link.href.split('//')[1]" ref="href"></span><br>
+    <a :href="link.href" class="openButton" @click.prevent.stop="open()" title="open link"></a>
+    <span style="display: none;" v-html="link.href.split('//')[1]" ref="href"></span>
     <!-- <span class="href" style="font-size: 1em" v-html="link.type"></span><br> -->
     <!-- <span class="href" style="font-size: 1em" v-html="'size: ' + link.size.toLocaleString('en-us')"></span><br> -->
   </a>
