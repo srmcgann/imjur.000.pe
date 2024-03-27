@@ -31,7 +31,7 @@ todo
   <a :href="link.href" target="_blank" class="link" ref="anchor">
     <div class="linkThumb" ref="linkThumb" @click.prevent.stop></div>
     #{{link.ct+1}}
-    <div class="copyLinkButton" @click="copy()"></div><br>
+    <div class="copyLinkButton" @click.prevent.stop="copy()" title="copy link"></div><br>
     <span class="href" v-html="link.href" ref="href"></span><br>
     <!-- type: {{link.type}}<br> -->
     <!-- size: {{link.size.toLocaleString('en-us')}}<br> -->
@@ -146,12 +146,14 @@ export default {
     background-position: center center;
     background-repeat: no-repeat;
     background-image: url(../assets/link.png);
-    background-color: #084;
-    width: 40px;
+    background-color: #40f;
+    width: 50px;
     height: 20px;
     border-radius: 10px;
     border: none;
     cursor: pointer;
+    margin-top: 3px;
+    margin-left: 50px;
   }
   .linkThumb{
     float: left;
