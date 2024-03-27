@@ -126,7 +126,7 @@
     ftp_pasv($ftp, true);
 
     @ftp_rmdir($ftp, $remote_dir);
-    ftp_mkdir($ftp, $remote_dir);
+    @ftp_mkdir($ftp, $remote_dir);
     recurse($local_dir);
   }
 
