@@ -3,6 +3,8 @@
   // RECURSIVE DIRECTORY FTP PUSH
 
   $servers = [
+  [
+    [
       'ftp_server'  => "ftpupload.net",
       'ftp_user'    => 'if0_35882111',
       'ftp_pass'    => 'GNS1oMHbsX',
