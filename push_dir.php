@@ -53,7 +53,7 @@
       'remote_dir' => '/public_html/imjur',
     ],[
       'ftp_server' => 'files.000webhost.com',
-      'ftp_user'   => 'orbs2',
+      'ftp_user'   => 'orbs3',
       'ftp_pass'   => 'Chrome57253!*',
       'local_dir'  => '/home/whitehotrobot/imjur.000.pe/dist_public',
       'remote_dir' => '/public_html/imjur',
