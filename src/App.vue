@@ -41,7 +41,7 @@ export default {
   },
   methods:{
     closeModal(){
-      if(this.modalQueue.length){
+      if(this.state.modalQueue.length){
         this.state.modalContent = this.state.modalQueue.shift()
       }else{
         this.state.showModal = false
