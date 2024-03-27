@@ -32,11 +32,10 @@ todo
     <div class="linkThumb" ref="linkThumb" @click.prevent.stop></div>
     #{{link.ct+1}}
     <div class="copyLinkButton" @click.prevent.stop="copy()" title="copy link"></div><br>
-    <span class="href" v-html="link.href" ref="href"></span><br>
-    <span class="href" v-html="link.type"></span><br>
-    <span class="href" v-html="'size: ' + link.size.toLocaleString('en-us')"></span><br>
+    <span class="href" v-html="link.href.split('//')[1]" ref="href"></span><br>
+    <span class="href" style="font-size: 1.5em" v-html="link.type"></span><br>
+    <span class="href" style="font-size: 1.5em" v-html="'size: ' + link.size.toLocaleString('en-us')"></span><br>
   </a>
-  <div style="clear: both;"></div>
 </template>
 
 <script>
@@ -123,6 +122,7 @@ export default {
   .link{
     display: table;
     width: calc(100% - 10px);
+    height: 124px;
     color: #acd;
     background-color: #204a;
     font-size: 20px;
@@ -132,13 +132,15 @@ export default {
     text-align: left;
     margin: 10px;
     word-break: break-word;
+    max-width: 450px;
   }
   .href{
     font-size: .5em;
     background: #4f8a;
-    color: 024;
+    color: #024;
     margin: 5px;
-    background: #000;
+    padding: 3px;
+    width: calc(100% - 10px);
   }
   .copyLinkButton{
     display: inline-block;
@@ -147,6 +149,7 @@ export default {
     background-repeat: no-repeat;
     background-image: url(../assets/link.png);
     background-color: #40f;
+    position: absolute;
     width: 50px;
     height: 20px;
     border-radius: 10px;
