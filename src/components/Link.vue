@@ -33,8 +33,8 @@ todo
     #{{link.ct+1}}
     <div class="copyLinkButton" @click.prevent.stop="copy()" title="copy link"></div><br>
     <span class="href" v-html="link.href" ref="href"></span><br>
-    <!-- type: {{link.type}}<br> -->
-    <!-- size: {{link.size.toLocaleString('en-us')}}<br> -->
+    <span class="href" v-html="link.type"></span><br>
+    <span class="href" v-html="'size: ' + link.size.toLocaleString('en-us')"></span><br>
   </a>
   <div style="clear: both;"></div>
 </template>
@@ -134,7 +134,7 @@ export default {
     word-break: break-word;
   }
   .href{
-    font-size: .8em;
+    font-size: .5em;
     background: #4f8a;
     color: 024;
     margin: 5px;
