@@ -43,9 +43,11 @@ export default {
           loading...
         `
         state.showModal = true
+        console.log('showing Modal')
       }else{
         state.modalContent = ''
         state.showModal = false
+        console.log('hiding Modal')
       }
     }
   }

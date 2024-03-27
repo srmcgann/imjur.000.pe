@@ -2,8 +2,8 @@
 todo
   ✔ dropable files
   ✔ fix video & audio thumbnails
-  * file hash unifies same-upload sources
-  * social media metadata
+  ✔ file hash unifies same-upload sources
+  * fix loading animations
   * youtube field
   * admin panel
   * optional autodelete
@@ -12,6 +12,7 @@ todo
   * log & display asset origin
   * URL uploads
   * log original file name
+  * social media metadata
   * users, optional logins/profiles
     └-> * comments
         * votes
