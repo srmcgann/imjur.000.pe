@@ -122,7 +122,6 @@ export default {
   }
   .link{
     display: inline-block;
-    width: calc(100% - 10px);
     height: 123px;
     color: #acd;
     background-color: #204a;
@@ -151,7 +150,7 @@ export default {
     background-color: #40f;
     position: absolute;
     width: 50px;
-    height: 20px;
+    height: 50px;
     border-radius: 10px;
     border: none;
     cursor: pointer;

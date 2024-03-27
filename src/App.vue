@@ -124,7 +124,7 @@ body,html{
   background-position: center center;
   margin: 0;
   height: 100vh;
-  overflow-x: hidden;
+  overflow: hidden;
   font-family: Courier Prime;
 }
 a:visited{
