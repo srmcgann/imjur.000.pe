@@ -174,6 +174,7 @@ export default {
   .links{
     margin: 0;
     box-sizing: border-box;
+    text-align: center;
   }
   #dropTargetCaption{
     display: inline-block;

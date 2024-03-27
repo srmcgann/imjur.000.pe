@@ -32,7 +32,7 @@ todo
     <div class="linkThumb" ref="linkThumb" @click.prevent.stop></div>
     #{{link.ct+1}}
     <div class="copyLinkButton" @click.prevent.stop="copy()" title="copy link"></div><br>
-    <span class="href" v-html="link.href.split('//')[1]" ref="href"></span><br>
+    <!-- <span class="href" v-html="link.href.split('//')[1]" ref="href"></span><br> -->
     <!-- <span class="href" style="font-size: 1em" v-html="link.type"></span><br> -->
     <!-- <span class="href" style="font-size: 1em" v-html="'size: ' + link.size.toLocaleString('en-us')"></span><br> -->
   </a>
@@ -121,13 +121,12 @@ export default {
     background-color: #408a;
   }
   .link{
-    display: table;
+    display: inline-block;
     width: calc(100% - 10px);
-    height: 124px;
+    height: 123px;
     color: #acd;
     background-color: #204a;
     font-size: 20px;
-    height: 50px;
     min-width: 400px;
     box-sizing: border-box;
     text-align: left;
@@ -135,6 +134,7 @@ export default {
     word-break: break-word;
     max-width: 450px;
     border-radius: 20px;
+    vertical-align: top;
   }
   .href{
     font-size: .6em;
