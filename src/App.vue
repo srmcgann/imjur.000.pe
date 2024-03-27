@@ -53,7 +53,7 @@ export default {
       el.style.opacity = 1
       let reduceOpacity = () => {
         if(+el.style.opacity > 0){
-          el.style.opacity -= .02 * (launched ? 4 : 1)
+          el.style.opacity -= .02 * 2
           if(+el.style.opacity<.1){
             el.style.opacity = 1
             el.style.display = 'none'
