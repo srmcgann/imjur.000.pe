@@ -51,7 +51,8 @@ export default {
       linkType: '',
       img: null,
       w: 0,
-      h: 0
+      h: 0,
+      t: 0,
     }
   },
   methods: {
@@ -78,7 +79,8 @@ export default {
       let w = this.w * scl
       let h = this.h * scl
       this.x.drawImage(this.img,this.c.width/2-w/2,this.c.height/2-h/2,w,h)
-      if(this.linkType == 'video') requestAnimationFrame(this.Draw)
+      this.t += 1/60
+      if(t<2 || this.linkType == 'video') requestAnimationFrame(this.Draw)
     }
   },
   mounted(){
