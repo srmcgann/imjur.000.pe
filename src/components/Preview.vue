@@ -3,7 +3,7 @@
     <button @click="close()" class="cancelButton" title="close this view">
       close/cancel
     </button>
-    <div class="modalInner">
+    <div class="previewInner">
       {{link.href}}
     <div>
   </div>
