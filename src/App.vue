@@ -37,7 +37,8 @@ export default {
     }
   },
   watch: {
-    'this.state.uploadInProgress'(val){
+    'state.uploadInProgress'(val){
+      console.log('state.uploadInProgress val', val)
       if(val){
         this.state.modalContent = `
           loading...
