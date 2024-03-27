@@ -20,7 +20,7 @@
         <div style="font-size: .7em;">
         WARRANTY: none<br><br>
         this is a work-in-progress.<br>
-        your files will likely be deleted]</div>
+        your files will likely be deleted</div>
       </div>
       <div v-if="state.links.length" class="links">
         links<br>
@@ -83,8 +83,8 @@ export default {
           }
         })
         this.rejects.map(reject=>{
-          let sz = (file.size/1e6|0).toLocaleString('en-us') + ' MB'
-          this.state.modalContent += `oversized/rejected: size: ${sz}, ${file.name} <br>`
+          let sz = (reject.size/1e6|0).toLocaleString('en-us') + ' MB'
+          this.state.modalContent += `oversized/rejected: size: ${sz}, ${reject.name} <br>`
         })
         if(ct) this.uploadFiles(fd)
       })
