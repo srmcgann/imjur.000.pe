@@ -117,7 +117,6 @@ SQL;
         unlink("$uploadDir/$slug");
       }
       $ct++;
-    }else{
     }
   } else {
     $error = 'ERROR: no files were received';
