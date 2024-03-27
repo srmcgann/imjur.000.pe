@@ -38,10 +38,17 @@ export default {
           })
         }
         this.state.uploadInprogress = false
+        this.state.modalContent = ''
+        this.state.showModal = false
       })
     },
     processUpload(files){
       this.state.uploadInprogress = true
+      this.state.modalContent = `
+        loading...
+      `
+      this.state.showModal = true
+      
       this.$nextTick(()=>{
         let ct = 0
         let fd = new FormData()

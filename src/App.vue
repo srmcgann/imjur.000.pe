@@ -37,8 +37,8 @@ export default {
     }
   },
   watch: {
-    'state.uploadInProgress' : function (val){
-      console.log('state.uploadInProgress val', val)
+    'state.uploadInProgress' (val) {
+      /*console.log('state.uploadInProgress val', val)
       if(val){
         this.state.modalContent = `
           loading...
@@ -48,6 +48,7 @@ export default {
         this.state.modalContent = ''
         this.state.showModal = false
       }
+      */
     }
   }
 }
