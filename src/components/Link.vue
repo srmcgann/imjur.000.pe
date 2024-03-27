@@ -81,8 +81,8 @@ export default {
     }
     this.c.width = 500
     this.c.height = 500
-    this.c.style.width = '200px'
-    this.c.style.height = '200px'
+    this.c.style.width = '150px'
+    this.c.style.height = '85px'
     if(this.linkType == 'video'){
       this.img = document.createElement('video')
       this.img.loop = true
