@@ -31,9 +31,9 @@ todo
   <a :href="link.href" target="_blank" class="link" ref="anchor">
     <div class="linkThumb" ref="linkThumb" @click.prevent.stop></div>
     #{{link.ct+1}}<br>
-    href: {{link.href}}<br>
-    type: {{link.type}}<br>
-    size: {{link.size.toLocaleString('en-us')}}<br>
+    <span class="href" v-html="link.href"></span><br>
+    <!--type: {{link.type}}<br>
+    size: {{link.size.toLocaleString('en-us')}}<br>-->
   </a>
   <div style="clear: both;"></div>
 </template>
@@ -129,6 +129,13 @@ export default {
     text-align: left;
     margin: 10px;
     word-break: break-word;
+  }
+  .href{
+    font-size: .8em;
+    background: #4f8a;
+    color: 024;
+    margin: 5px;
+    background: #000;
   }
   .linkThumb{
     float: left;

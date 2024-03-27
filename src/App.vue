@@ -87,6 +87,9 @@ body,html{
 a:visited{
   color: #40f;
 }
+button{
+  cursor: pointer;
+}
 a{
   text-decoration: none;
   color: #08f;
