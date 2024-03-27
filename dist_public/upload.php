@@ -15,6 +15,7 @@ error_reporting(E_ALL);
   $sizes = [];
   if(sizeof($_FILES)){
     forEach($_FILES as $key => $val){
+      $unlink = false;
       $tmp_name = $_FILES["uploads_$ct"]['tmp_name'];
       $slug = genSlug();
       move_uploaded_file($tmp_name, "$uploadDir/$slug");
@@ -44,6 +45,17 @@ error_reporting(E_ALL);
             $suffix = 'mp3';
           }
           $hash = hash_file('md5', "$uploadDir/$slug");
+          
+          $sql = "SELECT * FROM imjurUploads WHERE hash = \"$hash\"";
+          $res = mysqli_query($link, $sql);
+          if(mysqli_num_rows($res)){
+            $row = mysqli_fetch_assoc($res);
+            $originalSlug = $row['slug'];
+            $unlink = true;
+          }else{
+            $originalSlug = $slug;
+          }
+          
           $id = alphaToDec($slug);
           $original_name = basename($_FILES["uploads_$ct"]["name"]);
           $meta = mysqli_real_escape_string($link, json_encode([
@@ -59,6 +71,7 @@ error_reporting(E_ALL);
 $sql = <<<SQL
 INSERT INTO imjurUploads (id, 
                           slug,
+                          originalSlug,
                           meta,
                           hash,
                           filetype,
@@ -71,6 +84,7 @@ INSERT INTO imjurUploads (id,
                           )VALUES(
                             $id,
                             "$slug",
+                            "$originalSlug",
                             "$meta",
                             "$hash",
                             "$type",
@@ -85,10 +99,14 @@ SQL;
           
           mysqli_query($link, $sql);
           $success = true;
-          $links[] = "$uploadDir/$slug.$suffix";
+          $links[] = "$uploadDir/$originalSlug.$suffix";
           $sizes[] = $size;
           $types[] = $type;
-          rename("$uploadDir/$slug", "$uploadDir/$slug.$suffix");
+          if($unlink){
+            unlink("$uploadDir/$slug");
+          }else{
+            rename("$uploadDir/$slug", "$uploadDir/$slug.$suffix");
+          }
         }else{
           unlink("$uploadDir/$slug");
         }
