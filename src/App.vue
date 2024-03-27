@@ -75,7 +75,7 @@ export default {
 }
 body,html{
   background-color: #000;
-  background-image: url(./assets/bg.jpg);
+  background-image: url(./assets/bg_lores.jpg);
   background-repeat: repeat;
   background-size: cover;
   background-position: center center;

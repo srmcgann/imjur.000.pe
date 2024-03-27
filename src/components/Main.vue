@@ -1,6 +1,13 @@
 <template>
   <div class="main" ref="main">
-    <div id="dropTarget" class="dropTarget" @dragover.prevent @drop.prevent="dropFiles($event)" @click="loadFiles()">
+    <div
+      id="dropTarget"
+      class="dropTarget"
+      @dragover.prevent
+      @drop.prevent="dropFiles($event)"
+      @click="loadFiles()"
+      ref="dropTarget"
+    >
       throw sum filez [drag/click]<br><br>
       accepted: gif, web[p/m], png, jp[e]g, mp4, mp3<br>
       max size: 25MB<br>
@@ -35,6 +42,7 @@ export default {
         console.log('response from upload.php: ', data)
         this.state.uploadInprogress = false
         if(data[0]){
+          this.$refs.dropTarget.innerHTML = ''
           data[1].map((v, i)=>{
             this.addLink(data[2][i], data[3][i], i, location.href.split('?')[0] + v)
           })
