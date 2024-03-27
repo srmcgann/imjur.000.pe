@@ -85,7 +85,7 @@ export default {
         let rej = '<div style="min-width:90vw; min-height: 50vh; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);background: #4008; color: #f88; padding-top: 100px;">'
         this.rejects.map(reject=>{
           let sz = (reject.size/1e6|0).toLocaleString('en-us') + ' MB<br>'
-          rej += `oversized/rejected: size: ${sz}, "${reject.name}" <br><br>`
+          rej += `oversized/rejected: size: ${sz} "${reject.name}" <br><br>`
         })
         if(this.rejects.length) {
           this.state.modalQueue = [...this.state.modalQueue, rej + '</div>']
@@ -107,31 +107,6 @@ export default {
         files = Array.from(e.dataTransfer.files)
       }
       if(files.length) this.processUpload(files)
-    },
-    copy(copyEl){
-      var range = document.createRange()
-      range.selectNode(copyEl)
-      window.getSelection().removeAllRanges()
-      window.getSelection().addRange(range)
-      document.execCommand("copy")
-      window.getSelection().removeAllRanges()
-      let el = document.querySelector('#copyConfirmation')
-      el.style.display = 'block';
-      el.style.opacity = 1
-      reduceOpacity = () => {
-        if(+el.style.opacity > 0){
-          el.style.opacity -= .02 * (launched ? 4 : 1)
-          if(+el.style.opacity<.1){
-            el.style.opacity = 1
-            el.style.display = 'none'
-          }else{
-            setTimeout(()=>{
-              reduceOpacity()
-            }, 10)
-          }
-        }
-      }
-      setTimeout(()=>{reduceOpacity()}, 250)
     },
     addLink(size, type, ct, href){
       let obj = {
@@ -197,9 +172,8 @@ export default {
     box-sizing: border-box;
   }
   .links{
-    margin: 10px;
+    margin: 0;
     box-sizing: border-box;
-    background: #3338;
   }
   #dropTargetCaption{
     display: inline-block;

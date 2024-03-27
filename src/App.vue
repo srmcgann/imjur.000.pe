@@ -36,15 +36,42 @@ export default {
         modalContent: '',
         modalQueue: [],
         closeModal: null,
+        copy: null,
       }
     }
   },
   methods:{
+    copy(copyEl){
+      var range = document.createRange()
+      range.selectNode(copyEl)
+      window.getSelection().removeAllRanges()
+      window.getSelection().addRange(range)
+      document.execCommand("copy")
+      window.getSelection().removeAllRanges()
+      let el = document.querySelector('#copyConfirmation')
+      el.style.display = 'block';
+      el.style.opacity = 1
+      reduceOpacity = () => {
+        if(+el.style.opacity > 0){
+          el.style.opacity -= .02 * (launched ? 4 : 1)
+          if(+el.style.opacity<.1){
+            el.style.opacity = 1
+            el.style.display = 'none'
+          }else{
+            setTimeout(()=>{
+              reduceOpacity()
+            }, 10)
+          }
+        }
+      }
+      setTimeout(()=>{reduceOpacity()}, 250)
+    },
     closeModal(){
       if(this.state.modalQueue.length){
         this.state.modalContent = this.state.modalQueue.shift()
       }else{
         this.state.showModal = false
+        this.state.modalContent = ''
       }
     }
   },
@@ -65,6 +92,7 @@ export default {
   },
   mounted(){
     this.state.closeModal = this.closeModal
+    this.state.copy = this.copy
   }
 }
 </script>

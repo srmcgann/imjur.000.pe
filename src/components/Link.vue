@@ -30,8 +30,9 @@ todo
 <template>
   <a :href="link.href" target="_blank" class="link" ref="anchor">
     <div class="linkThumb" ref="linkThumb" @click.prevent.stop></div>
-    #{{link.ct+1}}<br>
-    <span class="href" v-html="link.href"></span><br>
+    #{{link.ct+1}}
+    <span class="href" v-html="link.href" ref="href"></span><br>
+    <div class="copyLinkButton" @click="copy()"></div><br>
     <!-- type: {{link.type}}<br> -->
     <!-- size: {{link.size.toLocaleString('en-us')}}<br> -->
   </a>
@@ -54,6 +55,9 @@ export default {
     }
   },
   methods: {
+    copy{
+      this.state.copy(this.$refs.href)
+    },
     Draw(){
       this.x.globalAlpha = 1
       this.x.fillStyle='#0008'
@@ -118,13 +122,12 @@ export default {
   }
   .link{
     display: table;
-    width: 100%;
+    width: calc(100% - 10px);
     color: #acd;
     background-color: #204a;
     font-size: 20px;
     height: 50px;
     min-width: 400px;
-    margin: 20px;
     box-sizing: border-box;
     text-align: left;
     margin: 10px;
@@ -136,6 +139,18 @@ export default {
     color: 024;
     margin: 5px;
     background: #000;
+  }
+  .copyLinkButton{
+    background-size: contain;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-image: url(../assets/link.png);
+    background-color: #084;
+    width: 40px;
+    height: 20px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
   }
   .linkThumb{
     float: left;
