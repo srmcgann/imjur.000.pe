@@ -141,6 +141,7 @@ export default {
     background: #000;
   }
   .copyLinkButton{
+    display: inline-block;
     background-size: contain;
     background-position: center center;
     background-repeat: no-repeat;

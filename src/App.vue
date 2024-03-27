@@ -51,7 +51,7 @@ export default {
       let el = document.querySelector('#copyConfirmation')
       el.style.display = 'block';
       el.style.opacity = 1
-      reduceOpacity = () => {
+      let reduceOpacity = () => {
         if(+el.style.opacity > 0){
           el.style.opacity -= .02 * (launched ? 4 : 1)
           if(+el.style.opacity<.1){
