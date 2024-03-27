@@ -1,6 +1,6 @@
 <template>
   <div class="header">
-    <div class="headerImg"></div>
+    <div class="headerImg" @click="window.location.refresh"></div>
   </div>
 </template>
 
