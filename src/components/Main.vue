@@ -10,8 +10,13 @@
     >
       <div ref="dropTargetCaption">
         throw sum filez [drag/click]<br><br>
-        accepted: gif, web[p/m], png, jp[e]g, mp4, mp3<br>
-        max size: 25MB<br>
+        accepted: gif
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;web[p/m]<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;png<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;jp[e]g<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mp4<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mp3<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;max size: 25MB<br>
         <span style="font-size: .7em;">WARRANTY: none<br>[this is a work-in-progress. your files will likely be deleted]</span><br>
       </div>
       <div v-if="state.links.length" class="links">
@@ -68,7 +73,7 @@ export default {
         files.map((file, i) => {
           console.log(`file ${i}: `, file)
           if(file.size > 25000000){
-            this.rejects = [...rejects, file]
+            this.rejects = [...this.rejects, file]
           }else{
             ct++
             fd.append(`uploads_${i}`, file)
