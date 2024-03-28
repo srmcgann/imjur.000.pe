@@ -32,6 +32,7 @@ export default {
       img.style.width = '100%'
       img.style.height = '100%'
       img.style.position = 'absolute'
+      img.style.transform = 'translate(-50%, -50%)'
       img.style.objectFit = 'contain'
       img.style.backgroundColor = '#000'
       img.style.backgroundSize = 'contain'
