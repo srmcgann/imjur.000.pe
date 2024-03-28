@@ -17,9 +17,10 @@
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;jp[e]g<br>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mp4<br>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mp3<br><br>
-        max size : 25MB<br><br>
+        max size : 25MB<br>
+        <span style="font-size: .7em;">(per file)<span><br><br>
         max files: 15<br>
-        (at a time)<br><br><br>
+        <span style="font-size: .7em;">(at a time)</span><br><br><br>
         <div style="font-size: .6em;">
         WARRANTY: none<br><br>
         this website is a work-in-progress.<br>

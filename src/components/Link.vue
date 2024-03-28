@@ -16,14 +16,14 @@ todo
         * login button
         * profile page
         
-  * youtube field
+  * URL uploads
   * admin panel
   * optional autodelete
   * log & display asset origin
-  * URL uploads
   * social media metadata
   * gallery / trending
   * load/resource balancing
+  * youtube field  // likely not to work without shell access
   
 -->
 
