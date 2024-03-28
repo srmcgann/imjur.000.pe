@@ -31,8 +31,8 @@ todo
   <div class="link" ref="anchor">
     <div class="linkThumb" ref="linkThumb" @click.prevent.stop="preview()" title="view this asset"></div>
     <!--#{{link.ct+1}}-->
-    <div class="copyLinkButton" @click.prevent.stop="copy()" title="copy link"></div><br>
-    <a :href="link.href" class="openButton" @click.prevent.stop="open()" title="open link"></a>
+    <div class="copyLinkButton" @click.prevent.stop="copy()" title="copy link to clipboard"></div><br>
+    <a :href="link.href" class="openButton" @click.prevent.stop="open()" title="open link in new tab"></a>
     <!-- <span style="visibility: hidden; position: absolute;" v-html="link.href" ref="href"></span> -->
     <!-- <span class="href" style="font-size: 1em" v-html="link.type"></span><br> -->
     <!-- <span class="href" style="font-size: 1em" v-html="'size: ' + link.size.toLocaleString('en-us')"></span><br> -->

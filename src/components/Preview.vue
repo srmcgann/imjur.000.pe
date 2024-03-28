@@ -4,7 +4,9 @@
       close/cancel
     </button>
     <div class="previewInner">
+      <div v-if="state.links.length > 1" class="leftButton" @click="prev()"></div>
       <div class="slideshow" ref="slideshow"></div>
+      <div v-if="state.links.length > 1" class="rightButton" @click="next()"></div>
     </div>
   </div>
 </template>
@@ -16,6 +18,16 @@ export default {
   methods: {
     close(){
       this.state.closePreview()
+    },
+    prev(){
+      let idx = ct -1
+      if(idx<0) idx = this.state.links.length-1
+      this.state.previewLink = this.state.links[idx]
+    },
+    next(){
+      let idx = ct +1
+      idx %= this.state.links.length
+      this.state.previewLink = this.state.links[idx]
     }
   },
   mounted(){
@@ -108,6 +120,23 @@ export default {
     height: 100%;
     width: 100%;
     border: 1px solid red;
+  }
+  .leftButton, .rightButton{
+    width: 200px
+    height: 200px;
+    position: fixed;
+    top: 50%;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: contain;
+  }
+  .leftButton{
+    background-image: url(leftButton.png);
+    left: 10px;
+  }
+  .rightButton{
+    background-image: url(rightButton.png);
+    right: 10px;
   }
   .previewInner{
     text-align: center;
