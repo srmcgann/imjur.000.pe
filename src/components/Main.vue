@@ -279,7 +279,7 @@ export default {
     height: 264px;
     padding-top: 0;
     padding-right: 28px;
-    animation: colorCycle 2s infinite linear;
+    animation: colorCycle 5s infinite linear;
   }
 </style>
 
