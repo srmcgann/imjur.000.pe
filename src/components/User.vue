@@ -21,7 +21,7 @@
       <div class="loggedIn">
         <div
           class="avatar"
-          :style="background-image: url(state.loggedInUser.avatar)"
+          :style="'background-image: url(state.loggedInUser.avatar)'"
           title="click for your prefrences"
         ></div>
       </div>
