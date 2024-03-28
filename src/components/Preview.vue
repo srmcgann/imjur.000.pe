@@ -64,6 +64,7 @@ export default {
       vid.style.width = '100%'
       vid.style.height = '100%'
       vid.style.objectFit = 'contain'
+      vid.style.background = '#000'
       vid.loop = true
       vid.style.transform = 'translate(-50%, -50%)'
       vid.oncanplay = () => {

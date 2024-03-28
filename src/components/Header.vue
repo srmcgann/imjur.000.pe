@@ -1,6 +1,6 @@
 <template>
   <div class="header">
-    <div class="headerImg" @click="window.location.reload()"></div>
+    <div class="headerImg" @click="reload()"></div>
   </div>
 </template>
 
@@ -13,6 +13,9 @@ export default {
     }
   },
   methods: {
+    reload(){
+      window.location.reload()
+    }
   },
   mounted(){
   }

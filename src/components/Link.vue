@@ -29,7 +29,7 @@ todo
 
 <template>
   <div class="link" ref="anchor">
-    <div class="linkThumb" ref="linkThumb" @click.prevent.stop="preview()"></div>
+    <div class="linkThumb" ref="linkThumb" @click.prevent.stop="preview()" title="view this asset"></div>
     <!--#{{link.ct+1}}-->
     <div class="copyLinkButton" @click.prevent.stop="copy()" title="copy link"></div><br>
     <a :href="link.href" class="openButton" @click.prevent.stop="open()" title="open link"></a>
@@ -179,6 +179,7 @@ export default {
     width: 200px;
     height: 113px;
     margin: 5px;
+    cursor: pointer;
     background-size: contain;
     background-position: 20px 20px;
     background-repeat: no-repeat;
