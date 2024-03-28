@@ -67,7 +67,7 @@ export default {
     },
     processUpload(files){
       this.state.uploadInprogress = true
-      this.state.modalContent = `<video src="loading.mp4" style="min-width:50vw; min-height: 50vh; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); pointer-events: none; opacity: .6;" loop autoplay muted></video>`
+      this.state.modalContent = `<div style="position: absolute;left:0;top:0;width:100%;height:100%;background:#000;"><video src="loading.mp4" style="min-width:50vw; min-height: 50vh; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); pointer-events: none; opacity: .6;" loop autoplay muted></video></div>`
       this.state.showModal = true
       
       this.$nextTick(()=>{

@@ -25,7 +25,7 @@ export default {
       case 'video': this.linkType = 'video'; break
     }
 
-    if(this.linkType == 'image'){
+    if(this.linkType == 'image' || this.linkType == 'audio'){
       let img = document.createElement('div')
       img.style.top = '50%'
       img.style.left = '50%'
@@ -38,7 +38,7 @@ export default {
       img.style.backgroundSize = 'contain'
       img.style.backgroundRepeat = 'no-repeat'
       img.style.backgroundPosition = 'center center'
-      img.style.backgroundImage = `url(${this.link.href})`
+      img.style.backgroundImage = `url(${this.linkType == 'audio' ? 'musicNote.png' : this.link.href})`
       this.$refs.slideshow.appendChild(img)
     }
     if(this.linkType == 'audio'){
@@ -54,8 +54,6 @@ export default {
       }
       this.$refs.slideshow.appendChild(audio)
       audio.src = this.link.href
-      let l
-      this.img.src = this.linkType == 'audio' ? 'musicNote.png' : 'thumb.php?res=uploads/' + (l=this.link.href.split('/'))[l.length-1].split('?')[0]
     }
     if(this.linkType == 'video'){
       let vid = document.createElement('video')
