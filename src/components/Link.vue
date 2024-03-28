@@ -84,7 +84,14 @@ export default {
       let h = this.h * scl
       this.x.drawImage(this.img,this.c.width/2-w/2,this.c.height/2-h/2,w,h)
       this.t += 1/60
-      if(this.t<2 || this.linkType == 'video') requestAnimationFrame(this.Draw)
+      switch(this.linkType){
+        case 'image':
+          if(!this.img.width) setTimeout(()=>{requestAnimationFrame(this.Draw)}, 200)
+          break
+        case 'video:
+          requestAnimationFrame(this.Draw)
+          break
+      }
     }
   },
   mounted(){
