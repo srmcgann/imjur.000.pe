@@ -1,13 +1,19 @@
 <template>
   <div class="header">
     <div class="headerImg" @click="reload()"></div>
+    <User :state="state" />
   </div>
 </template>
 
 <script>
+import User from './components/User'
+
 export default {
   name: 'Header',
   props: [ 'state' ],
+  components: {
+    User
+  },
   data(){
     return {
     }

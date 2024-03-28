@@ -18,10 +18,10 @@
 </template>
 
 <script>
-import Header from './components/Header'
 import Main from './components/Main'
-import Footer from './components/Footer'
 import Modal from './components/Modal'
+import Header from './components/Header'
+import Footer from './components/Footer'
 import Preview from './components/Preview'
 
 export default {
@@ -48,7 +48,8 @@ export default {
         closePreview: null,
         copy: null,
         next: null,
-        prev: null
+        prev: null,
+        login: null
       }
     }
   },
@@ -72,6 +73,9 @@ export default {
         this.state.showPreview = true
         this.state.previewLink = this.state.links[idx]
       })
+    },
+    login(){
+      console.log('logging in')
     },
     copy(val){
       let copyEl = document.createElement('div')
@@ -133,11 +137,6 @@ export default {
     }
   },
   mounted(){
-    this.state.closeModal = this.closeModal
-    this.state.closePreview = this.closePreview
-    this.state.prev = this.prev
-    this.state.next = this.next
-    this.state.copy = this.copy
     document.body.onkeydown = e =>{
       switch(e.keyCode){
         case 37:
@@ -152,6 +151,12 @@ export default {
         break
       }
     }
+    this.state.closeModal = this.closeModal
+    this.state.prev = this.prev
+    this.state.next = this.next
+    this.state.copy = this.copy
+    this.state.login = this.login
+    this.state.closePreview = this.closePreview
   }
 }
 </script>
