@@ -4,8 +4,8 @@
       close/cancel
     </button>
     <div class="previewInner">
-      <div v-if="state.links.length > 1" class="leftButton" @click="prev()"></div>
       <div class="slideshow" ref="slideshow"></div>
+      <div v-if="state.links.length > 1" class="leftButton" @click="prev()"></div>
       <div v-if="state.links.length > 1" class="rightButton" @click="next()"></div>
     </div>
   </div>
@@ -129,6 +129,7 @@ export default {
     background-repeat: no-repeat;
     background-position: center center;
     background-size: contain;
+    cursor: pointer;
   }
   .leftButton{
     background-image: url(../assets/leftButton.png);
