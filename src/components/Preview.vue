@@ -20,6 +20,11 @@ export default {
       this.state.closePreview()
     }
   },
+  data(){
+    return {
+      asset: null
+    }
+  },
   mounted(){
     switch(this.link.type.split('/')[0]){
       case 'image': this.linkType = 'image'; break
@@ -28,53 +33,56 @@ export default {
     }
 
     if(this.linkType == 'image' || this.linkType == 'audio'){
-      let img = document.createElement('div')
-      img.style.top = '50%'
-      img.style.left = '50%'
-      img.style.width = '100%'
-      img.style.height = '100%'
-      img.style.position = 'absolute'
-      img.style.transform = 'translate(-50%, -50%)'
-      img.style.objectFit = 'contain'
-      img.style.backgroundColor = '#000'
-      img.style.backgroundSize = 'contain'
-      img.style.backgroundRepeat = 'no-repeat'
-      img.style.backgroundPosition = 'center center'
-      img.style.backgroundImage = `url(${this.linkType == 'audio' ? 'musicNotes.svg' : this.link.href})`
-      this.$refs.slideshow.appendChild(img)
+      this.asset = document.createElement('div')
+      this.asset.style.top = '50%'
+      this.asset.style.left = '50%'
+      this.asset.style.width = '100%'
+      this.asset.style.height = '100%'
+      this.asset.style.position = 'absolute'
+      this.asset.style.transform = 'translate(-50%, -50%)'
+      this.asset.style.objectFit = 'contain'
+      this.asset.style.backgroundColor = '#000'
+      this.asset.style.backgroundSize = 'contain'
+      this.asset.style.backgroundRepeat = 'no-repeat'
+      this.asset.style.backgroundPosition = 'center center'
+      this.asset.style.backgroundImage = `url(${this.linkType == 'audio' ? 'musicNotes.svg' : this.link.href})`
+      this.$refs.slideshow.appendChild(this.asset)
     }
     if(this.linkType == 'audio'){
-      let audio = document.createElement('audio')
-      audio.controls = true
-      audio.style.position = 'absolute'
-      audio.style.left = '50%'
-      audio.style.top = '50%'
-      audio.loop = true
-      audio.style.transform = 'translate(-50%, -50%)'
-      audio.oncanplay = () => {
-        audio.play()
+      this.asset = document.createElement('audio')
+      this.asset.controls = true
+      this.asset.style.position = 'absolute'
+      this.asset.style.left = '50%'
+      this.asset.style.top = '50%'
+      this.asset.loop = true
+      this.asset.style.transform = 'translate(-50%, -50%)'
+      this.asset.oncanplay = () => {
+        this.asset.play()
       }
-      this.$refs.slideshow.appendChild(audio)
-      audio.src = this.link.href
+      this.$refs.slideshow.appendChild(this.asset)
+      this.asset.src = this.link.href
     }
     if(this.linkType == 'video'){
-      let vid = document.createElement('video')
-      vid.controls = true
-      vid.style.position = 'absolute'
-      vid.style.left = '50%'
-      vid.style.top = '50%'
-      vid.style.width = '100%'
-      vid.style.height = '100%'
-      vid.style.objectFit = 'contain'
-      vid.style.background = '#000'
-      vid.loop = true
-      vid.style.transform = 'translate(-50%, -50%)'
-      vid.oncanplay = () => {
-        vid.play()
+      this.asset = document.createElement('video')
+      this.asset.controls = true
+      this.asset.style.position = 'absolute'
+      this.asset.style.left = '50%'
+      this.asset.style.top = '50%'
+      this.asset.style.width = '100%'
+      this.asset.style.height = '100%'
+      this.asset.style.objectFit = 'contain'
+      this.asset.style.background = '#000'
+      this.asset.loop = true
+      this.asset.style.transform = 'translate(-50%, -50%)'
+      this.asset.oncanplay = () => {
+        this.asset.play()
       }
-      this.$refs.slideshow.appendChild(vid)
-      vid.src = this.link.href
+      this.$refs.slideshow.appendChild(this.asset.)
+      this.asset.src = this.link.href
     }
+  },
+  beforeUnmount(){
+    this.asset.src = ''
   }
 }
 </script>
