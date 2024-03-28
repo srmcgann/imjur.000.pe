@@ -9,6 +9,7 @@ todo
   ✔ tile-able cards (flex)
   ✔ log original file name
   ✔ lightbox sim / previews
+  * 
   * users, optional logins/profiles
     └-> * comments
         * votes
@@ -97,11 +98,7 @@ export default {
   mounted(){
     this.$refs.linkThumb.appendChild(this.c)
     this.x = this.c.getContext('2d')
-    switch(this.link.type.split('/')[0]){
-      case 'image': this.linkType = 'image'; break
-      case 'audio': this.linkType = 'audio'; break
-      case 'video': this.linkType = 'video'; break
-    }
+    this.linkType = this.link.type.split('/')[0]
     this.c.width = 500
     this.c.height = 500/1.77777778
     this.c.style.width = '200px'

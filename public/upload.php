@@ -46,6 +46,10 @@ error_reporting(E_ALL);
             $type = 'audio/mp3';
             $suffix = 'mp3';
           }
+          if($type == 'video/webm' && strpos($_FILES["uploads_$ct"]["name"], '.mp3') !== false){
+            $type = 'audio/mp3';
+            $suffix = 'mp3';
+          }
           $hash = hash_file('md5', "$uploadDir/$slug");
           
           $sql = "SELECT * FROM imjurUploads WHERE hash = \"$hash\"";
