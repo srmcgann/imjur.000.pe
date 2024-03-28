@@ -18,7 +18,7 @@
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mp4<br>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mp3<br><br>
         max size : 25MB<br><br>
-        max files: 25MB<br>
+        max files: 15<br>
         (at a time)<br><br><br>
         <div style="font-size: .6em;">
         WARRANTY: none<br><br>
@@ -184,7 +184,7 @@ export default {
     width: 340px;
     position: fixed;
     left: 50%;
-    top: 49%;
+    top: 43%;
     transform: translate(-50%, -50%);
     padding: 38px;
     border-radius: 32%;
