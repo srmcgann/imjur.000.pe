@@ -32,7 +32,7 @@ export default {
   .headerImg{
     cursor: pointer;
     height: 52px;
-    width: 100%;
+    width: 390px;
     background-position: 0 50%;
     background-image: url(../assets/header.png);
     background-repeat: no-repeat;
