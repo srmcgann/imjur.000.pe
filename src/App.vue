@@ -204,7 +204,7 @@ a{
 .buttons:focus{
   outline: none;
 }
-.buttons{
+button, .buttons{
   border: none;
   border-radius: 5px;
   background: #4f8;

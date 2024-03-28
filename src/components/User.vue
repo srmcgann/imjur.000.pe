@@ -1,5 +1,5 @@
 <template>
-  <div class="User">
+  <div class="user">
     <button @click="state.login()">
       login
     </button>
