@@ -85,7 +85,7 @@ export default {
         this.c.height = this.h
 
         let rsz = window.onresize = () => {
-          let el = this.document.body
+          let el = document.body
           let ar = el.clientWidth / el.clientHeight
           let tgt_ar = this.w/this.h
           let margin = 20
@@ -167,8 +167,9 @@ export default {
   }
   .slideshow{
     margin: 100px;
+    height: 100%;
+    width: 100%;
     border: 1px solid red;
-    background: #000;
   }
   .previewInner{
     text-align: center;
