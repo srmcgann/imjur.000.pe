@@ -1,19 +1,31 @@
 <template>
   <div class="user">
-    <button
-      @click="state.login()"
-      class="loginButton"
-      title="sign in"
-    >
-      login
-    </button>
-    <button
-      @click="state.register()"
-      class="loginButton"
-      title="register anonymously.\n\nwe only need a user name as\nsomething to attach your files to"
-    >
-      register
-    </button>
+    <div v-if="!state.loggedIn">
+      <button
+        @click="state.login()"
+        class="loginButton"
+        title="sign in"
+      >
+        login
+      </button>
+      <button
+        @click="state.register()"
+        class="loginButton"
+        style="top: 26px"
+        title="register anonymously.<br><br>we only need a user name as<br>something to attach your files to"
+      >
+        register
+      </button>
+    </div>
+    <div v-else>
+      <div class="loggedIn">
+        <div
+          class="avatar"
+          :style="background-image: url(state.loggedInUser.avatar)"
+          title="click for your prefrences"
+        ></div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -52,9 +64,19 @@ export default {
     min-width: 100px;
     position: absolute;
     left: 400px;
-    top: 2px;
+    top: 1px;
     border: 2px solid #0003;
     padding-top: 0;
     padding-bottom: 2px;
+  }
+  .loggedIn{
+    height: 49px;
+  }
+  .avatar{
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    background-color: #000;
+    border: 2px solid #40fa;
   }
 </style>

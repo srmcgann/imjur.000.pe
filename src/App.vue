@@ -3,6 +3,7 @@
     <Header :state="state" />
     <Main   :state="state" />
     <Footer :state="state" />
+    <LoginPrompt :state="state" v-if="state.showLoginPrompt"/>
     <Modal
       :state="state"
       v-if="state.showModal"
@@ -46,11 +47,27 @@ export default {
         previewLink: null,
         closeModal: null,
         closePreview: null,
+        closePrompts: null,
+        loggedInUser: {
+          avatar: null,
+        },
         copy: null,
         next: null,
         prev: null,
         login: null,
-        register: null
+        register: null,
+        regusername: '',
+        username: '',
+        password: '',
+        invalidLoginAttempt: false,
+        displayLoginRequired: false,
+        regpassword: '',
+        confirmpassword: '',
+        showLoginPrompt: false,
+        showRegister: false,
+        loggedIn: false
+        loggedInUser: null
+        loginPromptVisible: false
       }
     }
   },
@@ -77,9 +94,13 @@ export default {
     },
     login(){
       console.log('logging in')
+      this.state.showRegister = false
+      this.state.showLoginPrompt = true
     },
     register(){
       console.log('registering')
+      this.state.showLoginPrompt = true
+      this.state.showRegister = true
     },
     copy(val){
       let copyEl = document.createElement('div')
@@ -111,6 +132,9 @@ export default {
         }
       }
       setTimeout(()=>{reduceOpacity()}, 250)
+    },
+    closePrompts(){
+      this.state.showLoginPrompt = false
     },
     closeModal(){
       if(this.state.modalQueue.length){
@@ -161,6 +185,7 @@ export default {
     this.state.copy = this.copy
     this.state.login = this.login
     this.state.register = this.register
+    this.state.closePrompts = this.closePrompts
     this.state.closePreview = this.closePreview
   }
 }
