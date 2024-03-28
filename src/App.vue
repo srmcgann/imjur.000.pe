@@ -53,9 +53,9 @@ export default {
     }
   },
   methods:{
-    prev(link){
+    prev(){
       if(!this.state.showPreview) return
-      let idx = link.ct -1
+      let idx = this.state.previewLink.ct -1
       if(idx<0) idx = this.state.links.length-1
       this.state.showPreview = false
       this.$nextTick(()=>{
@@ -63,9 +63,9 @@ export default {
         this.state.previewLink = this.state.links[idx]
       })
     },
-    next(link){
+    next(){
       if(!this.state.showPreview) return
-      let idx = link.ct +1
+      let idx = this.state.previewLink.ct +1
       idx %= this.state.links.length
       this.state.showPreview = false
       this.$nextTick(()=>{
@@ -135,7 +135,7 @@ export default {
   mounted(){
     this.state.closeModal = this.closeModal
     this.state.closePreview = this.closePreview
-    this.state.pre = this.prev
+    this.state.prev = this.prev
     this.state.next = this.next
     this.state.copy = this.copy
     document.body.onkeydown = e =>{
