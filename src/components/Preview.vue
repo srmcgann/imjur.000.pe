@@ -85,7 +85,7 @@ export default {
         this.c.height = this.h
 
         let rsz = window.onresize = () => {
-          let el = this.$refs.slideshow
+          let el = this.document.body
           let ar = el.clientWidth / el.clientHeight
           let tgt_ar = this.w/this.h
           let margin = 20
