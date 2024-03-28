@@ -24,6 +24,7 @@ import Modal from './components/Modal'
 import Header from './components/Header'
 import Footer from './components/Footer'
 import Preview from './components/Preview'
+import LoginPrompt from './components/LoginPrompt'
 
 export default {
   name: 'App',
@@ -33,6 +34,7 @@ export default {
     Footer,
     Modal,
     Preview,
+    LoginPrompt,
   },
   data(){
     return {
