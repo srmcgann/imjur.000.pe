@@ -7,14 +7,9 @@
 </template>
 
 <script>
-import User from './components/User'
-
 export default {
   name: 'Login',
   props: [ 'state' ],
-  components: {
-    User
-  },
   data(){
     return {
     }

@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import User from './components/User'
+import User from './User'
 
 export default {
   name: 'Header',
