@@ -52,9 +52,12 @@ export default {
   },
   methods:{
     copy(val){
+      console.log(val)
       let copyEl = document.createElement('div')
       copyEl.innerHTML = val
-      copyEl.style.display = 'none'
+      copyEl.style.visibility = 'hidden'
+      copyEl.style.position = 'absolute'
+      console.log(copyEl)
       document.body.appendChild(copyEl)
       var range = document.createRange()
       range.selectNode(copyEl)
