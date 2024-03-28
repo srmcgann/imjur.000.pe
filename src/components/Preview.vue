@@ -20,12 +20,12 @@ export default {
       this.state.closePreview()
     },
     prev(){
-      let idx = ct -1
+      let idx = this.link.ct -1
       if(idx<0) idx = this.state.links.length-1
       this.state.previewLink = this.state.links[idx]
     },
     next(){
-      let idx = ct +1
+      let idx = this.link.ct +1
       idx %= this.state.links.length
       this.state.previewLink = this.state.links[idx]
     }
