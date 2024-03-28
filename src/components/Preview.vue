@@ -15,15 +15,15 @@
 export default {
   name: 'Preview',
   props: [ 'state', 'link' ],
-  methods: {
-    close(){
-      this.state.closePreview()
-    }
-  },
   data(){
     return {
       asset: null,
       linkType: ''
+    }
+  },
+  methods: {
+    close(){
+      this.state.closePreview()
     }
   },
   mounted(){
@@ -74,7 +74,7 @@ export default {
       this.asset.oncanplay = () => {
         this.asset.play()
       }
-      this.$refs.slideshow.appendChild(this.asset.)
+      this.$refs.slideshow.appendChild(this.asset)
       this.asset.src = this.link.href
     }
   },
