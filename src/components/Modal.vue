@@ -4,7 +4,7 @@
       v-if="!this.state.uploadInProgress"
       @click="close()"
       class="cancelButton"
-      title="close this view"
+      title="close this view [ESC]"
     >
       close/cancel
     </button>

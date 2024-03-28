@@ -53,9 +53,9 @@ export default {
     }
   },
   methods:{
-    prev(){
+    prev(link){
       if(!this.state.showPreview) return
-      let idx = this.link.ct -1
+      let idx = link.ct -1
       if(idx<0) idx = this.state.links.length-1
       this.state.showPreview = false
       this.$nextTick(()=>{
@@ -63,9 +63,9 @@ export default {
         this.state.previewLink = this.state.links[idx]
       })
     },
-    next(){
+    next(link){
       if(!this.state.showPreview) return
-      let idx = this.link.ct +1
+      let idx = link.ct +1
       idx %= this.state.links.length
       this.state.showPreview = false
       this.$nextTick(()=>{
