@@ -51,7 +51,9 @@ export default {
     }
   },
   methods:{
-    copy(copyEl){
+    copy(val){
+      let copyEl = document.createElement('div')
+      copyEl.innerHTML = val
       var range = document.createRange()
       range.selectNode(copyEl)
       window.getSelection().removeAllRanges()
