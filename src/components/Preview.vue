@@ -19,7 +19,6 @@ export default {
     }
   },
   mounted(){
-    this.x = this.c.getContext('2d')
     switch(this.link.type.split('/')[0]){
       case 'image': this.linkType = 'image'; break
       case 'audio': this.linkType = 'audio'; break

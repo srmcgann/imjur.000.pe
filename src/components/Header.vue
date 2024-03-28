@@ -1,6 +1,6 @@
 <template>
   <div class="header">
-    <div class="headerImg" @click="window.location.refresh"></div>
+    <div class="headerImg" @click="window.location.reload()"></div>
   </div>
 </template>
 
@@ -27,6 +27,7 @@ export default {
     font-size: 20px;
   }
   .headerImg{
+    cursor: pointer;
     height: 52px;
     width: 100%;
     background-position: 0 50%;
