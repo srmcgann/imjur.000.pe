@@ -52,10 +52,10 @@ export default {
   },
   methods:{
     copy(val){
-      console.log(val)
+
       let copyEl = document.createElement('div')
       copyEl.innerHTML = val
-      copyEl.style.visibility = 'hidden'
+      copyEl.style.opacity = .01
       copyEl.style.position = 'absolute'
       console.log(copyEl)
       document.body.appendChild(copyEl)
