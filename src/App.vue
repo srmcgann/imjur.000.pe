@@ -308,4 +308,35 @@ button, .buttons{
   left: 50%;
   transform: translate(-50%);
 }
+.input{
+  text-align: center;
+  font-size: 24px;
+  background: #0004;
+  border: none;
+  border-bottom: 2px solid #2fa;
+  width: 300px;
+  color: #ffa;
+}
+input[type=text]{
+  font-size: 24px;
+  background: #0004;
+  border: none;
+  border-bottom: 2px solid #2fa;
+  width: 300px;
+  color: #ffa;
+}
+input[type=checkbox]{
+  transform: scale(1.5);
+  margin: 8px;
+  margin-left: 5px;
+}
+input:focus{
+  outline: none;
+}
+button:focus{
+  outline: none;
+}
+select:focus{
+  outline: none;
+}
 </style>

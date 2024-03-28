@@ -60,7 +60,7 @@ export default {
     background: #4f8;
     color: #022;
     text-shadow: 1px 1px 2px #000;
-    font-size: 18px;
+    font-size: 16px;
     min-width: 100px;
     position: absolute;
     left: 400px;
