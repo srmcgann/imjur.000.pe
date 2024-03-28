@@ -5,8 +5,8 @@
     </button>
     <div class="previewInner">
       <div class="slideshow" ref="slideshow"></div>
-      <div v-if="state.links.length > 1" class="leftButton" @click="prev()"></div>
-      <div v-if="state.links.length > 1" class="rightButton" @click="next()"></div>
+      <div v-if="state.links.length > 1" class="leftButton" @click="state.prev()" title="view previous asset [left arrow]"></div>
+      <div v-if="state.links.length > 1" class="rightButton" @click="state.next()" title="view next asset [right arrow]"></div>
     </div>
   </div>
 </template>
@@ -18,24 +18,6 @@ export default {
   methods: {
     close(){
       this.state.closePreview()
-    },
-    prev(){
-      let idx = this.link.ct -1
-      if(idx<0) idx = this.state.links.length-1
-      this.state.showPreview = false
-      this.$nextTick(()=>{
-        this.state.showPreview = true
-        this.state.previewLink = this.state.links[idx]
-      })
-    },
-    next(){
-      let idx = this.link.ct +1
-      idx %= this.state.links.length
-      this.state.showPreview = false
-      this.$nextTick(()=>{
-        this.state.showPreview = true
-        this.state.previewLink = this.state.links[idx]
-      })
     }
   },
   mounted(){
@@ -130,10 +112,11 @@ export default {
     border: 1px solid red;
   }
   .leftButton, .rightButton{
-    width: 50px;
-    height: 50px;
+    width: 100px;
+    height: 100px;
     position: fixed;
     top: 50%;
+    transform: translate(0, -50%);
     background-repeat: no-repeat;
     background-position: center center;
     background-size: contain;

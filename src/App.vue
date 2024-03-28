@@ -47,17 +47,37 @@ export default {
         closeModal: null,
         closePreview: null,
         copy: null,
+        next: null,
+        prev: null
       }
     }
   },
   methods:{
+    prev(){
+      if(!this.state.showPreview) return
+      let idx = this.link.ct -1
+      if(idx<0) idx = this.state.links.length-1
+      this.state.showPreview = false
+      this.$nextTick(()=>{
+        this.state.showPreview = true
+        this.state.previewLink = this.state.links[idx]
+      })
+    },
+    next(){
+      if(!this.state.showPreview) return
+      let idx = this.link.ct +1
+      idx %= this.state.links.length
+      this.state.showPreview = false
+      this.$nextTick(()=>{
+        this.state.showPreview = true
+        this.state.previewLink = this.state.links[idx]
+      })
+    },
     copy(val){
-
       let copyEl = document.createElement('div')
       copyEl.innerHTML = val
       copyEl.style.opacity = .01
       copyEl.style.position = 'absolute'
-      console.log(copyEl)
       document.body.appendChild(copyEl)
       var range = document.createRange()
       range.selectNode(copyEl)
@@ -115,7 +135,19 @@ export default {
   mounted(){
     this.state.closeModal = this.closeModal
     this.state.closePreview = this.closePreview
+    this.state.pre = this.prev
+    this.state.next = this.next
     this.state.copy = this.copy
+    document.body.onkeydown = e =>{
+      switch(e.keyCode){
+        case 37:
+          prev()
+        break
+        case 39:
+          next()
+        break
+      }
+    }
   }
 }
 </script>
