@@ -180,20 +180,29 @@ export default {
     text-align: center;
   }
   @keyframes colorCycle{
+    0% {
+      background-color: #f002;
+      box-shadow: 0 0 150px 150px #f002;
+    }
     20% {
-      background-color: #f80;
+      background-color: #f802;
+      box-shadow: 0 0 150px 150px #f802;
     }
     40% {
-      background-color: #ff0;
+      background-color: #ff02;
+      box-shadow: 0 0 150px 150px #ff02;
     }
     60% {
-      background-color: #0f4;
+      background-color: #0f42;
+      box-shadow: 0 0 150px 150px #0f42;
     }
     80% {
-      background-color: #04f;
+      background-color: #04f2;
+      box-shadow: 0 0 150px 150px #04f2;
     }
     100% {
-      background-color: #40f;
+      background-color: #40f2;
+      box-shadow: 0 0 150px 150px #40f2;
     }
   }
   #dropTargetCaption{
@@ -206,7 +215,7 @@ export default {
     padding: 38px;
     border-radius: 32%;
     background-color: #f002;
-    box-shadow: 0 0 150px 150px #0f02;
+    box-shadow: 0 0 150px 150px #f002;
     height: 264px;
     padding-top: 0;
     padding-right: 28px;
