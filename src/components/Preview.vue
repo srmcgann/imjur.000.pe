@@ -132,7 +132,7 @@ export default {
       vid.oncanplay = () => {
         vid.play()
       }
-      this.$refs.slideshow.appendChild(video)
+      this.$refs.slideshow.appendChild(vid)
       vid.src = this.link.href
     }
   }
