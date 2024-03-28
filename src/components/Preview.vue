@@ -22,12 +22,20 @@ export default {
     prev(){
       let idx = this.link.ct -1
       if(idx<0) idx = this.state.links.length-1
-      this.state.previewLink = this.state.links[idx]
+      this.state.showPreview = false
+      this.$nextTick(()=>{
+        this.state.showPreview = true
+        this.state.previewLink = this.state.links[idx]
+      })
     },
     next(){
       let idx = this.link.ct +1
       idx %= this.state.links.length
-      this.state.previewLink = this.state.links[idx]
+      this.state.showPreview = false
+      this.$nextTick(()=>{
+        this.state.showPreview = true
+        this.state.previewLink = this.state.links[idx]
+      })
     }
   },
   mounted(){
@@ -122,8 +130,8 @@ export default {
     border: 1px solid red;
   }
   .leftButton, .rightButton{
-    width: 200px;
-    height: 200px;
+    width: 50px;
+    height: 50px;
     position: fixed;
     top: 50%;
     background-repeat: no-repeat;
