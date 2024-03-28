@@ -22,15 +22,12 @@ export default {
   },
   data(){
     return {
-      asset: null
+      asset: null,
+      linkType: ''
     }
   },
   mounted(){
-    switch(this.link.type.split('/')[0]){
-      case 'image': this.linkType = 'image'; break
-      case 'audio': this.linkType = 'audio'; break
-      case 'video': this.linkType = 'video'; break
-    }
+    this.linkType = this.link.type.split('/')[0]
 
     if(this.linkType == 'image' || this.linkType == 'audio'){
       this.asset = document.createElement('div')
