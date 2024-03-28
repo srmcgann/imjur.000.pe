@@ -2,15 +2,17 @@
   <div class="user">
     <button
       @click="state.login()"
-      class="loginButton">
-      login
+      class="loginButton"
       title="sign in"
+    >
+      login
     </button>
     <button
       @click="state.register()"
-      class="loginButton">
-      register
+      class="loginButton"
       title="register anonymously.\n\nwe only need a user name as\nsomething to attach your files to"
+    >
+      register
     </button>
   </div>
 </template>
