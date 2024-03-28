@@ -141,10 +141,10 @@ export default {
     document.body.onkeydown = e =>{
       switch(e.keyCode){
         case 37:
-          prev()
+          this.prev()
         break
         case 39:
-          next()
+          this.next()
         break
         case 27:
           this.state.showPreview = false
