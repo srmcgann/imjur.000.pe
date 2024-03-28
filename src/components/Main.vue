@@ -179,6 +179,23 @@ export default {
     box-sizing: border-box;
     text-align: center;
   }
+  @keyframes colorCycle{
+    20% {
+      background-color: #f80;
+    }
+    40% {
+      background-color: #ff0;
+    }
+    60% {
+      background-color: #0f4;
+    }
+    80% {
+      background-color: #04f;
+    }
+    100% {
+      background-color: #40f;
+    }
+  }
   #dropTargetCaption{
     display: inline-block;
     width: 340px;
@@ -188,11 +205,12 @@ export default {
     transform: translate(-50%, -50%);
     padding: 38px;
     border-radius: 32%;
-    background: #0f02;
+    background-color: #f002;
     box-shadow: 0 0 150px 150px #0f02;
     height: 264px;
     padding-top: 0;
     padding-right: 28px;
+    animation: colorCycle 2s infinite linear;
   }
 </style>
 
