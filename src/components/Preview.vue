@@ -122,7 +122,7 @@ export default {
     border: 1px solid red;
   }
   .leftButton, .rightButton{
-    width: 200px
+    width: 200px;
     height: 200px;
     position: fixed;
     top: 50%;
