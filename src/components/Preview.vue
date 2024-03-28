@@ -26,7 +26,7 @@ export default {
     }
 
     if(this.linkType == 'image'){
-      this.img = document.createElement('div')
+      let img = document.createElement('div')
       img.style.top = '50%'
       img.style.left = '50%'
       img.style.width = '100%'
