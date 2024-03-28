@@ -19,10 +19,10 @@
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mp3<br><br>
         max size : 25MB<br><br>
         max files: 25MB<br>
-        (at a time)<br><br>
-        <div style="font-size: .7em;">
+        (at a time)<br><br><br>
+        <div style="font-size: .6em;">
         WARRANTY: none<br><br>
-        this is a work-in-progress.<br>
+        this website is a work-in-progress.<br>
         your files will likely be deleted</div>
       </div>
       <div v-if="state.links.length" class="links">
