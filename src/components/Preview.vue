@@ -62,7 +62,7 @@ export default {
     this.c.style.width = '200px'
     this.c.style.height = '113px'
     this.c.style.borderRadius = '20px'
-    if(this.linkType == 'video'){
+    if(0 && this.linkType == 'video'){
       this.img = document.createElement('video')
       this.img.loop = true
       this.img.muted = true
@@ -132,7 +132,7 @@ export default {
       vid.oncanplay = () => {
         vid.play()
       }
-      this.$refs.slideshow.appendChild(audio)
+      this.$refs.slideshow.appendChild(video)
       vid.src = this.link.href
     }
   }

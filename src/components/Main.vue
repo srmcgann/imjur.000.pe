@@ -3,6 +3,7 @@
     <div
       id="dropTarget"
       class="dropTarget"
+      :style="state.links.length ? '' : 'cursor: pointer;'"
       @dragover.prevent
       @drop.prevent="dropFiles($event)"
       @click="loadFiles()"
@@ -151,10 +152,10 @@ export default {
     box-sizing: border-box;
     text-align: center;
   }
-  .dropTarget:hover{
+  /*.dropTarget:hover{
     background-color: #0648;
     cursor: pointer;
-  }
+  }*/
   .dropTarget{
     color: #0ff;
     display: inline-block;
