@@ -120,7 +120,7 @@ export default {
         this.Draw()
       }
       let l
-      this.img.src = this.linkType == 'audio' ? 'musicNote.png' : 'thumb.php?res=uploads/' + (l=this.link.href.split('/'))[l.length-1].split('?')[0]
+      this.img.src = this.linkType == 'audio' ? 'musicNotes.svg' : 'thumb.php?res=uploads/' + (l=this.link.href.split('/'))[l.length-1].split('?')[0]
     }
   }
 }

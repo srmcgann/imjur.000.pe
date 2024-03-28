@@ -38,7 +38,7 @@ export default {
       img.style.backgroundSize = 'contain'
       img.style.backgroundRepeat = 'no-repeat'
       img.style.backgroundPosition = 'center center'
-      img.style.backgroundImage = `url(${this.linkType == 'audio' ? 'musicNote.png' : this.link.href})`
+      img.style.backgroundImage = `url(${this.linkType == 'audio' ? 'musicNotes.svg' : this.link.href})`
       this.$refs.slideshow.appendChild(img)
     }
     if(this.linkType == 'audio'){
