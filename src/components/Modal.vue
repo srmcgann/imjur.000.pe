@@ -1,6 +1,11 @@
 <template>
   <div class="modal">
-    <button @click="close()" class="cancelButton" title="close this view">
+    <button
+      v=if="!this.state.uploadInProgress"
+      @click="close()"
+      class="cancelButton"
+      title="close this view"
+    >
       close/cancel
     </button>
     <div class="modalInner" v-html="content"></div>

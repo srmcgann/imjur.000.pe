@@ -146,6 +146,10 @@ export default {
         case 39:
           next()
         break
+        case 27:
+          this.state.showPreview = false
+          if(!this.state.uploadInProgress) this.state.showModal = false
+        break
       }
     }
   }
