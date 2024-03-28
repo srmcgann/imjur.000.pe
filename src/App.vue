@@ -49,7 +49,8 @@ export default {
         copy: null,
         next: null,
         prev: null,
-        login: null
+        login: null,
+        register: null
       }
     }
   },
@@ -76,6 +77,9 @@ export default {
     },
     login(){
       console.log('logging in')
+    },
+    register(){
+      console.log('registering')
     },
     copy(val){
       let copyEl = document.createElement('div')
@@ -156,6 +160,7 @@ export default {
     this.state.next = this.next
     this.state.copy = this.copy
     this.state.login = this.login
+    this.state.register = this.register
     this.state.closePreview = this.closePreview
   }
 }
