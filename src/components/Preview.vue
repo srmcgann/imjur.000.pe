@@ -131,11 +131,11 @@ export default {
     background-size: contain;
   }
   .leftButton{
-    background-image: url(leftButton.png);
+    background-image: url(../assets/leftButton.png);
     left: 10px;
   }
   .rightButton{
-    background-image: url(rightButton.png);
+    background-image: url(../assets/rightButton.png);
     right: 10px;
   }
   .previewInner{
