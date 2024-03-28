@@ -19,7 +19,6 @@ export default {
     }
   },
   mounted(){
-    this.$refs.slideshow.appendChild(this.c)
     this.x = this.c.getContext('2d')
     switch(this.link.type.split('/')[0]){
       case 'image': this.linkType = 'image'; break
@@ -40,6 +39,7 @@ export default {
       img.style.backgroundRepeat = 'no-repeat'
       img.style.backgroundPosition = 'center center'
       img.style.backgroundImage = `url(${this.link.href})`
+      this.$refs.slideshow.appendChild(img)
     }
     if(this.linkType == 'audio'){
       let audio = document.createElement('audio')
