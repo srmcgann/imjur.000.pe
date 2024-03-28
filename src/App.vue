@@ -54,12 +54,15 @@ export default {
     copy(val){
       let copyEl = document.createElement('div')
       copyEl.innerHTML = val
+      copyEl.style.display = 'none'
+      document.body.appendChild(copyEl)
       var range = document.createRange()
       range.selectNode(copyEl)
       window.getSelection().removeAllRanges()
       window.getSelection().addRange(range)
       document.execCommand("copy")
       window.getSelection().removeAllRanges()
+      copyEl.remove()
       let el = document.querySelector('#copyConfirmation')
       el.style.display = 'block';
       el.style.opacity = 1
