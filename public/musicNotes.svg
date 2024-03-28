@@ -11,14 +11,14 @@ viewBox="0 0 279.4 215.9"
  <defs>
   <style type="text/css">
    <![CDATA[
-    .str0 {stroke:#40f8;stroke-width:0.0898}
-    .str1 {stroke:#40f8;stroke-width:0.3527}
-    .str2 {stroke:#40f8;stroke-width:1.8128;stroke-linecap:round}
+    .str0 {stroke:#205;stroke-width:0.0898}
+    .str1 {stroke:#205;stroke-width:0.3527}
+    .str2 {stroke:#205;stroke-width:1.8128;stroke-linecap:round}
     .fil3 {fill:none}
-    .fil2 {fill:#40f8}
-    .fil0 {fill:#40f8}
+    .fil2 {fill:#205}
+    .fil0 {fill:#205}
     .fil1 {fill:#000}
-    .fil4 {fill:#40f8;fill-rule:nonzero}
+    .fil4 {fill:#205;fill-rule:nonzero}
    ]]>
   </style>
  </defs>
