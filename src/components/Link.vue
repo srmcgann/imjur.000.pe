@@ -88,7 +88,7 @@ export default {
         case 'image':
           if(!this.img.width) setTimeout(()=>{requestAnimationFrame(this.Draw)}, 200)
           break
-        case 'video:
+        case 'video':
           requestAnimationFrame(this.Draw)
           break
       }
