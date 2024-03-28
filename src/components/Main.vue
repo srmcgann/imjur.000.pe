@@ -11,13 +11,15 @@
     >
       <div ref="dropTargetCaption" id="dropTargetCaption">
         throw sum filez [click/drop]<br><br>
-        accepted: gif<br>
+        accepted : gif<br>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;web[p/m]<br>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;png<br>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;jp[e]g<br>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mp4<br>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mp3<br><br>
-        max size: 25MB<br><br>
+        max size : 25MB<br><br>
+        max files: 25MB<br>
+        (at a time)<br><br>
         <div style="font-size: .7em;">
         WARRANTY: none<br><br>
         this is a work-in-progress.<br>

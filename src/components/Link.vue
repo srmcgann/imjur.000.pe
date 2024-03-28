@@ -4,10 +4,11 @@ todo
   ✔ fix video & audio thumbnails
   ✔ file hash unifies same-upload sources
   ✔ fix loading animations
-  ✔  preload loading (and other) assets
-  ✔  display errors
+  ✔ preload loading (and other) assets
+  ✔ display errors
   ✔ tile-able cards (flex)
   ✔ log original file name
+  ✔ lightbox sim / previews
   * users, optional logins/profiles
     └-> * comments
         * votes
@@ -18,7 +19,6 @@ todo
   * youtube field
   * admin panel
   * optional autodelete
-  * lightbox sim / previews
   * log & display asset origin
   * URL uploads
   * social media metadata
