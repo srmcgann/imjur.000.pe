@@ -65,9 +65,9 @@ export default {
         confirmpassword: '',
         showLoginPrompt: false,
         showRegister: false,
-        loggedIn: false
-        loggedInUser: null
-        loginPromptVisible: false
+        loggedIn: false,
+        loggedInUser: null,
+        loginPromptVisible: false,
       }
     }
   },
