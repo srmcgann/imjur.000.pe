@@ -59,6 +59,7 @@ export default {
         closeModal: null,
         closePreview: null,
         closePrompts: null,
+        defaultAvatar: 'avatarDefault.png',
         loggedInUser: {
           avatar: 'avatarDefault.png',
         },
