@@ -6,5 +6,4 @@
   $db       = "if0_35882111_imjur";
   $port     = '3306';
   $link     = mysqli_connect($db_host,$db_user,$db_pass,$db,$port);
-  $baseURL  = "https://whr.rf.gd/Δ";
 ?>
