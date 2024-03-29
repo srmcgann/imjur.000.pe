@@ -331,7 +331,7 @@ export default {
           document.cookie = v + '; expires=' + (new Date(0)).toUTCString() + '; path=/; domain=' + this.state.rootDomain
         }
       })
-      if(this.state.search.string != '') this.state.search.demos = this.state.search.demos.filter(v=>!v.private)
+      //if(this.state.search.string != '') this.state.search.demos = this.state.search.demos.filter(v=>!v.private)
       switch(this.state.mode){
         case 'user':
         this.state.user.demos = this.state.user.demos.filter(v=>!v.private)
