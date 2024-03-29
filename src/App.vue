@@ -155,7 +155,7 @@ export default {
         let sendData = {
           userName: this.state.loggedinUserName, passhash: this.state.passhash,
         }
-        fetch(checkEnabled.php',{
+        fetch('checkEnabled.php',{
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
