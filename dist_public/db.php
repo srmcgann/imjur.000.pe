@@ -1,5 +1,4 @@
 <?php 
-  error_reporting(E_ERROR | E_PARSE);
   $db_user  = 'if0_35882111';
   $db_pass  = 'GNS1oMHbsX';
   $db_host  = 'sql309.infinityfree.com';
