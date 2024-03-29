@@ -230,7 +230,7 @@ export default{
 }
 </script>
 
-<style>
+<style scoped>
 .LoginPrompt{
   position: fixed;
   width: 100vw;
