@@ -41,6 +41,6 @@
     global $link;
     $sql='SELECT * FROM imjurUsers WHERE name LIKE "'.$userName.'"';
     $res = mysqli_query($link, $sql);
-    echo json_encode(mysqli_num_rows($res) === 0);
+    return mysqli_num_rows($res) === 0;
   }
 ?>
