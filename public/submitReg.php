@@ -1,6 +1,6 @@
 <?php
-  require('db.php');
-  require('functions.php');
+  require_once('db.php');
+  require_once('functions.php');
   $baseURL = $_SERVER['REQUEST_URI'];
 
   function escapeUserName($userName, $id){
