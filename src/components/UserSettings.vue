@@ -78,6 +78,7 @@
         ref="cancelButton"
         :disabled="!validate"
         :class="{'disabledButton': !validate}"
+        class="userSettingsButton"
       >save</button>      
       <div class="spacerDiv"></div>
       <button @click="closePrompt()"
@@ -85,6 +86,7 @@
         v-on:keydown.shift.tab="$refs.cancelButton.focus()"
         ref="cancelButton"
         style="background: #faa"
+        class="userSettingsButton"
       >close / cancel</button>
       <input style="opacity: 0; position: absolute;z-index: -1" ref="endTabAnchor"
         v-on:keydown.shift.tab="$refs.confirmnewassword.focus()"
@@ -265,6 +267,9 @@ export default{
 }
 .avatarInput{
   font-size: 16px!important;
+}
+.userSettingsButton{
+  margin: 5px;
 }
 </style>
 

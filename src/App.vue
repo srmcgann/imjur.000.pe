@@ -430,6 +430,7 @@ export default {
         break
         case 27:
           this.state.showPreview = false
+          this.closePrompts()
           if(!this.state.uploadInProgress) this.state.showModal = false
         break
       }
