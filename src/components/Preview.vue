@@ -97,7 +97,7 @@ export default {
   .cancelButton{
     background: #822;
     color: #f88;
-    text-shadow: 1px 1px 2px #000;
+    text-shadow: 1px 1px 3px #40f;
     font-weight: 900;
     width: 125px;
     font-family: Courier Prime;

@@ -225,7 +225,7 @@ export default {
           this.state.loggedIn= true
           this.state.loggedinUserName = this.state.username
           this.state.loggedinUserID = +data[2]
-          this.state.fetchUserData(this.state.loggedinUserID)
+          //this.state.fetchUserData(this.state.loggedinUserID)
           this.state.isAdmin = +data[4]
           this.state.passhash = data[1]
           this.setCookie()
@@ -463,7 +463,7 @@ button, .buttons{
   border-radius: 5px;
   background: #4f8;
   color: #000;
-  text-shadow: 1px 1px 2px #000;
+  text-shadow: 1px 1px 3px #40f;
   font-size: 18px;
   min-width: 80px;
 }
