@@ -47,7 +47,7 @@ export default {
   },
   methods: {
     showSettings(){
-      this.state.showUserSettings()
+      this.state.showUserSettings = true
     },
     login(){
       this.state.showRegister = false
