@@ -176,7 +176,7 @@ export default{
             this.state.userName = this.state.regusername
             console.log('login succeeded!')
             this.state.loggedIn= true
-            this.state.loggedinUserName = this.state.username
+            this.state.loggedinUserName = this.state.regusername
             this.state.loggedinUserID = +data[2]
             //this.state.fetchUserData(this.state.loggedinUserID)
             this.state.isAdmin = +data[4]
