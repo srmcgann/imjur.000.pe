@@ -1,4 +1,4 @@
-<?
+<?php
   require_once('db.php');
   $data = json_decode(file_get_contents('php://input'));
   $userName = mysqli_real_escape_string($link, $data->{'userName'});
@@ -11,7 +11,7 @@
       $row['enabled'],
       $row['id'],
       $row['avatar'],
-      $row['admin'],
+      $row['admin']
       //$row['demoPostsPerPage']
     ]);
   } else {
