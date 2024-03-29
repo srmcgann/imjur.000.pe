@@ -158,10 +158,10 @@ export default {
     box-sizing: border-box;
     text-align: center;
   }
-  /*.dropTarget:hover{
+  .dropTarget:hover{
     background-color: #0648;
     cursor: pointer;
-  }*/
+  }
   .dropTarget{
     color: #0ff;
     display: inline-block;
@@ -175,7 +175,7 @@ export default {
     border: 1px solid #4088;
     background-color: #0468;
     width: 100%;
-    min-height: 100%;
+    min-height: calc(100% - 10px);
     box-sizing: border-box;
   }
   .links{

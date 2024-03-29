@@ -1,6 +1,6 @@
 <template>
   <div class="footer">
-    <span class="title" v-html="state.footerMsg"></span>
+    <span v-html="state.footerMsg"></span>
   </div>
 </template>
 
