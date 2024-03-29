@@ -185,6 +185,7 @@ export default{
             this.state.setCookie()
             this.state.closePrompts()
             this.state.invalidLoginAttemp = false
+            this.state.checkLogin()
             //this.state.userInfo[this.state.loggedinUserID] = {}
             //this.state.userInfo[this.state.loggedinUserID].name = this.state.regusername
             //this.state.userInfo[this.state.loggedinUserID].avatar = data[3]

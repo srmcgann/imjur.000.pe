@@ -78,6 +78,7 @@ export default {
         displayLoginRequired: false,
         userSettingsVisible: false,
         regpassword: '',
+        checkLogin: null,
         confirmpassword: '',
         showLoginPrompt: false,
         showRegister: false,
@@ -359,30 +360,6 @@ export default {
       this.state.loggedinUserID = this.state.loggedinUserName = ''
       window.location.reload()
     },
-    logout(){
-      let cookies = document.cookie
-      cookies.split(';').map(v=>{
-        if(v.indexOf('autoplay')==-1){
-          document.cookie = v + '; expires=' + (new Date(0)).toUTCString() + '; path=/; domain=' + this.state.rootDomain
-        }
-      })
-      //if(this.state.search.string != '') this.state.search.demos = this.state.search.demos.filter(v=>!v.private)
-      switch(this.state.mode){
-        case 'user':
-        //this.state.user.demos = this.state.user.demos.filter(v=>!v.private)
-        break
-        case 'single':
-        //this.state.demos = this.state.demos.filter(v=>!v.private)
-        break
-        case 'default':
-        //this.state.landingPage.demos = this.state.landingPage.demos.filter(v=>!v.private)
-        break
-      }
-      this.state.loggedin = false
-      this.state.isAdmin = false
-      this.state.loggedinUserID = this.state.loggedinUserName = ''
-      window.location.reload()
-    },
     checkLogin(){
       let l = (document.cookie).split(';').filter(v=>v.split('=')[0].trim()==='loggedinuser')
       if(l.length){
@@ -445,6 +422,7 @@ export default {
     this.state.getPages = this.getPages
     this.state.getAvatar = this.getAvatar
     this.state.setCookie = this.setCookie
+    this.state.checkLogin = this.checkLogin
     this.state.closePrompts = this.closePrompts
     this.state.closePreview = this.closePreview
     this.state.showUserSettings = this.showUserSettings
