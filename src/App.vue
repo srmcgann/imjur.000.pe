@@ -75,6 +75,7 @@ export default {
         loggedIn: false,
         loggedInUser: null,
         loginPromptVisible: false,
+        getPages: null
       }
     }
   },
@@ -202,6 +203,9 @@ export default {
       document.cookie = 'autoplay=' + this.state.autoplay + '; expires=' + (new Date((Date.now()+3153600000000))).toUTCString() + '; path=/; domain=' + this.state.rootDomain
       document.cookie = 'showControls=' + this.state.showControls + '; expires=' + (new Date((Date.now()+3153600000000))).toUTCString() + '; path=/; domain=' + this.state.rootDomain
     },
+    getPages(){
+      console.log('login succeeded!')
+    }
     login(){
       let sendData = {userName: this.state.username, password: this.state.password}
       fetch('login.php',{
@@ -389,6 +393,7 @@ export default {
     this.state.register = this.register
     this.state.closePrompts = this.closePrompts
     this.state.closePreview = this.closePreview
+    this.state.getPages = this.getPages
     this.state.setCookie = this.setCookie
     this.checkLogin()
   }
