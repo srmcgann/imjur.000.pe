@@ -20,7 +20,7 @@ error_reporting(E_ALL);
   $available = checkUserNameAvailability(urlencode($userName));
   if($available && $password){
     $hash = password_hash($password, PASSWORD_DEFAULT);
-    $sql = 'INSERT INTO imjurUsers (name, escaped_name, passhash, avatar) VALUES("'.$userName.'", "", "'.$hash.'","$avatar");';
+    $sql = "INSERT INTO imjurUsers (name, escaped_name, passhash, avatar) VALUES(\"$userName\", \"\", \"$hash\",\"$avatar\")";
     mysqli_query($link, $sql);
     $id = mysqli_insert_id($link);
     $escaped_name = escapeUserName($userName, $id);
