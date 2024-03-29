@@ -48,6 +48,7 @@ export default {
         showModal: false,
         setCookie: null,
         mode: null,
+        getAvatar: null,
         showPreview: false,
         rootDomain: location.hostname,
         modalContent: '',
@@ -156,6 +157,14 @@ export default {
         this.state.showModal = false
         this.state.modalContent = ''
       }
+    },
+    getAvatar(id){
+      //if(typeof this.state.userInfo[id] == 'undefined' || !this.state.userInfo[id].avatar){
+        return this.state.defaultAvatar
+      //} else {
+      //  this.state.userInfo[id].avatar = this.state.userInfo[id].avatar.replace(' ','')
+      //  return this.state.userInfo[id].avatar
+      //}
     },
     closePreview(){
       this.state.showPreview = false
@@ -431,6 +440,7 @@ export default {
     this.state.logout = this.logout
     this.state.register = this.register
     this.state.getPages = this.getPages
+    this.state.getAvatar = this.getAvatar
     this.state.setCookie = this.setCookie
     this.state.closePrompts = this.closePrompts
     this.state.closePreview = this.closePreview
