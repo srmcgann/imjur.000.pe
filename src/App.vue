@@ -227,6 +227,18 @@ a:visited{
   color: #40f;
 }
 button{
+  font-family: Play;
+  font-size: 18px;
+  border: none;
+  border-radius: 6px;
+  background: #adc;
+  padding: 4px;
+  padding-bottom: 6px;
+  padding-left: 10px;
+  padding-right: 10px;
+  font-weight: 900;
+  margin: 10px;
+  min-width: 140px;
   cursor: pointer;
 }
 a{
