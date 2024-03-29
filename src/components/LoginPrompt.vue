@@ -182,7 +182,7 @@ export default{
             this.state.isAdmin = +data[4]
             this.state.loggedInUser.avatar = this.state.defaultAvatar
             this.state.passhash = data[1]
-            this.setCookie()
+            this.state.setCookie()
             this.closePrompts()
             this.state.invalidLoginAttemp = false
             //this.state.userInfo[this.state.loggedinUserID] = {}
