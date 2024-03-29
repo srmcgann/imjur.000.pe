@@ -334,13 +334,13 @@ export default {
       //if(this.state.search.string != '') this.state.search.demos = this.state.search.demos.filter(v=>!v.private)
       switch(this.state.mode){
         case 'user':
-        this.state.user.demos = this.state.user.demos.filter(v=>!v.private)
+        //this.state.user.demos = this.state.user.demos.filter(v=>!v.private)
         break
         case 'single':
-        this.state.demos = this.state.demos.filter(v=>!v.private)
+        //this.state.demos = this.state.demos.filter(v=>!v.private)
         break
         case 'default':
-        this.state.landingPage.demos = this.state.landingPage.demos.filter(v=>!v.private)
+        //this.state.landingPage.demos = this.state.landingPage.demos.filter(v=>!v.private)
         break
       }
       this.state.loggedIn= false
@@ -358,13 +358,13 @@ export default {
       //if(this.state.search.string != '') this.state.search.demos = this.state.search.demos.filter(v=>!v.private)
       switch(this.state.mode){
         case 'user':
-        this.state.user.demos = this.state.user.demos.filter(v=>!v.private)
+        //this.state.user.demos = this.state.user.demos.filter(v=>!v.private)
         break
         case 'single':
-        this.state.demos = this.state.demos.filter(v=>!v.private)
+        //this.state.demos = this.state.demos.filter(v=>!v.private)
         break
         case 'default':
-        this.state.landingPage.demos = this.state.landingPage.demos.filter(v=>!v.private)
+        //this.state.landingPage.demos = this.state.landingPage.demos.filter(v=>!v.private)
         break
       }
       this.state.loggedin = false
