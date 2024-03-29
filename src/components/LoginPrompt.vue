@@ -205,7 +205,7 @@ export default{
       this.userNameAvailable = true
       if(this.state.regusername){
         let sendData = {userName: this.state.regusername}
-        fetch(this.state.baseURL + '/checkUserNameAvailability.php',{
+        fetch('checkUserNameAvailability.php',{
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
