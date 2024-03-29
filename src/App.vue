@@ -155,7 +155,7 @@ export default {
         let sendData = {
           userName: this.state.loggedinUserName, passhash: this.state.passhash,
         }
-        fetch(this.state.baseURL + '/checkEnabled.php',{
+        fetch(checkEnabled.php',{
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -204,7 +204,7 @@ export default {
     },
     login(){
       let sendData = {userName: this.state.username, password: this.state.password}
-      fetch(this.state.baseURL + '/login.php',{
+      fetch(login.php',{
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -346,9 +346,9 @@ export default {
       } else {
         this.getMode() 
       }
-      this.checkShowControlsPref()
-      this.checkAutoplayPref()
-      this.checkExactSearchPref()
+      //this.checkShowControlsPref()
+      //this.checkAutoplayPref()
+      //this.checkExactSearchPref()
     }
   },
   watch: {
