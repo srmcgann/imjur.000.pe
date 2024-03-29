@@ -2,7 +2,7 @@
   <div class="user">
     <div v-if="!state.loggedIn">
       <button
-        @click="state.login()"
+        @click="login()"
         class="loginButton"
         title="sign in"
       >
@@ -48,6 +48,10 @@ export default {
   methods: {
     showSettings(){
       this.state.showUserSettings()
+    },
+    login(){
+      this.state.showRegister = false
+      this.state.showLoginPrompt = true
     },
     logout(){
       this.state.logout()

@@ -178,7 +178,7 @@ export default{
             this.state.loggedInUserName = data[1]
             this.state.loginPromptVisible = false
             this.state.setCookie()
-            window.location.href = 'u/' + this.state.regusername
+            //window.location.href = 'u/' + this.state.regusername
           } else {
             this.showInvalid = true
           }

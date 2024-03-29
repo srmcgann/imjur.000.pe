@@ -241,8 +241,6 @@ export default {
           //this.checkShowControlsPref()
           //this.getPages()
           //window.location.reload()
-          this.state.showRegister = false
-          this.state.showLoginPrompt = true
         }else{
           console.log('not logged in.')
           this.state.loggedIn= false
