@@ -1,4 +1,5 @@
 <?php
+  require_once('db.php');
   function alphaToDec($val){
     $pow=0;
     $res=0;
@@ -34,5 +35,12 @@
       $res = mysqli_query($link, $sql);
     }while(mysqli_num_rows($res));
     return decToAlpha($newid);
+  }
+  
+  function checkUserNameAvailability($userName){
+    global $link;
+    $sql='SELECT * FROM imjurUsers WHERE name LIKE "'.$userName.'"';
+    $res = mysqli_query($link, $sql);
+    echo json_encode(mysqli_num_rows($res) === 0);
   }
 ?>

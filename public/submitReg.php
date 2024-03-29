@@ -1,5 +1,6 @@
 <?php
   require('db.php');
+  require('functions.php');
   $baseURL = $_SERVER['REQUEST_URI'];
   function decToAlpha($val){
     $alphabet="0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -24,7 +25,7 @@
   $userName = str_replace(';', '', $userName);
   $password = mysqli_real_escape_string($link, $data->{'password'});
 
-  $available=str_replace(chr(10),'',file_get_contents("checkUserNameAvailability.php?userName=".urlencode($userName)))==="true";
+  $available=str_replace(chr(10),'',checkUserNameAvailability(urlencode($userName))==="true");
   if($available && $password){
     $hash = password_hash($password, PASSWORD_DEFAULT);
     $sql = 'INSERT INTO imjurUsers (name, escaped_name, passhash, avatar) VALUES("'.$userName.'", "", "'.$hash.'","");';
@@ -35,6 +36,6 @@
     mysqli_query($link, $sql);
     echo json_encode([true, $hash, mysqli_insert_id($link), $sql]);
   } else {
-    echo json_encode([$available,"checkUserNameAvailability.php?userName=".$userName,'username unavailable or password not provided!', $userName, $available]);
+    echo json_encode([false]);
   }
 ?>
