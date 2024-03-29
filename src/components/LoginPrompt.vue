@@ -173,12 +173,15 @@ export default{
         .then(data => {
           console.log(data)
           if(data[0]){
+            this.state.userName = this.state.regusername
+            this.state.password = this.state.regpassword
+            this.state.login()
+            this.state.password = ''
+            this.state.regpassword = ''
             this.state.loggedIn = true
-            //this.state.loggedInUser = 
             this.state.loggedInUserName = data[1]
             this.state.loginPromptVisible = false
             this.state.setCookie()
-            //window.location.href = 'u/' + this.state.regusername
           } else {
             this.showInvalid = true
           }
