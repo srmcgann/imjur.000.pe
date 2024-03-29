@@ -3,6 +3,7 @@
     <Header :state="state" />
     <Main   :state="state" />
     <Footer :state="state" />
+    <UserSettings v-if="state.userSettingsVisible" :state="state"/>
     <LoginPrompt :state="state" v-if="state.showLoginPrompt"/>
     <Modal
       :state="state"
@@ -25,6 +26,7 @@ import Header from './components/Header'
 import Footer from './components/Footer'
 import Preview from './components/Preview'
 import LoginPrompt from './components/LoginPrompt'
+import UserSettings from './components/UserSettings'
 
 export default {
   name: 'App',
@@ -32,6 +34,7 @@ export default {
     Header,
     Main,
     Footer,
+    UserSettings,
     Modal,
     Preview,
     LoginPrompt,
@@ -64,11 +67,14 @@ export default {
         prev: null,
         login: null,
         register: null,
+        logout: null,
         regusername: '',
         username: '',
         password: '',
+        showUserSettings: false,
         invalidLoginAttempt: false,
         displayLoginRequired: false,
+        userSettingsVisible: false,
         regpassword: '',
         confirmpassword: '',
         showLoginPrompt: false,
@@ -105,6 +111,10 @@ export default {
       console.log('registering')
       this.state.showLoginPrompt = true
       this.state.showRegister = true
+    },
+    showUserSettings(){
+      document.getElementsByTagName('HTML')[0].style.overflowY = 'hidden'
+      this.state.userSettingsVisible = true
     },
     copy(val){
       let copyEl = document.createElement('div')
@@ -170,6 +180,7 @@ export default {
             console.log('logged in.')
             this.state.loggedIn= true
             this.state.loggedinUserID = +data[1]
+            this.state.loggedInUser.avatar = data[2]
             //this.state.fetchUserData(this.state.loggedinUserID)
             this.setCookie()
             this.state.loginPromptVisible = false
@@ -231,6 +242,7 @@ export default {
           this.setCookie()
           this.closePrompts()
           this.state.invalidLoginAttemp = false
+          this.state.loggedInUser.avatar = data[3]
           //this.state.userInfo[this.state.loggedinUserID] = {}
           //this.state.userInfo[this.state.loggedinUserID].name = this.state.regusername
           //this.state.userInfo[this.state.loggedinUserID].avatar = data[3]
@@ -337,6 +349,30 @@ export default {
       this.state.loggedinUserID = this.state.loggedinUserName = ''
       window.location.reload()
     },
+    logout(){
+      let cookies = document.cookie
+      cookies.split(';').map(v=>{
+        if(v.indexOf('autoplay')==-1){
+          document.cookie = v + '; expires=' + (new Date(0)).toUTCString() + '; path=/; domain=' + this.state.rootDomain
+        }
+      })
+      //if(this.state.search.string != '') this.state.search.demos = this.state.search.demos.filter(v=>!v.private)
+      switch(this.state.mode){
+        case 'user':
+        this.state.user.demos = this.state.user.demos.filter(v=>!v.private)
+        break
+        case 'single':
+        this.state.demos = this.state.demos.filter(v=>!v.private)
+        break
+        case 'default':
+        this.state.landingPage.demos = this.state.landingPage.demos.filter(v=>!v.private)
+        break
+      }
+      this.state.loggedin = false
+      this.state.isAdmin = false
+      this.state.loggedinUserID = this.state.loggedinUserName = ''
+      window.location.reload()
+    },
     checkLogin(){
       let l = (document.cookie).split(';').filter(v=>v.split('=')[0].trim()==='loggedinuser')
       if(l.length){
@@ -393,6 +429,7 @@ export default {
     this.state.next = this.next
     this.state.copy = this.copy
     this.state.login = this.login
+    this.state.logout = this.logout
     this.state.register = this.register
     this.state.closePrompts = this.closePrompts
     this.state.closePreview = this.closePreview
