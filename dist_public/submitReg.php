@@ -1,5 +1,6 @@
-<?
+<?php
   require('db.php');
+  $baseURL = $_SERVER['REQUEST_URI'];
   function decToAlpha($val){
     $alphabet="0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
     $ret="";

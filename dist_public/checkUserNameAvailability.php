@@ -1,4 +1,4 @@
-<?
+<?php
   require('db.php');
   if(!($userName = mysqli_real_escape_string($link, $_GET['userName']))){
     $data = json_decode(file_get_contents('php://input'));
