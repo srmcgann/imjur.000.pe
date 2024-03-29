@@ -205,7 +205,7 @@ export default {
     },
     getPages(){
       console.log('login succeeded!')
-    }
+    },
     login(){
       let sendData = {userName: this.state.username, password: this.state.password}
       fetch('login.php',{
