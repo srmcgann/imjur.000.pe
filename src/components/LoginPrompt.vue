@@ -300,4 +300,7 @@ hr{
   background: #258;
   padding: 10px;
 }
+button{
+  margin: 10px;
+}
 </style>

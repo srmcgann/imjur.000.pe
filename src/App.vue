@@ -237,9 +237,9 @@ button{
   padding-left: 10px;
   padding-right: 10px;
   font-weight: 900;
-  margin: 10px;
   min-width: 140px;
   cursor: pointer;
+  font-family: Courier Prime;
 }
 a{
   text-decoration: none;
