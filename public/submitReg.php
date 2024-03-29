@@ -15,11 +15,12 @@ error_reporting(E_ALL);
   $userName = mysqli_real_escape_string($link, $data->{'userName'});
   $userName = str_replace(';', '', $userName);
   $password = mysqli_real_escape_string($link, $data->{'password'});
+  $avatar = mysqli_real_escape_string($link, $data->{'avatar'});
 
   $available = checkUserNameAvailability(urlencode($userName));
   if($available && $password){
     $hash = password_hash($password, PASSWORD_DEFAULT);
-    $sql = 'INSERT INTO imjurUsers (name, escaped_name, passhash, avatar) VALUES("'.$userName.'", "", "'.$hash.'","");';
+    $sql = 'INSERT INTO imjurUsers (name, escaped_name, passhash, avatar) VALUES("'.$userName.'", "", "'.$hash.'","$avatar");';
     mysqli_query($link, $sql);
     $id = mysqli_insert_id($link);
     $escaped_name = escapeUserName($userName, $id);

@@ -161,7 +161,7 @@ export default{
   methods:{
     submit(){
       if(this.validate){
-        let sendData = {userName: this.state.regusername, password: this.state.regpassword}
+        let sendData = {userName: this.state.regusername, password: this.state.regpassword, avatar: this.state.defaultAvatar}
         fetch('submitReg.php',{
           method: 'POST',
           headers: {
