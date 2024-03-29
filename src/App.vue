@@ -53,7 +53,7 @@ export default {
         closePreview: null,
         closePrompts: null,
         loggedInUser: {
-          avatar: null,
+          avatar: 'avatarDefault.png',
         },
         copy: null,
         next: null,
@@ -283,6 +283,7 @@ export default {
     this.state.closePrompts = this.closePrompts
     this.state.closePreview = this.closePreview
     this.state.setCookie = this.setCookie
+    this.checkLogin()
   }
 }
 </script>

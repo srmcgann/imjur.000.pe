@@ -20,7 +20,7 @@ error_reporting(E_ALL);
   if($available && $password){
     $hash = password_hash($password, PASSWORD_DEFAULT);
     $sql = 'INSERT INTO imjurUsers (name, escaped_name, passhash, avatar) VALUES("'.$userName.'", "", "'.$hash.'","");';
-    //mysqli_query($link, $sql);
+    mysqli_query($link, $sql);
     $id = mysqli_insert_id($link);
     $escaped_name = escapeUserName($userName, $id);
     $sql = 'UPDATE imjurUsers SET escaped_name = "'.$escaped_name.'" WHERE id = ' . $id;
