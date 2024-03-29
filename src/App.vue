@@ -280,7 +280,8 @@ export default {
           break
           default:
             this.state.mode = 'default'
-            /*let search = ''
+            /*
+            let search = ''
             if(vars[0]){
               this.state.curPage = (+vars[0])-1
               if(vars[1]){
@@ -293,10 +294,10 @@ export default {
                 if(!this.state.curPage || this.state.curPage < 0 || this.state.curPage > 1e6) this.state.curPage = 0
                 this.getPages()
               }
-              */
             }else{
               //window.location.href = window.location.origin
             }
+            */
           break
         }
       }else{
