@@ -150,7 +150,7 @@ export default {
     },
     closePrompts(){
       this.state.showLoginPrompt = false
-      this.state.showUserSettings = false
+      this.state.userSettingsVisible = false
     },
     closeModal(){
       if(this.state.modalQueue.length){
