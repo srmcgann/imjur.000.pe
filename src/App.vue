@@ -71,7 +71,7 @@ export default {
         regusername: '',
         username: '',
         password: '',
-        showUserSettings: false,
+        showUserSettings: null,
         invalidLoginAttempt: false,
         displayLoginRequired: false,
         userSettingsVisible: false,
@@ -431,10 +431,11 @@ export default {
     this.state.login = this.login
     this.state.logout = this.logout
     this.state.register = this.register
-    this.state.closePrompts = this.closePrompts
-    this.state.closePreview = this.closePreview
     this.state.getPages = this.getPages
     this.state.setCookie = this.setCookie
+    this.state.closePrompts = this.closePrompts
+    this.state.closePreview = this.closePreview
+    this.state.showUserSettings = this.showUserSettings
     this.checkLogin()
   }
 }
