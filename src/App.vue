@@ -44,6 +44,7 @@ export default {
         uploadInProgress: false,
         showModal: false,
         setCookie: null,
+        mode: null,
         showPreview: false,
         rootDomain: location.hostname,
         modalContent: '',
@@ -166,6 +167,7 @@ export default {
         .then(res => res.json())
         .then(data => {
           if(!!(+data[0])){
+            console.log('logged in.')
             this.state.loggedIn= true
             this.state.loggedinUserID = +data[1]
             //this.state.fetchUserData(this.state.loggedinUserID)
@@ -179,6 +181,7 @@ export default {
             if(+data[3]) this.state.isAdmin = true
             //this.state.maxResultsPerPage = +data[4]
           }else{
+            console.log('not logged in.')
             this.state.loggedIn= false
             this.state.loggedinUserName = ''
             this.state.loggedinUserID = ''
@@ -204,7 +207,7 @@ export default {
       document.cookie = 'showControls=' + this.state.showControls + '; expires=' + (new Date((Date.now()+3153600000000))).toUTCString() + '; path=/; domain=' + this.state.rootDomain
     },
     getPages(){
-      console.log('login succeeded!')
+      console.log('loaded. mode: ' + this.state.mode)
     },
     login(){
       let sendData = {userName: this.state.username, password: this.state.password}
@@ -218,6 +221,7 @@ export default {
       .then(res => res.json())
       .then(data => {
         if(data[0]){
+          console.log('login succeeded!')
           this.state.loggedIn= true
           this.state.loggedinUserName = this.state.username
           this.state.loggedinUserID = +data[2]
@@ -240,6 +244,7 @@ export default {
           this.state.showRegister = false
           this.state.showLoginPrompt = true
         }else{
+          console.log('not logged in.')
           this.state.loggedIn= false
           this.state.invalidLoginAttempt = true
         }
