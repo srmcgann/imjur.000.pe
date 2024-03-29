@@ -49,12 +49,15 @@ export default {
         modalContent: '',
         modalQueue: [],
         previewLink: null,
+        passhash: '',
+        loggedinUserID: null,
         closeModal: null,
         closePreview: null,
         closePrompts: null,
         loggedInUser: {
           avatar: 'avatarDefault.png',
         },
+        loggedinUserName: '',
         copy: null,
         next: null,
         prev: null,
@@ -147,6 +150,45 @@ export default {
       this.state.showPreview = false
       this.state.previewLink = null
     },
+    checkEnabled(){
+      if(this.state.loggedinUserName) {
+        let sendData = {
+          userName: this.state.loggedinUserName, passhash: this.state.passhash,
+        }
+        fetch(this.state.baseURL + '/checkEnabled.php',{
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(sendData),
+        })
+        .then(res => res.json())
+        .then(data => {
+          if(!!(+data[0])){
+            this.state.loggedin = true
+            this.state.loggedinUserID = +data[1]
+            //this.state.fetchUserData(this.state.loggedinUserID)
+            this.setCookie()
+            this.state.loginPromptVisible = false
+            this.state.invalidLoginAttemp = false
+            //this.state.userInfo[this.state.loggedinUserID] = {}
+            //this.state.userInfo[this.state.loggedinUserID].name = this.state.regusername || this.state.loggedinUserName
+            //this.state.userInfo[this.state.loggedinUserID].avatar = data[2]
+            //this.state.userInfo[this.state.loggedinUserID].isAdmin = +data[3]
+            if(+data[3]) this.state.isAdmin = true
+            //this.state.maxResultsPerPage = +data[4]
+          }else{
+            this.state.loggedin = false
+            this.state.loggedinUserName = ''
+            this.state.loggedinUserID = ''
+            this.state.passhash = ''
+            this.state.isAdmin = false
+            this.state.invalidLoginAttempt = true
+          }
+          this.getMode()
+        })
+      }
+    },
     setCookie() {
       let cookies = document.cookie
       cookies.split(';').map(v=>{
@@ -198,6 +240,70 @@ export default {
           this.state.invalidLoginAttempt = true
         }
       })
+    },
+    getMode(){
+      let vars = window.location.pathname.split('/').filter(v=>v)
+      if(vars.length>0){
+        switch(vars[0]){
+          case 'd':
+            this.state.mode = 'single'
+            //this.state.curPage = (+vars[1])-1
+            //this.state.viewDemo = this.alphaToDec(vars[1])
+            //this.state.rawDemoID = vars[1]
+            //this.$nextTick(()=>this.loadDemo(this.alphaToDec(vars[1])))
+            //if(vars[2]){
+            //  this.state.search.string = decodeURIComponent(vars[2])
+           //}
+            break
+          case 'u':
+            /*if(!vars[1]) window.location.href = window.location.origin
+            this.state.viewAuthor = decodeURIComponent(vars[1]);
+            this.state.user = {name: decodeURIComponent(vars[1])}
+            this.state.mode = 'user'
+            if(vars[2]){
+              this.state.curUserPage = (+vars[2])-1
+              if(vars[3]){
+                this.state.search.string = decodeURIComponent(vars[3])
+                search = '/' + vars[3]
+                history.pushState(null,null,window.location.origin + '/u/' + (this.state.user.name) + '/' + (this.state.curPage + 1)) + search
+                this.beginSearch()
+              }else{
+                if(!this.state.curUserPage || this.state.curUserPage < 0 || this.state.curUserPage > 1e6) this.state.curUserPage = 0
+                history.pushState(null,null,window.location.origin + '/u/' + (vars[1]) + ((this.state.curUserPage) ? '/' + (this.state.curUserPage + 1) : ''))
+                this.getPages()
+              }
+            } else {
+              this.state.curUserPage = 0
+              history.pushState(null,null,window.location.origin + '/u/' + (vars[1]) + ((this.state.curUserPage) ? '/' + (this.state.curUserPage + 1) : ''))
+              this.getPages()
+            }*/
+          break
+          default:
+            this.state.mode = 'default'
+            /*let search = ''
+            if(vars[0]){
+              this.state.curPage = (+vars[0])-1
+              if(vars[1]){
+                this.state.search.string = decodeURIComponent(vars[1])
+                search = '/' + vars[1]
+                history.pushState(null,null,window.location.origin + '/' + (this.state.curPage + 1)) + search
+                this.beginSearch()
+              }else{
+                history.pushState(null,null,window.location.origin + '/' + this.state.curPage ? (this.state.curPage + 1) : '')
+                if(!this.state.curPage || this.state.curPage < 0 || this.state.curPage > 1e6) this.state.curPage = 0
+                this.getPages()
+              }
+              */
+            }else{
+              //window.location.href = window.location.origin
+            }
+          break
+        }
+      }else{
+        this.state.mode = 'default'
+        this.getPages()
+        if(window.location.href !== window.location.origin + '/') window.location.href = window.location.origin
+      }
     },
     logout(){
       let cookies = document.cookie

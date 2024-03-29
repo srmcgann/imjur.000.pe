@@ -175,6 +175,7 @@ export default{
           if(data[0]){
             this.state.loggedIn = true
             //this.state.loggedInUser = 
+            this.state.loggedInUserName = data[1]
             this.state.loginPromptVisible = false
             this.state.setCookie()
             window.location.href = 'u/' + this.state.regusername
