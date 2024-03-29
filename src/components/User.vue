@@ -17,7 +17,7 @@
         register
       </button>
     </div>
-    <div v-else>
+    <!--<div v-else>
       <div class="loggedIn">
         <div
           class="avatar"
@@ -25,6 +25,14 @@
           title="click for your prefrences"
         ></div>
       </div>
+    </div>-->
+    <div v-else class="userButtonContainer">
+      <button @click="logout()"
+        class="userbutton"
+      >logout</button>
+      <button @click="showSettings()"
+        class="userbutton"
+      >settings</button>
     </div>
   </div>
 </template>
@@ -38,6 +46,15 @@ export default {
     }
   },
   methods: {
+    showSettings(){
+      this.state.showUserSettings()
+    },
+    logout(){
+      this.state.logout()
+    },
+    toggleLogin(){
+      if(!this.state.loggedin) this.state.showLoginPrompt()
+    }
   },
   mounted(){
   }
@@ -78,5 +95,33 @@ export default {
     background-size: cover;
     background-color: #000;
     border: 2px solid #40fa;
+  }
+  
+  .userButtonContainer{
+    float: right;
+    //margin-left: 80px;
+    margin-top: -2px;
+    width: 80px;
+  }
+  .userbutton:focus{
+    outline: none;
+  }
+  .userbutton{
+    font-size: 12px;
+    min-width: 50px;
+    margin: 0;
+    margin-top: 1px;
+    margin-bottom: 1px;
+    padding: 1px;
+    padding-bottom: 2px;
+    padding-left: 8px;
+    padding-right: 8px;
+    min-width: 70px;
+  }
+  .loginButton{
+    font-size: .72em;
+    margin-top: 15px;
+    background: #123;
+    color: #afc
   }
 </style>

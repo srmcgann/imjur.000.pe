@@ -1,18 +1,18 @@
 <template>
   <div class="header">
     <div class="headerImg" @click="reload()"></div>
-    <Account :state="state" />
+    <User :state="state" />
   </div>
 </template>
 
 <script>
-import User from './Account'
+import User from './User'
 
 export default {
   name: 'Header',
   props: [ 'state' ],
   components: {
-    Account
+    User
   },
   data(){
     return {
