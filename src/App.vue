@@ -204,7 +204,7 @@ export default {
     },
     login(){
       let sendData = {userName: this.state.username, password: this.state.password}
-      fetch(login.php',{
+      fetch('login.php',{
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
