@@ -43,7 +43,9 @@ export default {
         links: [],
         uploadInProgress: false,
         showModal: false,
+        setCookie: null,
         showPreview: false,
+        rootDomain: location.hostname,
         modalContent: '',
         modalQueue: [],
         previewLink: null,
@@ -93,11 +95,6 @@ export default {
         this.state.showPreview = true
         this.state.previewLink = this.state.links[idx]
       })
-    },
-    login(){
-      console.log('logging in')
-      this.state.showRegister = false
-      this.state.showLoginPrompt = true
     },
     register(){
       console.log('registering')
@@ -165,6 +162,102 @@ export default {
       }
       */
     }
+    setCookie() {
+      let cookies = document.cookie
+      cookies.split(';').map(v=>{
+        if(v.indexOf('autoplay')==-1){
+          document.cookie = v + '; expires=' + (new Date(0)).toUTCString() + '; path=/; domain=' + this.state.rootDomain
+        }
+      })
+      document.cookie = 'loggedinuser=' + this.state.loggedinUserName + '; expires=' + (new Date((Date.now()+3153600000000))).toUTCString() + '; path=/; domain=' + this.state.rootDomain
+      document.cookie = 'loggedinuserID=' + this.state.loggedinUserID + '; expires=' + (new Date((Date.now()+3153600000000))).toUTCString() + '; path=/; domain=' + this.state.rootDomain
+      document.cookie = 'token=' + this.state.passhash + '; expires=' + (new Date((Date.now()+3153600000000))).toUTCString() + '; path=/; domain=' + this.state.rootDomain
+      document.cookie = 'autoplay=' + this.state.autoplay + '; expires=' + (new Date((Date.now()+3153600000000))).toUTCString() + '; path=/; domain=' + this.state.rootDomain
+      document.cookie = 'showControls=' + this.state.showControls + '; expires=' + (new Date((Date.now()+3153600000000))).toUTCString() + '; path=/; domain=' + this.state.rootDomain
+    },
+    login(){
+      let sendData = {userName: this.state.username, password: this.state.password}
+      fetch(this.state.baseURL + '/login.php',{
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(sendData),
+      })
+      .then(res => res.json())
+      .then(data => {
+        if(data[0]){
+          this.state.loggedin = true
+          this.state.loggedinUserName = this.state.username
+          this.state.loggedinUserID = +data[2]
+          this.state.fetchUserData(this.state.loggedinUserID)
+          this.state.isAdmin = +data[4]
+          this.state.passhash = data[1]
+          this.setCookie()
+          this.closePrompts()
+          this.state.invalidLoginAttemp = false
+          //this.state.userInfo[this.state.loggedinUserID] = {}
+          //this.state.userInfo[this.state.loggedinUserID].name = this.state.regusername
+          //this.state.userInfo[this.state.loggedinUserID].avatar = data[3]
+          //this.state.userInfo[this.state.loggedinUserID].isAdmin = +data[4]
+          
+          //this.checkAutoplayPref()
+          //this.checkExactSearchPref()
+          //this.checkShowControlsPref()
+          //this.getPages()
+          //window.location.reload()
+          this.state.showRegister = false
+          this.state.showLoginPrompt = true
+        }else{
+          this.state.loggedin = false
+          this.state.invalidLoginAttempt = true
+        }
+      })
+    },
+    logout(){
+      let cookies = document.cookie
+      cookies.split(';').map(v=>{
+        if(v.indexOf('autoplay')==-1){
+          document.cookie = v + '; expires=' + (new Date(0)).toUTCString() + '; path=/; domain=' + this.state.rootDomain
+        }
+      })
+      if(this.state.search.string != '') this.state.search.demos = this.state.search.demos.filter(v=>!v.private)
+      switch(this.state.mode){
+        case 'user':
+        this.state.user.demos = this.state.user.demos.filter(v=>!v.private)
+        break
+        case 'single':
+        this.state.demos = this.state.demos.filter(v=>!v.private)
+        break
+        case 'default':
+        this.state.landingPage.demos = this.state.landingPage.demos.filter(v=>!v.private)
+        break
+      }
+      this.state.loggedin = false
+      this.state.isAdmin = false
+      this.state.loggedinUserID = this.state.loggedinUserName = ''
+      window.location.reload()
+    },
+    checkLogin(){
+      let l = (document.cookie).split(';').filter(v=>v.split('=')[0].trim()==='loggedinuser')
+      if(l.length){
+        this.state.loggedinUserName = l[0].split('=')[1]
+        let l2 = (document.cookie).split(';').filter(v=>v.split('=')[0].trim()==='token')
+        if(l2.length){
+          this.state.passhash = l2[0].split('=')[1]
+          let l3 = (document.cookie).split(';').filter(v=>v.split('=')[0].trim()==='loggedinuserID')
+          if(l3.length){
+            this.state.loggedinUserID = +l3[0].split('=')[1]
+            this.checkEnabled()
+          }
+        }
+      } else {
+        this.getMode() 
+      }
+      this.checkShowControlsPref()
+      this.checkAutoplayPref()
+      this.checkExactSearchPref()
+    }
   },
   mounted(){
     document.body.onkeydown = e =>{
@@ -189,6 +282,7 @@ export default {
     this.state.register = this.register
     this.state.closePrompts = this.closePrompts
     this.state.closePreview = this.closePreview
+    this.state.setCookie = this.setCookie
   }
 }
 </script>
