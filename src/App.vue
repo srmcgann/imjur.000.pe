@@ -347,7 +347,7 @@ button, .buttons{
   border-radius: 5px;
   background: #4f8;
   color: #000;
-  text-shadow: 3px 3px 3px #000;
+  text-shadow: 1px 1px 2px #000;
   font-size: 18px;
   min-width: 80px;
 }

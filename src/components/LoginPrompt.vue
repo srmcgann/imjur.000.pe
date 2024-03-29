@@ -171,17 +171,19 @@ export default{
         })
         .then(res => res.json())
         .then(data => {
+          console.log(data)
           if(data[0]){
             this.state.loggedIn = true
             //this.state.loggedInUser = 
             this.state.loginPromptVisible = false
-            //this.state.setCookie()
+            this.state.setCookie()
             //window.location.href = 'u/' + this.state.regusername
           } else {
             this.showInvalid = true
           }
         })
       } else {
+        console.log('failed validation. no reg submitted')
         this.showInvalid = true
       }
     },
