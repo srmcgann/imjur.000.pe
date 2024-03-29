@@ -13,7 +13,7 @@
   $userName = str_replace(';', '', $userName);
   $password = mysqli_real_escape_string($link, $data->{'password'});
 
-  $available=str_replace(chr(10),'',checkUserNameAvailability(urlencode($userName))==="true");
+  $available=str_replace(chr(10),'',checkUserNameAvailability(urlencode($userName))===true);
   if($available && $password){
     $hash = password_hash($password, PASSWORD_DEFAULT);
     $sql = 'INSERT INTO imjurUsers (name, escaped_name, passhash, avatar) VALUES("'.$userName.'", "", "'.$hash.'","");';
