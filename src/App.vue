@@ -146,22 +146,7 @@ export default {
     closePreview(){
       this.state.showPreview = false
       this.state.previewLink = null
-    }
-  },
-  watch: {
-    'state.uploadInProgress' (val) {
-      /*console.log('state.uploadInProgress val', val)
-      if(val){
-        this.state.modalContent = `
-          loading...
-        `
-        this.state.showModal = true
-      }else{
-        this.state.modalContent = ''
-        this.state.showModal = false
-      }
-      */
-    }
+    },
     setCookie() {
       let cookies = document.cookie
       cookies.split(';').map(v=>{
@@ -257,6 +242,21 @@ export default {
       this.checkShowControlsPref()
       this.checkAutoplayPref()
       this.checkExactSearchPref()
+    }
+  },
+  watch: {
+    'state.uploadInProgress' (val) {
+      /*console.log('state.uploadInProgress val', val)
+      if(val){
+        this.state.modalContent = `
+          loading...
+        `
+        this.state.showModal = true
+      }else{
+        this.state.modalContent = ''
+        this.state.showModal = false
+      }
+      */
     }
   },
   mounted(){
