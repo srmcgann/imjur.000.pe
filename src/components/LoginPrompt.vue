@@ -174,8 +174,27 @@ export default{
           console.log(data)
           if(data[0]){
             this.state.userName = this.state.regusername
-            this.state.password = this.state.regpassword
-            this.state.login()
+            console.log('login succeeded!')
+            this.state.loggedIn= true
+            this.state.loggedinUserName = this.state.username
+            this.state.loggedinUserID = +data[2]
+            //this.state.fetchUserData(this.state.loggedinUserID)
+            this.state.isAdmin = +data[4]
+            this.state.loggedInUser.avatar = this.state.defaultAvatar
+            this.state.passhash = data[1]
+            this.setCookie()
+            this.closePrompts()
+            this.state.invalidLoginAttemp = false
+            //this.state.userInfo[this.state.loggedinUserID] = {}
+            //this.state.userInfo[this.state.loggedinUserID].name = this.state.regusername
+            //this.state.userInfo[this.state.loggedinUserID].avatar = data[3]
+            //this.state.userInfo[this.state.loggedinUserID].isAdmin = +data[4]
+            
+            //this.checkAutoplayPref()
+            //this.checkExactSearchPref()
+            //this.checkShowControlsPref()
+            //this.getPages()
+            //window.location.reload()
           } else {
             this.showInvalid = true
           }
