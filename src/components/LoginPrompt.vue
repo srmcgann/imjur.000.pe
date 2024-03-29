@@ -183,7 +183,7 @@ export default{
             this.state.loggedInUser.avatar = this.state.defaultAvatar
             this.state.passhash = data[1]
             this.state.setCookie()
-            this.closePrompts()
+            this.state.closePrompts()
             this.state.invalidLoginAttemp = false
             //this.state.userInfo[this.state.loggedinUserID] = {}
             //this.state.userInfo[this.state.loggedinUserID].name = this.state.regusername
