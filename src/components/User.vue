@@ -72,20 +72,6 @@ export default {
     position: fixed;
     text-align: center;
   }
-  .loginButton{
-    border-radius: 5px;
-    background: #4f8;
-    color: #022;
-    text-shadow: 1px 1px 2px #000;
-    font-size: 16px;
-    min-width: 100px;
-    position: absolute;
-    left: 400px;
-    top: 1px;
-    border: 2px solid #0003;
-    padding-top: 0;
-    padding-bottom: 2px;
-  }
   .loggedIn{
     height: 49px;
   }
@@ -119,9 +105,10 @@ export default {
     min-width: 70px;
   }
   .loginButton{
+    background: #4f8;
+    color: #022;
+    text-shadow: 1px 1px 2px #000;
     font-size: .72em;
-    margin-top: 15px;
-    background: #123;
-    color: #afc
+    margin-top: 3px;
   }
 </style>

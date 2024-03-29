@@ -166,7 +166,7 @@ export default {
         .then(res => res.json())
         .then(data => {
           if(!!(+data[0])){
-            this.state.loggedin = true
+            this.state.loggedIn= true
             this.state.loggedinUserID = +data[1]
             //this.state.fetchUserData(this.state.loggedinUserID)
             this.setCookie()
@@ -179,7 +179,7 @@ export default {
             if(+data[3]) this.state.isAdmin = true
             //this.state.maxResultsPerPage = +data[4]
           }else{
-            this.state.loggedin = false
+            this.state.loggedIn= false
             this.state.loggedinUserName = ''
             this.state.loggedinUserID = ''
             this.state.passhash = ''
@@ -218,7 +218,7 @@ export default {
       .then(res => res.json())
       .then(data => {
         if(data[0]){
-          this.state.loggedin = true
+          this.state.loggedIn= true
           this.state.loggedinUserName = this.state.username
           this.state.loggedinUserID = +data[2]
           this.state.fetchUserData(this.state.loggedinUserID)
@@ -240,7 +240,7 @@ export default {
           this.state.showRegister = false
           this.state.showLoginPrompt = true
         }else{
-          this.state.loggedin = false
+          this.state.loggedIn= false
           this.state.invalidLoginAttempt = true
         }
       })
@@ -329,7 +329,7 @@ export default {
         this.state.landingPage.demos = this.state.landingPage.demos.filter(v=>!v.private)
         break
       }
-      this.state.loggedin = false
+      this.state.loggedIn= false
       this.state.isAdmin = false
       this.state.loggedinUserID = this.state.loggedinUserName = ''
       window.location.reload()
