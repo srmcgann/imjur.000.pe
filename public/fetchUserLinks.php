@@ -18,7 +18,7 @@
       'views' => $row['views'],
       'description' => $row['description'],
       'originalSlug' => $row['originalSlug'],
-    ]
+    ];
     $links[] = $link;
   }
   if(sizeof($links){
