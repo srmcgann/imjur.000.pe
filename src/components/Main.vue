@@ -65,7 +65,7 @@ export default {
         }
         let hInput = document.createElement('input')
         hInput.type = 'hidden'
-        //hInput.id = batchMetaData
+        hInput.id = 'batchMetaData'
         hInput.name = 'batchMetaData'
         hInput.value = JSON.stringify(batchMetaData)
         fd.append('batchMetaData', hInput)
@@ -75,7 +75,6 @@ export default {
             this.rejects = [...this.rejects, file]
           } else {
             ct++
-            file.test = 123
             fd.append(`uploads_${i}`, file)
           }
         })
