@@ -82,7 +82,7 @@ export default {
             passhash: this.state.passhash,
             description: '',
           }
-          fd.append('batchMetaData', JSON.stringify(batchMetaData))
+          fd.append('batchMetaData', batchMetaData)
           fetch('upload.php', {
             method: "POST", body: fd
           }).then(res=>res.json()).then(data => {
