@@ -83,7 +83,7 @@ export default {
           } else {
             ct++
             fd.append(`uploads_${i}`, file)
-            fd.append('description_${i}', 'no description')
+            fd.append(`description_${i}`, 'no description')
           }
         })
         let rej = '<div style="min-width:90vw; min-height: 50vh; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);background: #4008; color: #f88; padding-top: 100px;">'
