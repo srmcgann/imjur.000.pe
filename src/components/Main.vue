@@ -70,6 +70,7 @@ export default {
             this.rejects = [...this.rejects, file]
           } else {
             ct++
+            fd.append(`test`, 123)
             fd.append(`uploads_${i}`, file)
           }
         })
@@ -140,7 +141,6 @@ export default {
       
       let files = document.createElement('input')
       files.type = 'file'
-      //files.name = 'uploads[]'
       files.multiple = true
       files.accept = 'image/gif, image/jiff, image/jpeg, image/jpg, image/png, image/webp, video/mp4, video/webm, video/mkv, audio/mp3, audio/wav, audio/mpeg'
       files.onchange = () => this.processUpload(Array.from(files.files))
