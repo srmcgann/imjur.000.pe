@@ -79,8 +79,8 @@ export default {
     color: #4fa;
     font-size: 20px;
     top: 0;
-    left: 0;
-    min-width: 600px;
+    left: 400px;
+    min-width: 350px;
     position: fixed;
     text-align: center;
   }
@@ -120,7 +120,7 @@ export default {
     float: right;
     margin-left: 5px;
     margin-top: -2px;
-    width: 116px;
+    width: 260px;
   }
   .userbutton:focus{
     outline: none;
@@ -129,12 +129,12 @@ export default {
     font-size: 18px;
     min-width: 50px;
     margin: 0;
-    margin-top: 3px;
+    margin: 3px;
     margin-bottom: -1px;
     padding: 1px;
     padding-bottom: 2px;
     padding-left: 8px;
     padding-right: 8px;
-    min-width: 110px;
+    min-width: 120px;
   }
 </style>
