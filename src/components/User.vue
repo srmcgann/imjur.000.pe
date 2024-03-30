@@ -20,16 +20,20 @@
     <div v-else>
       <div class="userButtonContainer">
         <button @click="logout()"
+          title="log out"
           class="userbutton"
         >logout</button>
         <button @click="userFiles()"
+          title="go to your assets"
           style="background-color: #80fc; color: #fff"
           class="userbutton"
         >my assets</button>
         <button @click="showSettings()"
+          title="show user settings"
           class="userbutton"
         >settings</button>
         <button @click="explore()"
+          title="learn more about similar tools offered"
           style="background-color: #08fc; color: #fff"
           class="userbutton"
         >explore</button>
@@ -38,7 +42,7 @@
         <div
           @click="showSettings()"
           class="avatar"
-          :title="`logged in as ${state.loggedinUserName  }`"
+          :title="`logged in as ${state.loggedinUserName}. click to show user settings`"
           :style="`background-image: url(${state.loggedInUser.avatar})`"
         ></div>
       </div>
@@ -55,6 +59,9 @@ export default {
     }
   },
   methods: {
+    explore(){
+      open('https://whr.rf.gd/a/about','_blank')
+    },
     showSettings(){
       this.state.showUserSettings()
     },
@@ -115,6 +122,7 @@ export default {
     height: 100%;
     width: 100%;
     border-radius: 30px;
+    cursor: pointer;
   }
   
   .userButtonContainer{
