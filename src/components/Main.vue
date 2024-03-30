@@ -82,7 +82,6 @@ export default {
             this.rejects = [...this.rejects, file]
           } else {
             ct++
-            file.description = 'no description'
             fd.append(`uploads_${i}`, file)
           }
         })
