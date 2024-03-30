@@ -73,15 +73,15 @@ error_reporting(E_ALL);
           $userID = -1;
 
           $bmd = json_decode($_POST['batchMetaData']);
-          /*if($bmd['loggedIn']){
-            $uID = $bmd['userID'];
-            $passhash = $bmd['passhash'];
-            $sql = "SELECT * FROM users WHERE id = $uID AND passhash LIKE BINARY \"$passhash\"";
+          if($bmd->{'loggedIn'}){
+            $uID = $bmd->{'userID'};
+            $passhash = $bmd->{'passhash'};
+            $sql = "SELECT * FROM imjurUsers WHERE id = $uID AND passhash LIKE BINARY \"$passhash\"";
             $res = mysqli_query($link, $sql);
             if(mysqli_num_rows($res)){
               $userID = $uID;
             }
-          }*/
+          }
           
           
           $description = '';
@@ -140,5 +140,5 @@ SQL;
     $error = 'ERROR<br>no files were received.<br><br>This usually means that the transfer was blocked by the server due to one or more files being too large...<br><br>Check your file sizes';
   }
   
-  echo json_encode([$success, $links, $sizes, $types, $ct, $error, $_FILES, $_POST, $bmd, $bmd->{'loggedIn'}]);
+  echo json_encode([$success, $links, $sizes, $types, $ct, $error]);
 ?>
