@@ -29,6 +29,7 @@
       <div v-if="state.links.length" class="links">
         links<br>
         <Link :state="state" v-for="link in state.links" :link="link" />
+        <Link :state="state" v-for="link in state.userLinks" :link="link" />
       </div>
     </div>
   </div>

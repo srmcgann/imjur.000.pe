@@ -62,6 +62,9 @@ export default {
     explore(){
       open('https://whr.rf.gd/a/about','_blank')
     },
+    userFiles(){
+      this.state.fetchUserLinks(this.state.loggedinUserID)
+    },
     showSettings(){
       this.state.showUserSettings()
     },

@@ -1,10 +1,10 @@
 <template>
   <div>
-    <Header :state="state" />
-    <Main   :state="state" />
-    <Footer :state="state" />
-    <UserSettings v-if="state.userSettingsVisible" :state="state"/>
-    <LoginPrompt :state="state" v-if="state.showLoginPrompt"/>
+    <Header       :state="state" />
+    <Main         :state="state" />
+    <Footer       :state="state" />
+    <UserSettings :state="state" v-if="state.userSettingsVisible" />
+    <LoginPrompt  :state="state" v-if="state.showLoginPrompt"/>
     <Modal
       :state="state"
       v-if="state.showModal"
@@ -44,8 +44,10 @@ export default {
       state: {
         footerMsg: '<b>IMJUR</b><br>A FREE DIGITAL ASSET HOSTING SERVICE - ©'+(new Date()).getFullYear() + `<br>contact: <a href="mailto:whitehotrobot@gmail.com">whitehotrobot@gmail.com</a>`,
         links: [],
+        userLinks: [],
         uploadInProgress: false,
         showModal: false,
+        fetchUserLinks: null,
         setCookie: null,
         mode: null,
         getAvatar: null,
@@ -72,6 +74,7 @@ export default {
         logout: null,
         regusername: '',
         username: '',
+        userView: false,
         password: '',
         showUserSettings: null,
         invalidLoginAttempt: false,
@@ -212,6 +215,24 @@ export default {
             this.state.invalidLoginAttempt = true
           }
           this.getMode()
+        })
+      }
+    },
+    fetchUserLinks(userID){
+      if(this.state.loggedinUserName) {
+        let sendData = { userID }
+        fetch('fetchUserLinks.php',{
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(sendData),
+        })
+        .then(res => res.json())
+        .then(data => {
+          if(!!(+data[0])){
+            this.state.userLinks = data[1]
+          }    
         })
       }
     },
@@ -425,6 +446,7 @@ export default {
     this.state.checkLogin = this.checkLogin
     this.state.closePrompts = this.closePrompts
     this.state.closePreview = this.closePreview
+    this.state.fetchUserLinks = this.fetchUserLinks
     this.state.showUserSettings = this.showUserSettings
     this.checkLogin()
   }
