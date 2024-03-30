@@ -69,7 +69,9 @@ error_reporting(E_ALL);
             "sender IP" => $_SERVER['REMOTE_ADDR'],
             "original name" => $original_name,
           ]));
-          $description = $_FILES["description_$ct"];
+          $description = $_FILES["uploads_$ct"]['description'];
+          $str = json_encode($_FILES);
+          echo "\n\n{$str}\n\n";
           $origin = "user file: $original_name";
           $userID = -1;
           

@@ -99,6 +99,14 @@ export default {
       })
     },
     dropFiles(e){
+
+      /*let files = document.createElement('input')
+      files.type = 'file'
+      files.name = 'uploads[]'
+      files.multiple = true
+      files.accept = 'image/gif, image/jiff, image/jpeg, image/jpg, image/png, image/webp, video/mp4, video/webm, video/mkv, audio/mp3, audio/wav, audio/mpeg'
+      files.files = []*/
+      
       let files = []
       if(e.dataTransfer.items){
         [...e.dataTransfer.items].forEach((item, i) => {
@@ -128,7 +136,7 @@ export default {
       
       let files = document.createElement('input')
       files.type = 'file'
-      files.name = 'uploads[]'
+      //files.name = 'uploads[]'
       files.multiple = true
       files.accept = 'image/gif, image/jiff, image/jpeg, image/jpg, image/png, image/webp, video/mp4, video/webm, video/mkv, audio/mp3, audio/wav, audio/mpeg'
       files.onchange = () => this.processUpload(Array.from(files.files))
