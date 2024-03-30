@@ -43,5 +43,9 @@ export default {
     background-image: url(../assets/header.png);
     background-repeat: no-repeat;
     background-size: auto 52px;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 1000;
   }
 </style>
