@@ -73,7 +73,7 @@ error_reporting(E_ALL);
           $userID = -1;
 
           $bmd = json_decode($_POST['batchMetaData']);
-          if($bmd-['loggedIn']){
+          if($bmd['loggedIn']){
             $uID = $bmd['userID'];
             $passhash = $bmd['passhash'];
             $sql = "SELECT * FROM users WHERE id = $uID AND passhash LIKE BINARY \"$passhash\"";
