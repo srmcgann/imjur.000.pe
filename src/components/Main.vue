@@ -50,32 +50,20 @@ export default {
     }
   },
   methods: {
-    uploadFiles(fd){
-      fetch('upload.php', {
-        method: "POST", body: fd
-      }).then(res=>res.json()).then(data => {
-        console.log('response from upload.php: ', data)
-        this.state.uploadInprogress = false
-        if(data[0]){
-          this.$refs.dropTargetCaption.style.display = 'none'
-          data[1].map((v, i)=>{
-            this.addLink(data[2][i], data[3][i], i, location.href.split('?')[0] + v)
-          })
-          this.state.modalContent = ''
-          this.state.closeModal()
-        }else{
-          this.state.modalContent = '<div style="min-width:90vw; min-height: 50vh; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);background: #8002; color: #f88; padding-top: 100px;">' + data[5] + '</div>'
-        }
-      })
-    },
     processUpload(files){
       this.state.uploadInprogress = true
       this.state.modalContent = `<div style="position: absolute;left:0;top:0;width:100%;height:100%;background:#000;"><video src="loading.mp4" style="min-width:50vw; min-height: 50vh; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); pointer-events: none; opacity: .6;" loop autoplay muted></video></div>`
       this.state.showModal = true
-      
       this.$nextTick(()=>{
         let ct = 0
         let fd = new FormData()
+        let batchMetaData = {
+          loggedIn: this.state.loggedIn,
+          loggedIn: this.state.loggedInUserID,
+          passhash: this.state.passhash,
+          description: '',
+        }
+        fd.append('batchMetaData', JSON.stringify(batchMetaData))
         files.map((file, i) => {
           console.log(`file ${i}: `, file)
           if(file.size > 25000000){
@@ -94,7 +82,24 @@ export default {
           this.state.modalQueue = [...this.state.modalQueue, rej + '</div>']
           this.state.closeModal()
         }
-        if(ct) this.uploadFiles(fd)
+        if(ct) {
+          fetch('upload.php', {
+            method: "POST", body: fd
+          }).then(res=>res.json()).then(data => {
+            console.log('response from upload.php: ', data)
+            this.state.uploadInprogress = false
+            if(data[0]){
+              this.$refs.dropTargetCaption.style.display = 'none'
+              data[1].map((v, i)=>{
+                this.addLink(data[2][i], data[3][i], i, location.href.split('?')[0] + v)
+              })
+              this.state.modalContent = ''
+              this.state.closeModal()
+            }else{
+              this.state.modalContent = '<div style="min-width:90vw; min-height: 50vh; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);background: #8002; color: #f88; padding-top: 100px;">' + data[5] + '</div>'
+            }
+          })
+        }
       })
     },
     dropFiles(e){
