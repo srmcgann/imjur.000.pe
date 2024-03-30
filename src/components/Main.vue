@@ -63,11 +63,6 @@ export default {
           passhash: this.state.passhash,
           description: '',
         }
-        let hInput = document.createElement('input')
-        hInput.type = 'hidden'
-        hInput.id = 'batchMetaData'
-        hInput.name = 'batchMetaData'
-        hInput.value = JSON.stringify(batchMetaData)
         fd.append('batchMetaData', hInput)
         files.map((file, i) => {
           console.log(`file ${i}: `, file)
@@ -88,6 +83,7 @@ export default {
           this.state.closeModal()
         }
         if(ct) {
+          fd.append('test', '123')
           fetch('upload.php', {
             method: "POST", body: fd
           }).then(res=>res.json()).then(data => {
