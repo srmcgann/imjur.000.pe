@@ -470,7 +470,8 @@ button{
   font-size: 18px;
   border: none;
   border-radius: 6px;
-  background: #adc;
+  background: #adcc;
+  border: 2px solid #fff4;
   padding: 4px;
   padding-bottom: 6px;
   padding-left: 10px;

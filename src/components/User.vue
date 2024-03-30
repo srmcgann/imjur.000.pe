@@ -25,6 +25,14 @@
         <button @click="showSettings()"
           class="userbutton"
         >settings</button>
+        <button @click="userFiles()"
+          style="background-color: #80fc"
+          class="userbutton"
+        >my assets</button>
+        <button @click="explore()"
+          style="background-color: #08fc"
+          class="userbutton"
+        >explore</button>
       </div>
       <div class="loggedIn">
         <div
