@@ -9,13 +9,12 @@ todo
   ✔ tile-able cards (flex)
   ✔ log original file name
   ✔ lightbox sim / previews
-  * 
   * users, optional logins/profiles
-    └-> * comments
-        * votes
+    └-> ✔ login button
+        ✔ profile page
         * collections
-        * login button
-        * profile page
+        * comments
+        * votes
         
   * URL uploads
   * admin panel
