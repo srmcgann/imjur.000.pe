@@ -23,19 +23,20 @@
           class="userbutton"
         >logout</button>
         <button @click="userFiles()"
-          style="background-color: #80fc"
+          style="background-color: #80fc; color: #fff"
           class="userbutton"
         >my assets</button>
         <button @click="showSettings()"
           class="userbutton"
         >settings</button>
         <button @click="explore()"
-          style="background-color: #08fc"
+          style="background-color: #08fc; color: #fff"
           class="userbutton"
         >explore</button>
       </div>
       <div class="loggedIn">
         <div
+          @click="showSettings()"
           class="avatar"
           :title="`logged in as ${state.loggedinUserName  }`"
           :style="`background-image: url(${state.loggedInUser.avatar})`"
