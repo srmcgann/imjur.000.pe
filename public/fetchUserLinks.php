@@ -21,7 +21,7 @@
     ];
     $links[] = $link;
   }
-  if(sizeof($links){
+  if(sizeof($links)){
     echo json_encode([true, $links]);
   }else{
     echo json_encode([false]);
