@@ -70,8 +70,6 @@ error_reporting(E_ALL);
             "original name" => $original_name,
           ]));
           $description = '';
-          $str = json_encode($_FILES);
-          echo "\n\n{$str}\n\n";
           $origin = "user file: $original_name";
           $userID = -1;
           
