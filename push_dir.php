@@ -98,7 +98,6 @@
 
   function recurse($dir){
     global $remote_dir, $local_dir, $ftp;
-    @ftp_mkdir($ftp, $remote_dir);
     forEach(glob("$dir/*") as $entry){
       if(is_dir($entry)){
         $mkdir = $remote_dir . '/' . explode("$local_dir/", $entry)[1];
