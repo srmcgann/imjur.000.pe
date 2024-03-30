@@ -63,7 +63,6 @@ export default {
           passhash: this.state.passhash,
           description: '',
         }
-        fd.append('batchMetaData', hInput)
         files.map((file, i) => {
           console.log(`file ${i}: `, file)
           if(file.size > 25000000){
