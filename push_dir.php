@@ -14,7 +14,7 @@
       'ftp_user'    => 'if0_35615011',
       'ftp_pass'    => 'ouVkeSu5FegeH',
       'local_dir'   => '/home/whitehotrobot/imjur.000.pe/dist_public',
-      'remote_dir'  => '/htdocs/imgur'
+      'remote_dir'  => '/htdocs/imjur'
     ],[
       'ftp_server'  => "ftpupload.net",
       'ftp_user'    => 'if0_35680091',
