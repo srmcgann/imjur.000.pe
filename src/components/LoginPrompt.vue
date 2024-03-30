@@ -142,7 +142,7 @@
 <script>
 
 export default{
-  name: 'Account',
+  name: 'LoginPrompt',
   props: [ 'state' ],
   data(){
     return {

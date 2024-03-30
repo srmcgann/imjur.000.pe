@@ -18,13 +18,6 @@
       </button>
     </div>
     <div v-else>
-      <div class="loggedIn">
-        <div
-          class="avatar"
-          :style="'background-image: url(state.loggedInUser.avatar)'"
-          title="click for your prefrences"
-        ></div>
-      </div>
       <div class="userButtonContainer">
         <button @click="logout()"
           class="userbutton"
@@ -32,6 +25,12 @@
         <button @click="showSettings()"
           class="userbutton"
         >settings</button>
+      </div>
+      <div class="loggedIn">
+        <div
+          class="avatar"
+          :style="`background-image: url(${state.loggedInUser.avatar})`"
+        ></div>
       </div>
     </div>
   </div>
@@ -72,7 +71,6 @@ export default {
     font-size: 20px;
     top: 0;
     left: 0;
-    width: 100%;
     min-width: 600px;
     position: fixed;
     text-align: center;
@@ -93,6 +91,10 @@ export default {
   }
   .loggedIn{
     height: 49px;
+    float: right;
+    display: inline-block;
+    width: 80px;
+    
   }
   .avatar{
     background-repeat: no-repeat;
@@ -100,27 +102,30 @@ export default {
     background-size: cover;
     background-color: #000;
     border: 2px solid #40fa;
+    height: 100%;
+    width: 100%;
+    border-radius: 30px;
   }
   
   .userButtonContainer{
     float: right;
-    //margin-left: 80px;
+    margin-left: 5px;
     margin-top: -2px;
-    width: 80px;
+    width: 116px;
   }
   .userbutton:focus{
     outline: none;
   }
   .userbutton{
-    font-size: 12px;
+    font-size: 18px;
     min-width: 50px;
     margin: 0;
-    margin-top: 1px;
+    margin-top: 3px;
     margin-bottom: 1px;
     padding: 1px;
     padding-bottom: 2px;
     padding-left: 8px;
     padding-right: 8px;
-    min-width: 70px;
+    min-width: 110px;
   }
 </style>
