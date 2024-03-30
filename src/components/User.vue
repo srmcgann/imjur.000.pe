@@ -17,7 +17,7 @@
         register
       </button>
     </div>
-    <!--<div v-else>
+    <div v-else>
       <div class="loggedIn">
         <div
           class="avatar"
@@ -25,14 +25,14 @@
           title="click for your prefrences"
         ></div>
       </div>
-    </div>-->
-    <div v-else class="userButtonContainer">
-      <button @click="logout()"
-        class="userbutton"
-      >logout</button>
-      <button @click="showSettings()"
-        class="userbutton"
-      >settings</button>
+      <div class="userButtonContainer">
+        <button @click="logout()"
+          class="userbutton"
+        >logout</button>
+        <button @click="showSettings()"
+          class="userbutton"
+        >settings</button>
+      </div>
     </div>
   </div>
 </template>
@@ -73,6 +73,7 @@ export default {
     top: 0;
     left: 0;
     width: 100%;
+    min-width: 600px;
     position: fixed;
     text-align: center;
   }

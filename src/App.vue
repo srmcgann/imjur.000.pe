@@ -458,6 +458,7 @@ body,html{
   background-position: center center;
   margin: 0;
   height: 100vh;
+  min-width: 600px;
   overflow: hidden;
   font-family: Courier Prime;
 }
