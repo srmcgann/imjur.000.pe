@@ -22,13 +22,13 @@
         <button @click="logout()"
           class="userbutton"
         >logout</button>
-        <button @click="showSettings()"
-          class="userbutton"
-        >settings</button>
         <button @click="userFiles()"
           style="background-color: #80fc"
           class="userbutton"
         >my assets</button>
+        <button @click="showSettings()"
+          class="userbutton"
+        >settings</button>
         <button @click="explore()"
           style="background-color: #08fc"
           class="userbutton"
@@ -92,7 +92,7 @@ export default {
     font-size: 16px;
     min-width: 100px;
     position: absolute;
-    left: 400px;
+    left: 0px;
     top: 1px;
     border: 2px solid #0003;
     padding-top: 0;
@@ -131,6 +131,7 @@ export default {
     margin: 0;
     margin: 3px;
     margin-bottom: -1px;
+    margin-right: 0;
     padding: 1px;
     padding-bottom: 2px;
     padding-left: 8px;
