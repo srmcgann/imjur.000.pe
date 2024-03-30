@@ -15,7 +15,7 @@ error_reporting(E_ALL);
   $success = false;
   $maxFileSize = 25000000;
   $uploadDir = 'uploads';
-  $batchMetaData = json_decode($_FILES);
+  //$batchMetaData = $_FILES;
   if(sizeof($_FILES)){
     forEach($_FILES as $key => $val){
       $unlink = false;
@@ -130,5 +130,5 @@ SQL;
     $error = 'ERROR<br>no files were received.<br><br>This usually means that the transfer was blocked by the server due to one or more files being too large...<br><br>Check your file sizes';
   }
   
-  echo json_encode([$success, $links, $sizes, $types, $ct, $error, $batchMetaData]);
+  echo json_encode([$success, $links, $sizes, $types, $ct, $error, $FILES]);
 ?>
