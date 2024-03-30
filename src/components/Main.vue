@@ -78,11 +78,11 @@ export default {
         if(ct) {
           let batchMetaData = {
             loggedIn: this.state.loggedIn,
-            loggedIn: this.state.loggedInUserID,
+            userID: this.state.loggedInUserID,
             passhash: this.state.passhash,
             description: '',
           }
-          fd.append('batchMetaData', batchMetaData)
+          fd.append('batchMetaData', JSON.stringify(batchMetaData))
           fetch('upload.php', {
             method: "POST", body: fd
           }).then(res=>res.json()).then(data => {
