@@ -57,12 +57,6 @@ export default {
       this.$nextTick(()=>{
         let ct = 0
         let fd = new FormData()
-        let batchMetaData = {
-          loggedIn: this.state.loggedIn,
-          loggedIn: this.state.loggedInUserID,
-          passhash: this.state.passhash,
-          description: '',
-        }
         files.map((file, i) => {
           console.log(`file ${i}: `, file)
           if(file.size > 25000000){
@@ -82,7 +76,13 @@ export default {
           this.state.closeModal()
         }
         if(ct) {
-          fd.append('test', '123')
+          let batchMetaData = {
+            loggedIn: this.state.loggedIn,
+            loggedIn: this.state.loggedInUserID,
+            passhash: this.state.passhash,
+            description: '',
+          }
+          fd.append('batchMetaData', JSON.stringify(batchMetaData))
           fetch('upload.php', {
             method: "POST", body: fd
           }).then(res=>res.json()).then(data => {
