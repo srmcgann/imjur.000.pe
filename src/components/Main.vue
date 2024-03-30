@@ -82,6 +82,7 @@ export default {
             passhash: this.state.passhash,
             description: '',
           }
+          console.log('batchMetaData', batchMetaData)
           fd.append('batchMetaData', JSON.stringify(batchMetaData))
           fetch('upload.php', {
             method: "POST", body: fd
