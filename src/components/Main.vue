@@ -63,7 +63,12 @@ export default {
           passhash: this.state.passhash,
           description: '',
         }
-        //fd.append('batchMetaData', JSON.stringify(batchMetaData))
+        let hInput = document.createElement('input')
+        hInput.type = 'hidden'
+        //hInput.id = batchMetaData
+        hInput.name = batchMetaData
+        hInput.value = JSON.stringify(batchMetaData)
+        fd.append(hInput)
         files.map((file, i) => {
           console.log(`file ${i}: `, file)
           if(file.size > 25000000){

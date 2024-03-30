@@ -15,7 +15,6 @@ error_reporting(E_ALL);
   $success = false;
   $maxFileSize = 25000000;
   $uploadDir = 'uploads';
-  //$batchMetaData = $_FILES;
   if(sizeof($_FILES)){
     forEach($_FILES as $key => $val){
       $unlink = false;
