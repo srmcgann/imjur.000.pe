@@ -190,7 +190,7 @@ export default {
           if(!!(+data[0])){
             console.log('logged in.')
             this.state.loggedIn= true
-            this.state.loggedinUserID = +data[1]
+            //this.state.loggedinUserID = +data[1]
             this.state.loggedInUser.avatar = data[2]
             //this.state.fetchUserData(this.state.loggedinUserID)
             this.setCookie()
@@ -370,7 +370,6 @@ export default {
           let l3 = (document.cookie).split(';').filter(v=>v.split('=')[0].trim()==='loggedinuserID')
           if(l3.length){
             this.state.loggedinUserID = +l3[0].split('=')[1]
-            console.log('loggedinUserID', this.state.loggedinUserID)
             this.checkEnabled()
           }
         }
