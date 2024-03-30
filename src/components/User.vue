@@ -29,6 +29,7 @@
       <div class="loggedIn">
         <div
           class="avatar"
+          :title="`logged in as ${state.loggedinUserName  }`"
           :style="`background-image: url(${state.loggedInUser.avatar})`"
         ></div>
       </div>
@@ -99,7 +100,7 @@ export default {
   .avatar{
     background-repeat: no-repeat;
     background-position: center center;
-    background-size: cover;
+    background-size: contain;
     background-color: #000;
     border: 2px solid #40fa;
     height: 100%;
@@ -121,7 +122,7 @@ export default {
     min-width: 50px;
     margin: 0;
     margin-top: 3px;
-    margin-bottom: 1px;
+    margin-bottom: -1px;
     padding: 1px;
     padding-bottom: 2px;
     padding-left: 8px;
