@@ -70,7 +70,7 @@ export default {
             this.rejects = [...this.rejects, file]
           } else {
             ct++
-            fd.append(`test`, 123)
+            file.test = 123
             fd.append(`uploads_${i}`, file)
           }
         })
