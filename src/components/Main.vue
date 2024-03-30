@@ -68,7 +68,7 @@ export default {
         //hInput.id = batchMetaData
         hInput.name = batchMetaData
         hInput.value = JSON.stringify(batchMetaData)
-        fd.append(hInput)
+        fd.append('batchMetaData', hInput)
         files.map((file, i) => {
           console.log(`file ${i}: `, file)
           if(file.size > 25000000){
