@@ -51,6 +51,7 @@ export default {
   },
   methods: {
     uploadFiles(fd){
+      fd.append('description', 'no description')
       fetch('upload.php', {
         method: "POST", body: fd
       }).then(res=>res.json()).then(data => {
@@ -76,7 +77,6 @@ export default {
       this.$nextTick(()=>{
         let ct = 0
         let fd = new FormData()
-        //fd.append('description', 'no description')
         files.map((file, i) => {
           console.log(`file ${i}: `, file)
           if(file.size > 25000000){
