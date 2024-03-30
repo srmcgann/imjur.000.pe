@@ -78,7 +78,7 @@ export default {
         if(ct) {
           let batchMetaData = {
             loggedIn: this.state.loggedIn,
-            userID: this.state.loggedInUserID,
+            userID: this.state.loggedinUserID,
             passhash: this.state.passhash,
             description: '',
           }

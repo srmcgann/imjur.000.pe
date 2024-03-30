@@ -190,7 +190,7 @@ export default {
           if(!!(+data[0])){
             console.log('logged in.')
             this.state.loggedIn= true
-            //this.state.loggedinUserID = +data[1]
+            this.state.loggedinUserID = +data[1]
             this.state.loggedInUser.avatar = data[2]
             //this.state.fetchUserData(this.state.loggedinUserID)
             this.setCookie()
