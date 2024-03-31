@@ -8,7 +8,7 @@
   for($i=0; $i<mysqli_num_rows($res); ++$i){
     $row = mysqli_fetch_assoc($res);
     $meta = json_decode($row['meta']);
-    $size = $meta=>{'file size'};
+    $size = $meta->{'file size'};
     $link = [
       'id' => $row['id'],
       'size' => $size,
