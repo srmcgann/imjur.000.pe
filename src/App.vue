@@ -231,6 +231,7 @@ export default {
         .then(res => res.json())
         .then(data => {
           if(!!(+data[0])){
+            console.log(data)
             this.state.userLinks = []
             data[1].map((v, i) => {
               let obj = {
