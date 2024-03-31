@@ -105,11 +105,11 @@ export default {
     next(){
       if(!this.state.showPreview) return
       let idx = this.state.previewLink.ct +1
-      idx %= this.state.links.length
+      idx %= this.state.userLinks.length ? this.state.userLinks : this.state.links.length
       this.state.showPreview = false
       this.$nextTick(()=>{
         this.state.showPreview = true
-        this.state.previewLink = this.state.links[idx]
+        this.state.previewLink = this.state.userLinks.length ? this.state.userLinks[idx] : this.state.links[idx]
       })
     },
     register(){
