@@ -26,7 +26,7 @@
         this website is a work-in-progress.<br>
         your files will likely be deleted</div>
       </div>
-      <div v-if="state.links.length" class="links">
+      <div v-if="state.links.length || state.userLinks.length" class="links">
         links<br>
         <Link :state="state" v-for="link in state.links" :link="link" />
         <Link :state="state" v-for="link in state.userLinks" :link="link" />
