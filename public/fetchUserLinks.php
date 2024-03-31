@@ -6,9 +6,10 @@
   $res = mysqli_query($link, $sql);
   $uploadDir = 'uploads';
   $links = [];
+  $meta = [];
   for($i=0; $i<mysqli_num_rows($res); ++$i){
     $row = mysqli_fetch_assoc($res);
-    $meta = [
+    $m = [
       'id' => $row['id'],
       'slug' => $row['slug'],
       'size' => json_decode($row['meta'])->{'file size'},
@@ -40,6 +41,7 @@
     }
     $originalSlug = $row['originalSlug'];
     $links[] = "$uploadDir/$originalSlug.$suffix";
+    $meta[] = $m;
   }
   if(sizeof($links)){
     echo json_encode([true, $links, $meta]);
