@@ -231,9 +231,16 @@ export default {
         .then(res => res.json())
         .then(data => {
           if(!!(+data[0])){
-            console.log('received user links ', data[1])
-            this.state.userLinks = data[1]
-          }    
+            this.state.userLinks = []
+            data[1].map((v, i) => {
+              let obj = {
+                size: +data[2][i].size,
+                type: data[2][i].type,
+                href: v,
+              }
+              this.state.userLinks.push(obj)
+            })
+          }
         })
       }
     },
