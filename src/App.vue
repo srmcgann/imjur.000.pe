@@ -231,6 +231,7 @@ export default {
         .then(res => res.json())
         .then(data => {
           if(!!(+data[0])){
+            console.log('received user links ', data[1])
             this.state.userLinks = data[1]
           }    
         })

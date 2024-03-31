@@ -7,10 +7,13 @@
   $links = [];
   for($i=0; $i<mysqli_num_rows($res); ++$i){
     $row = mysqli_fetch_assoc($res);
+    $meta => json_decode($row['meta']);
+    $size = $meta=>{'file size'};
     $link = [
       'id' => $row['id'],
-      'slug' => $row['slug'],
-      'filetype' => $row['filetype'],
+      'size' => $size,
+      'href' => 'uploads/' . $row['slug'],
+      'type' => $row['filetype'],
       'date' => $row['date'],
       'userID' => $row['userID'],
       'upvotes' => $row['upvotes'],
