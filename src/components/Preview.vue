@@ -7,6 +7,8 @@
       <div class="slideshow" ref="slideshow"></div>
       <div v-if="state.links.length > 1" class="leftButton" @click="state.prev()" title="view previous asset [left arrow]"></div>
       <div v-if="state.links.length > 1" class="rightButton" @click="state.next()" title="view next asset [right arrow]"></div>
+      <div v-if="state.userLinks.length > 1" class="leftButton" @click="state.prev()" title="view previous asset [left arrow]"></div>
+      <div v-if="state.userLinks.length > 1" class="rightButton" @click="state.next()" title="view next asset [right arrow]"></div>
     </div>
   </div>
 </template>
