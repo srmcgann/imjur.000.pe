@@ -9,7 +9,7 @@
       @click="loadFiles()"
       ref="dropTarget"
     >
-      <div ref="dropTargetCaption" id="dropTargetCaption">
+      <div ref="dropTargetCaption" id="dropTargetCaption" v-if="!(state.userLinks.length || state.links.length)">
         throw sum filez [click/drop]<br><br>
         accepted : gif<br>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;web[p/m]<br>
@@ -91,7 +91,7 @@ export default {
             console.log('response from upload.php: ', data)
             this.state.uploadInprogress = false
             if(data[0]){
-              this.$refs.dropTargetCaption.style.display = 'none'
+              //this.$refs.dropTargetCaption.style.display = 'none'
               data[1].map((v, i)=>{
                 this.addLink(data[2][i], data[3][i], i, location.href.split('?')[0] + v)
               })
