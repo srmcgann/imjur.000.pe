@@ -138,9 +138,7 @@ export default {
     outline: none;
   }
   .userbutton{
-    font-size: 18px;
-    min-width: 50px;
-    margin: 0;
+    font-size: 16px;
     margin: 3px;
     margin-bottom: -1px;
     margin-right: 0;

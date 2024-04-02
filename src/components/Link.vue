@@ -34,6 +34,13 @@ todo
     <!--#{{link.ct+1}}-->
     <div class="copyLinkButton" @click.prevent.stop="copy()" title="copy link to clipboard"></div><br>
     <a :href="link.href" class="openButton" @click.prevent.stop="open()" title="open link in new tab"></a>
+    
+    <label :for="'selected'+link.ct" :key="'selectedKey'+link.ct" class="checkboxLabel" style="float: right;padding: 0;margin:0;margin-left: 10px;padding-top: 5px;margin-bottom:0px;display: inline-block;">
+      <span class="checkmark" style="float:right;"></span>
+      <span style="float:right;font-size:.8em;margin-top:0px;display:block;color:#ff8;padding:0;">selected </span>
+      <input type="checkbox" :disabled="link.userID != state.loggedinUserID" :checked="link.selected" :id="'selected'+link.ct" v-model="state.search.allWords" @input="state.beginSearch(1)">
+    </label>
+
     <!-- <span style="visibility: hidden; position: absolute;" v-html="link.href" ref="href"></span> -->
     <!-- <span class="href" style="font-size: 1em" v-html="link.type"></span><br> -->
     <!-- <span class="href" style="font-size: 1em" v-html="'size: ' + link.size.toLocaleString('en-us')"></span><br> -->
@@ -136,7 +143,7 @@ export default {
   }
   .link{
     display: inline-block;
-    height: 123px;
+    height: 150px;
     color: #acd;
     background-color: #204a;
     font-size: 20px;
