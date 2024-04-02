@@ -35,10 +35,10 @@ todo
     <div class="copyLinkButton" @click.prevent.stop="copy()" title="copy link to clipboard"></div><br>
     <a :href="link.href" class="openButton" @click.prevent.stop="open()" title="open link in new tab"></a>
     
-    <label :for="'selected'+link.ct" :key="'selectedKey'+link.ct" class="checkboxLabel" style="float: right;padding: 0;margin:0;margin-left: 10px;padding-top: 5px;margin-bottom:0px;display: inline-block;">
+    <label :title="(link.selected ? 'de' : '' ) + 'select this item'" :for="'selected'+link.ct" :key="'selectedKey'+link.ct" class="checkboxLabel" style="float: right;padding: 0;margin:0;margin-left: 10px;padding-top: 5px;margin-bottom:0px;display: inline-block;">
       <span class="checkmark" style="float:right;"></span>
-      <span style="float:right;font-size:.8em;margin-top:0px;display:block;color:#ff8;padding:0;">selected </span>
-      <input type="checkbox" :disabled="link.userID != state.loggedinUserID" :checked="link.selected" :id="'selected'+link.ct" v-model="link.selected" @input="">
+      <span style="float:right;font-size:.8em;margin-top:0px;display:block;color:#ff8;padding:0;margin-right: 116px">selected </span>
+      <input type="checkbox" :disabled="link.userID != state.loggedinUserID" :checked="link.selected" :id="'selected'+link.ct" v-model="link.selected" @input.stop.prevent>
     </label>
 
     <!-- <span style="visibility: hidden; position: absolute;" v-html="link.href" ref="href"></span> -->
@@ -143,7 +143,7 @@ export default {
   }
   .link{
     display: inline-block;
-    height: 150px;
+    height: 160px;
     color: #acd;
     background-color: #204a;
     font-size: 20px;

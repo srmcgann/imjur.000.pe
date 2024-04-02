@@ -633,8 +633,7 @@ select:focus{
   padding-left: 35px;
   margin-bottom: -2px;
   cursor: pointer;
-  margin-left: 30px;
-  margin-top: 3px;
+  margin: 0;
   cursor: pointer;
   font-size: 22px;
   -webkit-user-select: none;
@@ -645,6 +644,7 @@ select:focus{
 
 /* Hide the browser's default checkbox */
 .checkboxLabel input {
+  margin-left: -32px;
   position: absolute;
   opacity: 0;
   cursor: pointer;
