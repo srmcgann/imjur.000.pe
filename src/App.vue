@@ -240,6 +240,7 @@ export default {
               let obj = {
                 size: +data[2][i].size,
                 type: data[2][i].type,
+                selected: false,
                 href: v,
               }
               this.state.userLinks.push(obj)

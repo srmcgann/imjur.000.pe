@@ -93,7 +93,7 @@ export default {
             if(data[0]){
               //this.$refs.dropTargetCaption.style.display = 'none'
               data[1].map((v, i)=>{
-                this.addLink(data[2][i], data[3][i], i, location.href.split('?')[0] + v)
+                this.addLink(data[2][i], data[3][i], i, location.href.split('?')[0] + v, false)
               })
               this.state.modalContent = ''
               this.state.closeModal()
@@ -126,12 +126,13 @@ export default {
       }
       if(files.length) this.processUpload(files)
     },
-    addLink(size, type, ct, href){
+    addLink(size, type, ct, href, selected){
       let obj = {
         size,
         type,
         ct,
         href,
+        selected,
       }
       this.state.links.push(obj)
     },

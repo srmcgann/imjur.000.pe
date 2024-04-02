@@ -38,7 +38,7 @@ todo
     <label :for="'selected'+link.ct" :key="'selectedKey'+link.ct" class="checkboxLabel" style="float: right;padding: 0;margin:0;margin-left: 10px;padding-top: 5px;margin-bottom:0px;display: inline-block;">
       <span class="checkmark" style="float:right;"></span>
       <span style="float:right;font-size:.8em;margin-top:0px;display:block;color:#ff8;padding:0;">selected </span>
-      <input type="checkbox" :disabled="link.userID != state.loggedinUserID" :checked="link.selected" :id="'selected'+link.ct" v-model="state.search.allWords" @input="state.beginSearch(1)">
+      <input type="checkbox" :disabled="link.userID != state.loggedinUserID" :checked="link.selected" :id="'selected'+link.ct" v-model="link.selected" @input="">
     </label>
 
     <!-- <span style="visibility: hidden; position: absolute;" v-html="link.href" ref="href"></span> -->
