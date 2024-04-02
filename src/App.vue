@@ -1,6 +1,7 @@
 <template>
   <div>
     <Header       :state="state" />
+    <Toolbar      :state="state" />
     <Main         :state="state" />
     <Footer       :state="state" />
     <UserSettings :state="state" v-if="state.userSettingsVisible" />
@@ -25,6 +26,7 @@ import Modal from './components/Modal'
 import Header from './components/Header'
 import Footer from './components/Footer'
 import Preview from './components/Preview'
+import Toolbar from './components/Toolbar'
 import LoginPrompt from './components/LoginPrompt'
 import UserSettings from './components/UserSettings'
 
@@ -32,6 +34,7 @@ export default {
   name: 'App',
   components: {
     Header,
+    Toolbar,
     Main,
     Footer,
     UserSettings,

@@ -9,6 +9,7 @@ todo
   ✔ tile-able cards (flex)
   ✔ log original file name
   ✔ lightbox sim / previews
+  * checkboxes & "with selected" toobar
   * users, optional logins/profiles
     └-> ✔ login button
         ✔ profile page

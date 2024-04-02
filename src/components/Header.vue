@@ -1,7 +1,7 @@
 <template>
   <div class="header">
     <div class="headerImg" @click="reload()"></div>
-    <User :state="state" />
+    <User :state="state" v-if="!state.loggedIn"/>
   </div>
 </template>
 
