@@ -36,7 +36,7 @@ todo
     <a :href="link.href" class="openButton" @click.prevent.stop="open()" title="open link in new tab"></a>
     
       <label :for="'selected'+link.ct" class="checkboxLabel" style="float: left;margin-left: 40px;text-align: left;">
-        <input type="checkbox" id="exact" v-model="link.selected" @input="updateLinkSelected()" :id="'selected'+link.ct">
+        <input type="checkbox" v-model="link.selected" @input="updateLinkSelected()" :id="'selected'+link.ct">
         <span class="checkmark" style="margin-left: -30px;"></span>
         <span style="font-size:.8em;margin-top:0px;display:block;color:#ff8;padding:0;margin-left:-35px;">selected</span>
       </label>
