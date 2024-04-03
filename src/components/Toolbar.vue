@@ -8,10 +8,8 @@
       <button @click="state.deleteSelected()" class="deleteButton toolbarButtons">
         delete selected
       </button>
-      ...logged-in tools
     </div>
     <div v-else class="toolbarSection">
-      ...loged-out tools
     </div>
   </div>
 </template>
