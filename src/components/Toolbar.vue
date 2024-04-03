@@ -1,6 +1,9 @@
 <template>
   <div class="toolbar">
     <User :state="state" />
+    <button @click="state.loadFiles()">
+      upload files
+    </button>
     <div v-if="state.loggedIn">
       ...logged-in tools
     </div>

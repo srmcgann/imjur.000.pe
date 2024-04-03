@@ -87,6 +87,7 @@ export default {
         checkLogin: null,
         confirmpassword: '',
         showLoginPrompt: false,
+        loadFiles: null,
         showRegister: false,
         loggedIn: false,
         loginPromptVisible: false,
@@ -458,6 +459,7 @@ export default {
     this.state.getPages = this.getPages
     this.state.getAvatar = this.getAvatar
     this.state.setCookie = this.setCookie
+    this.state.loadFiles = this.loadFiles
     this.state.checkLogin = this.checkLogin
     this.state.closePrompts = this.closePrompts
     this.state.closePreview = this.closePreview

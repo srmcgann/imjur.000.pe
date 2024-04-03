@@ -6,7 +6,7 @@
       :style="state.links.length ? '' : 'cursor: pointer;'"
       @dragover.prevent
       @drop.prevent="dropFiles($event)"
-      @click="loadFiles()"
+      <!-- @click="loadFiles()" -->
       ref="dropTarget"
     >
       <div ref="dropTargetCaption" id="dropTargetCaption" v-if="!(state.userLinks.length || state.links.length)">
@@ -151,6 +151,7 @@ export default {
     }
   },
   mounted(){
+    this.state.loadFiles = this.loadFiles
     this.preload = [ ...this.preload,
       [document.createElement('video'), 'loading.mp4'],
     ]
@@ -173,10 +174,10 @@ export default {
     box-sizing: border-box;
     text-align: center;
   }
-  .dropTarget:hover{
+  /*.dropTarget:hover{
     background-color: #0648;
     cursor: pointer;
-  }
+  }*/
   .dropTarget{
     color: #0ff;
     display: inline-block;
