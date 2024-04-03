@@ -34,7 +34,7 @@ export default {
     line-height: 16px;
     box-sizing: border-box;
     text-align: left;
-    padding-left: 20px;
+    padding-left: 5px;
     position: fixed;
     bottom: 0;
   }
