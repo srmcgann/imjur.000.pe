@@ -86,7 +86,7 @@ export default {
     },
     Draw(){
       this.x.globalAlpha = 1
-      this.x.fillStyle='#0008'
+      this.x.fillStyle='#6668'
       this.x.fillRect(0,0,this.c.width,this.c.height)
       let fillStyle = 'contain'
       let scl

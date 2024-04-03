@@ -24,7 +24,6 @@ export default {
     height: 70px;
     background: linear-gradient(90deg, #108e, #000e);
     color: #fff;
-    min-width:600px;
     width: calc(100vw - 20px);
     left: 0;
     font-size: 20px;

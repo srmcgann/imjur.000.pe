@@ -177,7 +177,7 @@ export default {
   .main{
     background-color: #000011ee;
     font-size: 20px;
-    overflow-y: auto;
+    overflow-y: scroll;
     overflow-x: hidden;
     height: 100vh;
     padding: 0px;
