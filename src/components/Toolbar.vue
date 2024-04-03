@@ -44,6 +44,7 @@ export default {
     font-size: 20px;
   }
   .toolbarButtons{
+    margin: 10px;
   }
   .deleteButton{
     color: #f88;
