@@ -29,7 +29,9 @@
         <Link
           :state="state"
           v-for="link in state.links"
-          :link="link" :linkMode="'link'"
+          :link="link"
+          :linkMode="'link'"
+          v-if="state.links.length"
         />
         <Link
           :state="state"
@@ -141,7 +143,8 @@ export default {
         ct,
         href,
         selected,
-        userID
+        userID,
+        linkType: 'link'
       }
       this.state.links.push(obj)
     },

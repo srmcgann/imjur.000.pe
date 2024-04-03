@@ -88,7 +88,6 @@ export default {
         checkLogin: null,
         confirmpassword: '',
         showLoginPrompt: false,
-        linkMode: null,
         loadFiles: null,
         showRegister: false,
         loggedIn: false,
@@ -100,17 +99,13 @@ export default {
   methods:{
     prev(){
       if(!this.state.showPreview) return
-      let idx = this.state.previewLink.ct -1
+      let idx = this.state.previewPosition - 1
       this.state.showPreview = false
-      switch(this.state.linkMode){
-        case 'link':
-          if(idx<0) idx = this.state.links.length-1
-          this.state.previewLink = this.state.links[idx]
-        break
-        case 'userLink':
-          if(idx<0) idx = this.state.userLinks.length-1
-          this.state.previewLink = this.state.userLinks[idx]
-        break
+      if(idx<0) this.state.previewPosition = this.userLinks.length + this.links.length - 1
+      if(idx>this.links.length-1){
+        this.state.previewLink = this.state.userLinks[idx]
+      }else{
+        this.state.previewLink = this.state.links[idx]
       }
       this.$nextTick(()=>{
         this.state.showPreview = true
@@ -118,17 +113,14 @@ export default {
     },
     next(){
       if(!this.state.showPreview) return
-      let idx = this.state.previewLink.ct +1
+      let idx = this.state.previewPosition + 1
       this.state.showPreview = false
-      switch(this.state.linkMode){
-        case 'link':
-          idx %= this.state.links.length
-          this.state.previewLink = this.state.links[idx]
-        break
-        case 'userLink':
-          idx %= this.state.userLinks.length
-          this.state.previewLink = this.state.userLinks[idx]
-        break
+      idx %= this.state.userLinks.length + this.state.links.length
+      this.state.previewLink = this.state.links[idx]
+      if(idx>this.links.length-1){
+        this.state.previewLink = this.state.userLinks[idx]
+      }else{
+        this.state.previewLink = this.state.links[idx]
       }
       this.$nextTick(()=>{
         this.state.showPreview = true
@@ -262,7 +254,8 @@ export default {
                 type: data[2][i].type,
                 selected: false,
                 href: location.href.split('?')[0] + v,
-                userID: +data[2][i].userID
+                userID: +data[2][i].userID,
+                linkType: 'userLink'
               }
               this.state.userLinks.push(obj)
             })

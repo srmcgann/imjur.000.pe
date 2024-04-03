@@ -79,7 +79,6 @@ export default {
       open(this.link.href, '_blank')
     },
     preview(){
-      this.state.linkMode = this.linkMode
       this.state.previewLink = this.link
       this.state.showPreview = true
     },
