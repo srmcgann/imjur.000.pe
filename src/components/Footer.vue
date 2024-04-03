@@ -22,7 +22,7 @@ export default {
 <style scoped>
   .footer{
     height: 70px;
-    background: linear-gradient(90deg, #021e, #012a, #102a, #000e);
+    background: linear-gradient(90deg, #000, #024e, #204e);
     color: #fff;
     min-width:600px;
     width: 100vw;
@@ -33,7 +33,8 @@ export default {
     padding-top: 5px;
     line-height: 16px;
     box-sizing: border-box;
-    text-align: center;
+    text-align: left;
+    padding-left: 20px;
     position: fixed;
     bottom: 0;
   }
