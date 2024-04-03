@@ -290,11 +290,11 @@ export default {
           this.closePrompts()
           this.state.invalidLoginAttemp = false
           this.state.loggedInUser.avatar = data[3]
+          this.fetchUserLinks(this.state.loggedinUserID)          
           //this.state.userInfo[this.state.loggedinUserID] = {}
           //this.state.userInfo[this.state.loggedinUserID].name = this.state.regusername
           //this.state.userInfo[this.state.loggedinUserID].avatar = data[3]
           //this.state.userInfo[this.state.loggedinUserID].isAdmin = +data[4]
-          
           //this.checkAutoplayPref()
           //this.checkExactSearchPref()
           //this.checkShowControlsPref()
