@@ -6,7 +6,7 @@
       :style="state.links.length ? '' : 'cursor: pointer;'"
       @dragover.prevent
       @drop.prevent="dropFiles($event)"
-      <!-- @click="loadFiles()" -->
+      @click="/*loadFiles()*/"
       ref="dropTarget"
     >
       <div ref="dropTargetCaption" id="dropTargetCaption" v-if="!(state.userLinks.length || state.links.length)">
