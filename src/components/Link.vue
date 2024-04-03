@@ -35,11 +35,11 @@ todo
     <div class="copyLinkButton" @click.prevent.stop="copy()" title="copy link to clipboard"></div><br>
     <a :href="link.href" class="openButton" @click.prevent.stop="open()" title="open link in new tab"></a>
     
-<label :for="'selected'+link.ct" class="checkboxLabel" style="float: left;margin-left: 40px;text-align: left;;">
-                <input type="checkbox" id="exact" v-model="link.selected" @input="updateLinkSelected()">
-                <span class="checkmark" style="margin-left: -30px;"></span>
-                <span style="font-size:.8em;margin-top:0px;display:block;color:#ff8;padding:0;margin-left:-35px;">selected</span>
-              </label>
+      <label :for="'selected'+link.ct" class="checkboxLabel" style="float: left;margin-left: 40px;text-align: left;;">
+        <input type="checkbox" id="exact" v-model="link.selected" @input="updateLinkSelected()">
+        <span class="checkmark" style="margin-left: -30px;"></span>
+        <span style="font-size:.8em;margin-top:0px;display:block;color:#ff8;padding:0;margin-left:-35px;">selected</span>
+      </label>
               
     <!-- <span style="visibility: hidden; position: absolute;" v-html="link.href" ref="href"></span> -->
     <!-- <span class="href" style="font-size: 1em" v-html="link.type"></span><br> -->
@@ -80,7 +80,7 @@ export default {
     },
     preview(){
       this.state.previewPosition = this.link.ct
-      this.state.previewPosition += this.link.linkType == 'userLink' ? this.state.links.length
+      this.state.previewPosition += this.link.linkType == 'userLink' ? this.state.links.length : 0
       this.state.previewLink = this.link
       this.state.showPreview = true
     },
