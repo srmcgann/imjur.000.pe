@@ -166,11 +166,14 @@ export default {
     font-size: 20px;
     overflow-y: auto;
     overflow-x: hidden;
-    height: calc(100vh - 174px);
-    min-height: calc(100vh - 174px);
+    height: 100vh;
     padding: 0px;
     box-sizing: border-box;
     text-align: center;
+    position: absolute;
+    padding-top: 100px;
+    z-index: 0;
+    padding-bottom: 100px;
   }
   /*.dropTarget:hover{
     background-color: #0648;

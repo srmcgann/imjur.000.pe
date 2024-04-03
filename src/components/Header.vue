@@ -34,6 +34,11 @@ export default {
     background: linear-gradient(90deg, #000, #028d, #103d);
     color: #4fa;
     font-size: 20px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
   }
   .headerImg{
     cursor: pointer;

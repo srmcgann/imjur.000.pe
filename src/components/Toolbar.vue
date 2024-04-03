@@ -42,9 +42,14 @@ export default {
     background: #001d;
     color: #4fa;
     font-size: 20px;
+    position: absolute;
+    top: 52px;
+    z-index: 100;
   }
   .toolbarButtons{
-    margin: 10px;
+    margin: 5px;
+    min-width: 180px;
+    padding: 2px;
   }
   .deleteButton{
     color: #f88;

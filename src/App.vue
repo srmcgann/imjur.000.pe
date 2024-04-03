@@ -513,11 +513,10 @@ button:focus{
 }
 button{
   font-size: 18px;
-  border: 2px solid #0006;
+  border: 2px solid #0008;
   border-radius: 6px;
   background: #adcc;
   padding: 4px;
-  padding-bottom: 6px;
   padding-left: 10px;
   padding-right: 10px;
   font-weight: 900;

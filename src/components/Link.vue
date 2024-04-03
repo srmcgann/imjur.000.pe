@@ -151,9 +151,9 @@ export default {
   }
   .link{
     display: inline-block;
-    height: 160px;
+    height: 176px;
     color: #acd;
-    background-color: #204a;
+    background-color: #000a;
     font-size: 20px;
     min-width: 268px;
     box-sizing: border-box;
@@ -162,6 +162,8 @@ export default {
     word-break: break-word;
     border-radius: 20px;
     vertical-align: top;
+    border: 5px solid #8882;
+    padding: 5px;
   }
   .href{
     font-size: .6em;
