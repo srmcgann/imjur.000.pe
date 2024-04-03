@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: sql309.infinityfree.com
--- Generation Time: Mar 30, 2024 at 02:42 PM
+-- Generation Time: Apr 03, 2024 at 06:03 PM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 7.2.22
 
@@ -28,14 +28,15 @@ SET time_zone = "+00:00";
 -- Table structure for table `imjurComments`
 --
 
-DROP TABLE IF EXISTS `imjurComments`;
 CREATE TABLE IF NOT EXISTS `imjurComments` (
-  `id` int(11) NOT NULL,
-  `userID` int(11) NOT NULL,
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `userID` bigint(20) NOT NULL,
   `date` timestamp NOT NULL DEFAULT current_timestamp(),
   `text` mediumtext NOT NULL,
   `upvotes` int(11) NOT NULL,
-  `downvotes` int(11) NOT NULL
+  `downvotes` int(11) NOT NULL,
+  `uploadID` bigint(20) NOT NULL,
+  UNIQUE KEY `id` (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -44,7 +45,6 @@ CREATE TABLE IF NOT EXISTS `imjurComments` (
 -- Table structure for table `imjurServers`
 --
 
-DROP TABLE IF EXISTS `imjurServers`;
 CREATE TABLE IF NOT EXISTS `imjurServers` (
   `id` bigint(11) NOT NULL,
   `topURL` varchar(1024) NOT NULL,
@@ -62,7 +62,6 @@ CREATE TABLE IF NOT EXISTS `imjurServers` (
 -- Table structure for table `imjurUploads`
 --
 
-DROP TABLE IF EXISTS `imjurUploads`;
 CREATE TABLE IF NOT EXISTS `imjurUploads` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `slug` varchar(64) NOT NULL,
@@ -86,9 +85,8 @@ CREATE TABLE IF NOT EXISTS `imjurUploads` (
 -- Table structure for table `imjurUsers`
 --
 
-DROP TABLE IF EXISTS `imjurUsers`;
 CREATE TABLE IF NOT EXISTS `imjurUsers` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `dateJoined` datetime NOT NULL DEFAULT current_timestamp(),
   `dateSeen` datetime NOT NULL DEFAULT current_timestamp(),
   `name` varchar(64) NOT NULL,
@@ -106,12 +104,12 @@ CREATE TABLE IF NOT EXISTS `imjurUsers` (
 -- Table structure for table `imjurVotes`
 --
 
-DROP TABLE IF EXISTS `imjurVotes`;
 CREATE TABLE IF NOT EXISTS `imjurVotes` (
-  `id` int(11) NOT NULL,
-  `userID` int(11) NOT NULL,
-  `uploadID` int(11) NOT NULL,
-  `value` int(11) NOT NULL
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `userID` bigint(20) NOT NULL,
+  `uploadID` bigint(20) NOT NULL,
+  `value` int(11) NOT NULL,
+  UNIQUE KEY `id` (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 COMMIT;
 
