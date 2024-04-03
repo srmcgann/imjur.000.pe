@@ -1,11 +1,11 @@
 <template>
   <div class="toolbar">
     <User :state="state" />
-    <button @click="state.loadFiles()">
+    <button @click="state.loadFiles()" class="toolbarButtons">
       upload files
     </button>
     <div v-if="state.loggedIn" style="display: inline-block">
-      <button @click="state.deleteSelected()" class="deleteButton">
+      <button @click="state.deleteSelected()" class="deleteButton toolbarButtons">
         delete selected
       </button>
       ...logged-in tools
@@ -39,9 +39,11 @@ export default {
 <style scoped>
   .toolbar{
     height: 52px;
-    background: linear-gradient(90deg, #444a, #000a, #004a);
+    background: linear-gradient(90deg, #012e, #012e, #201e);
     color: #4fa;
     font-size: 20px;
+  }
+  .toolbarButtons{
   }
   .deleteButton{
     color: #f88;

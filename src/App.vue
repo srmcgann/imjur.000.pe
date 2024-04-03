@@ -512,7 +512,6 @@ button:focus{
   outline: none;
 }
 button{
-  font-family: Play;
   font-size: 18px;
   border: 2px solid #0006;
   border-radius: 6px;

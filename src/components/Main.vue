@@ -3,7 +3,6 @@
     <div
       id="dropTarget"
       class="dropTarget"
-      :style="state.links.length ? '' : 'cursor: pointer;'"
       @dragover.prevent
       @drop.prevent="dropFiles($event)"
       @click=""
