@@ -101,12 +101,12 @@ export default {
     prev(){
       if(!this.state.showPreview) return
       this.state.showPreview = false
-      let idx = this.state.previewPosition - 1
-      if(idx<0) idx = this.state.previewPosition = this.state.userLinks.length + this.state.links.length - 1
-      if(idx>this.state.links.length-1){
-        this.state.previewLink = this.state.userLinks[idx - this.state.links.length]
+      this.state.previewPosition -= 1
+      if(this.state.previewPosition<0) this.state.previewPosition = this.state.userLinks.length + this.state.links.length - 1
+      if(this.state.previewPosition>this.state.links.length-1){
+        this.state.previewLink = this.state.userLinks[this.state.previewPosition - this.state.links.length]
       }else{
-        this.state.previewLink = this.state.links[idx]
+        this.state.previewLink = this.state.links[this.state.previewPosition]
       }
       this.$nextTick(()=>{
         this.state.showPreview = true
@@ -115,12 +115,12 @@ export default {
     next(){
       if(!this.state.showPreview) return
       this.state.showPreview = false
-      let idx = this.state.previewPosition + 1
-      idx %= this.state.userLinks.length + this.state.links.length
-      if(idx>this.state.links.length-1){
-        this.state.previewLink = this.state.userLinks[idx - this.state.links.length]
+      this.state.previewPosition++
+      this.state.previewPosition %= this.state.userLinks.length + this.state.links.length
+      if(this.state.previewPosition>this.state.links.length-1){
+        this.state.previewLink = this.state.userLinks[this.state.previewPosition - this.state.links.length]
       }else{
-        this.state.previewLink = this.state.links[idx]
+        this.state.previewLink = this.state.links[this.state.previewPosition]
       }
       this.$nextTick(()=>{
         this.state.showPreview = true
