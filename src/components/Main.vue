@@ -134,7 +134,7 @@ export default {
       }
       if(files.length) this.processUpload(files)
     },
-    addLink(size, type, ct, href, selected){
+    addLink(size, type, ct, href, selected, userID){
       let obj = {
         size,
         type,

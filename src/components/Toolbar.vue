@@ -4,13 +4,13 @@
     <button @click="state.loadFiles()" class="toolbarButtons">
       upload files
     </button>
-    <div v-if="state.loggedIn" style="display: inline-block">
+    <div v-if="state.loggedIn" class="toolBarSection">
       <button @click="state.deleteSelected()" class="deleteButton toolbarButtons">
         delete selected
       </button>
       ...logged-in tools
     </div>
-    <div v-else style="display: inline-block">
+    <div v-else class="toolBarSection">
       ...loged-out tools
     </div>
   </div>
@@ -46,6 +46,9 @@ export default {
     top: 52px;
     z-index: 100;
     width: calc(100vw - 20px);
+  }
+  .toolbarSection{
+    display: inline-block;
   }
   .toolbarButtons{
     margin: 5px;
