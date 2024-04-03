@@ -4,13 +4,13 @@
     <button @click="state.loadFiles()" class="toolbarButtons">
       upload files
     </button>
-    <div v-if="state.loggedIn" class="toolBarSection">
+    <div v-if="state.loggedIn" class="toolbarSection">
       <button @click="state.deleteSelected()" class="deleteButton toolbarButtons">
         delete selected
       </button>
       ...logged-in tools
     </div>
-    <div v-else class="toolBarSection">
+    <div v-else class="toolbarSection">
       ...loged-out tools
     </div>
   </div>
