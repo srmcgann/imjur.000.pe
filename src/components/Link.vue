@@ -79,6 +79,8 @@ export default {
       open(this.link.href, '_blank')
     },
     preview(){
+      this.state.previewPosition = this.link.ct
+      this.state.previewPosition += this.link.linkType == 'userLink' ? this.state.links.length
       this.state.previewLink = this.link
       this.state.showPreview = true
     },

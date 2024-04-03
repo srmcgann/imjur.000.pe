@@ -93,17 +93,18 @@ export default {
         loggedIn: false,
         loginPromptVisible: false,
         getPages: null,
+        previewPosition: 0,
       }
     }
   },
   methods:{
     prev(){
       if(!this.state.showPreview) return
-      let idx = this.state.previewPosition - 1
       this.state.showPreview = false
+      let idx = this.state.previewPosition - 1
       if(idx<0) this.state.previewPosition = this.userLinks.length + this.links.length - 1
       if(idx>this.state.links.length-1){
-        this.state.previewLink = this.state.userLinks[idx]
+        this.state.previewLink = this.state.userLinks[idx - this.state.links.length]
       }else{
         this.state.previewLink = this.state.links[idx]
       }
@@ -113,12 +114,11 @@ export default {
     },
     next(){
       if(!this.state.showPreview) return
-      let idx = this.state.previewPosition + 1
       this.state.showPreview = false
+      let idx = this.state.previewPosition + 1
       idx %= this.state.userLinks.length + this.state.links.length
-      this.state.previewLink = this.state.links[idx]
       if(idx>this.state.links.length-1){
-        this.state.previewLink = this.state.userLinks[idx]
+        this.state.previewLink = this.state.userLinks[idx - this.state.links.length]
       }else{
         this.state.previewLink = this.state.links[idx]
       }
@@ -253,6 +253,7 @@ export default {
                 size: +data[2][i].size,
                 type: data[2][i].type,
                 selected: false,
+                ct: i,
                 href: location.href.split('?')[0] + v,
                 userID: +data[2][i].userID,
                 linkType: 'userLink'
