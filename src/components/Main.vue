@@ -170,7 +170,7 @@ export default {
     overflow-x: hidden;
     height: calc(100vh - 174px);
     min-height: calc(100vh - 174px);
-    padding: 20px;
+    padding: 0px;
     box-sizing: border-box;
     text-align: center;
   }
