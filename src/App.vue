@@ -102,7 +102,7 @@ export default {
       let idx = this.state.previewPosition - 1
       this.state.showPreview = false
       if(idx<0) this.state.previewPosition = this.userLinks.length + this.links.length - 1
-      if(idx>this.links.length-1){
+      if(idx>this.state.links.length-1){
         this.state.previewLink = this.state.userLinks[idx]
       }else{
         this.state.previewLink = this.state.links[idx]
@@ -117,7 +117,7 @@ export default {
       this.state.showPreview = false
       idx %= this.state.userLinks.length + this.state.links.length
       this.state.previewLink = this.state.links[idx]
-      if(idx>this.links.length-1){
+      if(idx>this.state.links.length-1){
         this.state.previewLink = this.state.userLinks[idx]
       }else{
         this.state.previewLink = this.state.links[idx]
