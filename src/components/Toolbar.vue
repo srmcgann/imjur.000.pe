@@ -39,7 +39,7 @@ export default {
 <style scoped>
   .toolbar{
     height: 52px;
-    background: linear-gradient(90deg, #012e, #012e, #201e);
+    /*background: linear-gradient(90deg, #012e, #012e, #201e);*/
     color: #4fa;
     font-size: 20px;
   }
