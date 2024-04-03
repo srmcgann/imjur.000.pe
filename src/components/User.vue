@@ -90,7 +90,7 @@ export default {
     color: #4fa;
     font-size: 20px;
     top: 0;
-    left: 400px;
+    right: 0;
     min-width: 350px;
     position: fixed;
     text-align: center;
