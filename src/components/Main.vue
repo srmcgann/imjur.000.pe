@@ -290,15 +290,15 @@ export default {
     width: 340px;
     position: fixed;
     left: 50%;
-    top: 43%;
+    top: 50%;
     transform: translate(-50%, -50%);
     padding: 38px;
     border-radius: 32%;
-    height: 264px;
+    height: 320px;
     padding-top: 0;
     padding-right: 28px;
-    background-color: #1028;
-    box-shadow: 0 0 150px 150px #1028;
+    background-color: #103c;
+    box-shadow: 0 0 150px 150px #103c;
     /*animation: colorCycle 5s infinite linear;*/
   }
 </style>
