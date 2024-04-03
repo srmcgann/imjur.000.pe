@@ -3,11 +3,15 @@
   $data = json_decode(file_get_contents('php://input'));
   $userName = mysqli_real_escape_string($link, $data->{'userName'});
   $password = mysqli_real_escape_string($link, $data->{'password'});
-  $sql = 'SELECT * FROM imjurUsers WHERE name LIKE "' . $userName . '";';
+  $sql = "SELECT * FROM imjurUsers WHERE name LIKE \"$userName\";";
   $res = mysqli_query($link, $sql);
   if(mysqli_num_rows($res)){
     $row = mysqli_fetch_assoc($res);
-    echo json_encode([$row['enabled'] && password_verify($password, $row['passhash']), $row['passhash'], $row['id'], $row['avatar'], $row['admin']]);
+    if($row['enabled'] && password_verify($password, $row['passhash'])){
+      echo json_encode([true, $row['passhash'], $row['id'], $row['avatar'], $row['admin']]);
+    } else {
+      echo json_encode([false, '', '']);
+    }
   } else {
     echo json_encode([false, '', '']);
   }

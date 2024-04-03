@@ -256,6 +256,7 @@ export default {
                 ct: i,
                 href: location.href.split('?')[0] + v,
                 userID: +data[2][i].userID,
+                id: +data[2][i].id,
                 linkType: 'userLink'
               }
               this.state.userLinks.push(obj)
@@ -265,7 +266,49 @@ export default {
       }
     },
     deleteSelected(){
-      console.log('deleting selected...')
+      let count = 0
+      let linksToProcess = []
+      let userLinksToProcess = []
+      let slugs = []
+      this.state.links.map((v, i) => {
+        if(v.selected){
+          count++
+          linksToProcess = [...linksToProcess, v.id]
+          slugs = [...slugs, v.slug]
+        }
+      })
+      this.state.userLinks.map((v, i) => {
+        if(v.selected){
+          count++
+          userLinksToProcess = [...userLinksToProcess, v.id]
+          slugs = [...slugs, v.slug]
+        }
+      })
+      if(prompt(`\n\nARE YOU SURE YOU WANT TO DELETE ${count} ITEMS?\n\n\n   >>> THIS ACTION CANNOT BE UNDONE! <<<`)){
+        console.log('deleting selected...')
+        let sendData = {
+          userName: this.state.username,
+          passhash: this.state.passhash,
+          slugs
+        }
+        fetch('delete.php', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(sendData),
+        })
+        .then(res => res.json()).then(data => {
+          if(data[0]){
+            this.state.links = this.state.links.filter((v, i) => !linksToProcess.filter(q => q == v.id).length)
+            this.state.userLinks = this.state.userLinks.filter((v, i) => !userLinksToProcess.filter(q => q == v.id).length)
+            //alert(`deleted ${count} items`)
+            console.log(`deleted ${count} items`)
+          }else{
+            alert(`there was a problem deleting ${slugs.length > 1 ? 'these' : 'this'} asset${slugs.length > 1 ? 's' : ''}`)
+          }
+        })
+      }
     },
     setCookie() {
       let cookies = document.cookie
