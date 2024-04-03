@@ -25,9 +25,8 @@ export default {
     background: linear-gradient(90deg, #108e, #000e);
     color: #fff;
     min-width:600px;
-    width: calc(100vw - 40px);
-    left: 50%;
-    transform: translatex(-50%);
+    width: calc(100vw - 20px);
+    left: 0;
     font-size: 20px;
     text-shadow: 2px 2px 2px #000;
     padding-top: 5px;
