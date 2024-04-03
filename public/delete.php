@@ -16,7 +16,7 @@
         $sql = "SELECT * FROM imjurUploads WHERE slug LIKE BINARY \"$slug\" AND userID = $userID";
         $res2 = mysqli_query($link, $sql);
         if(mysqli_num_rows($res2){
-          $row2 = mysqli_fetch_assoc($res2);
+          $row2 = mysqli_fetch_assoc($link, $res2);
           $originalSlug = $row2['originalSlug'];
           $uploadID = $row2['uploadID'];
           if($originalSlug && strlen($originalSlug) > 1 && $slug == $originalSlug){
