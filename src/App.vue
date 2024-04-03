@@ -658,7 +658,6 @@ select:focus{
   position: absolute;
   top: 0;
   left: 0;
-  margin-left: -32px;
   height: 25px;
   width: 25px;
   border: 1px solid #2468;
