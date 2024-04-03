@@ -80,9 +80,6 @@ export default {
     }
   },
   mounted(){
-    if(this.state.loggedIn){
-      this.userFiles()
-    }
   }
 }
 </script>
