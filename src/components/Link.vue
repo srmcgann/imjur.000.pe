@@ -35,10 +35,10 @@ todo
     <div class="copyLinkButton" @click.prevent.stop="copy()" title="copy link to clipboard"></div><br>
     <a :href="link.href" class="openButton" @click.prevent.stop="open()" title="open link in new tab"></a>
     
-    <label :title="(link.selected ? 'de' : '' ) + 'select this item'" :for="'selected'+link.ct" :key="'selectedKey'+link.ct" class="checkboxLabel" @click.prevent>
+    <label :title="(link.selected ? 'de' : '' ) + 'select this item'" :for="'selected'+link.ct" :key="'selectedKey'+link.ct" class="checkboxLabel" @click.stop>
       <span class="checkmark" style="float:right;"></span>
       <span style="">selected </span>
-      <input type="checkbox" :checked="link.selected" :id="'selected'+link.ct" v-model="link.selected" @input.stop.prevent="link.selected = !link.selected">
+      <input type="checkbox" :checked="link.selected" :id="'selected'+link.ct" v-model="link.selected" @input="link.selected = !link.selected">
     </label>
 
     <!-- <span style="visibility: hidden; position: absolute;" v-html="link.href" ref="href"></span> -->
