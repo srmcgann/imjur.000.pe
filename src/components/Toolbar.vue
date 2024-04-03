@@ -39,7 +39,7 @@ export default {
 <style scoped>
   .toolbar{
     height: 52px;
-    background: #001dñ
+    background: #001d;
     color: #4fa;
     font-size: 20px;
   }
