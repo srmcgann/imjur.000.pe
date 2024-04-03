@@ -66,9 +66,9 @@ export default {
   methods: {
     updateLinkSelected(){
       if(this.link.selected){
-        this.link.selected = true
-      }else{
         this.link.selected = false
+      }else{
+        this.link.selected = true
       }
       console.log('selected', this.link.selected)
     },
