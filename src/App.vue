@@ -284,7 +284,7 @@ export default {
           slugs = [...slugs, v.slug]
         }
       })
-      if(prompt(`\n\nARE YOU SURE YOU WANT TO DELETE ${count} ITEMS?\n\n\n   >>> THIS ACTION CANNOT BE UNDONE! <<<`)){
+      if(prompt(`\n\nARE YOU SURE YOU WANT TO DELETE ${count} ITEM${count>1?'S':''}?\n\n\n   >>> THIS ACTION CANNOT BE UNDONE! <<<\n\n\n  type 'yes' to continue"`).toLowerCase().indexOf('yes') != -1){
         console.log('deleting selected...')
         let sendData = {
           userName: this.state.username,
