@@ -88,11 +88,12 @@ export default {
         checkLogin: null,
         confirmpassword: '',
         showLoginPrompt: false,
+        linkMode: null,
         loadFiles: null,
         showRegister: false,
         loggedIn: false,
         loginPromptVisible: false,
-        getPages: null
+        getPages: null,
       }
     }
   },
@@ -106,7 +107,7 @@ export default {
           if(idx<0) idx = this.state.links.length-1
           this.state.previewLink = this.state.links[idx]
         break
-        case 'userLink'
+        case 'userLink':
           if(idx<0) idx = this.state.userLinks.length-1
           this.state.previewLink = this.state.userLinks[idx]
         break
@@ -124,7 +125,7 @@ export default {
           idx %= this.state.links.length
           this.state.previewLink = this.state.links[idx]
         break
-        case 'userLink'
+        case 'userLink':
           idx %= this.state.userLinks.length
           this.state.previewLink = this.state.userLinks[idx]
         break
