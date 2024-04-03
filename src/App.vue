@@ -696,4 +696,19 @@ select:focus{
   -ms-transform: rotate(45deg);
   transform: rotate(45deg);
 }
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: #133; 
+}
+ 
+::-webkit-scrollbar-thumb {
+  background: #366; 
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #588; 
+}
 </style>
