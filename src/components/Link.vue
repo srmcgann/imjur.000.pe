@@ -38,7 +38,7 @@ todo
     <label :title="(link.selected ? 'de' : '' ) + 'select this item'" :for="'selected'+link.ct" :key="'selectedKey'+link.ct" class="checkboxLabel" @click.stop>
       <span class="checkmark" style="float:right;"></span>
       <span style="">selected </span>
-      <input type="checkbox" :checked="link.selected" :id="'selected'+link.ct" v-model="link.selected" @input="">
+      <input type="checkbox" :checked="link.selected" :id="'selected'+link.ct" v-model="link.selected" @input="updateLinkSelected()">
     </label>
 
     <!-- <span style="visibility: hidden; position: absolute;" v-html="link.href" ref="href"></span> -->
@@ -64,6 +64,13 @@ export default {
     }
   },
   methods: {
+    updateLinkSelected(){
+      if(this.link.selected){
+        this.link.selected = true
+      }else{
+        this.link.selected = false
+      }
+    },
     copy(){
       this.state.copy(this.link.href)
     },
