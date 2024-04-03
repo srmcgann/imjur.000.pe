@@ -503,6 +503,9 @@ body,html{
 a:visited{
   color: #40f;
 }
+button:focus{
+  outline: none;
+}
 button{
   font-family: Play;
   font-size: 18px;
@@ -514,35 +517,15 @@ button{
   padding-left: 10px;
   padding-right: 10px;
   font-weight: 900;
-  min-width: 140px;
+  min-width: 200px;
   cursor: pointer;
   font-family: Courier Prime;
+  color: #000;
+  text-shadow: 1px 1px 3px #40f;
 }
 a{
   text-decoration: none;
   color: #08f;
-}
-.buttons:focus{
-  outline: none;
-}
-button, .buttons{
-  border: none;
-  border-radius: 5px;
-  background: #4f8;
-  color: #000;
-  text-shadow: 1px 1px 3px #40f;
-  font-size: 18px;
-  min-width: 80px;
-}
-.buttons{
-  border: none;
-  border-radius: 5px;
-  background: #4f88;
-  color: #fff;
-  padding: 3px;
-  min-width: 200px;
-  cursor: pointer;
-  font-family: Courier Prime;
 }
 .copyButton{
   display: inline-block;

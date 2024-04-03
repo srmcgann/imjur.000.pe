@@ -188,8 +188,8 @@ export default {
     background-size: 100% 100%;
     border-radius: 10px;
     /*background-image: url(../assets/loading.gif);*/
-    border: 1px solid #4088;
-    background-color: #0468;
+    /*border: 1px solid #4088;*/
+    /*background-color: #0468;*/
     width: 100%;
     min-height: calc(100% - 10px);
     box-sizing: border-box;
