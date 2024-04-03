@@ -697,18 +697,19 @@ select:focus{
   transform: rotate(45deg);
 }
 ::-webkit-scrollbar {
-  width: 12px;
+  width: 20px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #133; 
+  background: #204; 
 }
  
 ::-webkit-scrollbar-thumb {
-  background: #366; 
+  background: #308;
+  border-radius: 20px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #588; 
+  background: #60f; 
 }
 </style>
