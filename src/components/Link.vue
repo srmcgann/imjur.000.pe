@@ -153,16 +153,16 @@ export default {
     display: inline-block;
     height: 176px;
     color: #acd;
-    background-color: #000a;
+    background-color: #002a;
     font-size: 20px;
     min-width: 268px;
     box-sizing: border-box;
     text-align: left;
-    margin: 10px;
+    margin: 5px;
     word-break: break-word;
-    border-radius: 20px;
+    border-radius: 10px;
     vertical-align: top;
-    border: 5px solid #8882;
+    border: 3px solid #4086;
     padding: 5px;
   }
   .href{

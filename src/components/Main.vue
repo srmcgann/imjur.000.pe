@@ -162,7 +162,7 @@ export default {
 
 <style scoped>
   .main{
-    background-color: #001d;
+    background-color: #000011ee;
     font-size: 20px;
     overflow-y: auto;
     overflow-x: hidden;
