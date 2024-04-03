@@ -98,8 +98,9 @@ export default {
           scl = this.c.width/this.c.height > 1.777777778 ? this.c.width/this.w : this.c.height/this.h
           break
       }
-      let w = this.w * scl
-      let h = this.h * scl
+      let margin = 5
+      let w = this.w * scl - margin
+      let h = this.h * scl - margin
       this.x.drawImage(this.img,this.c.width/2-w/2,this.c.height/2-h/2,w,h)
       this.t += 1/60
       switch(this.linkType){
