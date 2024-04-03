@@ -37,7 +37,7 @@ export default {
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
+    width: calc(100vw - 20px);
     z-index: 100;
   }
   .headerImg{

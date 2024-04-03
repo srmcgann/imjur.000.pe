@@ -25,7 +25,7 @@ export default {
     background: linear-gradient(90deg, #108e, #000e);
     color: #fff;
     min-width:600px;
-    width: 100vw;
+    width: calc(100vw - 40px);
     left: 50%;
     transform: translatex(-50%);
     font-size: 20px;

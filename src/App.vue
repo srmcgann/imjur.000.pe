@@ -102,9 +102,9 @@ export default {
       let idx = this.state.previewLink.ct -1
       if(idx<0) idx = this.state.links.length-1
       this.state.showPreview = false
+      this.state.previewLink = this.state.links[idx]
       this.$nextTick(()=>{
         this.state.showPreview = true
-        this.state.previewLink = this.state.links[idx]
       })
     },
     next(){
