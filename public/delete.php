@@ -18,8 +18,8 @@
         if(mysqli_num_rows($res2)){
           $row2 = mysqli_fetch_assoc($res2);
           $originalSlug = $row2['originalSlug'];
-          $uploadID = $row2['uploadID'];
-          if($originalSlug && strlen($originalSlug) > 1 && $slug == $originalSlug){
+          $uploadID = $row2['id'];
+          if($originalSlug && strlen($originalSlug) > 1 && $slug === $originalSlug){
             forEach(glob("uploads/$originalSlug*") as $file){
               unlink($file);
               $success = true;
