@@ -678,7 +678,7 @@ select:focus{
 
 /* Create the checkmark/indicator (hidden when not checked) */
 .checkmark:after {
-  content: "✔";
+  content: "";
   position: absolute;
   display: none;
 }
