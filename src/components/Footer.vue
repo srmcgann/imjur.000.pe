@@ -30,8 +30,8 @@ export default {
     transform: translatex(-50%);
     font-size: 20px;
     text-shadow: 2px 2px 2px #000;
-    padding-top: 11px;
-    line-height: 18px;
+    padding-top: 5px;
+    line-height: 16px;
     box-sizing: border-box;
     text-align: center;
     position: fixed;
