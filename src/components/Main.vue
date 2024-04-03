@@ -26,8 +26,8 @@
         your files will likely be deleted</div>
       </div>
       <div v-if="state.links.length || state.userLinks.length" class="links">
-        <Link :state="state" v-for="link in state.links" :link="link" />
-        <Link :state="state" v-for="link in state.userLinks" :link="link" />
+        <Link :state="state" v-for="link in state.links" :link="link" :linkMode="'link'" />
+        <Link :state="state" v-for="link in state.userLinks" :link="link" :linkMode="'userLink'" />
       </div>
     </div>
   </div>

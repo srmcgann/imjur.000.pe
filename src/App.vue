@@ -100,9 +100,17 @@ export default {
     prev(){
       if(!this.state.showPreview) return
       let idx = this.state.previewLink.ct -1
-      if(idx<0) idx = this.state.links.length-1
       this.state.showPreview = false
-      this.state.previewLink = this.state.links[idx]
+      switch(this.state.linkMode){
+        case 'link':
+          if(idx<0) idx = this.state.links.length-1
+          this.state.previewLink = this.state.links[idx]
+        break
+        case 'userLink'
+          if(idx<0) idx = this.state.userLinks.length-1
+          this.state.previewLink = this.state.userLinks[idx]
+        break
+      }
       this.$nextTick(()=>{
         this.state.showPreview = true
       })
@@ -110,11 +118,19 @@ export default {
     next(){
       if(!this.state.showPreview) return
       let idx = this.state.previewLink.ct +1
-      idx %= this.state.userLinks.length ? this.state.userLinks : this.state.links.length
       this.state.showPreview = false
+      switch(this.state.linkMode){
+        case 'link':
+          idx %= this.state.links.length
+          this.state.previewLink = this.state.links[idx]
+        break
+        case 'userLink'
+          idx %= this.state.userLinks.length
+          this.state.previewLink = this.state.userLinks[idx]
+        break
+      }
       this.$nextTick(()=>{
         this.state.showPreview = true
-        this.state.previewLink = this.state.userLinks.length ? this.state.userLinks[idx] : this.state.links[idx]
       })
     },
     register(){

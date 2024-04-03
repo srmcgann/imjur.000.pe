@@ -51,7 +51,7 @@ todo
 
 export default {
   name: 'Link',
-  props: [ 'state', 'link' ],
+  props: [ 'state', 'link', 'linkMode' ],
   data(){
     return {
       c: document.createElement('canvas'),
@@ -79,6 +79,7 @@ export default {
       open(this.link.href, '_blank')
     },
     preview(){
+      this.state.linkMode = this.linkMode
       this.state.previewLink = this.link
       this.state.showPreview = true
     },
