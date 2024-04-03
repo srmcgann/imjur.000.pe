@@ -179,7 +179,7 @@ export default {
     cursor: pointer;
   }*/
   .dropTarget{
-    color: #0ff;
+    color: #0f8;
     display: inline-block;
     padding: 20px;
     text-align: left;
@@ -294,12 +294,12 @@ export default {
     transform: translate(-50%, -50%);
     padding: 38px;
     border-radius: 32%;
-    background-color: #f002;
-    box-shadow: 0 0 150px 150px #f002;
     height: 264px;
     padding-top: 0;
     padding-right: 28px;
-    animation: colorCycle 5s infinite linear;
+    background-color: #1028;
+    box-shadow: 0 0 150px 150px #1028;
+    /*animation: colorCycle 5s infinite linear;*/
   }
 </style>
 
