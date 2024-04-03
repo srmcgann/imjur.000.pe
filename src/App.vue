@@ -243,7 +243,7 @@ export default {
                 size: +data[2][i].size,
                 type: data[2][i].type,
                 selected: false,
-                href: v,
+                href: location.href.split('?')[0] + v,
                 userID: +data[2][i].userID
               }
               this.state.userLinks.push(obj)

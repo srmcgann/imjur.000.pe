@@ -93,7 +93,7 @@ export default {
             if(data[0]){
               //this.$refs.dropTargetCaption.style.display = 'none'
               data[1].map((v, i)=>{
-                this.addLink(data[2][i], data[3][i], i, location.href.split('?')[0] + v, false, state.loggedinUserID)
+                this.addLink(data[2][i], data[3][i], i, location.href.split('?')[0] + v, false, this.state.loggedinUserID)
               })
               this.state.modalContent = ''
               this.state.closeModal()
