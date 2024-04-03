@@ -51,7 +51,7 @@ todo
 
 export default {
   name: 'Link',
-  props: [ 'state', 'link', 'linkMode' ],
+  props: [ 'state', 'link' ],
   data(){
     return {
       c: document.createElement('canvas'),
