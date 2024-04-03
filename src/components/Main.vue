@@ -26,7 +26,6 @@
         your files will likely be deleted</div>
       </div>
       <div v-if="state.links.length || state.userLinks.length" class="links">
-        links<br>
         <Link :state="state" v-for="link in state.links" :link="link" />
         <Link :state="state" v-for="link in state.userLinks" :link="link" />
       </div>
@@ -180,7 +179,6 @@ export default {
   .dropTarget{
     color: #0f8;
     display: inline-block;
-    padding: 20px;
     text-align: left;
     background-repeat: no-repeat;
     background-position: center center;
@@ -197,6 +195,9 @@ export default {
     margin: 0;
     box-sizing: border-box;
     text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
   }
   @keyframes colorCycle{
     0% {
