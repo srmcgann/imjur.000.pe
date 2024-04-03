@@ -53,6 +53,7 @@ export default {
         fetchUserLinks: null,
         setCookie: null,
         mode: null,
+        deleteSelected: null,
         getAvatar: null,
         showPreview: false,
         rootDomain: location.hostname,
@@ -251,6 +252,9 @@ export default {
           }
         })
       }
+    },
+    deleteSelected(){
+      console.log('deleting selected...')
     },
     setCookie() {
       let cookies = document.cookie
@@ -463,6 +467,7 @@ export default {
     this.state.closePrompts = this.closePrompts
     this.state.closePreview = this.closePreview
     this.state.fetchUserLinks = this.fetchUserLinks
+    this.state.deleteSelected = this.deleteSelected
     this.state.showUserSettings = this.showUserSettings
     this.checkLogin()
   }
@@ -509,7 +514,7 @@ button:focus{
 button{
   font-family: Play;
   font-size: 18px;
-  border: 3px solid #0006;
+  border: 2px solid #0006;
   border-radius: 6px;
   background: #adcc;
   padding: 4px;

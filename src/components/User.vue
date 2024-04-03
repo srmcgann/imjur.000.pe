@@ -139,13 +139,13 @@ export default {
   }
   .userbutton{
     font-size: 16px;
-    margin: 5px;
-    margin-bottom: -1px;
+    margin: 3px;
+    margin-bottom: -3px;
     margin-right: 0;
     padding: 1px;
     padding-bottom: 2px;
-    padding-left: 8px;
-    padding-right: 8px;
-    min-width: 120px;
+    margin-left: 1px;
+    margin-right: 1px;
+    min-width: 105px;
   }
 </style>

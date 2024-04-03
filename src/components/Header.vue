@@ -31,7 +31,7 @@ export default {
 <style scoped>
   .header{
     height: 52px;
-    background: linear-gradient(90deg, #000a, #206a, #088a);
+    background: linear-gradient(90deg, #000, #028d, #103d);
     color: #4fa;
     font-size: 20px;
   }
