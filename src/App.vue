@@ -242,6 +242,7 @@ export default {
                 type: data[2][i].type,
                 selected: false,
                 href: v,
+                userID: +data[2][i].userID
               }
               this.state.userLinks.push(obj)
             })
