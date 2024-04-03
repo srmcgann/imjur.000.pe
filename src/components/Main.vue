@@ -184,6 +184,7 @@ export default {
     padding-top: 100px;
     z-index: 0;
     padding-bottom: 100px;
+    width: 100vw;
   }
   /*.dropTarget:hover{
     background-color: #0648;
