@@ -509,7 +509,6 @@ button{
   border: 3px solid #0006;
   border-radius: 6px;
   background: #adcc;
-  border: 2px solid #fff4;
   padding: 4px;
   padding-bottom: 6px;
   padding-left: 10px;
