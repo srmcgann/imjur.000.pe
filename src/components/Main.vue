@@ -8,7 +8,13 @@
       @click=""
       ref="dropTarget"
     >
-      <div ref="dropTargetCaption" id="dropTargetCaption" v-if="!(state.userLinks.length || state.links.length)">
+      <div
+        ref="dropTargetCaption"
+        id="dropTargetCaption"
+        v-if="!(state.userLinks.length || state.links.length)"
+        style="cursor: pointer;"
+        @click="this.loadFiles()"
+      >
         throw sum filez [click/drop]<br><br>
         accepted : gif<br>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;web[p/m]<br>
