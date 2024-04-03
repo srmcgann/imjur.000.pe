@@ -38,13 +38,14 @@ export default {
 
 <style scoped>
   .toolbar{
-    height: 52px;
-    background: #001d;
+    height: 38px;
+    background: #000011ee;
     color: #4fa;
     font-size: 20px;
     position: absolute;
     top: 52px;
     z-index: 100;
+    width: calc(100vw - 20px);
   }
   .toolbarButtons{
     margin: 5px;
