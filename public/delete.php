@@ -18,7 +18,7 @@ error_reporting(E_ALL);
     if($row['enabled'] || $row['admin']){
       $userID = $row['id'];
       forEach($slugs as $slug){
-        //$slug = mysqli_real_escape_string($link, $slug);
+        $slug = mysqli_real_escape_string($link, $slug);
         $sql = "SELECT * FROM imjurUploads WHERE slug LIKE BINARY \"$slug\" AND userID = $userID";
         $res2 = mysqli_query($link, $sql);
         if(mysqli_num_rows($res2)){

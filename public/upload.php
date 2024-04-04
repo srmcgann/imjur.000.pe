@@ -75,8 +75,8 @@ error_reporting(E_ALL);
 
           $bmd = json_decode($_POST['batchMetaData']);
           if($bmd->{'loggedIn'}){
-            $uID = $bmd->{'userID'};
-            $passhash = $bmd->{'passhash'};
+            $uID = mysqli_real_escape_string($link, $bmd->{'userID'});
+            $passhash = mysqli_real_escape_string($link, $bmd->{'passhash'});
             $sql = "SELECT * FROM imjurUsers WHERE id = $uID AND passhash LIKE BINARY \"$passhash\"";
             $res = mysqli_query($link, $sql);
             if(mysqli_num_rows($res)){
@@ -86,7 +86,7 @@ error_reporting(E_ALL);
           
           
           $description = '';
-          $origin = "user file: $original_name";
+          $origin = mysqli_real_escape_string($link, "user file: $original_name");
           
 $sql = <<<SQL
 INSERT INTO imjurUploads (id, 
