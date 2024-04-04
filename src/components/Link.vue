@@ -265,11 +265,13 @@ export default {
     text-align: right;
     color: #f80;
     border-bottom: 1px solid #4f84;
+    padding: 3px;
   }
   .tdRight{
     text-align: left;
     color: #0f8;
     border-bottom: 1px solid #4f84;
+    padding: 3px;
   }
 </style>
 
