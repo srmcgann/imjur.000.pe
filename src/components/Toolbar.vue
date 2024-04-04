@@ -8,6 +8,7 @@
       <button @click="state.deleteSelected()" class="deleteButton toolbarButtons">
         delete selected
       </button>
+      <div class="username" v-html="'welcome, ' + state.username"></div>
     </div>
     <div v-else class="toolbarSection">
     </div>
@@ -52,6 +53,11 @@ export default {
     margin: 5px;
     min-width: 180px;
     padding: 2px;
+  }
+  .username{
+    display: inline-block;
+    position: relative;
+    right: 5px;
   }
   .deleteButton{
     color: #f88;

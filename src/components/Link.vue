@@ -38,7 +38,7 @@ todo
       <label :for="link.linkType+link.ct" class="checkboxLabel" style="float: left;margin-left: 40px;text-align: left;">
         <input type="checkbox" v-model="link.selected" @input="updateLinkSelected()" :id="link.linkType+link.ct">
         <span class="checkmark" style="margin-left: -30px;"></span>
-        <span style="font-size:.8em;margin-top:0px;display:block;color:#ff8;padding:0;margin-left:-35px;">selected</span>
+        <span style="font-size:.8em;margin-top:5px;display:block;color:#ff8;padding:0;margin-left:-35px;">selected</span>
       </label>
               
     <!-- <span style="visibility: hidden; position: absolute;" v-html="link.href" ref="href"></span> -->
@@ -154,7 +154,7 @@ export default {
   }
   .link{
     display: inline-block;
-    height: 176px;
+    height: 167px;
     color: #acd;
     background-color: #002a;
     font-size: 20px;
