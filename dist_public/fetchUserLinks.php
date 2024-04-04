@@ -17,6 +17,7 @@
       'type' => $row['filetype'],
       'date' => $row['date'],
       'userID' => $row['userID'],
+      'origin' => $row['origin'],
       'upvotes' => $row['upvotes'],
       'downvotes' => $row['downvotes'],
       'views' => $row['views'],
