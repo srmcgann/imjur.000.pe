@@ -34,7 +34,7 @@ todo
     <label v-if="state.loggedIn" :for="link.linkType+link.ct" class="checkboxLabel" :key="link.linkType+link.ct+'key'">
       <input type="checkbox" v-model="link.selected" @input="updateLinkSelected()" :id="link.linkType+link.ct">
       <span class="checkmark" style="margin-left: -30px;"></span>
-      <span style="font-size:.8em;margin-top:5px;display:block;color:#ff8;padding:0;margin-left:-35px;">selected</span><br>
+      <span style="font-size:.75em;margin-top:5px;display:block;color:#4f88;padding:0;margin-left:-34px;">select</span><br>
     </label>
     <div class="linkThumb" ref="linkThumb" @click.prevent.stop="preview()" title="view this asset"></div>
     <!--#{{link.ct+1}}-->
@@ -265,6 +265,7 @@ export default {
     width: 200px;
     height: 113px;
     margin: 5px;
+    margin-top: 30px;
     cursor: pointer;
     background-size: contain;
     background-position: 20px 20px;
@@ -282,17 +283,17 @@ export default {
   .tdLeft{
     text-align: right;
     color: #f80;
-    border-bottom: 1px solid #4f84;
+    border-bottom: 1px solid #4fc2;
     padding: 3px;
   }
   .tdRight{
     text-align: left;
     color: #0f8;
-    border-bottom: 1px solid #4f84;
+    border-bottom: 1px solid #4fc2;
     padding: 3px;
   }
   .linkButtons{
-    margin-top:10px;
+    margin-top: 32px;
     display: inline-block;
   }
 </style>

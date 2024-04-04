@@ -697,8 +697,9 @@ select:focus{
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  margin-left: 40px;
   text-align: left;
+  position: absolute;
+  margin-left: -180px;
 }
 
 /* Hide the browser's default checkbox */
