@@ -537,6 +537,9 @@ export default {
       this.state.keys[e.keyCode] = true
       console.log(e.keyCode)
       switch(e.keyCode){
+        case 116:
+          window.location.reload()
+        break
         case 65:
           if(this.state.keys[17] && this.state.keys[16]){ // ctrl + shift + a
             this.deSelectAll()
