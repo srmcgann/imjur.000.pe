@@ -18,7 +18,7 @@ error_reporting(E_ALL);
     if($row['enabled'] || $row['admin']){
       $userID = $row['id'];
       forEach($slugs as $slug){
-        $slug = mysqli_real_escape_string($link, $slug);
+        //$slug = mysqli_real_escape_string($link, $slug);
         $sql = "SELECT * FROM imjurUploads WHERE slug LIKE BINARY \"$slug\" AND userID = $userID";
         $res2 = mysqli_query($link, $sql);
         if(mysqli_num_rows($res2)){
@@ -30,6 +30,7 @@ error_reporting(E_ALL);
           if(mysqli_num_rows($res2) == 1 && $originalSlug && strlen($originalSlug) > 1 && $slug === $originalSlug){
             forEach(glob("uploads/$originalSlug*") as $file){
               unlink($file);
+              $delFileCount++;
             }
           }
           $success = true;
@@ -39,13 +40,14 @@ error_reporting(E_ALL);
           mysqli_query($link, $sql);
           $sql = "DELETE FROM imjurComments WHERE uploadID = $uploadID";
           mysqli_query($link, $sql);
+          $delRecCount++;
         }
       }
-      echo json_encode([$success, 1, $sql, $delFileCount, $delRecCount]);
+      echo json_encode([$success, 1, $sql, $delFileCount, $delRecCount, $slugs]);
     } else {
-      echo json_encode([$success, 1, $sql]);
+      echo json_encode([$success, 1, $sql, $slugs]);
     }
   } else {
-    echo json_encode([$success, 2, $sql]);
+    echo json_encode([$success, 2, $sql, $slugs]);
   }
 ?>
