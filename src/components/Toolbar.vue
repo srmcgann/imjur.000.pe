@@ -9,6 +9,7 @@
         @click="state.deleteSelected()"
         class="toolbarButtons"
         :disabled="!someSelected"
+        title="delete selected [del]"
         :class="{'deleteButton' : someSelected, 'disabledButton' : !someSelected}"
       >
         delete selected
@@ -63,6 +64,7 @@ export default {
     margin: 5px;
     min-width: 180px;
     padding: 2px;
+    padding-bottom: 0;
   }
   .username{
     display: inline-block;

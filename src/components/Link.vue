@@ -35,6 +35,7 @@ todo
     <!--#{{link.ct+1}}-->
     <div class="copyLinkButton" @click.prevent.stop="copy()" title="copy link to clipboard"></div><br>
     <a :href="link.href" class="openButton" @click.prevent.stop="open()" title="open link in new tab"></a>
+    <div class="downloadButton" @click.prevent.stop="download()" title="download asset"></div><br>
     
       <label v-if="state.loggedIn" :for="link.linkType+link.ct" class="checkboxLabel" style="float: left;margin-left: 40px;text-align: left;" :key="link.linkType+link.ct+'key'">
         <input type="checkbox" v-model="link.selected" @input="updateLinkSelected()" :id="link.linkType+link.ct">
@@ -45,7 +46,7 @@ todo
     <table class="assetData">
       <tr><td class="tdLeft">age</td><td class="tdRight" v-html="age"></td></tr>
       <tr><td class="tdLeft">size</td><td class="tdRight" v-html="size"></td></tr>
-      <tr><td class="tdLeft">file name</td><td class="tdRight" v-html="fileName"></td></tr>
+      <tr><td class="tdLeft">name</td><td class="tdRight" v-html="fileName"></td></tr>
     </table>
     
     <!-- <span style="visibility: hidden; position: absolute;" v-html="link.href" ref="href"></span> -->
@@ -219,7 +220,7 @@ export default {
     padding: 3px;
     width: calc(100% - 10px);
   }
-  .copyLinkButton, .openButton{
+  .copyLinkButton, .openButton, .downloadButton{
     display: inline-block;
     background-position: center center;
     background-repeat: no-repeat;
@@ -241,6 +242,11 @@ export default {
     background-size: contain;
     background-image: url(../assets/link.png);
     background-color: #f06;
+  }
+  .downloadButton{
+    background-size: contain;
+    background-image: url(../assets/download.png);
+    background-color: #0000;
   }
   .linkThumb{
     float: left;
