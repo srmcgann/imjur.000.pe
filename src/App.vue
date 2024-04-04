@@ -746,10 +746,10 @@ select:focus{
 
 /* Style the checkmark/indicator */
 .checkboxLabel .checkmark:after {
-  left: 9px;
+  left: 6px;
   top: 3px;
   width: 7px;
-  height: 13px;
+  height: 16px;
   border: solid white;
   border-width: 0 5px 5px 0;
   -webkit-transform: rotate(45deg);

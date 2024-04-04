@@ -33,10 +33,11 @@ todo
   <div class="link" ref="anchor">
     <div class="linkThumb" ref="linkThumb" @click.prevent.stop="preview()" title="view this asset"></div>
     <!--#{{link.ct+1}}-->
-    <div class="copyLinkButton" @click.prevent.stop="copy()" title="copy link to clipboard"></div><br>
-    <a :href="link.href" class="openButton" @click.prevent.stop="open()" title="open link in new tab"></a>
-    <div class="downloadButton" @click.prevent.stop="download()" title="download asset"></div><br>
-    
+    <div class="linkButtons">
+      <div class="copyLinkButton" @click.prevent.stop="copy()" title="copy link to clipboard"></div><br>
+      <a :href="link.href" class="openButton" @click.prevent.stop="open()" title="open link in new tab"></a>
+      <div class="downloadButton" @click.prevent.stop="download()" title="download asset"></div><br>
+    </div>    
       <label v-if="state.loggedIn" :for="link.linkType+link.ct" class="checkboxLabel" style="float: left;margin-left: 40px;text-align: left;" :key="link.linkType+link.ct+'key'">
         <input type="checkbox" v-model="link.selected" @input="updateLinkSelected()" :id="link.linkType+link.ct">
         <span class="checkmark" style="margin-left: -30px;"></span>
@@ -240,7 +241,7 @@ export default {
     border-radius: 0px;
     border: none;
     cursor: pointer;
-    margin-top: 5px;
+    margin-top: 0px;
     margin-left: 3px;
   }
   .openButton{
@@ -259,7 +260,7 @@ export default {
     background-color: #0000;
     position: absolute;
     margin-left: -32px;
-    margin-top: 51px;
+    margin-top: 40px;
     background-size: 52px 37px;
   }
   .linkThumb{
@@ -292,6 +293,9 @@ export default {
     color: #0f8;
     border-bottom: 1px solid #4f84;
     padding: 3px;
+  }
+  .linkButtons{
+    margin-top:10px;
   }
 </style>
 
