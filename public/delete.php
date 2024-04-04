@@ -1,4 +1,7 @@
 <?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
   require('../db.php');
   $data = json_decode(file_get_contents('php://input'));
   $userName = mysqli_real_escape_string($link, $data->{'userName'});
@@ -13,13 +16,16 @@
     if($row['enabled'] || $row['admin']){
       $userID = $row['id'];
       forEach($slugs as $slug){
+        $slug = mysqli_real_escape_string($link, $slug);
         $sql = "SELECT * FROM imjurUploads WHERE slug LIKE BINARY \"$slug\" AND userID = $userID";
         $res2 = mysqli_query($link, $sql);
         if(mysqli_num_rows($res2)){
           $row2 = mysqli_fetch_assoc($res2);
           $originalSlug = $row2['originalSlug'];
           $uploadID = $row2['id'];
-          if($originalSlug && strlen($originalSlug) > 1 && $slug === $originalSlug){
+          $sql = "SELECT * FROM imjurUploads WHERE originalSlug LIKE BINARY \"$originalSlug\"";
+          $res2 = mysqli_query($link, $sql);
+          if(mysqli_num_rows($res2) == 1 && $originalSlug && strlen($originalSlug) > 1 && $slug === $originalSlug){
             forEach(glob("uploads/$originalSlug*") as $file){
               unlink($file);
               $success = true;
