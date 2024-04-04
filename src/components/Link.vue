@@ -71,7 +71,7 @@ export default {
   },
   computed: {
     age(){
-      let tseconds = (((new Date()) - (new Date(this.link.date)))/1000|0) + 3600 * (((new Date).getTimezoneOffset()/60))
+      let tseconds = (((new Date()) - (new Date(this.link.date)))/1000|0) + 3600 * (((new Date).getTimezoneOffset()/60) - 4)
       let years = (tseconds/31536000)|0
       let days = (((tseconds/31536000)-years) * 31536000) / 86400 | 0
       let hours = (((((tseconds/31536000)-years) * 31536000) / 86400) - days) * 86400 / 3600 | 0
@@ -81,9 +81,9 @@ export default {
       ret += years ? `${years} year${years>1?'s':''}, ` : ''
       ret += days ? `${days} day${days>1?'s':''}, ` : ''
       ret += hours ? `${hours} hour${hours>1?'s':''}, ` : ''
-      ret += minutes ? `${minutes} minute${minutes>1?'s':''}, ` : ''
-      ret += seconds? `${seconds} second${seconds>1?'s':''}` : ''
-      return ret
+      ret += minutes ? `${minutes} minute${minutes>1?'s':''}` : ''
+      //ret += seconds? `${seconds} second${seconds>1?'s':''}` : ''
+      return ret ? ret : 'added just now...'
     }
   },
   methods: {
