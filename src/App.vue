@@ -747,8 +747,8 @@ select:focus{
 
 /* Style the checkmark/indicator */
 .checkboxLabel .checkmark:after {
-  left: 6px;
-  top: 3px;
+  left: 7px;
+  top: 1px;
   width: 7px;
   height: 16px;
   border: solid white;
