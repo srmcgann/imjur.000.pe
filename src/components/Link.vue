@@ -235,12 +235,12 @@ export default {
     background-position: center center;
     background-repeat: no-repeat;
     background-image: url(../assets/link.png);
-    width: 45px;
-    height: 45px;
-    border-radius: 10px;
+    width: 32px;
+    height: 32px;
+    border-radius: 0px;
     border: none;
     cursor: pointer;
-    margin-top: 0px;
+    margin-top: 5px;
     margin-left: 3px;
   }
   .openButton{
@@ -258,9 +258,9 @@ export default {
     background-image: url(../assets/download.png);
     background-color: #0000;
     position: absolute;
-    margin-left: -45px;
-    margin-top: 54px;
-    background-size: 65px 51px;
+    margin-left: -32px;
+    margin-top: 51px;
+    background-size: 52px 37px;
   }
   .linkThumb{
     float: left;
