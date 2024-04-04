@@ -37,6 +37,7 @@
           v-for="link in state.links"
           :link="link"
           :linkMode="'link'"
+          :key="link.id"
           v-if="state.links.length"
         />
         <Link
@@ -44,6 +45,7 @@
           v-for="link in state.userLinks"
           :link="link"
           :linkMode="'userLink'"
+          :key="link.id"
           v-if="state.userLinks.length"
         />
       </div>
