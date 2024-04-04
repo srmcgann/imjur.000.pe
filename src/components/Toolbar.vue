@@ -33,7 +33,7 @@ export default {
     return {
     }
   },
-  computed(){
+  computed: {
     someSelected(){
       return this.state.links.filter(v=>v.selected).length || this.state.userLinks.filter(v=>v.selected).length
     }
