@@ -80,12 +80,16 @@ export default {
       let MB_ = 1024**2
       let tbytes = this.link.size
       let MB = tbytes / MB_ | 0
-      let KB = ((tbytes / MB_ | 0) - MB) * MB / 1024 | 0
-      let B = (((tbytes / MB_ | 0) - MB) * MB / 1024 - KB) * KB | 0
-      let ret = ''
-      ret += MB ? `${MB}MB, ` : ''
-      ret += KB ? `${KB}KB, ` : ''
-      ret += B ? `${B}B, ` : ''
+      let KB = ((tbytes / MB_) - MB) * MB / 1024 | 0
+      let B = (((tbytes / MB_) - MB) * MB / 1024 - KB) * KB | 0
+      let ret
+      if(MB){
+        ret = Math.round(MB*100)/100) + ' MB'
+      } else if(KB) {
+        ret = Math.round(KB*100)/100) + ' KB'
+      } else {
+        ret = this.link.size + ' B'
+      }
       return ret
     },
     age(){
