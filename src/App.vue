@@ -299,6 +299,7 @@ export default {
           body: JSON.stringify(sendData),
         })
         .then(res => res.json()).then(data => {
+          console.log(data)
           if(data[0]){
             this.state.links = this.state.links.filter((v, i) => !linksToProcess.filter(q => q == v.id).length)
             this.state.userLinks = this.state.userLinks.filter((v, i) => !userLinksToProcess.filter(q => q == v.id).length)
