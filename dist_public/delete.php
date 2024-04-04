@@ -9,6 +9,8 @@ error_reporting(E_ALL);
   $slugs = $data->{'slugs'};
   
   $success = false;
+  $delFileCount = 0;
+  $delRecCount = 0;
   $sql = "SELECT * FROM imjurUsers WHERE name LIKE \"$userName\" AND passhash LIKE BINARY \"$passhash\";";
   $res = mysqli_query($link, $sql);
   if(mysqli_num_rows($res)){
@@ -39,10 +41,11 @@ error_reporting(E_ALL);
           mysqli_query($link, $sql);
         }
       }
+      echo json_encode([$success, 1, $sql, $delFileCount, $delRecCount]);
     } else {
-      echo json_encode([$success]);
+      echo json_encode([$success, 1, $sql]);
     }
   } else {
-    echo json_encode([$success]);
+    echo json_encode([$success, 2, $sql]);
   }
 ?>
