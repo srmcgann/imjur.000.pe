@@ -6,7 +6,7 @@ error_reporting(E_ALL);
   $data = json_decode(file_get_contents('php://input'));
   $userName = mysqli_real_escape_string($link, $data->{'userName'});
   $passhash = mysqli_real_escape_string($link, $data->{'passhash'});
-  $slugs = $data->{'slugs'};
+  $slugs = json_decode(mysqli_real_escape_string($link, $data->{'slugs'}));
   
   $success = false;
   $delFileCount = 0;
@@ -41,11 +41,11 @@ error_reporting(E_ALL);
           mysqli_query($link, $sql);
         }
       }
-      echo json_encode([$success, 1, $sql, $delFileCount, $delRecCount]);
+      echo json_encode([$success, 1, $sql, $delFileCount, $delRecCount, $slugs]);
     } else {
-      echo json_encode([$success, 1, $sql]);
+      echo json_encode([$success, 1, $sql, $slugs]);
     }
   } else {
-    echo json_encode([$success, 2, $sql]);
+    echo json_encode([$success, 2, $sql, $slugs]);
   }
 ?>
