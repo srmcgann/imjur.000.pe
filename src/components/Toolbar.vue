@@ -5,7 +5,12 @@
       upload files
     </button>
     <div v-if="state.loggedIn" class="toolbarSection">
-      <button @click="state.deleteSelected()" class="deleteButton toolbarButtons">
+      <button
+        @click="state.deleteSelected()"
+        class="toolbarButtons"
+        :disabled="!someSelected"
+        :class="{'deleteButton' : someSelected, 'disabledButton' : !someSelected}"
+      >
         delete selected
       </button>
       <div class="username" v-html="'welcome, ' + state.username"></div>
@@ -26,6 +31,11 @@ export default {
   },
   data(){
     return {
+    }
+  },
+  computed(){
+    someSelected(){
+      return this.state.links.filter(v=>v.selected).length || this.state.userLinks.filter(v=>v.selected).length
     }
   },
   methods: {
@@ -63,5 +73,10 @@ export default {
     color: #f88;
     background-color: #400d;
     border-color: #8008;
+  }
+  .disabledButton{
+    color: #888;
+    background-color: #333d;
+    border-color: #0008;
   }
 </style>
