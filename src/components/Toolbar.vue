@@ -15,8 +15,8 @@
       >
         delete
       </button>
-      <div class="username" v-html="'welcome, ' + state.username"></div>
     </div>
+    <div v-if="state.loggedIn" class="toolbarSection">
       <button
         @click="state.selectAll()"
         class="toolbarButtons"
@@ -35,6 +35,8 @@
       >
         deselect all
       </button>
+      <div class="username" v-html="'welcome, ' + state.username"></div>
+    </div>
     <div v-else class="toolbarSection">
     </div>
   </div>
