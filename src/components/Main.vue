@@ -111,7 +111,7 @@ export default {
             if(data[0]){
               //this.$refs.dropTargetCaption.style.display = 'none'
               data[1].map((v, i)=>{
-                this.addLink(data[2][i], data[3][i], i, location.href.split('?')[0] + v, false, this.state.loggedinUserID, data[6][i], data[7][i])
+                this.addLink(data[2][i], data[3][i], i, location.href.split('?')[0] + v, false, this.state.loggedinUserID, data[6][i], data[7][i], data[8][i])
               })
               this.state.modalContent = ''
               this.state.closeModal()
@@ -148,16 +148,17 @@ export default {
       }
       if(files.length) this.processUpload(files)
     },
-    addLink(size, type, ct, href, selected, userID, slug, originalSlug){
+    addLink(size, type, ct, href, selected, userID, slug, originalSlug, origin){
       let obj = {
         size,
         type,
         ct,
         href,
         slug,
-        originalSlug,
+        origin,
         selected,
         userID,
+        originalSlug,
         linkType: 'link'
       }
       this.state.links.push(obj)

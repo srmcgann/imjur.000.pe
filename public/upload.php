@@ -7,16 +7,17 @@ error_reporting(E_ALL);
   require_once('../db.php');
   require_once('functions.php');
 
-  $ct = 0;
-  $links = [];
-  $types = [];
-  $sizes = [];
-  $slugs = [];
+  $ct            = 0;
+  $links         = [];
+  $types         = [];
+  $sizes         = [];
+  $slugs         = [];
+  $origins       = [];
   $originalSlugs = [];
-  $error = '';
-  $success = false;
-  $maxFileSize = 25000000;
-  $uploadDir = 'uploads';
+  $error         = '';
+  $success       = false;
+  $maxFileSize   = 25000000;
+  $uploadDir     = 'uploads';
   if(sizeof($_FILES)){
     forEach($_FILES as $key => $val){
       $unlink = false;
@@ -124,6 +125,7 @@ SQL;
           $sizes[]         = $size;
           $types[]         = $type;
           $slugs[]         = $slug;
+          $origins[]       = $origin;
           $originalSlugs[] = $originalSlug;
           if($unlink){
             unlink("$uploadDir/$slug");
@@ -144,5 +146,5 @@ SQL;
     $error = 'ERROR<br>no files were received.<br><br>This usually means that the transfer was blocked by the server due to one or more files being too large...<br><br>Check your file sizes';
   }
   
-  echo json_encode([$success, $links, $sizes, $types, $ct, $error, $slugs, $originalSlugs]);
+  echo json_encode([$success, $links, $sizes, $types, $ct, $error, $slugs, $originalSlugs, $origins]);
 ?>

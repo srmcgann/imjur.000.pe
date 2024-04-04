@@ -260,6 +260,7 @@ export default {
                 id: +data[2][i].id,
                 slug: data[2][i].slug,
                 originalSlug: data[2][i].originalSlug,
+                origin: data[2][i].origin,
                 date: data[2][i].date,
                 linkType: 'userLink'
               }

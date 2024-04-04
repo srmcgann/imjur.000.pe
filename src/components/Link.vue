@@ -44,7 +44,7 @@ todo
     <table class="assetData">
       <tr><td class="tdLeft">age</td><td class="tdRight" v-html="age"></td></tr>
       <tr><td class="tdLeft">size</td><td class="tdRight" v-html="link.size"></td></tr>
-      <tr><td class="tdLeft">original name</td><td class="tdRight" v-html="link.name"></td></tr>
+      <tr><td class="tdLeft">file name</td><td class="tdRight" v-html="link.origin.split(': ')[1]"></td></tr>
     </table>
     
     <!-- <span style="visibility: hidden; position: absolute;" v-html="link.href" ref="href"></span> -->
@@ -237,6 +237,7 @@ export default {
     font-size: 14px;
     text-shadow: 2px 2px 2px #000;
     background: #0003;
+    width: 100%;
   }
   .tdLeft{
     text-align: right;
