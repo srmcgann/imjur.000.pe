@@ -505,9 +505,6 @@ export default {
     window.onkeydown = e =>{
       console.log(e.keyCode)
       switch(e.keyCode){
-        case 27:
-          this.deleteSelected()
-        break
         case 46:
           this.deleteSelected()
         break
