@@ -20,7 +20,7 @@
       <button
         @click="state.selectAll()"
         class="toolbarButtons"
-        :disabled="!someSelected"
+        :disabled="allSelected"
         title="delete selected [del]"
         :class="{'buttons' : !allSelected, 'disabledButton' : allSelected}"
       >
@@ -84,7 +84,6 @@ export default {
   .toolbarSection{
     display: inline-block;
     border-left: 8px solid #40fa;
-    border-right: 8px solid #40fa;
   }
   .toolbarButtons{
     margin: 5px;
