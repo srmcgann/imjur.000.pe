@@ -6,7 +6,7 @@ error_reporting(E_ALL);
   $data = json_decode(file_get_contents('php://input'));
   $userName = mysqli_real_escape_string($link, $data->{'userName'});
   $passhash = mysqli_real_escape_string($link, $data->{'passhash'});
-  $slugs = $data->{'slugs'});
+  $slugs = $data->{'slugs'};
   
   $success = false;
   $delFileCount = 0;
