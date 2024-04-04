@@ -308,8 +308,10 @@ export default {
             //this.state.links = this.state.links.filter((v, i) => !linksToProcess.filter(q => q == v.id).length)
             //this.state.userLinks = this.state.userLinks.filter((v, i) => !userLinksToProcess.filter(q => q == v.id).length)
             console.log(`deleted ${count} items`)
-            alert(`deleted ${count} items`)
-            location.reload()
+            //alert(`deleted ${count} items`)
+            this.state.links = []
+            this.fetchUserLinks()
+            //location.reload()
           }else{
             alert(`there was a problem deleting ${slugs.length > 1 ? 'these' : 'this'} asset${slugs.length > 1 ? 's' : ''}`)
           }
