@@ -72,7 +72,7 @@ export default {
   computed: {
     fileName(){
       let ret = this.link.origin.split(': ')[1]
-      if(ret.length > 20) ret = ret.substring(0, 10) + '...' + ret.substring(ret.length-10)
+      if(ret.length > 23) ret = ret.substring(0, 10) + '...' + ret.substring(ret.length-10)
       return ret
     },
     age(){
