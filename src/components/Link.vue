@@ -78,7 +78,7 @@ export default {
   },
   computed: {
     views(){
-      return this.link.views.toLocaleString()
+      return 'views: ' + this.link.views.toLocaleString()
     },
     fileName(){
       let ret = this.link.origin.split(': ')[1]
@@ -206,7 +206,7 @@ export default {
         this.Draw()
       }
       let l
-      this.img.src = this.linkType == 'audio' ? 'musicNotes.svg' : 'thumb.php?res=uploads/' + (l=this.link.href.split('/'))[l.length-1].split('?')[0]
+      this.img.src = this.linkType == 'audio' ? 'musicNotes.svg' : 'thumb.php?res=resources/' + (l=this.link.href.split('/'))[l.length-1].split('?')[0]
     }
   }
 }
@@ -302,6 +302,10 @@ export default {
   .linkButtons{
     margin-top: 11px;
     display: inline-block;
+  }
+  .views{
+    position: relative;
+    margin-left: 200px;
   }
 </style>
 

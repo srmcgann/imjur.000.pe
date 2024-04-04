@@ -18,7 +18,7 @@ error_reporting(E_ALL);
   $error         = '';
   $success       = false;
   $maxFileSize   = 25000000;
-  $uploadDir     = 'uploads';
+  $uploadDir     = 'resources';
   if(sizeof($_FILES)){
     forEach($_FILES as $key => $val){
       $unlink = false;
