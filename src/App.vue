@@ -209,6 +209,7 @@ export default {
             this.state.loggedIn= true
             this.state.loggedinUserID = +data[1]
             this.state.loggedInUser.avatar = data[2]
+            this.state.username = this.state.regusername || this.state.loggedinUserName
             //this.state.fetchUserData(this.state.loggedinUserID)
             this.setCookie()
             this.state.loginPromptVisible = false
@@ -460,6 +461,7 @@ export default {
       let l = (document.cookie).split(';').filter(v=>v.split('=')[0].trim()==='loggedinuser')
       if(l.length){
         this.state.loggedinUserName = l[0].split('=')[1]
+        this.state.username = this.state.loggedinUserName
         let l2 = (document.cookie).split(';').filter(v=>v.split('=')[0].trim()==='token')
         if(l2.length){
           this.state.passhash = l2[0].split('=')[1]
