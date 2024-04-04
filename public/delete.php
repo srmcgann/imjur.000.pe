@@ -6,7 +6,7 @@ error_reporting(E_ALL);
   $data = json_decode(file_get_contents('php://input'));
   $userName = mysqli_real_escape_string($link, $data->{'userName'});
   $passhash = mysqli_real_escape_string($link, $data->{'passhash'});
-  $slugs = json_decode(mysqli_real_escape_string($link, $data->{'slugs'}));
+  $slugs = $data->{'slugs'});
   
   $success = false;
   $delFileCount = 0;
@@ -18,7 +18,7 @@ error_reporting(E_ALL);
     if($row['enabled'] || $row['admin']){
       $userID = $row['id'];
       forEach($slugs as $slug){
-        $slug = mysqli_real_escape_string($link, $slug);
+        //$slug = mysqli_real_escape_string($link, $slug);
         $sql = "SELECT * FROM imjurUploads WHERE slug LIKE BINARY \"$slug\" AND userID = $userID";
         $res2 = mysqli_query($link, $sql);
         if(mysqli_num_rows($res2)){
