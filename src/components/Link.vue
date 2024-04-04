@@ -10,6 +10,7 @@ todo
   ✔ log original file name
   ✔ lightbox sim / previews
   ✔ checkboxes & "with selected" toobar
+  * download button on preview modal
   * users, optional logins/profiles
     └-> ✔ login button
         ✔ profile page
@@ -43,7 +44,7 @@ todo
     
     <table class="assetData">
       <tr><td class="tdLeft">age</td><td class="tdRight" v-html="age"></td></tr>
-      <tr><td class="tdLeft">size</td><td class="tdRight" v-html="link.size"></td></tr>
+      <tr><td class="tdLeft">size</td><td class="tdRight" v-html="size"></td></tr>
       <tr><td class="tdLeft">file name</td><td class="tdRight" v-html="fileName"></td></tr>
     </table>
     
@@ -72,7 +73,19 @@ export default {
   computed: {
     fileName(){
       let ret = this.link.origin.split(': ')[1]
-      if(ret.length > 20) ret = ret.substring(0, 10) + '...' + ret.substring(ret.length-10)
+      if(ret.length > 23) ret = ret.substring(0, 10) + '...' + ret.substring(ret.length-10)
+      return ret
+    },
+    size(){
+      let MB_ = 1024**2
+      let tbytes = this.link.size
+      let MB = tbytes / MB_ | 0
+      let KB = ((tbytes / MB_ | 0) - MB) * MB / 1024 | 0
+      let B = (((tbytes / MB_ | 0) - MB) * MB / 1024 - KB) * KB | 0
+      let ret = ''
+      ret += MB ? `${MB}MB, ` : ''
+      ret += KB ? `${KB}KB, ` : ''
+      ret += B ? `${B}B, ` : ''
       return ret
     },
     age(){
@@ -247,12 +260,12 @@ export default {
   .tdLeft{
     text-align: right;
     color: #f80;
-    border: 1px solid #4f84;
+    border-bottom: 1px solid #4f84;
   }
   .tdRight{
     text-align: left;
     color: #0f8;
-    border: 1px solid #4f84;
+    border-bottom: 1px solid #4f84;
   }
 </style>
 
