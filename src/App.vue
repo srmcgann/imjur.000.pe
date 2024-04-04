@@ -310,7 +310,7 @@ export default {
             console.log(`deleted ${count} items`)
             //alert(`deleted ${count} items`)
             this.state.links = []
-            this.fetchUserLinks()
+            this.fetchUserLinks(this.state.loggedinUserID)
             //location.reload()
           }else{
             alert(`there was a problem deleting ${slugs.length > 1 ? 'these' : 'this'} asset${slugs.length > 1 ? 's' : ''}`)
@@ -357,7 +357,7 @@ export default {
           this.closePrompts()
           this.state.invalidLoginAttemp = false
           this.state.loggedInUser.avatar = data[3]
-          this.fetchUserLinks(this.state.loggedinUserID)          
+          this.fetchUserLinks(this.state.loggedinUserID)
           //this.state.userInfo[this.state.loggedinUserID] = {}
           //this.state.userInfo[this.state.loggedinUserID].name = this.state.regusername
           //this.state.userInfo[this.state.loggedinUserID].avatar = data[3]
