@@ -532,36 +532,38 @@ export default {
     }
     
     window.onkeydown = e =>{
-      e.preventDefault()
-      e.stopPropagation()
-      this.state.keys[e.keyCode] = true
-      console.log(e.keyCode)
-      switch(e.keyCode){
-        case 116:
-          window.location.reload()
-        break
-        case 65:
-          if(this.state.keys[17] && this.state.keys[16]){ // ctrl + shift + a
-            this.deSelectAll()
-          }
-          if(this.state.keys[17] && !this.state.keys[16]){ // ctrl + a
-            this.selectAll()
-          }
-        break
-        case 46:
-          this.deleteSelected()
-        break
-        case 37:
-          this.prev()
-        break
-        case 39:
-          this.next()
-        break
-        case 27:
-          this.state.showPreview = false
-          this.closePrompts()
-          if(!this.state.uploadInProgress) this.state.showModal = false
-        break
+      if(!state.showLoginPrompt){
+        e.preventDefault()
+        e.stopPropagation()
+        this.state.keys[e.keyCode] = true
+        console.log(e.keyCode)
+        switch(e.keyCode){
+          case 116:
+            window.location.reload()
+          break
+          case 65:
+            if(this.state.keys[17] && this.state.keys[16]){ // ctrl + shift + a
+              this.deSelectAll()
+            }
+            if(this.state.keys[17] && !this.state.keys[16]){ // ctrl + a
+              this.selectAll()
+            }
+          break
+          case 46:
+            this.deleteSelected()
+          break
+          case 37:
+            this.prev()
+          break
+          case 39:
+            this.next()
+          break
+          case 27:
+            this.state.showPreview = false
+            this.closePrompts()
+            if(!this.state.uploadInProgress) this.state.showModal = false
+          break
+        }
       }
     }
     this.state.closeModal = this.closeModal
