@@ -292,6 +292,7 @@ export default {
           passhash: this.state.passhash,
           slugs
         }
+        console.log('sendData', sendData)
         fetch('delete.php', {
           method: 'POST',
           headers: {
