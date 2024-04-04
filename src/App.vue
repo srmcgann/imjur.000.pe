@@ -260,6 +260,7 @@ export default {
                 id: +data[2][i].id,
                 slug: data[2][i].slug,
                 originalSlug: data[2][i].originalSlug,
+                date: data[2][i].date,
                 linkType: 'userLink'
               }
               this.state.userLinks.push(obj)
@@ -726,7 +727,7 @@ select:focus{
 
 /* When the checkbox is checked, add a blue background */
 .checkboxLabel input:checked ~ .checkmark {
-  background-color: #086;
+  background-color: #208;
 }
 
 /* Create the checkmark/indicator (hidden when not checked) */
@@ -744,11 +745,11 @@ select:focus{
 /* Style the checkmark/indicator */
 .checkboxLabel .checkmark:after {
   left: 9px;
-  top: 5px;
-  width: 5px;
-  height: 10px;
+  top: 3px;
+  width: 7px;
+  height: 13px;
   border: solid white;
-  border-width: 0 3px 3px 0;
+  border-width: 0 5px 5px 0;
   -webkit-transform: rotate(45deg);
   -ms-transform: rotate(45deg);
   transform: rotate(45deg);

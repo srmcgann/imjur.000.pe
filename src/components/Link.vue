@@ -9,7 +9,7 @@ todo
   ✔ tile-able cards (flex)
   ✔ log original file name
   ✔ lightbox sim / previews
-  * checkboxes & "with selected" toobar
+  ✔ checkboxes & "with selected" toobar
   * users, optional logins/profiles
     └-> ✔ login button
         ✔ profile page
@@ -38,9 +38,15 @@ todo
       <label v-if="state.loggedIn" :for="link.linkType+link.ct" class="checkboxLabel" style="float: left;margin-left: 40px;text-align: left;" :key="link.linkType+link.ct+'key'">
         <input type="checkbox" v-model="link.selected" @input="updateLinkSelected()" :id="link.linkType+link.ct">
         <span class="checkmark" style="margin-left: -30px;"></span>
-        <span style="font-size:.8em;margin-top:5px;display:block;color:#ff8;padding:0;margin-left:-35px;">selected</span>
+        <span style="font-size:.8em;margin-top:5px;display:block;color:#ff8;padding:0;margin-left:-35px;">selected</span><br>
       </label>
-              
+    
+    <table class="assetData">
+      <tr><td class="tdLeft">age</td><td class="tdRight" v-html="age"></td></tr>
+      <tr><td class="tdLeft">size</td><td class="tdRight" v-html="link.size"></td></tr>
+      <tr><td class="tdLeft">original name</td><td class="tdRight" v-html="link.name"></td></tr>
+    </table>
+    
     <!-- <span style="visibility: hidden; position: absolute;" v-html="link.href" ref="href"></span> -->
     <!-- <span class="href" style="font-size: 1em" v-html="link.type"></span><br> -->
     <!-- <span class="href" style="font-size: 1em" v-html="'size: ' + link.size.toLocaleString('en-us')"></span><br> -->
@@ -61,6 +67,23 @@ export default {
       w: 0,
       h: 0,
       t: 0,
+    }
+  },
+  computed: {
+    age(){
+      let tseconds = (((new Date()) - (new Date(this.link.date)))/1000|0)
+      let years = (tseconds/31536000)|0
+      let days = (((tseconds/31536000)-years) * 31536000) / 86400 | 0
+      let hours = (((((tseconds/31536000)-years) * 31536000) / 86400) - days) * 86400 / 3600 | 0
+      let minutes = (((((((tseconds/31536000)-years) * 31536000) / 86400) - days) * 86400 / 3600) - hours) * 3600 / 60 | 0
+      let seconds = (((((((((tseconds/31536000)-years) * 31536000) / 86400) - days) * 86400 / 3600) - hours) * 3600 / 60) - minutes) * 60| 0
+      let ret = ''
+      ret += years ? `${years} year${years>1?'s':''}, ` : ''
+      ret += days ? `${days} day${days>1?'s':''}, ` : ''
+      ret += hours ? `${hours} hour${hours>1?'s':''}, ` : ''
+      ret += minutes ? `${minutes} minute${minutes>1?'s':''}, ` : ''
+      ret += seconds? `${seconds} second${seconds>1?'s':''}` : ''
+      return ret
     }
   },
   methods: {
@@ -154,7 +177,6 @@ export default {
   }
   .link{
     display: inline-block;
-    height: 167px;
     color: #acd;
     background-color: #002a;
     font-size: 20px;
@@ -209,6 +231,22 @@ export default {
     background-repeat: no-repeat;
     background-color: #000;
     border-radius: 20px;
+  }
+  .assetData{
+    border-collapse: collapse;
+    font-size: 14px;
+    text-shadow: 2px 2px 2px #000;
+    background: #0003;
+  }
+  .tdLeft{
+    text-align: right;
+    color: #f80;
+    border: 1px solid #4f84;
+  }
+  .tdRight{
+    text-align: left;
+    color: #0f8;
+    border: 1px solid #4f84;
   }
 </style>
 
