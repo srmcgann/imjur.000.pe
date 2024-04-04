@@ -272,7 +272,7 @@ export default {
     width: 200px;
     height: 113px;
     margin: 5px;
-    margin-top: 30px;
+    margin-top: 10px;
     cursor: pointer;
     background-size: contain;
     background-position: 20px 20px;
@@ -300,7 +300,7 @@ export default {
     padding: 3px;
   }
   .linkButtons{
-    margin-top: 32px;
+    margin-top: 11px;
     display: inline-block;
   }
 </style>
