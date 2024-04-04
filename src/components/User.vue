@@ -1,5 +1,5 @@
 <template>
-  <div class="user">
+  <div class="user" :class="{'loggedInWidth':state.loggedIn, 'notLoggedInWidth': !state.loggedIn}">
     <div v-if="!state.loggedIn">
       <button
         @click="login()"
@@ -91,9 +91,14 @@ export default {
     font-size: 20px;
     top: 0;
     right: 0;
-    min-width: 350px;
     position: fixed;
     text-align: center;
+  }
+  .loggedInWidth{
+    min-width: 350px;
+  }
+  .notLoggedInWidth{
+    min-width: 105px;
   }
   .loginButton{
     border-radius: 5px;
