@@ -263,7 +263,8 @@ export default {
                 origin: data[2][i].origin,
                 date: data[2][i].date,
                 linkType: 'userLink',
-                serverTZO: data[2][i].serverTZO
+                serverTZO: data[2][i].serverTZO,
+                views: data[2][i].views
               }
               this.state.userLinks.push(obj)
             })
@@ -721,6 +722,7 @@ select:focus{
   width: 25px;
   border: 1px solid #2468;
   background-color: #123;
+  border-radius: 5px;
 }
 
 /* On mouse-over, add a grey background color */

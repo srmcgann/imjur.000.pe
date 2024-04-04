@@ -36,6 +36,10 @@ todo
       <span class="checkmark" style="margin-left: -30px;"></span>
       <span style="font-size:.75em;margin-top:5px;display:block;color:#4f88;padding:0;margin-left:-34px;">select</span><br>
     </label>
+    
+    <div class="views" v-html="views">
+    </div>
+    
     <div class="linkThumb" ref="linkThumb" @click.prevent.stop="preview()" title="view this asset"></div>
     <!--#{{link.ct+1}}-->
     <div class="linkButtons">
@@ -73,6 +77,9 @@ export default {
     }
   },
   computed: {
+    views(){
+      return this.link.views.toLocaleString()
+    },
     fileName(){
       let ret = this.link.origin.split(': ')[1]
       if(ret.length > 23) ret = ret.substring(0, 10) + '...' + ret.substring(ret.length-10)
