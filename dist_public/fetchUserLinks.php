@@ -1,5 +1,6 @@
 <?php
-  require('../db.php');
+  require_once('../db.php');
+  require_once('functions.php');
   $data = json_decode(file_get_contents('php://input'));
   $userID = mysqli_real_escape_string($link, $data->{'userID'});
   $sql = "SELECT * FROM imjurUploads WHERE userID = $userID";
@@ -23,6 +24,7 @@
       'views' => $row['views'],
       'description' => $row['description'],
       'originalSlug' => $row['originalSlug'],
+      'serverTZO' => getServerTZOffset(),
     ];
     switch($row['filetype']){
       case 'audio/wav': $suffix = 'wav';  break;

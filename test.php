@@ -1,9 +1,7 @@
 <?php
-
-$testvar = 123;
-
-$sql = <<<SQL
-this is the value of the testvar $testvar
-SQL;
-echo "$sql\n";
+function getServerTZOffset () {
+  $tz = date_default_timezone_get();
+  $t = new DateTimeZone("$tz");
+  return $t->getOffset(new DateTime('now'));
+}
 ?>
