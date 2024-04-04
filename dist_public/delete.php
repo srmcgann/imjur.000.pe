@@ -25,17 +25,17 @@ error_reporting(E_ALL);
           $row2 = mysqli_fetch_assoc($res2);
           $originalSlug = $row2['originalSlug'];
           $uploadID = $row2['id'];
+          $sql = "DELETE FROM imjurUploads WHERE id = $uploadID AND userID = $userID";
+          mysqli_query($link, $sql);
           $sql = "SELECT * FROM imjurUploads WHERE originalSlug LIKE BINARY \"$originalSlug\"";
           $res2 = mysqli_query($link, $sql);
-          if(mysqli_num_rows($res2) == 1 && $originalSlug && strlen($originalSlug) > 1 && $slug === $originalSlug){
+          if(mysqli_num_rows($res2) == 0 && $originalSlug && strlen($originalSlug) > 1 && $slug === $originalSlug){
             forEach(glob("uploads/$originalSlug.*") as $file){
               unlink($file);
               $delFileCount++;
             }
           }
           $success = true;
-          $sql = "DELETE FROM imjurUploads WHERE id = $uploadID AND userID = $userID";
-          mysqli_query($link, $sql);
           $sql = "DELETE FROM imjurVotes WHERE uploadID = $uploadID";
           mysqli_query($link, $sql);
           $sql = "DELETE FROM imjurComments WHERE uploadID = $uploadID";
