@@ -38,12 +38,12 @@ todo
       <a :href="link.href" class="openButton" @click.prevent.stop="open()" title="open link in new tab"></a>
       <div class="downloadButton" @click.prevent.stop="download()" title="download asset"></div><br>
     </div>    
-      <label v-if="state.loggedIn" :for="link.linkType+link.ct" class="checkboxLabel" style="float: left;margin-left: 40px;text-align: left;" :key="link.linkType+link.ct+'key'">
+      <label v-if="state.loggedIn" :for="link.linkType+link.ct" class="checkboxLabel" :key="link.linkType+link.ct+'key'">
         <input type="checkbox" v-model="link.selected" @input="updateLinkSelected()" :id="link.linkType+link.ct">
         <span class="checkmark" style="margin-left: -30px;"></span>
         <span style="font-size:.8em;margin-top:5px;display:block;color:#ff8;padding:0;margin-left:-35px;">selected</span><br>
       </label>
-    
+    <br>
     <table class="assetData">
       <tr><td class="tdLeft">age</td><td class="tdRight" v-html="age"></td></tr>
       <tr><td class="tdLeft">size</td><td class="tdRight" v-html="size"></td></tr>

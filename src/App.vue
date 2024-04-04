@@ -688,7 +688,7 @@ select:focus{
 /* Customize the label (the checkboxLabel) */
 .checkboxLabel {
   display: inline-block;
-  position: relative;
+  position: absolute;
   padding-left: 35px;
   margin-bottom: -2px;
   cursor: pointer;
@@ -699,6 +699,8 @@ select:focus{
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  margin-left: 40px;
+  text-align: left;
 }
 
 /* Hide the browser's default checkbox */
