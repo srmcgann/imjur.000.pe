@@ -28,9 +28,9 @@ error_reporting(E_ALL);
           if(mysqli_num_rows($res2) == 1 && $originalSlug && strlen($originalSlug) > 1 && $slug === $originalSlug){
             forEach(glob("uploads/$originalSlug*") as $file){
               unlink($file);
-              $success = true;
             }
           }
+          $success = true;
           $sql = "DELETE FROM imjurUploads WHERE id = $uploadID AND userID = $userID";
           mysqli_query($link, $sql);
           $sql = "DELETE FROM imjurVotes WHERE uploadID = $uploadID";
