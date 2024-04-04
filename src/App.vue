@@ -259,6 +259,7 @@ export default {
                 userID: +data[2][i].userID,
                 id: +data[2][i].id,
                 slug: data[2][i].slug,
+                originalSlug: data[2][i].originalSlug,
                 linkType: 'userLink'
               }
               this.state.userLinks.push(obj)
