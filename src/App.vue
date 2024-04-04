@@ -96,6 +96,7 @@ export default {
         loginPromptVisible: false,
         getPages: null,
         previewPosition: 0,
+        keys: Array(128).fill(false),
       }
     }
   },
@@ -524,9 +525,22 @@ export default {
     }
   },
   mounted(){
+    window.onkeyup = e =>{
+      this.state.keys[e.keyCode] = false
+    }
+    
     window.onkeydown = e =>{
+      this.state.keys[e.keyCode] = true
       console.log(e.keyCode)
       switch(e.keyCode){
+        case 65:
+          if(this.state.keys[17] && this.state.keys[16]){ // ctrl + shift + a
+            this.deSelectAll()
+          }
+          if(this.state.keys[17] && !this.state.keys[16]){ // ctrl + a
+            this.selectAll()
+          }
+        break
         case 46:
           this.deleteSelected()
         break

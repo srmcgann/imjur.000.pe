@@ -21,7 +21,7 @@
         @click="state.selectAll()"
         class="toolbarButtons"
         :disabled="allSelected"
-        title="delete selected [del]"
+        title="select all [ctrl + a]"
         :class="{'buttons' : !allSelected, 'disabledButton' : allSelected}"
       >
         select all
@@ -30,7 +30,7 @@
         @click="state.deSelectAll()"
         class="toolbarButtons"
         :disabled="!someSelected"
-        title="delete selected [del]"
+        title="de-select all [ctrl + shift + a]"
         :class="{'buttons' : someSelected, 'disabledButton' : !someSelected}"
       >
         deselect all
