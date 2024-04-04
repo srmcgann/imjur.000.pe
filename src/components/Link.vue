@@ -31,18 +31,18 @@ todo
 
 <template>
   <div class="link" ref="anchor">
+    <label v-if="state.loggedIn" :for="link.linkType+link.ct" class="checkboxLabel" :key="link.linkType+link.ct+'key'">
+      <input type="checkbox" v-model="link.selected" @input="updateLinkSelected()" :id="link.linkType+link.ct">
+      <span class="checkmark" style="margin-left: -30px;"></span>
+      <span style="font-size:.8em;margin-top:5px;display:block;color:#ff8;padding:0;margin-left:-35px;">selected</span><br>
+    </label>
     <div class="linkThumb" ref="linkThumb" @click.prevent.stop="preview()" title="view this asset"></div>
     <!--#{{link.ct+1}}-->
     <div class="linkButtons">
       <div class="copyLinkButton" @click.prevent.stop="copy()" title="copy link to clipboard"></div><br>
       <a :href="link.href" class="openButton" @click.prevent.stop="open()" title="open link in new tab"></a><br>
       <div class="downloadButton" @click.prevent.stop="download()" title="download asset"></div><br>
-    </div>    
-      <label v-if="state.loggedIn" :for="link.linkType+link.ct" class="checkboxLabel" :key="link.linkType+link.ct+'key'">
-        <input type="checkbox" v-model="link.selected" @input="updateLinkSelected()" :id="link.linkType+link.ct">
-        <span class="checkmark" style="margin-left: -30px;"></span>
-        <span style="font-size:.8em;margin-top:5px;display:block;color:#ff8;padding:0;margin-left:-35px;">selected</span><br>
-      </label>
+    </div>
     <br>
     <table class="assetData">
       <tr><td class="tdLeft">age</td><td class="tdRight" v-html="age"></td></tr>

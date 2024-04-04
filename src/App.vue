@@ -687,8 +687,6 @@ select:focus{
 }
 /* Customize the label (the checkboxLabel) */
 .checkboxLabel {
-  display: inline-block;
-  position: absolute;
   padding-left: 35px;
   margin-bottom: -2px;
   cursor: pointer;
