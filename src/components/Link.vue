@@ -84,9 +84,9 @@ export default {
       let B = (((tbytes / MB_) - MB) * MB / 1024 - KB) * KB | 0
       let ret
       if(MB){
-        ret = Math.round(MB*100)/100) + ' MB'
+        ret = (Math.round(MB*100)/100) + ' MB'
       } else if(KB) {
-        ret = Math.round(KB*100)/100) + ' KB'
+        ret = (Math.round(KB*100)/100) + ' KB'
       } else {
         ret = this.link.size + ' B'
       }
