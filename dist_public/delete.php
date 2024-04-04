@@ -28,7 +28,7 @@ error_reporting(E_ALL);
           $sql = "SELECT * FROM imjurUploads WHERE originalSlug LIKE BINARY \"$originalSlug\"";
           $res2 = mysqli_query($link, $sql);
           if(mysqli_num_rows($res2) == 1 && $originalSlug && strlen($originalSlug) > 1 && $slug === $originalSlug){
-            forEach(glob("uploads/$originalSlug*") as $file){
+            forEach(glob("uploads/$originalSlug.*") as $file){
               unlink($file);
               $delFileCount++;
             }
