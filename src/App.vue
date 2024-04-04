@@ -502,7 +502,8 @@ export default {
     }
   },
   mounted(){
-    document.body.onkeydown = e =>{
+    window.onkeydown = e =>{
+      console.log(e.keyCode)
       switch(e.keyCode){
         case 27:
           this.deleteSelected()
