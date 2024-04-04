@@ -508,6 +508,9 @@ export default {
         case 27:
           this.deleteSelected()
         break
+        case 46:
+          this.deleteSelected()
+        break
         case 37:
           this.prev()
         break
