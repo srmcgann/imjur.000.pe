@@ -2,9 +2,10 @@
   <div class="toolbar">
     <User :state="state" />
     <button @click="state.loadFiles()" class="toolbarButtons">
-      upload files
+      upload
     </button>
     <div v-if="state.loggedIn" class="toolbarSection">
+      <span style="font-size:.8em;">[w/selected&rarr;]</span>
       <button
         @click="state.deleteSelected()"
         class="toolbarButtons"
@@ -12,7 +13,7 @@
         title="delete selected [del]"
         :class="{'deleteButton' : someSelected, 'disabledButton' : !someSelected}"
       >
-        delete selected
+        delete
       </button>
       <div class="username" v-html="'welcome, ' + state.username"></div>
     </div>
@@ -59,6 +60,7 @@ export default {
   }
   .toolbarSection{
     display: inline-block;
+    border-left: 8px solid #40fa;
   }
   .toolbarButtons{
     margin: 5px;
