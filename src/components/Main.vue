@@ -113,6 +113,10 @@ export default {
               })
               this.state.modalContent = ''
               this.state.closeModal()
+              if(this.state.loggedIn){
+                this.state.links = []
+                this.state.fetchUserLinks(this.state.loggedinUserID)
+              }
             }else{
               this.state.modalContent = '<div style="min-width:90vw; min-height: 50vh; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);background: #8002; color: #f88; padding-top: 100px;">' + data[5] + '</div>'
             }
