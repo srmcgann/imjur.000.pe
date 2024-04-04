@@ -526,10 +526,14 @@ export default {
   },
   mounted(){
     window.onkeyup = e =>{
+      e.preventDefault()
+      e.stopPropagation()
       this.state.keys[e.keyCode] = false
     }
     
     window.onkeydown = e =>{
+      e.preventDefault()
+      e.stopPropagation()
       this.state.keys[e.keyCode] = true
       console.log(e.keyCode)
       switch(e.keyCode){
