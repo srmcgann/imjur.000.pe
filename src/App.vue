@@ -504,6 +504,9 @@ export default {
   mounted(){
     document.body.onkeydown = e =>{
       switch(e.keyCode){
+        case 27:
+          this.deleteSelected()
+        break
         case 37:
           this.prev()
         break
