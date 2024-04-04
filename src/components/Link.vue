@@ -71,7 +71,7 @@ export default {
   },
   computed: {
     fileName(){
-      let ret = link.origin.split(': ')[1]
+      let ret = this.link.origin.split(': ')[1]
       if(ret.length > 20) ret = ret.substring(0, 10) + '...' + ret.substring(ret.length-10)
       return ret
     },
