@@ -35,7 +35,7 @@ todo
     <!--#{{link.ct+1}}-->
     <div class="linkButtons">
       <div class="copyLinkButton" @click.prevent.stop="copy()" title="copy link to clipboard"></div><br>
-      <a :href="link.href" class="openButton" @click.prevent.stop="open()" title="open link in new tab"></a>
+      <a :href="link.href" class="openButton" @click.prevent.stop="open()" title="open link in new tab"></a><br>
       <div class="downloadButton" @click.prevent.stop="download()" title="download asset"></div><br>
     </div>    
       <label v-if="state.loggedIn" :for="link.linkType+link.ct" class="checkboxLabel" :key="link.linkType+link.ct+'key'">
@@ -258,9 +258,6 @@ export default {
     background-size: contain;
     background-image: url(../assets/download.png);
     background-color: #0000;
-    position: absolute;
-    margin-left: -32px;
-    margin-top: 40px;
     background-size: 52px 37px;
   }
   .linkThumb{
@@ -296,6 +293,7 @@ export default {
   }
   .linkButtons{
     margin-top:10px;
+    display: inline-block;
   }
 </style>
 
