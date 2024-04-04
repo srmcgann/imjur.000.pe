@@ -44,7 +44,7 @@ todo
     <table class="assetData">
       <tr><td class="tdLeft">age</td><td class="tdRight" v-html="age"></td></tr>
       <tr><td class="tdLeft">size</td><td class="tdRight" v-html="link.size"></td></tr>
-      <tr><td class="tdLeft">file name</td><td class="tdRight" v-html="link.origin.split(': ')[1]"></td></tr>
+      <tr><td class="tdLeft">file name</td><td class="tdRight" v-html="fileName"></td></tr>
     </table>
     
     <!-- <span style="visibility: hidden; position: absolute;" v-html="link.href" ref="href"></span> -->
@@ -70,6 +70,11 @@ export default {
     }
   },
   computed: {
+    fileName(){
+      let ret = link.origin.split(': ')[1]
+      if(ret.length > 20) ret = ret.substring(0, 10) + '...' + ret.substring(ret.length-10)
+      return ret
+    },
     age(){
       let tseconds = (((new Date()) - (new Date(this.link.date)))/1000|0) + 3600 * (((new Date).getTimezoneOffset()/60) - 4)
       let years = (tseconds/31536000)|0
