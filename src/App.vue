@@ -262,7 +262,8 @@ export default {
                 originalSlug: data[2][i].originalSlug,
                 origin: data[2][i].origin,
                 date: data[2][i].date,
-                linkType: 'userLink'
+                linkType: 'userLink',
+                serverTZO: data[2][i].serverTZO
               }
               this.state.userLinks.push(obj)
             })
