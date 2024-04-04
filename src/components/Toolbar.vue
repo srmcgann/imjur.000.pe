@@ -27,7 +27,7 @@
         select all
       </button>
       <button
-        @click="state.deselectAll()"
+        @click="state.deSelectAll()"
         class="toolbarButtons"
         :disabled="!someSelected"
         title="delete selected [del]"
@@ -90,6 +90,7 @@ export default {
     min-width: 100px;
     padding: 2px;
     padding-bottom: 0;
+    border-radius: 5px;
   }
   .username{
     display: inline-block;
