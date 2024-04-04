@@ -110,6 +110,16 @@ export default {
     }
   },
   methods: {
+    download(){
+      let a = document.createElement('a')
+      a.download = this.fileName
+      a.href = this.link.href
+      a.style.position = 'absolute'
+      a.style.opacity = .01
+      document.body.appendChild(a)
+      a.click()
+      a.remove()
+    },
     updateLinkSelected(){
       if(this.link.selected){
         this.link.selected = false
@@ -230,7 +240,7 @@ export default {
     border-radius: 10px;
     border: none;
     cursor: pointer;
-    margin-top: 8px;
+    margin-top: 0px;
     margin-left: 3px;
   }
   .openButton{
@@ -247,6 +257,10 @@ export default {
     background-size: contain;
     background-image: url(../assets/download.png);
     background-color: #0000;
+    position: absolute;
+    margin-left: -45px;
+    margin-top: 54px;
+    background-size: 65px 51px;
   }
   .linkThumb{
     float: left;
