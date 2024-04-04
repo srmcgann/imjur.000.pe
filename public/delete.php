@@ -30,6 +30,7 @@ error_reporting(E_ALL);
           if(mysqli_num_rows($res2) == 1 && $originalSlug && strlen($originalSlug) > 1 && $slug === $originalSlug){
             forEach(glob("uploads/$originalSlug*") as $file){
               unlink($file);
+              $delFileCount++;
             }
           }
           $success = true;
@@ -39,6 +40,7 @@ error_reporting(E_ALL);
           mysqli_query($link, $sql);
           $sql = "DELETE FROM imjurComments WHERE uploadID = $uploadID";
           mysqli_query($link, $sql);
+          $delRecCount++;
         }
       }
       echo json_encode([$success, 1, $sql, $delFileCount, $delRecCount, $slugs]);
