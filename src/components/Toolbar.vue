@@ -57,7 +57,8 @@ export default {
   .username{
     display: inline-block;
     position: relative;
-    right: 5px;
+    margin-right: 5px;
+    float: right;
   }
   .deleteButton{
     color: #f88;
