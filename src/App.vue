@@ -700,7 +700,7 @@ select:focus{
   user-select: none;
   text-align: left;
   position: absolute;
-  margin-left: -180px;
+  margin-left: 30px;
 }
 
 /* Hide the browser's default checkbox */

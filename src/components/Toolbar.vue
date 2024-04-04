@@ -5,7 +5,7 @@
       upload
     </button>
     <div v-if="state.loggedIn" class="toolbarSection">
-      <span style="font-size:.8em;">[w/selected&rarr;]</span>
+      <span style="margin-left: 5px; font-size:.8em;">[w/selected&rarr;]</span>
       <button
         @click="state.deleteSelected()"
         class="toolbarButtons"
@@ -64,7 +64,7 @@ export default {
   }
   .toolbarButtons{
     margin: 5px;
-    min-width: 180px;
+    min-width: 100px;
     padding: 2px;
     padding-bottom: 0;
   }
