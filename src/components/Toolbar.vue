@@ -17,6 +17,24 @@
       </button>
       <div class="username" v-html="'welcome, ' + state.username"></div>
     </div>
+      <button
+        @click="state.selectAll()"
+        class="toolbarButtons"
+        :disabled="!someSelected"
+        title="delete selected [del]"
+        :class="{'buttons' : !allSelected, 'disabledButton' : allSelected}"
+      >
+        select all
+      </button>
+      <button
+        @click="state.deselectAll()"
+        class="toolbarButtons"
+        :disabled="!someSelected"
+        title="delete selected [del]"
+        :class="{'buttons' : someSelected, 'disabledButton' : !someSelected}"
+      >
+        deselect all
+      </button>
     <div v-else class="toolbarSection">
     </div>
   </div>
@@ -38,6 +56,9 @@ export default {
   computed: {
     someSelected(){
       return this.state.links.filter(v=>v.selected).length || this.state.userLinks.filter(v=>v.selected).length
+    },
+    allSelected(){
+      return (this.state.links.filter(v=>v.selected).length + this.state.userLinks.filter(v=>v.selected).length) == this.state.links.length + this.state.userLinks.length
     }
   },
   methods: {
@@ -61,6 +82,7 @@ export default {
   .toolbarSection{
     display: inline-block;
     border-left: 8px solid #40fa;
+    border-right: 8px solid #40fa;
   }
   .toolbarButtons{
     margin: 5px;

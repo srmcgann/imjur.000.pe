@@ -87,6 +87,8 @@ export default {
         regpassword: '',
         checkLogin: null,
         confirmpassword: '',
+        selectAll: null,
+        deSelectAll: null,
         showLoginPrompt: false,
         loadFiles: null,
         showRegister: false,
@@ -271,6 +273,22 @@ export default {
           }
         })
       }
+    },
+    selectAll(){
+      this.state.links.map(v=>{
+        v.selected = true
+      })
+      this.state.userLinks.map(v=>{
+        v.selected = true
+      })
+    },
+    deSelectAll(){
+      this.state.links.map(v=>{
+        v.selected = false
+      })
+      this.state.userLinks.map(v=>{
+        v.selected = false
+      })
     },
     deleteSelected(){
       let count = 0
@@ -534,8 +552,10 @@ export default {
     this.state.register = this.register
     this.state.getPages = this.getPages
     this.state.getAvatar = this.getAvatar
+    this.state.selectAll = this.selectAll
     this.state.setCookie = this.setCookie
     this.state.checkLogin = this.checkLogin
+    this.state.deSelectAll = this.deSelectAll
     this.state.closePrompts = this.closePrompts
     this.state.closePreview = this.closePreview
     this.state.fetchUserLinks = this.fetchUserLinks
