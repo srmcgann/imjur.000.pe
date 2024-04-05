@@ -148,7 +148,7 @@ export default {
       }
       if(files.length) this.processUpload(files)
     },
-    addLink(size, type, ct, href, selected, userID, slug, originalSlug, origin, serverTZO){
+    addLink(size, type, ct, href, selected, userID, slug, originalSlug, origin, serverTZO, views){
       let obj = {
         size,
         type,
