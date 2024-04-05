@@ -87,6 +87,14 @@ export default {
         regpassword: '',
         checkLogin: null,
         confirmpassword: '',
+        totalPages: 0,
+        totalUserPages: 0,
+        curPage: 0,
+        curUserPage: 0,
+        regressPage: null,
+        advancePage: null,
+        lastPage: null,
+        firstPage: null,
         selectAll: null,
         deSelectAll: null,
         showLoginPrompt: false,
@@ -137,6 +145,89 @@ export default {
     showUserSettings(){
       document.getElementsByTagName('HTML')[0].style.overflowY = 'hidden'
       this.state.userSettingsVisible = true
+    },
+    firstPage(){
+      console.log('first page')
+      /*let search = this.state.search.string ? ('/1/' + (this.state.search.string)) : ''
+      switch(this.state.mode){
+        case 'u':
+          window.location.href = window.location.origin + '/u/' + this.state.user.name + search
+        break
+        case 'default':
+          window.location.href = window.location.origin + search
+        break
+        case 'track':
+          window.location.href = window.location.origin + '/track/' + this.state.curTrack + search
+        break
+      }
+      */
+    },
+    jumpToPage(pageNo){
+      console.log('jump to page No ' + pageNo)
+      /*
+      let search = this.state.search.string ? ('/' + (this.state.search.string)) : ''
+      switch(this.state.mode){
+        case 'u':
+        window.location.href = window.location.origin + '/u/' + this.user.name + '/' + pageNo + search
+        break
+        case 'default':
+        window.location.href = window.location.origin + '/' + pageNo + search
+        break
+        case 'track':
+        window.location.href = window.location.origin + '/track/' + this.decToAlpha(this.state.curTrack) + '/' + pageNo + search
+        break
+      }
+      */
+    },
+    lastPage(){
+      console.log('last page')
+      /*
+      let search = this.state.search.string ? ('/' + (this.state.search.string)) : ''
+      switch(this.state.mode){
+        case 'u':
+          window.location.href = window.location.origin + '/u/' + this.state.user.name + '/' + this.state.totalUserPages + search
+        break
+        case 'default':
+          window.location.href = window.location.origin + '/' + this.state.totalPages + search
+        break
+        case 'track':
+          window.location.href = window.location.origin + '/track/' + this.decToAlpha(this.state.curTrack) + '/' + this.state.totalPages + search
+        break
+      }
+      */
+    },
+    advancePage(){
+      console.log('advance page')
+      /*
+      let search = this.state.search.string ? ('/' + (this.state.search.string)) : ''
+      switch(this.state.mode){
+        case 'u':
+          window.location.href = window.location.origin + '/u/' + this.state.user.name + '/' + (this.state.curUserPage + 2) + search
+        break
+        case 'default':
+          window.location.href = window.location.origin + '/' + (this.state.curPage + 2) + search
+        break
+        case 'track':
+          window.location.href = window.location.origin + '/track/' + this.decToAlpha(this.state.curTrack) + '/' +(this.state.curPage + 2) + search
+        break
+      }
+      */
+    },
+    regressPage(){
+      /*
+      let search = this.state.search.string ? ('/' + (this.state.search.string)) : ''
+      switch(this.state.mode){
+        case 'u':
+          window.location.href = window.location.origin + '/u/' + this.state.user.name + '/' + this.state.curUserPage + search
+        break
+        case 'default':
+          window.location.href = window.location.origin + '/' + this.state.curPage + search
+        break
+        case 'track':
+          window.location.href = window.location.origin + '/track/' + this.decToAlpha(this.state.curTrack) + '/' +(this.state.curPage + 2) + search
+        break
+      }
+      */
     },
     copy(val){
       let copyEl = document.createElement('div')
@@ -573,11 +664,15 @@ export default {
     this.state.login = this.login
     this.state.logout = this.logout
     this.state.register = this.register
+    this.state.lastPage = this.lastPage
     this.state.getPages = this.getPages
+    this.state.firstPage = this.firstPage
     this.state.getAvatar = this.getAvatar
     this.state.selectAll = this.selectAll
     this.state.setCookie = this.setCookie
     this.state.checkLogin = this.checkLogin
+    this.state.advancePage = this.advancePage
+    this.state.regressPage = this.regressPage
     this.state.deSelectAll = this.deSelectAll
     this.state.closePrompts = this.closePrompts
     this.state.closePreview = this.closePreview

@@ -1,13 +1,19 @@
 <template>
   <div class="footer">
     <span v-html="state.footerMsg"></span>
+    <Pages :state="state" />
   </div>
 </template>
 
 <script>
+import Pages from './Pages'
+
 export default {
   name: 'Footer',
   props: [ 'state' ],
+  components{
+    Pages
+  },
   data(){
     return {
     }
