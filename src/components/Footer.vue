@@ -11,7 +11,7 @@ import Pages from './Pages'
 export default {
   name: 'Footer',
   props: [ 'state' ],
-  components{
+  components: {
     Pages
   },
   data(){
