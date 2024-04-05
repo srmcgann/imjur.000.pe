@@ -10,6 +10,7 @@ todo
   ✔ log original file name
   ✔ lightbox sim / previews
   ✔ checkboxes & "with selected" toobar
+  * upload progress bars
   * download button on preview modal
   * users, optional logins/profiles
     └-> ✔ login button
