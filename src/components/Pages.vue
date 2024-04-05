@@ -95,12 +95,10 @@ export default {
     position: absolute;
     display: inline-block;
     width: 270px;
-    transform: translateX(-50%);
     line-height: .8em;
     min-height: 25px;
     right: 0;
     margin-top: -32px;
-    margin-left: 30px;
     vertical-align: top;
     padding-top: 0px;
     font-size: .8em;

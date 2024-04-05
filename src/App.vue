@@ -89,7 +89,7 @@ export default {
         confirmpassword: '',
         totalPages: 2,
         totalUserPages: 0,
-        curPage: 0,
+        curPage: 1,
         curUserPage: 0,
         regressPage: null,
         advancePage: null,
