@@ -523,6 +523,7 @@ export default {
     },
     getMode(){
       let vars = window.location.pathname.split('/').filter(v=>v)
+      console.log(vars)
       if(vars.length>0){
         switch(vars[0]){
           case 'd':
