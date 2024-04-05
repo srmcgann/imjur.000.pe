@@ -532,7 +532,7 @@ export default {
     }
     
     window.onkeydown = e =>{
-      if(!state.showLoginPrompt){
+      if(!this.state.showLoginPrompt){
         e.preventDefault()
         e.stopPropagation()
         this.state.keys[e.keyCode] = true

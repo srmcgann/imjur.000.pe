@@ -35,7 +35,7 @@
       >
         deselect all
       </button>
-      <div class="username" v-html="'welcome, ' + state.username"></div>
+      <div class="username" v-html="'welcome,&nbsp;&nbsp;&nbsp;<br>' + state.username"></div>
     </div>
     <div v-else class="toolbarSection">
     </div>
