@@ -207,7 +207,7 @@ export default {
         this.Draw()
       }
       let l
-      this.img.src = this.linkType == 'audio' ? 'musicNotes.svg' : 'thumb.php?res=resources/' + (l=this.link.href.split('/'))[l.length-1].split('?')[0]
+      this.img.src = this.linkType == 'audio' ? this.state.URLbase + '/' + 'musicNotes.svg' : this.state.URLbase + '/' + 'thumb.php?res=resources/' + (l=this.link.href.split('/'))[l.length-1].split('?')[0]
     }
   }
 }

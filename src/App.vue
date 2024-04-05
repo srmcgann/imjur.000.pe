@@ -75,6 +75,7 @@ export default {
         prev: null,
         login: null,
         register: null,
+        URLbase: null,
         logout: null,
         regusername: '',
         username: '',
@@ -703,6 +704,7 @@ export default {
     this.state.copy = this.copy
     this.state.login = this.login
     this.state.logout = this.logout
+    this.state.URLbase = this.URLbase
     this.state.register = this.register
     this.state.lastPage = this.lastPage
     this.state.getPages = this.getPages

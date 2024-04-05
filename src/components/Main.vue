@@ -71,7 +71,7 @@ export default {
   methods: {
     processUpload(files){
       this.state.uploadInprogress = true
-      this.state.modalContent = `<div style="position: absolute;left:0;top:0;width:100%;height:100%;background:#000;"><video src="loading.mp4" style="min-width:50vw; min-height: 50vh; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); pointer-events: none; opacity: .6;" loop autoplay muted></video></div>`
+      this.state.modalContent = `<div style="position: absolute;left:0;top:0;width:100%;height:100%;background:#000;"><video :src="state.URLbase + '/' + 'loading.mp4'" style="min-width:50vw; min-height: 50vh; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); pointer-events: none; opacity: .6;" loop autoplay muted></video></div>`
       this.state.showModal = true
       this.$nextTick(()=>{
         let ct = 0
@@ -111,7 +111,7 @@ export default {
             if(data[0]){
               //this.$refs.dropTargetCaption.style.display = 'none'
               data[1].map((v, i)=>{
-                this.addLink(data[2][i], data[3][i], i, location.href.split('?')[0] + v, false, this.state.loggedinUserID, data[6][i], data[7][i], data[8][i], data[9], data[10])
+                this.addLink(data[2][i], data[3][i], i, this.state.URLbase + '/' +  + v, false, this.state.loggedinUserID, data[6][i], data[7][i], data[8][i], data[9], data[10])
               })
               this.state.modalContent = ''
               this.state.closeModal()
@@ -184,7 +184,7 @@ export default {
       [document.createElement('video'), 'loading.mp4'],
     ]
     this.preload.map(v => {
-      v[0].src = v[1]
+      v[0].src = this.state.URLbase + '/' + v[1]
     })
   }
 }
