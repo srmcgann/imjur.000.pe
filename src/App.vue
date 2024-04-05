@@ -560,7 +560,6 @@ export default {
           break
           default:
             this.state.mode = 'default'
-            /*
             let search = ''
             if(vars[0]){
               this.state.curPage = (+vars[0])-1
@@ -568,16 +567,15 @@ export default {
                 this.state.search.string = decodeURIComponent(vars[1])
                 search = '/' + vars[1]
                 history.pushState(null,null,this.URLbase + '/' + (this.state.curPage + 1)) + search
-                this.beginSearch()
+                //this.beginSearch()
               }else{
                 history.pushState(null,null,this.URLbase + '/' + this.state.curPage ? (this.state.curPage + 1) : '')
                 if(!this.state.curPage || this.state.curPage < 0 || this.state.curPage > 1e6) this.state.curPage = 0
-                this.getPages()
+                this.fetchUserLinks()
               }
             }else{
-              //window.location.href = window.location.origin
+              window.location.href = this.URLbase
             }
-            */
           break
         }
       }else{

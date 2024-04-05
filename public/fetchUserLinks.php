@@ -1,4 +1,7 @@
 <?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
   require_once('../db.php');
   require_once('functions.php');
   $data = json_decode(file_get_contents('php://input'));
@@ -12,9 +15,9 @@
   $sql="SELECT id FROM imjurUploads WHERE userID = $userID";
   $res = mysqli_query($link, $sql);
   $totalRecords = mysqli_num_rows($res);
-  $totalPages = (($totalRecords-1) / $maxResultsPerPage | 0) + 1;
+  $totalPages = floor(($totalRecords-1) / $maxResultsPerPage) + 1;
 
-  $sql = 'SELECT * FROM imjurUploads WHERE userID = $userID ORDER BY date DESC LIMIT ' . $start . ', ' . $maxResultsPerPage;
+  $sql = "SELECT * FROM imjurUploads WHERE userID = $userID ORDER BY date DESC LIMIT $start, $maxResultsPerPage";
   $res = mysqli_query($link, $sql);
   
   $uploadDir = 'uploads';
