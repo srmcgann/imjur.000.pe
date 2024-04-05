@@ -98,10 +98,10 @@ export default {
           allWords: true
         },
         confirmpassword: '',
-        totalPages: 4,
+        totalPages: 0,
         totalUserPages: 0,
         setLinksOwner: null,
-        curPage: 2,
+        curPage: 0,
         curUserPage: 0,
         regressPage: null,
         advancePage: null,
