@@ -572,7 +572,7 @@ export default {
               }else{
                 history.pushState(null,null,this.URLbase + '/' + this.state.curPage ? (this.state.curPage + 1) : '')
                 if(!this.state.curPage || this.state.curPage < 0 || this.state.curPage > 1e6) this.state.curPage = 0
-                this.fetchUserLinks()
+                this.fetchUserLinks(this.state.loggedinUserID)
               }
             }else{
               window.location.href = this.URLbase
