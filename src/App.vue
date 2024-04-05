@@ -87,9 +87,10 @@ export default {
         regpassword: '',
         checkLogin: null,
         confirmpassword: '',
-        totalPages: 2,
+        totalPages: 4,
         totalUserPages: 0,
-        curPage: 1,
+        setLinksOwner: null,
+        curPage: 2,
         curUserPage: 0,
         regressPage: null,
         advancePage: null,
@@ -214,6 +215,7 @@ export default {
       */
     },
     regressPage(){
+      console.log('regress page')
       /*
       let search = this.state.search.string ? ('/' + (this.state.search.string)) : ''
       switch(this.state.mode){
@@ -327,6 +329,22 @@ export default {
           this.getMode()
         })
       }
+    },
+    setLinksOwner(){
+      let sendData = {
+        userName: this.state.username,
+        passhash: this.state.passhash,
+        ids: JSON.parse(JSON.stringify(this.state.links.map(v=>v.id)))
+      }
+      fetch('setOwner.php',{
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(sendData),
+      }).then(res => res.json()).then(data=>{
+        if(!data[0]) alert('error setting link owner')
+      })
     },
     fetchUserLinks(userID){
       if(this.state.loggedinUserName) {
@@ -473,6 +491,9 @@ export default {
           this.state.invalidLoginAttemp = false
           this.state.loggedInUser.avatar = data[3]
           this.fetchUserLinks(this.state.loggedinUserID)
+          this.setLinksOwner()
+          this.state.userLinks = [...this.state.userLinks, ...this.state.links]
+          this.state.links = []
           //this.state.userInfo[this.state.loggedinUserID] = {}
           //this.state.userInfo[this.state.loggedinUserID].name = this.state.regusername
           //this.state.userInfo[this.state.loggedinUserID].avatar = data[3]
@@ -676,6 +697,7 @@ export default {
     this.state.deSelectAll = this.deSelectAll
     this.state.closePrompts = this.closePrompts
     this.state.closePreview = this.closePreview
+    this.state.setLinksOwner = this.setLinksOwner
     this.state.fetchUserLinks = this.fetchUserLinks
     this.state.deleteSelected = this.deleteSelected
     this.state.showUserSettings = this.showUserSettings

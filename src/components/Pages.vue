@@ -4,6 +4,7 @@
       class="navButton"
       :class="{'disabled': curPage < 1}"
       :disabled="curPage < 1"
+      title="go to first page"
       @click="state.firstPage()"
     >
       &lt;&lt;
@@ -11,6 +12,7 @@
     <button
       class="navButton"
       :disabled="curPage < 1"
+      title="go back one page"
       :class="{'disabled': curPage < 1}"
       @click="state.regressPage()"
     >
@@ -21,6 +23,7 @@
       class="navButton"
       :class="{'disabled': totalPages == curPage+1}"
       :disabled="totalPages == curPage+1"
+      title="go forward one page"
       @click="state.advancePage()"
     >
       &gt;
@@ -28,6 +31,7 @@
     <button
       class="navButton"
       :class="{'disabled': totalPages == curPage+1}"
+      title="go to last page"
       :disabled="totalPages == curPage+1"
       @click="state.lastPage()"
     >
