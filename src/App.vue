@@ -374,7 +374,7 @@ export default {
                 type: data[2][i].type,
                 selected: false,
                 ct: i,
-                href: location.href.split('?')[0] + v,
+                href: v,
                 userID: +data[2][i].userID,
                 id: +data[2][i].id,
                 slug: data[2][i].slug,
