@@ -63,7 +63,7 @@ export default {
     },
     pagenumber(){
       let num
-      if(this.state.search.string){
+      if(0){//this.state.search.string){
         num = 'Page ' + (this.state.curPage+1) + ' of ' + this.state.totalPages
       }else{
         switch(this.state.mode){
