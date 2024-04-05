@@ -160,8 +160,7 @@ export default {
       this.state.userSettingsVisible = true
     },
     firstPage(){
-      console.log('first page')
-      /*let search = this.state.search.string ? ('/1/' + (this.state.search.string)) : ''
+      let search = this.state.search.string ? ('/1/' + (this.state.search.string)) : ''
       switch(this.state.mode){
         case 'u':
           window.location.href = this.URLbase + '/u/' + this.state.user.name + search
@@ -173,11 +172,8 @@ export default {
           window.location.href = this.URLbase + '/track/' + this.state.curTrack + search
         break
       }
-      */
     },
     jumpToPage(pageNo){
-      console.log('jump to page No ' + pageNo)
-      /*
       let search = this.state.search.string ? ('/' + (this.state.search.string)) : ''
       switch(this.state.mode){
         case 'u':
@@ -190,7 +186,6 @@ export default {
         window.location.href = this.URLbase + '/track/' + this.decToAlpha(this.state.curTrack) + '/' + pageNo + search
         break
       }
-      */
     },
     lastPage(){
       let search = this.state.search.string ? ('/' + (this.state.search.string)) : ''
