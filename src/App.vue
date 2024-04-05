@@ -80,12 +80,23 @@ export default {
         username: '',
         userView: false,
         password: '',
+        maxResultsPerPage: 10,
         showUserSettings: null,
         invalidLoginAttempt: false,
         displayLoginRequired: false,
         userSettingsVisible: false,
         regpassword: '',
         checkLogin: null,
+        search: {
+          string: '',
+          //audiocloudTracks: [],
+          hits: 0,
+          inProgress: false,
+          timer: 0,
+          timerHandle: null,
+          exact: false,
+          allWords: true
+        },
         confirmpassword: '',
         totalPages: 4,
         totalUserPages: 0,
@@ -152,13 +163,13 @@ export default {
       /*let search = this.state.search.string ? ('/1/' + (this.state.search.string)) : ''
       switch(this.state.mode){
         case 'u':
-          window.location.href = window.location.origin + '/u/' + this.state.user.name + search
+          window.location.href = this.URLbase + '/u/' + this.state.user.name + search
         break
         case 'default':
-          window.location.href = window.location.origin + search
+          window.location.href = this.URLbase + search
         break
         case 'track':
-          window.location.href = window.location.origin + '/track/' + this.state.curTrack + search
+          window.location.href = this.URLbase + '/track/' + this.state.curTrack + search
         break
       }
       */
@@ -169,67 +180,58 @@ export default {
       let search = this.state.search.string ? ('/' + (this.state.search.string)) : ''
       switch(this.state.mode){
         case 'u':
-        window.location.href = window.location.origin + '/u/' + this.user.name + '/' + pageNo + search
+        window.location.href = this.URLbase + '/u/' + this.user.name + '/' + pageNo + search
         break
         case 'default':
-        window.location.href = window.location.origin + '/' + pageNo + search
+        window.location.href = this.URLbase + '/' + pageNo + search
         break
         case 'track':
-        window.location.href = window.location.origin + '/track/' + this.decToAlpha(this.state.curTrack) + '/' + pageNo + search
+        window.location.href = this.URLbase + '/track/' + this.decToAlpha(this.state.curTrack) + '/' + pageNo + search
         break
       }
       */
     },
     lastPage(){
-      console.log('last page')
-      /*
       let search = this.state.search.string ? ('/' + (this.state.search.string)) : ''
       switch(this.state.mode){
         case 'u':
-          window.location.href = window.location.origin + '/u/' + this.state.user.name + '/' + this.state.totalUserPages + search
+          window.location.href = this.URLbase + '/u/' + this.state.user.name + '/' + this.state.totalUserPages + search
         break
         case 'default':
-          window.location.href = window.location.origin + '/' + this.state.totalPages + search
+          window.location.href = this.URLbase + '/' + this.state.totalPages + search
         break
         case 'track':
-          window.location.href = window.location.origin + '/track/' + this.decToAlpha(this.state.curTrack) + '/' + this.state.totalPages + search
+          window.location.href = this.URLbase + '/track/' + this.decToAlpha(this.state.curTrack) + '/' + this.state.totalPages + search
         break
       }
-      */
     },
     advancePage(){
-      console.log('advance page')
-      /*
       let search = this.state.search.string ? ('/' + (this.state.search.string)) : ''
       switch(this.state.mode){
         case 'u':
-          window.location.href = window.location.origin + '/u/' + this.state.user.name + '/' + (this.state.curUserPage + 2) + search
+          window.location.href = this.URLbase + '/u/' + this.state.user.name + '/' + (this.state.curUserPage + 2) + search
         break
         case 'default':
-          window.location.href = window.location.origin + '/' + (this.state.curPage + 2) + search
+          window.location.href = this.URLbase + '/' + (this.state.curPage + 2) + search
         break
         case 'track':
-          window.location.href = window.location.origin + '/track/' + this.decToAlpha(this.state.curTrack) + '/' +(this.state.curPage + 2) + search
+          window.location.href = this.URLbase + '/track/' + this.decToAlpha(this.state.curTrack) + '/' +(this.state.curPage + 2) + search
         break
       }
-      */
     },
     regressPage(){
-      console.log('regress page')
-      /*
       let search = this.state.search.string ? ('/' + (this.state.search.string)) : ''
       switch(this.state.mode){
         case 'u':
-          window.location.href = window.location.origin + '/u/' + this.state.user.name + '/' + this.state.curUserPage + search
+          window.location.href = this.URLbase + '/u/' + this.state.user.name + '/' + this.state.curUserPage + search
         break
         case 'default':
-          window.location.href = window.location.origin + '/' + this.state.curPage + search
+          window.location.href = this.URLbase + '/' + this.state.curPage + search
         break
         case 'track':
-          window.location.href = window.location.origin + '/track/' + this.decToAlpha(this.state.curTrack) + '/' +(this.state.curPage + 2) + search
+          window.location.href = this.URLbase + '/track/' + this.decToAlpha(this.state.curTrack) + '/' +(this.state.curPage + 2) + search
         break
       }
-      */
     },
     copy(val){
       let copyEl = document.createElement('div')
@@ -348,7 +350,11 @@ export default {
     },
     fetchUserLinks(userID){
       if(this.state.loggedinUserName) {
-        let sendData = { userID }
+        let sendData = {
+          userID,
+          page: this.state.curPage,
+          maxResultsPerPage: this.state.maxResultsPerPage
+        }
         fetch('fetchUserLinks.php',{
           method: 'POST',
           headers: {
@@ -380,6 +386,8 @@ export default {
               }
               this.state.userLinks.push(obj)
             })
+            this.state.totalPages = +data[3]
+            if(this.state.curPage+1 > this.state.totalPages) this.lastPage()
           }
         })
       }
@@ -492,7 +500,10 @@ export default {
           this.state.loggedInUser.avatar = data[3]
           this.fetchUserLinks(this.state.loggedinUserID)
           this.setLinksOwner()
-          this.state.userLinks = [...this.state.userLinks, ...this.state.links]
+          this.state.userLinks = [...this.state.userLinks, ...this.state.links.map(v=>{
+            v.userID = this.state.loggedinUserID
+            return v
+          })]
           this.state.links = []
           //this.state.userInfo[this.state.loggedinUserID] = {}
           //this.state.userInfo[this.state.loggedinUserID].name = this.state.regusername
@@ -534,16 +545,16 @@ export default {
               if(vars[3]){
                 this.state.search.string = decodeURIComponent(vars[3])
                 search = '/' + vars[3]
-                history.pushState(null,null,window.location.origin + '/u/' + (this.state.user.name) + '/' + (this.state.curPage + 1)) + search
+                history.pushState(null,null,this.URLbase + '/u/' + (this.state.user.name) + '/' + (this.state.curPage + 1)) + search
                 this.beginSearch()
               }else{
                 if(!this.state.curUserPage || this.state.curUserPage < 0 || this.state.curUserPage > 1e6) this.state.curUserPage = 0
-                history.pushState(null,null,window.location.origin + '/u/' + (vars[1]) + ((this.state.curUserPage) ? '/' + (this.state.curUserPage + 1) : ''))
+                history.pushState(null,null,this.URLbase + '/u/' + (vars[1]) + ((this.state.curUserPage) ? '/' + (this.state.curUserPage + 1) : ''))
                 this.getPages()
               }
             } else {
               this.state.curUserPage = 0
-              history.pushState(null,null,window.location.origin + '/u/' + (vars[1]) + ((this.state.curUserPage) ? '/' + (this.state.curUserPage + 1) : ''))
+              history.pushState(null,null,this.URLbase + '/u/' + (vars[1]) + ((this.state.curUserPage) ? '/' + (this.state.curUserPage + 1) : ''))
               this.getPages()
             }*/
           break
@@ -556,10 +567,10 @@ export default {
               if(vars[1]){
                 this.state.search.string = decodeURIComponent(vars[1])
                 search = '/' + vars[1]
-                history.pushState(null,null,window.location.origin + '/' + (this.state.curPage + 1)) + search
+                history.pushState(null,null,this.URLbase + '/' + (this.state.curPage + 1)) + search
                 this.beginSearch()
               }else{
-                history.pushState(null,null,window.location.origin + '/' + this.state.curPage ? (this.state.curPage + 1) : '')
+                history.pushState(null,null,this.URLbase + '/' + this.state.curPage ? (this.state.curPage + 1) : '')
                 if(!this.state.curPage || this.state.curPage < 0 || this.state.curPage > 1e6) this.state.curPage = 0
                 this.getPages()
               }
@@ -572,7 +583,7 @@ export default {
       }else{
         this.state.mode = 'default'
         this.getPages()
-        if(window.location.href !== window.location.origin + '/') window.location.href = window.location.origin
+        if(window.location.href !== this.URLbase + '/') window.location.href = window.location.origin
       }
     },
     logout(){
@@ -634,6 +645,15 @@ export default {
         this.state.showModal = false
       }
       */
+    }
+  },
+  computed:{
+    URLbase(){
+      let ret = window.location.origin
+      if(ret.toLowerCase().indexOf('imjur.000.pe') === -1){
+        ret += '/imjur'
+      }
+      return ret
     }
   },
   mounted(){

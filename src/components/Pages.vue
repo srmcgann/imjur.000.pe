@@ -85,7 +85,11 @@ export default {
       return num
     },
     origin(){
-      return window.location.origin
+      let ret = window.location.origin
+      if(ret.toLowerCase().indexOf('imjur.000.pe') === -1){
+        ret += '/imjur'
+      }
+      return ret
     }
   },
   mounted(){
