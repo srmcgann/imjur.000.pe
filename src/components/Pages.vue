@@ -98,7 +98,8 @@ export default {
     transform: translateX(-50%);
     line-height: .8em;
     min-height: 25px;
-    margin-top: 32px;
+    right: 0;
+    margin-top: -32px;
     margin-left: 30px;
     vertical-align: top;
     padding-top: 0px;
