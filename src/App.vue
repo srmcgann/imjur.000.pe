@@ -87,7 +87,7 @@ export default {
         regpassword: '',
         checkLogin: null,
         confirmpassword: '',
-        totalPages: 0,
+        totalPages: 2,
         totalUserPages: 0,
         curPage: 0,
         curUserPage: 0,
