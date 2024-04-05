@@ -95,6 +95,7 @@ export default {
   .username{
     display: inline-block;
     position: absolute;
+    text-align: right;
     right: 5px;
   }
   .deleteButton{

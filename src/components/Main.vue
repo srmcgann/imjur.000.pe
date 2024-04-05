@@ -87,7 +87,7 @@ export default {
         })
         let rej = '<div style="min-width:90vw; min-height: 50vh; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);background: #4008; color: #f88; padding-top: 100px;">'
         this.rejects.map(reject=>{
-          let sz = (reject.size/1e6|0).toLocaleString('en-us') + ' MB<br>'
+          let sz = (reject.size/(1024**2)|0).toLocaleString('en-us') + ' MB<br>'
           rej += `oversized/rejected: size: ${sz} "${reject.name}" <br><br>`
         })
         if(this.rejects.length) {
