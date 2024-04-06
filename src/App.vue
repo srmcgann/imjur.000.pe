@@ -685,6 +685,7 @@ export default {
       e.preventDefault()
       e.stopPropagation()
       this.state.keys[e.keyCode] = false
+      this.state.keys[18] = false
     }
     
     window.onkeydown = e =>{
