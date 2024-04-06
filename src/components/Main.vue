@@ -188,7 +188,7 @@ export default {
             }
           })
           request.send(data)
-        }
+        })
       }else{
         alert('no files were uploaded. hmmmm. mebbe too big tho')
         this.state.closeModal()
