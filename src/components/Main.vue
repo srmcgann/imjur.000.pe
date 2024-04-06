@@ -6,7 +6,7 @@
         <div class="progressBarInnerOutline">
           <div class="progressBarInner" :style="'width:calc(' + (file.perc) + '%)'"></div>
         </div>
-        <span class="progressText" v-html="(Math.round(file.perc*100)/100) + '%' + ' - ' + file.uploadName"></span>
+        <span class="progressText" v-html="(Math.round(file.perc*100)/100) + '%' + ' - ' + shortUploadName(file.uploadName)"></span>
       </div>
     </div>
     <div
@@ -96,6 +96,13 @@ export default {
       dragover: false,
       showUploadProgress: false,
       filesUploading: []
+    }
+  },
+  computed:{
+    shortUploadName(str){
+      let ret = str
+      if(ret.length > 43) ret = ret.substring(0, 30) + '...' + ret.substring(ret.length-10)
+      return ret
     }
   },
   methods: {
@@ -254,7 +261,7 @@ export default {
         linkType: 'link',
         serverTZO,
         views,
-        date: (Date.now()+14400*1000).toDateString()
+        date: (new Date(Date.now()+14400*1000)).toDateString()
       }
       this.state.links.push(obj)
     },
