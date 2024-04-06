@@ -369,6 +369,7 @@ export default {
         },
         body: JSON.stringify(sendData),
       }).then(res => res.json()).then(data=>{
+        console.log('res from setOwner.php: ', data)
         if(!data[0]) alert('error setting link owner')
       })
     },
