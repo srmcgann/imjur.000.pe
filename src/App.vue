@@ -45,7 +45,7 @@ export default {
   data(){
     return {
       state: {
-        footerMsg: '<b style="transform: scale-x(2);">IMJUR</b><br>A FREE DIGITAL ASSET<br>HOSTING SERVICE - ©'+(new Date()).getFullYear() + `<br>contact: <a href="mailto:whitehotrobot@gmail.com">whitehotrobot@gmail.com</a>`,
+        footerMsg: '<b><span style="transform: scale(2, 1);">IMJUR</span></b><br>A FREE DIGITAL ASSET<br>HOSTING SERVICE - ©'+(new Date()).getFullYear() + `<br>contact: <a href="mailto:whitehotrobot@gmail.com">whitehotrobot@gmail.com</a>`,
         links: [],
         userLinks: [],
         uploadInProgress: false,
