@@ -153,6 +153,9 @@ export default {
       this.state.previewLink = this.link
       this.state.showPreview = true
     },
+    getThumb(){
+      this.img.src = this.linkType == 'audio' ? this.state.URLbase + '/' + 'musicNotes.svg' : this.state.URLbase + '/' + 'thumb.php?res=resources/' + (l=this.link.href.split('/'))[l.length-1].split('?')[0]
+    },
     Draw(){
       this.x.globalAlpha = 1
       this.x.fillStyle='#0008'
@@ -174,7 +177,10 @@ export default {
       this.t += 1/60
       switch(this.linkType){
         case 'image':
-          if(!this.img.width || !this.img.height) setTimeout(()=>{requestAnimationFrame(this.Draw)}, 500)
+          if(!this.img.width || !this.img.height) setTimeout(()=>{
+            this.getThumb()
+            requestAnimationFrame(this.Draw)
+          }, 1000)
           break
         case 'video':
           requestAnimationFrame(this.Draw)
@@ -211,7 +217,7 @@ export default {
         this.Draw()
       }
       let l
-      this.img.src = this.linkType == 'audio' ? this.state.URLbase + '/' + 'musicNotes.svg' : this.state.URLbase + '/' + 'thumb.php?res=resources/' + (l=this.link.href.split('/'))[l.length-1].split('?')[0]
+      this.getThumb()
     }
   }
 }
