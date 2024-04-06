@@ -329,6 +329,7 @@ export default {
       }
     },
     setLinksOwner(){
+      if(!this.state.links.length) return
       let sendData = {
         userName: this.state.username,
         passhash: this.state.passhash,
