@@ -174,8 +174,9 @@ export default {
             let data = JSON.parse(e.currentTarget.responseText)
             console.log(data)
             if(data[0]){
-              data[1].map((v, i)=>{
-                this.addLink(data[2][i], data[3][i], i, location.href.split('?')[0] + v, false, this.state.loggedinUserID, data[6][i], data[7][i], data[8][i], data[9])
+              data[1].map((v, j)=>{
+                //addLink(size, type, ct, href, selected, userID, slug, originalSlug, origin, serverTZO, views){
+                this.addLink(data[2][j], data[3][j], i, location.href.split('?')[0] + v, false, this.state.loggedinUserID, data[6][j], data[7][j], data[8][j], data[9], 0)
               })
             }else{
               this.state.modalContent = '<div style="min-width:90vw; min-height: 50vh; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);background: #8002; color: #f88; padding-top: 100px;">' + data[5] + '</div>'
