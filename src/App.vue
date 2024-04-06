@@ -522,13 +522,13 @@ export default {
           this.closePrompts()
           this.state.invalidLoginAttemp = false
           this.state.loggedInUser.avatar = data[3]
-          this.fetchUserLinks(this.state.loggedinUserID)
           this.setLinksOwner()
-          this.state.userLinks = [...this.state.userLinks, ...this.state.links.map(v=>{
+          this.fetchUserLinks(this.state.loggedinUserID)
+          /*this.state.userLinks = [...this.state.userLinks, ...this.state.links.map(v=>{
             v.userID = this.state.loggedinUserID
             return v
-          })]
-          this.state.links = []
+          })]*/
+          //this.state.links = []
           //this.state.userInfo[this.state.loggedinUserID] = {}
           //this.state.userInfo[this.state.loggedinUserID].name = this.state.regusername
           //this.state.userInfo[this.state.loggedinUserID].avatar = data[3]
