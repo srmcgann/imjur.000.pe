@@ -231,6 +231,15 @@ export default {
       if(files.length) this.processUpload(files)
     },
     addLink(size, type, ct, href, selected, userID, slug, originalSlug, origin, serverTZO, views, id){
+    
+      let d = new Date()
+      let Y = d.getFullYear()
+      let M = d.getMonth() + 1
+      let D = d.getDay()
+      let H = d.getHours()
+      let i = d.getMinutes()
+      let s = d.getSeconds()
+    
       let obj = {
         size,
         type,
@@ -244,7 +253,8 @@ export default {
         originalSlug,
         linkType: 'link',
         serverTZO,
-        views
+        views,
+        date: new Date(Date.now()-124000).toDateString()
       }
       this.state.links.push(obj)
     },
