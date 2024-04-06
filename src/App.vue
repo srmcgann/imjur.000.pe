@@ -625,7 +625,7 @@ export default {
           }
         }
       } else {
-        this.state.loadingAssets = false
+        //this.state.loadingAssets = false
         this.getMode() 
       }
       //this.checkShowControlsPref()
@@ -695,11 +695,25 @@ export default {
         case 46:
           this.deleteSelected()
         break
-        case 37:
-          this.prev()
+        case 37: // left arrow
+          if(this.state.showPreview){
+            this.prev()
+          }else{
+            if(this.state.keys[18] && this.state.curPage) this.regressPage()
+          }
         break
-        case 39:
-          this.next()
+        case 39: // right arrow
+           if(this.state.showPreview){
+            this.next()
+          }else{
+            if(this.state.keys[18] && this.state.curPage < totalPages) this.advancePage()
+          }
+        break
+        case 36: // home
+          if(this.state.keys[18]) this.firstPage()
+        break
+        case 35: // end
+          if(this.state.keys[18]) this.lastPage()
         break
         case 27:
           this.state.showPreview = false
