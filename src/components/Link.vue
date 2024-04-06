@@ -1,5 +1,9 @@
 <!--
 todo
+
+  * loading animation
+  * upload targets @ not-logged-in
+
   ✔ dropable files
   ✔ fix video & audio thumbnails
   ✔ file hash unifies same-upload sources

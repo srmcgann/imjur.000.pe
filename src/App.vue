@@ -231,7 +231,7 @@ export default {
     },
     copy(val){
       let copyEl = document.createElement('div')
-      copyEl.innerHTML = val
+      copyEl.innerHTML = this.URLbase + '/' + val
       copyEl.style.opacity = .01
       copyEl.style.position = 'absolute'
       document.body.appendChild(copyEl)
