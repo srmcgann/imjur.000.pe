@@ -172,6 +172,7 @@ export default {
           request.addEventListener('load', e=> {
           
             let data = JSON.parse(e.currentTarget.responseText)
+            console.log(data)
             if(data[0]){
               data[1].map((v, i)=>{
                 this.addLink(data[2][i], data[3][i], i, location.href.split('?')[0] + v, false, this.state.loggedinUserID, data[6][i], data[7][i], data[8][i], data[9])
