@@ -98,14 +98,12 @@ export default {
       filesUploading: []
     }
   },
-  computed:{
+  methods: {
     shortUploadName(str){
       let ret = str
       if(ret.length > 43) ret = ret.substring(0, 30) + '...' + ret.substring(ret.length-10)
       return ret
-    }
-  },
-  methods: {
+    },
     dragLeaveHandler(){
       this.dragover = false
     },
