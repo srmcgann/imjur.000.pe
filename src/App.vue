@@ -172,7 +172,7 @@ export default {
           //window.location.href = this.URLbase + search
           this.state.curPage = 0
           this.state.fetchUserLinks(this.state.loggedinUserID)
-          history.pushState(null,null,this.URLbase + /' + (this.state.curPage + 1))
+          history.pushState(null,null,this.URLbase + '/' + (this.state.curPage + 1))
         break
         case 'track':
           window.location.href = this.URLbase + '/track/' + this.state.curTrack + search
@@ -189,7 +189,7 @@ export default {
           //window.location.href = this.URLbase + '/' + pageNo + search
           this.state.curPage = pageNo
           this.state.fetchUserLinks(this.state.loggedinUserID)
-          history.pushState(null,null,this.URLbase + /' + (this.state.curPage + 1))
+          history.pushState(null,null,this.URLbase + '/' + (this.state.curPage + 1))
         break
         case 'track':
         window.location.href = this.URLbase + '/track/' + this.decToAlpha(this.state.curTrack) + '/' + pageNo + search
@@ -206,7 +206,7 @@ export default {
           //window.location.href = this.URLbase + '/' + this.state.totalPages + search
           this.state.curPage = this.state.totalPages - 1
           this.state.fetchUserLinks(this.state.loggedinUserID)
-          history.pushState(null,null,this.URLbase + /' + (this.state.curPage + 1))
+          history.pushState(null,null,this.URLbase + '/' + (this.state.curPage + 1))
         break
         case 'track':
           window.location.href = this.URLbase + '/track/' + this.decToAlpha(this.state.curTrack) + '/' + this.state.totalPages + search
@@ -223,7 +223,7 @@ export default {
           //window.location.href = this.URLbase + '/' + (this.state.curPage + 2) + search
           if(this.state.curPage < this.state.totalPages) this.state.curPage++
           this.state.fetchUserLinks(this.state.loggedinUserID)
-          history.pushState(null,null,this.URLbase + /' + (this.state.curPage + 1))
+          history.pushState(null,null,this.URLbase + '/' + (this.state.curPage + 1))
         break
         case 'track':
           window.location.href = this.URLbase + '/track/' + this.decToAlpha(this.state.curTrack) + '/' +(this.state.curPage + 2) + search
@@ -241,7 +241,7 @@ export default {
           if(this.state.curPage)this.state.curPage--
           this.state.fetchUserLinks(this.state.loggedinUserID)
           if(this.state.curPage){
-            history.pushState(null,null,this.URLbase + /' + (this.state.curPage + 1))
+            history.pushState(null,null,this.URLbase + '/' + (this.state.curPage + 1))
           }else{
             history.pushState(null,null,this.URLbase)
           }
