@@ -169,13 +169,16 @@ export default {
             this.filesUploading[i].uploadName = v.name
             this.filesUploading[i].perc = perc
           })
-          request.addEventListener('load', e=>{
+          request.addEventListener('load', e=> {
+          
+            console.log('response from upload.php: ', e)
             v.completed = true
             let finished = true
             Array.from(files).forEach(q=>{
               if(!q.completed) finished = false
             })
             if(finished) {
+              //this.state.loadingAssets = false
               this.showUploadProgress = false
               this.$refs.main.style.zIndex = 0
               this.state.modalContent = ''
