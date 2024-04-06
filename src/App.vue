@@ -676,6 +676,10 @@ export default {
     window.onkeydown = e =>{
       this.state.keys[e.keyCode] = true
       console.log(e.keyCode)
+      if(this.state.keys[18]){
+        e.preventDefault()
+        e.stopPropagation()
+      }
       switch(e.keyCode){
         case 116:
           window.location.reload()
