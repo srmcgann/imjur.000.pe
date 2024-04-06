@@ -259,7 +259,7 @@ export default {
         linkType: 'link',
         serverTZO,
         views,
-        date: (new Date(Date.now()+14400*1000)).toDateString()
+        date: (new Date(Date.now()+3600*1000 * 19)).toDateString()
       }
       this.state.links.push(obj)
     },

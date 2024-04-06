@@ -681,6 +681,11 @@ export default {
     }
   },
   mounted(){
+  
+    window.onmousedown = e => {
+      this.state.keys[18] = false
+    }
+  
     window.onkeyup = e =>{
       e.preventDefault()
       e.stopPropagation()
