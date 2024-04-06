@@ -19,16 +19,17 @@ error_reporting(E_ALL);
   $error         = '';
   $success       = false;
   $maxFileSize   = 25000000;
-  $uploadDir     = 'resources';
+  $uploadDir     = 'uploads';
+  $resourceDir   = 'resources';
   if(sizeof($_FILES)){
     forEach($_FILES as $key => $val){
       $unlink = false;
       $tmp_name = $_FILES["uploads_$ct"]['tmp_name'];
       $slug = genSlug();
-      move_uploaded_file($tmp_name, "$uploadDir/$slug");
-      $type = mime_content_type("$uploadDir/$slug");
+      move_uploaded_file($tmp_name, "$resourceDir/$slug");
+      $type = mime_content_type("$resourceDir/$slug");
       $continue = false;
-      $size = filesize("$uploadDir/$slug");
+      $size = filesize("$resourceDir/$slug");
       if($size < $maxFileSize){
         switch($type){
           case 'audio/wav': $continue = true; $suffix = 'wav';  break;
@@ -55,7 +56,7 @@ error_reporting(E_ALL);
             $type = 'audio/mp3';
             $suffix = 'mp3';
           }
-          $hash = hash_file('md5', "$uploadDir/$slug");
+          $hash = hash_file('md5', "$resourceDir/$slug");
           
           $sql = "SELECT * FROM imjurUploads WHERE hash = \"$hash\"";
           $res = mysqli_query($link, $sql);
@@ -132,17 +133,17 @@ SQL;
           $origins[]       = $origin;
           $originalSlugs[] = $originalSlug;
           if($unlink){
-            unlink("$uploadDir/$slug");
+            unlink("$resourceDir/$slug");
           }else{
-            rename("$uploadDir/$slug", "$uploadDir/$slug.$suffix");
+            rename("$resourceDir/$slug", "$resourceDir/$slug.$suffix");
           }
         }else{
           $error = "ERROR<br>one or more files had an unrecognized or unsupported file type";
-          unlink("$uploadDir/$slug");
+          unlink("$resourceDir/$slug");
         }
       }else{
         $error = "ERROR<br>one or more files were too large. $maxFileSize max";
-        unlink("$uploadDir/$slug");
+        unlink("$resourceDir/$slug");
       }
       $ct++;
     }
