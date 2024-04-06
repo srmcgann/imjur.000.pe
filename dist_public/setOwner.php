@@ -25,4 +25,4 @@ error_reporting(E_ALL);
       }
     }
   }
-  echo json_encode([$success]);
+  echo json_encode([$success, $sql]);
