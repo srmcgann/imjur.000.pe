@@ -481,7 +481,7 @@ export default {
     width: 100vw;
     height: 100vh;
     background: #001d;
-    z-index: 30000;
+    z-index: 100000;
     line-height: 1.05em;
   }
   .uploadProgressContainer{
@@ -502,7 +502,7 @@ export default {
     width: 400px;
     height: 280px;
     background: #103b;
-    z-index: 30000;
+    z-index: 100000;
     box-shadow: 0px 0px 100px 100px #103b;
     transform: translate(-50%, -50%);
     border-radius: 10px;
