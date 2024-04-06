@@ -102,11 +102,11 @@ export default {
   .pages{
     position: absolute;
     display: inline-block;
-    width: 270px;
+    /*width: 270px;*/
     line-height: .8em;
     min-height: 25px;
-    right: 0;
-    margin-top: -32px;
+    right: 10px;
+    margin-top: -45px;
     vertical-align: top;
     padding-top: 0px;
     font-size: .8em;
@@ -121,5 +121,8 @@ export default {
     margin-left: 2px;
     margin-right: 2px;
     width: 25px;
+  }
+  .disabled{
+    background: #888;
   }
 </style>
