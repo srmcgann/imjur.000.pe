@@ -248,7 +248,7 @@ export default{
   height: 100vh;
   z-index: 10000;
   top: 0;
-  background: #012e;
+  background: #102e;
   text-align: center;
 }
 hr{
@@ -261,9 +261,9 @@ hr{
   min-width: 320px;
   min-height: 200px;
   border-radius: 10px;
-  background: #024;
+  background: #204;
   padding: 20px;
-  color: #ff0;
+  color: #08f;
   transform: translate(-50%, -50%);
 }
 .inputTitle{
@@ -281,13 +281,13 @@ hr{
 .toggleButton{
   position: absolute;
   transform: translate(-55%,-36px);
-  background: #6df;
+  background: #d6f;
 }
 .userNameUnavailable{
   background: #b446!important;
 }
 .passwordsDoNotMatch{
-  background: #b446;
+  background: #b036;
 }
 .passwordsMatch, .userNameAvailable{
   background: #4b46!important;
