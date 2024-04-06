@@ -45,7 +45,7 @@ export default {
   data(){
     return {
       state: {
-        footerMsg: '<b><span style="transform: scaleX(4.1);display: inline-block; margin-left: 86px; ">IMJUR</span></b><br>A FREE DIGITAL ASSET<br><span style="transform: scaleX(.7);display: inline-block; margin-left: 86px;">HOSTING SERVICE - ©'+(new Date()).getFullYear() + `</span><br>contact: <a href="mailto:whitehotrobot@gmail.com">whitehotrobot@gmail.com</a>`,
+        footerMsg: '<b><span style="transform: scaleX(4.1);display: inline-block; margin-left: 86px; ">IMJUR</span></b><br>A FREE DIGITAL ASSET<br><span style="transform: scaleX(.87);display: inline-block; margin-left: -18px;">HOSTING SERVICE - ©'+(new Date()).getFullYear() + `</span><br>contact: <a href="mailto:whitehotrobot@gmail.com">whitehotrobot@gmail.com</a>`,
         links: [],
         userLinks: [],
         uploadInProgress: false,
