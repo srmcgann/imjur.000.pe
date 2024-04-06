@@ -170,25 +170,12 @@ export default {
             this.filesUploading[i].perc = perc
           })
           request.addEventListener('load', e=> {
-          
-            let data = JSON.parse(e.currentTarget.responseText)
-            console.log(data)
-            if(data[0]){
-              data[1].map((v, j)=>{
-                //addLink(size, type, ct, href, selected, userID, slug, originalSlug, origin, serverTZO, views){
-                this.addLink(data[2][j], data[3][j], i, v, false, this.state.loggedinUserID, data[6][j], data[7][j], data[8][j], data[9], data[10][j], data[11][j])
-              })
-            }else{
-              this.state.modalContent = '<div style="min-width:90vw; min-height: 50vh; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);background: #8002; color: #f88; padding-top: 100px;">' + data[5] + '</div>'
-            }
-          
             v.completed = true
             let finished = true
             Array.from(files).forEach(q=>{
               if(!q.completed) finished = false
             })
             if(finished) {
-              //this.state.loadingAssets = false
               this.showUploadProgress = false
               this.$refs.main.style.zIndex = 0
               this.state.modalContent = ''
@@ -199,6 +186,15 @@ export default {
                 this.state.links = []
                 this.state.fetchUserLinks(this.state.loggedinUserID)
               }
+            }
+            let data = JSON.parse(e.currentTarget.responseText)
+            if(data[0]){
+              data[1].map((v, j)=>{
+                //addLink(size, type, ct, href, selected, userID, slug, originalSlug, origin, serverTZO, views){
+                this.addLink(data[2][j], data[3][j], i, v, false, this.state.loggedinUserID, data[6][j], data[7][j], data[8][j], data[9], data[10][j], data[11][j])
+              })
+            }else{
+              this.state.modalContent = '<div style="min-width:90vw; min-height: 50vh; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);background: #8002; color: #f88; padding-top: 100px;">' + data[5] + '</div>'
             }
           })
           request.send(data)
