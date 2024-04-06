@@ -102,7 +102,7 @@ export default {
   }
   .loginButton{
     border-radius: 5px;
-    background: #4f8;
+    /*background: #4f8;*/
     color: #022;
     text-shadow: 1px 1px 2px #000;
     font-size: 16px;
@@ -110,7 +110,7 @@ export default {
     position: absolute;
     left: 0px;
     top: 1px;
-    border: 2px solid #0003;
+    border: 2px solid #0005;
     padding-top: 0;
     padding-bottom: 2px;
   }
