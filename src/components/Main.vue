@@ -160,6 +160,7 @@ export default {
           console.log('batchMetaData', batchMetaData)
           let data = new FormData()
           data.append(`uploads_${0}`, v)
+          //data.append('file', v)
           data.append('batchMetaData', JSON.stringify(batchMetaData))
           let request = new XMLHttpRequest()
           request.open('POST', 'upload.php')
