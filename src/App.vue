@@ -81,11 +81,12 @@ export default {
         username: '',
         userView: false,
         password: '',
-        maxResultsPerPage: 5,
+        maxResultsPerPage: 8,
         showUserSettings: null,
         invalidLoginAttempt: false,
         displayLoginRequired: false,
         userSettingsVisible: false,
+        jumpToPage: null,
         regpassword: '',
         showUploadModal: false,
         checkLogin: null,
@@ -709,6 +710,7 @@ export default {
     this.state.getAvatar = this.getAvatar
     this.state.selectAll = this.selectAll
     this.state.setCookie = this.setCookie
+    this.state.jumpToPage= this.jumpToPage
     this.state.checkLogin = this.checkLogin
     this.state.advancePage = this.advancePage
     this.state.regressPage = this.regressPage
