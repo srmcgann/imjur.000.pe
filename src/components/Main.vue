@@ -109,6 +109,7 @@ export default {
     
       if(!files.length) return
       this.showUploadProgress = true
+      this.$refs.main.style.zIndex = 100000
       this.filesUploading = Array(files.length).fill().map(v=>{return {}})
       console.log(files)
       Array.from(files).forEach((v, i)=>{
@@ -178,6 +179,7 @@ export default {
             if(finished) {
 
               //this.showUploadProgress = false
+              //this.$refs.main.style.zIndex = 0
               this.state.modalContent = ''
               this.state.closeModal()
               if(this.state.loggedIn){
@@ -190,6 +192,7 @@ export default {
           request.send(data)
         })
       }else{
+        this.$refs.main.style.zIndex = 0
         alert('no files were uploaded. hmmmm. mebbe too big tho')
         this.state.closeModal()
         this.showUploadProgress = false
