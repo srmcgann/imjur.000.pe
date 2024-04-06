@@ -171,7 +171,15 @@ export default {
           })
           request.addEventListener('load', e=> {
           
-            console.log('response from upload.php: ', e)
+            let data = JSON.parse(e.currentTarget.responseText)
+            if(data[0]){
+              data[1].map((v, i)=>{
+                this.addLink(data[2][i], data[3][i], i, location.href.split('?')[0] + v, false, this.state.loggedinUserID, data[6][i], data[7][i], data[8][i], data[9])
+              })
+            }else{
+              this.state.modalContent = '<div style="min-width:90vw; min-height: 50vh; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);background: #8002; color: #f88; padding-top: 100px;">' + data[5] + '</div>'
+            }
+          
             v.completed = true
             let finished = true
             Array.from(files).forEach(q=>{
