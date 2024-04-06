@@ -1,5 +1,5 @@
 <template>
-  <div class="main" ref="main">
+  <div class="main" ref="main" tabindex="0">
     <div v-if="showUploadProgress" class="uploadProgressContainer">
       <br>uploading {{filesUploading.length}} file{{filesUploading.length > 1 ? 's':''}}...
       <div class="progressBar" v-for="file in filesUploading">
@@ -264,6 +264,7 @@ export default {
     }
   },
   mounted(){
+    this.$refs.main.focus()
     this.state.loadFiles = this.loadFiles
     this.preload = [ ...this.preload,
       [document.createElement('video'), 'loading.mp4'],
