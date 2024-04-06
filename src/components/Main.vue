@@ -191,7 +191,9 @@ export default {
             })
             request.send(data)
           }else{
-            alert('no files were uploaded. hmmmm')
+            alert('no files were uploaded. hmmmm. mebbe too big tho')
+            this.state.closeModal()
+            this.showUploadProgress = false
           }
         } else {
           alert('a file was rejected due to incorrect type or filesize (max filesize = 100MB)')
