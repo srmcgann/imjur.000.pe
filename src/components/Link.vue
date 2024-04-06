@@ -174,7 +174,7 @@ export default {
       this.t += 1/60
       switch(this.linkType){
         case 'image':
-          if(!this.img.width) setTimeout(()=>{requestAnimationFrame(this.Draw)}, 200)
+          if(!this.img.width || !this.img.height) setTimeout(()=>{requestAnimationFrame(this.Draw)}, 500)
           break
         case 'video':
           requestAnimationFrame(this.Draw)
