@@ -150,8 +150,8 @@ export default {
       if(this.rejects.length) {
         this.state.modalQueue = [...this.state.modalQueue, rej + '</div>']
         this.state.closeModal()
-      }
-      if(ct) {
+      } else if(ct) {
+      
         let batchMetaData = {
           loggedIn: this.state.loggedIn,
           userID: this.state.loggedinUserID,
@@ -161,34 +161,34 @@ export default {
         console.log('batchMetaData', batchMetaData)
         data.append('batchMetaData', JSON.stringify(batchMetaData))
 
-      
-        let request = new XMLHttpRequest()
-        request.open('POST', 'upload.php')
-        request.upload.addEventListener('progress', e => {
-          let perc = (e.loaded / e.total)*100
-          this.filesUploading[i].uploadName = v.name
-          this.filesUploading[i].perc = perc
-        })
-        request.addEventListener('load', e=>{
-          v.completed = true
-          let finished = true
-          Array.from(files).forEach(q=>{
-            if(!q.completed) finished = false
+        Array.from(files).forEach((v, i) => {
+          let request = new XMLHttpRequest()
+          request.open('POST', 'upload.php')
+          request.upload.addEventListener('progress', e => {
+            let perc = (e.loaded / e.total)*100
+            this.filesUploading[i].uploadName = v.name
+            this.filesUploading[i].perc = perc
           })
-          if(finished) {
-            //window.location.href = window.location.origin + '/u/' + this.state.loggedinUserName
+          request.addEventListener('load', e=>{
+            v.completed = true
+            let finished = true
+            Array.from(files).forEach(q=>{
+              if(!q.completed) finished = false
+            })
+            if(finished) {
 
-            //this.showUploadProgress = false
-            this.state.modalContent = ''
-            this.state.closeModal()
-            if(this.state.loggedIn){
-              this.state.links = []
-              this.state.fetchUserLinks(this.state.loggedinUserID)
+              //this.showUploadProgress = false
+              this.state.modalContent = ''
+              this.state.closeModal()
+              if(this.state.loggedIn){
+                this.state.links = []
+                this.state.fetchUserLinks(this.state.loggedinUserID)
+              }
+
             }
-
-          }
-        })
-        request.send(data)
+          })
+          request.send(data)
+        }
       }else{
         alert('no files were uploaded. hmmmm. mebbe too big tho')
         this.state.closeModal()
