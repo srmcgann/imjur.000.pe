@@ -178,8 +178,15 @@ export default {
               })
               if(finished) {
                 //window.location.href = window.location.origin + '/u/' + this.state.loggedinUserName
-                this.state.closeModal()
+
                 this.showUploadProgress = false
+                this.state.modalContent = ''
+                this.state.closeModal()
+                if(this.state.loggedIn){
+                  this.state.links = []
+                  this.state.fetchUserLinks(this.state.loggedinUserID)
+                }
+
               }
             })
             request.send(data)
@@ -484,8 +491,8 @@ export default {
     overflow: auto;
     width: 100vw;
     height: 100vh;
-    background: #021d;
-    z-index: 30020;
+    background: #102d;
+    z-index: 100000;
     line-height: 1.05em;
   }
   .uploadModalInner{
@@ -501,7 +508,7 @@ export default {
     border-radius: 10px;
   }
   .dragover{
-    background: #1436;
+    background: #0246;
   }
   .progressBar{
     width: 80%;
@@ -511,11 +518,11 @@ export default {
     margin-top: 10px;
   }
   .progressBarInner{
-    background: #0f48;
+    background: #40f8;
     height: 100%;
   }
   .progressBarInnerOutline{
-    border: 1px solid #8fc3;
+    border: 1px solid #84f3;
     height: 100%;
   }
   .progressText{
