@@ -6,7 +6,7 @@
         <div class="progressBarInnerOutline">
           <div class="progressBarInner" :style="'width:calc(' + (file.perc) + '%)'"></div>
         </div>
-        <span class="progressText" v-html="file.uploadName + ' - ' + (Math.round(file.perc*100)/100) + '%'"></span>
+        <span class="progressText" v-html="(Math.round(file.perc*100)/100) + '%' + ' - ' + file.uploadName"></span>
       </div>
     </div>
     <div
@@ -189,8 +189,8 @@ export default {
 
             }
           })
-          request.send(data)
         })
+        request.send(data)
       }else{
         this.$refs.main.style.zIndex = 0
         alert('no files were uploaded. hmmmm. mebbe too big tho')
@@ -427,6 +427,8 @@ export default {
     background: #102d;
     z-index: 100000;
     line-height: 1.05em;
+    color: #f00;
+    font-size: 24px;
   }
   .uploadModalInner{
     position: absolute;
@@ -459,11 +461,13 @@ export default {
     height: 100%;
   }
   .progressText{
-    position: absolute;
-    font-size: 16px;
-    left: 50%;
-    transform: translate(-50%, -90%);
+    position: relative;
+    font-size: 17px;
+    color: #dbf;
+    right: 50%;
+    transform: translate(50%, -85%);
     text-shadow: 1px 1px 2px #000;
+    display: inline-block;
   }
 </style>
 
