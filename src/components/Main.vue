@@ -134,7 +134,7 @@ export default {
           file.type == 'audio/mp3' ||
           file.type == 'audio/wav' ||
           file.type == 'audio/mpeg') &&
-          file.size > 25000000){
+          file.size < 25000000){
           ct++
           data.append(`uploads_${i}`, file)
         } else {
