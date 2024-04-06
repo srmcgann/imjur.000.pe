@@ -200,7 +200,7 @@ export default {
         break
         case 'default':
           //window.location.href = this.URLbase + '/' + this.state.totalPages + search
-          this.state.curPage = this.state.totalPages
+          this.state.curPage = this.state.totalPages - 1
           this.state.fetchUserLinks(this.state.loggedinUserID)
         break
         case 'track':
