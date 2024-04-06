@@ -525,20 +525,7 @@ export default {
           this.state.loggedInUser.avatar = data[3]
           this.setLinksOwner()
           this.fetchUserLinks(this.state.loggedinUserID)
-          /*this.state.userLinks = [...this.state.userLinks, ...this.state.links.map(v=>{
-            v.userID = this.state.loggedinUserID
-            return v
-          })]*/
-          //this.state.links = []
-          //this.state.userInfo[this.state.loggedinUserID] = {}
-          //this.state.userInfo[this.state.loggedinUserID].name = this.state.regusername
-          //this.state.userInfo[this.state.loggedinUserID].avatar = data[3]
-          //this.state.userInfo[this.state.loggedinUserID].isAdmin = +data[4]
-          //this.checkAutoplayPref()
-          //this.checkExactSearchPref()
-          //this.checkShowControlsPref()
-          //this.getPages()
-          //window.location.reload()
+          this.state.links = []
         }else{
           console.log('not logged in.')
           this.state.loggedIn= false
@@ -613,6 +600,7 @@ export default {
       }
     },
     logout(){
+      history.pushState(null,null,this.URLbase)
       let cookies = document.cookie
       cookies.split(';').map(v=>{
         if(v.indexOf('autoplay')==-1){
