@@ -116,109 +116,29 @@ export default {
         this.filesUploading[i].perc = 0
         this.filesUploading[i].uploadName = v.name
       })
-      Array.from(files).forEach((v, i)=>{
-        if(
-          v.type == 'image/gif' ||
-          v.type == 'image/jiff' ||
-          v.type == 'image/jpeg' ||
-          v.type == 'image/jpg' ||
-          v.type == 'image/png' ||
-          v.type == 'image/webp' ||
-          v.type == 'video/mp4' ||
-          v.type == 'video/webm' ||
-          v.type == 'video/mkv' ||
-          v.type == 'audio/mp3' ||
-          v.type == 'audio/wav' ||
-          v.type == 'audio/mpeg'
-        ){
-          
-          let ct = 0
-          let data = new FormData()
-          files.map((file, i) => {
-            console.log(`file ${i}: `, file)
-            if(file.size > 25000000){
-              this.rejects = [...this.rejects, file]
-            } else {
-              ct++
-              data.append(`uploads_${i}`, file)
-            }
-          })
-          let rej = '<div style="min-width:90vw; min-height: 50vh; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);background: #4008; color: #f88; padding-top: 100px;">'
-          this.rejects.map(reject=>{
-            let sz = (reject.size/(1024**2)|0).toLocaleString('en-us') + ' MB<br>'
-            rej += `oversized/rejected: size: ${sz} "${reject.name}" <br><br>`
-          })
-          if(this.rejects.length) {
-            this.state.modalQueue = [...this.state.modalQueue, rej + '</div>']
-            this.state.closeModal()
-          }
-          if(ct) {
-            let batchMetaData = {
-              loggedIn: this.state.loggedIn,
-              userID: this.state.loggedinUserID,
-              passhash: this.state.passhash,
-              description: '',
-            }
-            console.log('batchMetaData', batchMetaData)
-            data.append('batchMetaData', JSON.stringify(batchMetaData))
-
-          
-            let request = new XMLHttpRequest()
-            request.open('POST', 'upload.php')
-            request.upload.addEventListener('progress', e => {
-              let perc = (e.loaded / e.total)*100
-              this.filesUploading[i].uploadName = v.name
-              this.filesUploading[i].perc = perc
-            })
-            request.addEventListener('load', e=>{
-              v.completed = true
-              let finished = true
-              Array.from(files).forEach(q=>{
-                if(!q.completed) finished = false
-              })
-              if(finished) {
-                //window.location.href = window.location.origin + '/u/' + this.state.loggedinUserName
-
-                this.showUploadProgress = false
-                this.state.modalContent = ''
-                this.state.closeModal()
-                if(this.state.loggedIn){
-                  this.state.links = []
-                  this.state.fetchUserLinks(this.state.loggedinUserID)
-                }
-
-              }
-            })
-            request.send(data)
-          }else{
-            alert('no files were uploaded. hmmmm. mebbe too big tho')
-            this.state.closeModal()
-            this.showUploadProgress = false
-          }
-        } else {
-          alert('a file was rejected due to incorrect type or filesize (max filesize = 100MB)')
-          this.state.closeModal()
-          this.showUploadProgress = false
-        }
-      })
-
-
-      /*
-    
-    
-      this.state.uploadInprogress = true
-      this.state.modalContent = `<div style="position: absolute;left:0;top:0;width:100%;height:100%;background:#000;"><video src="loading.mp4" style="min-width:50vw; min-height: 50vh; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); pointer-events: none; opacity: .6;" loop autoplay muted></video></div>`
-      this.state.showModal = true
-      this.$nextTick(()=>{
+        
         let ct = 0
-        let fd = new FormData()
+        let data = new FormData()
         files.map((file, i) => {
           console.log(`file ${i}: `, file)
-          if(file.size > 25000000){
-            this.rejects = [...this.rejects, file]
-          } else {
+          if((
+            file.type == 'image/gif' ||
+            file.type == 'image/jiff' ||
+            file.type == 'image/jpeg' ||
+            file.type == 'image/jpg' ||
+            file.type == 'image/png' ||
+            file.type == 'image/webp' ||
+            file.type == 'video/mp4' ||
+            file.type == 'video/webm' ||
+            file.type == 'video/mkv' ||
+            file.type == 'audio/mp3' ||
+            file.type == 'audio/wav' ||
+            file.type == 'audio/mpeg') &&
+            file.size > 25000000){
             ct++
-            fd.append(`uploads_${i}`, file)
+            data.append(`uploads_${i}`, file)
+          } else {
+            this.rejects = [...this.rejects, file]
           }
         })
         let rej = '<div style="min-width:90vw; min-height: 50vh; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);background: #4008; color: #f88; padding-top: 100px;">'
@@ -238,34 +158,46 @@ export default {
             description: '',
           }
           console.log('batchMetaData', batchMetaData)
-          fd.append('batchMetaData', JSON.stringify(batchMetaData))
-          fetch('upload.php', {
-            method: "POST", body: fd
-          }).then(res=>res.json()).then(data => {
-            console.log('response from upload.php: ', data)
-            this.state.uploadInprogress = false
-            if(data[0]){
-              //this.$refs.dropTargetCaption.style.display = 'none'
-              data[1].map((v, i)=>{
-                this.addLink(data[2][i], data[3][i], i, this.state.URLbase + '/' +  + v, false, this.state.loggedinUserID, data[6][i], data[7][i], data[8][i], data[9], data[10])
-              })
+          data.append('batchMetaData', JSON.stringify(batchMetaData))
+
+        
+          let request = new XMLHttpRequest()
+          request.open('POST', 'upload.php')
+          request.upload.addEventListener('progress', e => {
+            let perc = (e.loaded / e.total)*100
+            this.filesUploading[i].uploadName = v.name
+            this.filesUploading[i].perc = perc
+          })
+          request.addEventListener('load', e=>{
+            v.completed = true
+            let finished = true
+            Array.from(files).forEach(q=>{
+              if(!q.completed) finished = false
+            })
+            if(finished) {
+              //window.location.href = window.location.origin + '/u/' + this.state.loggedinUserName
+
+              this.showUploadProgress = false
               this.state.modalContent = ''
               this.state.closeModal()
               if(this.state.loggedIn){
                 this.state.links = []
                 this.state.fetchUserLinks(this.state.loggedinUserID)
               }
-            }else{
-              this.state.modalContent = '<div style="min-width:90vw; min-height: 50vh; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);background: #8002; color: #f88; padding-top: 100px;">' + data[5] + '</div>'
+
             }
           })
+          request.send(data)
+        }else{
+          alert('no files were uploaded. hmmmm. mebbe too big tho')
+          this.state.closeModal()
+          this.showUploadProgress = false
         }
-      })
-      
-      
-      */
-
-
+      } else {
+        alert('a file was rejected due to incorrect type or filesize (max filesize = 100MB)')
+        this.state.closeModal()
+        this.showUploadProgress = false
+      }
     },
     dropFiles(e){
 
