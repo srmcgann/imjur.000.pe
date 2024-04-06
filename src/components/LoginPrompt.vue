@@ -186,7 +186,7 @@ export default{
             this.state.closePrompts()
             this.state.invalidLoginAttemp = false
             this.state.checkLogin()
-            this.setLinksOwner()
+            this.state.setLinksOwner()
           } else {
             this.showInvalid = true
           }
