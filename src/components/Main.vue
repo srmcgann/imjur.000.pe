@@ -119,7 +119,6 @@ export default {
       })
         
       let ct = 0
-      let data = new FormData()
       files.map((file, i) => {
         console.log(`file ${i}: `, file)
         if((
@@ -137,7 +136,6 @@ export default {
           file.type == 'audio/mpeg') &&
           file.size < 25000000){
           ct++
-          data.append(`uploads_${i}`, file)
         } else {
           this.rejects = [...this.rejects, file]
         }
@@ -153,16 +151,18 @@ export default {
         this.state.closeModal()
       } else if(ct) {
       
-        let batchMetaData = {
-          loggedIn: this.state.loggedIn,
-          userID: this.state.loggedinUserID,
-          passhash: this.state.passhash,
-          description: '',
-        }
-        console.log('batchMetaData', batchMetaData)
-        data.append('batchMetaData', JSON.stringify(batchMetaData))
 
         Array.from(files).forEach((v, i) => {
+          let batchMetaData = {
+            loggedIn: this.state.loggedIn,
+            userID: this.state.loggedinUserID,
+            passhash: this.state.passhash,
+            description: '',
+          }
+          console.log('batchMetaData', batchMetaData)
+          let data = new FormData()
+          data.append(`uploads_${0}`, v)
+          data.append('batchMetaData', JSON.stringify(batchMetaData))
           let request = new XMLHttpRequest()
           request.open('POST', 'upload.php')
           request.upload.addEventListener('progress', e => {
@@ -189,8 +189,8 @@ export default {
 
             }
           })
+          request.send(data)
         })
-        request.send(data)
       }else{
         this.$refs.main.style.zIndex = 0
         alert('no files were uploaded. hmmmm. mebbe too big tho')
