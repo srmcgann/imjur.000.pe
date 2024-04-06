@@ -81,7 +81,7 @@ export default {
         username: '',
         userView: false,
         password: '',
-        maxResultsPerPage: 10,
+        maxResultsPerPage: 5,
         showUserSettings: null,
         invalidLoginAttempt: false,
         displayLoginRequired: false,
