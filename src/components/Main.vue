@@ -180,12 +180,11 @@ export default {
               this.$refs.main.style.zIndex = 0
               this.state.modalContent = ''
               this.state.closeModal()
-              this.state.jumpToPage(1)
               if(this.state.loggedIn){
+                this.state.jumpToPage(0)
                 this.state.links = []
                 this.state.fetchUserLinks(this.state.loggedinUserID)
               }
-
             }
           })
           request.send(data)

@@ -1,7 +1,6 @@
 <!--
 todo
 
-  * uploading progress bars
   * upload targets @ not-logged-in
 
   ✔ dropable files
@@ -14,6 +13,7 @@ todo
   ✔ log original file name
   ✔ lightbox sim / previews
   ✔ checkboxes & "with selected" toobar
+  ✔ uploading progress bars
   * upload progress bars
   * download button on preview modal
   * users, optional logins/profiles
