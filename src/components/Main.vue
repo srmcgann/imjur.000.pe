@@ -107,7 +107,6 @@ export default {
     },
     processUpload(files){
     
-    
       if(!files.length) return
       this.showUploadProgress = true
       this.filesUploading = Array(files.length).fill().map(v=>{return {}})
@@ -130,7 +129,7 @@ export default {
           v.type == 'video/mkv' ||
           v.type == 'audio/mp3' ||
           v.type == 'audio/wav' ||
-          v.type == 'audio/mpeg
+          v.type == 'audio/mpeg'
         ){
           
           let ct = 0
