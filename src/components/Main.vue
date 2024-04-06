@@ -196,7 +196,7 @@ export default {
               let data = JSON.parse(e.currentTarget.responseText)
               if(data[0]){
                 data[1].map((v, j)=>{
-                  //addLink(size, type, ct, href, selected, userID, slug, originalSlug, origin, serverTZO, views){
+                  //addLink(size, type, ct, href, selected, userID, slug, originalSlug, origin, serverTZO, views, ids){
                   this.addLink(data[2][j], data[3][j], i, v, false, this.state.loggedinUserID, data[6][j], data[7][j], data[8][j], data[9], data[10][j], data[11][j])
                 })
               }else{
@@ -237,14 +237,6 @@ export default {
     },
     addLink(size, type, ct, href, selected, userID, slug, originalSlug, origin, serverTZO, views, id){
     
-      let d = new Date()
-      let Y = d.getFullYear()
-      let M = d.getMonth() + 1
-      let D = d.getDay()
-      let H = d.getHours()
-      let i = d.getMinutes()
-      let s = d.getSeconds()
-    
       let obj = {
         size,
         type,
@@ -259,7 +251,7 @@ export default {
         linkType: 'link',
         serverTZO,
         views,
-        date: (new Date(Date.now()+3600*1000 * 19)).toDateString()
+        date: (new Date(Date.now()+3600*1000 * 15)).toTimeString()
       }
       this.state.links.push(obj)
     },
