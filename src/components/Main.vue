@@ -150,8 +150,6 @@ export default {
         this.state.modalQueue = [...this.state.modalQueue, rej + '</div>']
         this.state.closeModal()
       } else if(ct) {
-      
-
         Array.from(files).forEach((v, i) => {
           let batchMetaData = {
             loggedIn: this.state.loggedIn,
@@ -177,9 +175,8 @@ export default {
               if(!q.completed) finished = false
             })
             if(finished) {
-
-              //this.showUploadProgress = false
-              //this.$refs.main.style.zIndex = 0
+              this.showUploadProgress = false
+              this.$refs.main.style.zIndex = 0
               this.state.modalContent = ''
               this.state.closeModal()
               if(this.state.loggedIn){
