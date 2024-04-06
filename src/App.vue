@@ -169,7 +169,9 @@ export default {
           window.location.href = this.URLbase + '/u/' + this.state.user.name + search
         break
         case 'default':
-          window.location.href = this.URLbase + search
+          //window.location.href = this.URLbase + search
+          this.state.curPage = 0
+          this.state.fetchUserLinks()
         break
         case 'track':
           window.location.href = this.URLbase + '/track/' + this.state.curTrack + search
@@ -197,7 +199,9 @@ export default {
           window.location.href = this.URLbase + '/u/' + this.state.user.name + '/' + this.state.totalUserPages + search
         break
         case 'default':
-          window.location.href = this.URLbase + '/' + this.state.totalPages + search
+          //window.location.href = this.URLbase + '/' + this.state.totalPages + search
+          this.state.curPage = this.state.totalPages
+          this.state.fetchUserLinks()
         break
         case 'track':
           window.location.href = this.URLbase + '/track/' + this.decToAlpha(this.state.curTrack) + '/' + this.state.totalPages + search
@@ -211,7 +215,9 @@ export default {
           window.location.href = this.URLbase + '/u/' + this.state.user.name + '/' + (this.state.curUserPage + 2) + search
         break
         case 'default':
-          window.location.href = this.URLbase + '/' + (this.state.curPage + 2) + search
+          //window.location.href = this.URLbase + '/' + (this.state.curPage + 2) + search
+          if(this.state.curPage < this.state.totalPages) this.state.curPage++
+          this.state.fetchUserLinks()
         break
         case 'track':
           window.location.href = this.URLbase + '/track/' + this.decToAlpha(this.state.curTrack) + '/' +(this.state.curPage + 2) + search
@@ -225,7 +231,9 @@ export default {
           window.location.href = this.URLbase + '/u/' + this.state.user.name + '/' + this.state.curUserPage + search
         break
         case 'default':
-          window.location.href = this.URLbase + '/' + this.state.curPage + search
+          //window.location.href = this.URLbase + '/' + this.state.curPage + search
+          if(this.state.curPage)this.state.curPage--
+          this.state.fetchUserLinks()
         break
         case 'track':
           window.location.href = this.URLbase + '/track/' + this.decToAlpha(this.state.curTrack) + '/' +(this.state.curPage + 2) + search
@@ -636,7 +644,7 @@ export default {
   watch: {
     'state.loadingAssets' (val){
       if(val){
-        this.state.modalContent = '<video style="width: 100%; height: 100%; object-fit: contain; margin: 10px;box-sizing: border-box; opacity: .75" src="loading.mp4" autoplay muted></video>'
+        this.state.modalContent = '<div style="width: 500px; height: 100px; position:absolute; text-align: center;font-size: 24px; color: white; top: 50%; left: 50%; transform: translate(-50%, -50%);">... loading ...</div>'
         this.state.showModal = true
       }else{
         this.state.modalContent = ''
