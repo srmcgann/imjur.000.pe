@@ -360,7 +360,7 @@ export default {
       let sendData = {
         userName: this.state.username,
         passhash: this.state.passhash,
-        ids: JSON.parse(JSON.stringify(this.state.links.map(v=>v.id)))
+        ids: JSON.parse(JSON.stringify(this.state.links)).map(v=>{ return v.id})
       }
       fetch('setOwner.php',{
         method: 'POST',

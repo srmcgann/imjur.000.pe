@@ -176,7 +176,7 @@ export default {
             if(data[0]){
               data[1].map((v, j)=>{
                 //addLink(size, type, ct, href, selected, userID, slug, originalSlug, origin, serverTZO, views){
-                this.addLink(data[2][j], data[3][j], i, v, false, this.state.loggedinUserID, data[6][j], data[7][j], data[8][j], data[9], 0)
+                this.addLink(data[2][j], data[3][j], i, v, false, this.state.loggedinUserID, data[6][j], data[7][j], data[8][j], data[9], 0, data[10][j])
               })
             }else{
               this.state.modalContent = '<div style="min-width:90vw; min-height: 50vh; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);background: #8002; color: #f88; padding-top: 100px;">' + data[5] + '</div>'
@@ -232,7 +232,7 @@ export default {
       }
       if(files.length) this.processUpload(files)
     },
-    addLink(size, type, ct, href, selected, userID, slug, originalSlug, origin, serverTZO, views){
+    addLink(size, type, ct, href, selected, userID, slug, originalSlug, origin, serverTZO, views, id){
       let obj = {
         size,
         type,
@@ -242,6 +242,7 @@ export default {
         origin,
         selected,
         userID,
+        id,
         originalSlug,
         linkType: 'link',
         serverTZO,
