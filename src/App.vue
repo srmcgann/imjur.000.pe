@@ -89,6 +89,7 @@ export default {
         jumpToPage: null,
         regpassword: '',
         showUploadModal: false,
+        loadingAssets: true,
         checkLogin: null,
         search: {
           string: '',
@@ -319,6 +320,7 @@ export default {
             //this.state.maxResultsPerPage = +data[4]
           }else{
             console.log('not logged in.')
+            this.state.loadingAssets = false
             this.state.loggedIn= false
             this.state.loggedinUserName = ''
             this.state.loggedinUserID = ''
@@ -363,8 +365,8 @@ export default {
         })
         .then(res => res.json())
         .then(data => {
+          this.state.loadingAssets = false
           if(!!(+data[0])){
-            console.log(data)
             this.state.userLinks = []
             data[1].map((v, i) => {
               let obj = {
@@ -623,6 +625,7 @@ export default {
           }
         }
       } else {
+        this.state.loadingAssets = false
         this.getMode() 
       }
       //this.checkShowControlsPref()
@@ -631,6 +634,15 @@ export default {
     }
   },
   watch: {
+    'state.loadingAssets' (val){
+      if(val){
+        this.state.modalContent = '<video style="width: 100%; height: 100%; object-fit: contain; margin: 10px;box-sizing: border-box; opacity: .75" src="loading.mp4" autoplay muted></video>'
+        this.state.showModal = true
+      }else{
+        this.state.modalContent = ''
+        this.state.showModal = false
+      }
+    },
     'state.uploadInProgress' (val) {
       /*console.log('state.uploadInProgress val', val)
       if(val){
