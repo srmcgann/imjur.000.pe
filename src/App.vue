@@ -706,7 +706,7 @@ export default {
            if(this.state.showPreview){
             this.next()
           }else{
-            if(this.state.keys[18] && this.state.curPage < totalPages) this.advancePage()
+            if(this.state.keys[18] && this.state.curPage < this.state.totalPages) this.advancePage()
           }
         break
         case 36: // home
