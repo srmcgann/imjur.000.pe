@@ -591,8 +591,10 @@ export default {
               if(vars[1]){
                 this.state.search.string = decodeURIComponent(vars[1])
                 search = '/' + vars[1]
-                history.pushState(null,null,this.URLbase + '/' + (this.state.curPage + 1)) + search
+                //history.pushState(null,null,this.URLbase + '/' + (this.state.curPage + 1)) + search
                 //this.beginSearch()
+                this.state.curPage = 0
+                this.state.jumpToPage(0)
               }else{
                 history.pushState(null,null,this.URLbase + '/' + this.state.curPage ? (this.state.curPage + 1) : '')
                 if(!this.state.curPage || this.state.curPage < 0 || this.state.curPage > 1e6) this.state.curPage = 0
