@@ -155,7 +155,11 @@ export default {
     },
     getThumb(){
       let l
-      this.img.src = this.linkType == 'audio' ? this.state.URLbase + '/' + 'musicNotes.svg' : this.state.URLbase + '/' + 'thumb.php?res=resources/' + (this.link.originalSlug + '.' + this.link.href.split('.')[1])
+      try{
+        this.img.src = this.linkType == 'audio' ? this.state.URLbase + '/' + 'musicNotes.svg' : this.state.URLbase + '/' + 'thumb.php?res=resources/' + (this.link.originalSlug + '.' + this.link.href.split('.')[1])
+      } catch(error){
+        console.log(error)
+      }
     },
     Draw(){
       this.x.globalAlpha = 1
