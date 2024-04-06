@@ -171,7 +171,7 @@ export default {
         case 'default':
           //window.location.href = this.URLbase + search
           this.state.curPage = 0
-          this.state.fetchUserLinks()
+          this.state.fetchUserLinks(this.state.loggedinUserID)
         break
         case 'track':
           window.location.href = this.URLbase + '/track/' + this.state.curTrack + search
@@ -201,7 +201,7 @@ export default {
         case 'default':
           //window.location.href = this.URLbase + '/' + this.state.totalPages + search
           this.state.curPage = this.state.totalPages
-          this.state.fetchUserLinks()
+          this.state.fetchUserLinks(this.state.loggedinUserID)
         break
         case 'track':
           window.location.href = this.URLbase + '/track/' + this.decToAlpha(this.state.curTrack) + '/' + this.state.totalPages + search
@@ -217,7 +217,7 @@ export default {
         case 'default':
           //window.location.href = this.URLbase + '/' + (this.state.curPage + 2) + search
           if(this.state.curPage < this.state.totalPages) this.state.curPage++
-          this.state.fetchUserLinks()
+          this.state.fetchUserLinks(this.state.loggedinUserID)
         break
         case 'track':
           window.location.href = this.URLbase + '/track/' + this.decToAlpha(this.state.curTrack) + '/' +(this.state.curPage + 2) + search
@@ -233,7 +233,7 @@ export default {
         case 'default':
           //window.location.href = this.URLbase + '/' + this.state.curPage + search
           if(this.state.curPage)this.state.curPage--
-          this.state.fetchUserLinks()
+          this.state.fetchUserLinks(this.state.loggedinUserID)
         break
         case 'track':
           window.location.href = this.URLbase + '/track/' + this.decToAlpha(this.state.curTrack) + '/' +(this.state.curPage + 2) + search
