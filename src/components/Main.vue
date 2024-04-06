@@ -1,5 +1,32 @@
 <template>
   <div class="main" ref="main">
+    <div v-if="showUploadProgress" class="uploadProgressContainer">
+      <br>uploading {{filesUploading.length}} file{{filesUploading.length > 1 ? 's':''}}...
+      <div class="progressBar" v-for="file in filesUploading">
+        <div class="progressBarInnerOutline">
+          <div class="progressBarInner" :style="'width:calc(' + (file.perc) + '%)'"></div>
+        </div>
+        <span class="progressText" v-html="file.uploadName + ' - ' + (Math.round(file.perc*100)/100) + '%'"></span>
+      </div>
+    </div>
+    <div
+      v-if="state.showUploadModal"
+      class="uploadModal"
+      :class="{'dragover': dragover}"
+      @drop.prevent="processDrop"
+      @dragover.prevent="dragOverHandler"
+      @dragleave.prevent="dragLeaveHandler"
+    >
+      <div class="uploadModalInner">
+        <span style="font-size: 2em;color: #888">upload tracks</span><br><br>
+        <br>valid formats<br><br>
+        MP3, OGG, WAV<br><br><br>
+        <span style="font-size: 1.4em;color: #ff0">drop file(s) here...</span><br>
+        <br>or<br><br>
+        <button @click="uploadManual()" style="background: #0f0;max-width: 400px;">manually select one from your device</button><br><br>
+        <button @click="state.showUploadModal = false" style="background: #400;color: #fee;font-weight: 400;">cancel</button>
+      </div>
+    </div>
     <div
       id="dropTarget"
       class="dropTarget"
@@ -65,11 +92,112 @@ export default {
   data(){
     return {
       preload: [],
-      rejects: []
+      rejects: [],
+      dragover: false,
+      showUploadProgress: false,
+      filesUploading: []
     }
   },
   methods: {
+    dragLeaveHandler(){
+      this.dragover = false
+    },
+    dragOverHandler(){
+      this.dragover = true
+    },
     processUpload(files){
+    
+    
+      if(!files.length) return
+      this.showUploadProgress = true
+      this.filesUploading = Array(files.length).fill().map(v=>{return {}})
+      console.log(files)
+      Array.from(files).forEach((v, i)=>{
+        v.completed = false
+        this.filesUploading[i].perc = 0
+        this.filesUploading[i].uploadName = v.name
+      })
+      Array.from(files).forEach((v, i)=>{
+        if(
+          v.type == 'image/gif' ||
+          v.type == 'image/jiff' ||
+          v.type == 'image/jpeg' ||
+          v.type == 'image/jpg' ||
+          v.type == 'image/png' ||
+          v.type == 'image/webp' ||
+          v.type == 'video/mp4' ||
+          v.type == 'video/webm' ||
+          v.type == 'video/mkv' ||
+          v.type == 'audio/mp3' ||
+          v.type == 'audio/wav' ||
+          v.type == 'audio/mpeg
+        ){
+          
+          let ct = 0
+          let data = new FormData()
+          files.map((file, i) => {
+            console.log(`file ${i}: `, file)
+            if(file.size > 25000000){
+              this.rejects = [...this.rejects, file]
+            } else {
+              ct++
+              data.append(`uploads_${i}`, file)
+            }
+          })
+          let rej = '<div style="min-width:90vw; min-height: 50vh; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);background: #4008; color: #f88; padding-top: 100px;">'
+          this.rejects.map(reject=>{
+            let sz = (reject.size/(1024**2)|0).toLocaleString('en-us') + ' MB<br>'
+            rej += `oversized/rejected: size: ${sz} "${reject.name}" <br><br>`
+          })
+          if(this.rejects.length) {
+            this.state.modalQueue = [...this.state.modalQueue, rej + '</div>']
+            this.state.closeModal()
+          }
+          if(ct) {
+            let batchMetaData = {
+              loggedIn: this.state.loggedIn,
+              userID: this.state.loggedinUserID,
+              passhash: this.state.passhash,
+              description: '',
+            }
+            console.log('batchMetaData', batchMetaData)
+            data.append('batchMetaData', JSON.stringify(batchMetaData))
+
+          
+            let request = new XMLHttpRequest()
+            request.open('POST', 'upload.php')
+            request.upload.addEventListener('progress', e => {
+              let perc = (e.loaded / e.total)*100
+              this.filesUploading[i].uploadName = v.name
+              this.filesUploading[i].perc = perc
+            })
+            request.addEventListener('load', e=>{
+              v.completed = true
+              let finished = true
+              Array.from(files).forEach(q=>{
+                if(!q.completed) finished = false
+              })
+              if(finished) {
+                //window.location.href = window.location.origin + '/u/' + this.state.loggedinUserName
+                this.state.closeModal()
+                this.showUploadProgress = false
+              }
+            })
+            request.send(data)
+          }else{
+            alert('no files were uploaded. hmmmm')
+          }
+        } else {
+          alert('a file was rejected due to incorrect type or filesize (max filesize = 100MB)')
+          this.state.closeModal()
+          this.showUploadProgress = false
+        }
+      })
+
+
+      /*
+    
+    
       this.state.uploadInprogress = true
       this.state.modalContent = `<div style="position: absolute;left:0;top:0;width:100%;height:100%;background:#000;"><video src="loading.mp4" style="min-width:50vw; min-height: 50vh; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); pointer-events: none; opacity: .6;" loop autoplay muted></video></div>`
       this.state.showModal = true
@@ -125,6 +253,11 @@ export default {
           })
         }
       })
+      
+      
+      */
+
+
     },
     dropFiles(e){
 
@@ -334,6 +467,64 @@ export default {
     background-color: #103c;
     box-shadow: 0 0 150px 150px #103c;
     /*animation: colorCycle 5s infinite linear;*/
+  }
+  .uploadModal{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: #001d;
+    z-index: 30000;
+    line-height: 1.05em;
+  }
+  .uploadProgressContainer{
+    position: fixed;
+    top: 0;
+    left: 0;
+    overflow: auto;
+    width: 100vw;
+    height: 100vh;
+    background: #021d;
+    z-index: 30020;
+    line-height: 1.05em;
+  }
+  .uploadModalInner{
+    position: absolute;
+    top: calc(50% - 60px);
+    left: 50%;
+    width: 400px;
+    height: 280px;
+    background: #103b;
+    z-index: 30000;
+    box-shadow: 0px 0px 100px 100px #103b;
+    transform: translate(-50%, -50%);
+    border-radius: 10px;
+  }
+  .dragover{
+    background: #1436;
+  }
+  .progressBar{
+    width: 80%;
+    height: 16px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+  }
+  .progressBarInner{
+    background: #0f48;
+    height: 100%;
+  }
+  .progressBarInnerOutline{
+    border: 1px solid #8fc3;
+    height: 100%;
+  }
+  .progressText{
+    position: absolute;
+    font-size: 16px;
+    left: 50%;
+    transform: translate(-50%, -90%);
+    text-shadow: 1px 1px 2px #000;
   }
 </style>
 

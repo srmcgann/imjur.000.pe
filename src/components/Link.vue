@@ -1,7 +1,7 @@
 <!--
 todo
 
-  * loading animation
+  * uploading progress bars
   * upload targets @ not-logged-in
 
   ✔ dropable files

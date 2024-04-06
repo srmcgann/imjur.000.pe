@@ -87,6 +87,7 @@ export default {
         displayLoginRequired: false,
         userSettingsVisible: false,
         regpassword: '',
+        showUploadModal: false,
         checkLogin: null,
         search: {
           string: '',
