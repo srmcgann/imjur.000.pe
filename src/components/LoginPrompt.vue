@@ -186,16 +186,7 @@ export default{
             this.state.closePrompts()
             this.state.invalidLoginAttemp = false
             this.state.checkLogin()
-            //this.state.userInfo[this.state.loggedinUserID] = {}
-            //this.state.userInfo[this.state.loggedinUserID].name = this.state.regusername
-            //this.state.userInfo[this.state.loggedinUserID].avatar = data[3]
-            //this.state.userInfo[this.state.loggedinUserID].isAdmin = +data[4]
-            
-            //this.checkAutoplayPref()
-            //this.checkExactSearchPref()
-            //this.checkShowControlsPref()
-            //this.getPages()
-            //window.location.reload()
+            this.setLinksOwner()
           } else {
             this.showInvalid = true
           }

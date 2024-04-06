@@ -124,7 +124,7 @@ SQL;
           
           mysqli_query($link, $sql);
           $success         = true;
-          $links[]         = "$uploadDir/$originalSlug.$suffix";
+          $links[]         = "$uploadDir/$slug.$suffix";
           $sizes[]         = $size;
           $types[]         = $type;
           $slugs[]         = $slug;
