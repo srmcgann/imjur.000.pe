@@ -633,7 +633,7 @@ export default {
           }
         }
       } else {
-        //this.state.loadingAssets = false
+        this.state.loadingAssets = false
         this.getMode() 
       }
       //this.checkShowControlsPref()
