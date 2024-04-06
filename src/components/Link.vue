@@ -182,8 +182,8 @@ export default {
       this.t += 1/60
       switch(this.linkType){
         case 'image':
-          if(!this.img.width || !this.img.height) setTimeout(()=>{
-            this.getThumb()
+          setTimeout(()=>{
+            if(!this.img.width || !this.img.height) this.getThumb()
             requestAnimationFrame(this.Draw)
           }, 1000)
           break
