@@ -21,7 +21,7 @@
       stream_set_blocking($src, true);
       header("Content-Type: $filetype");
       do{
-        $data = fread($src, 1024*128);
+        $data = fread($src, 1024*16);
         if($data){
           echo $data;
           flush();
