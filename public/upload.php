@@ -124,6 +124,9 @@ INSERT INTO imjurUploads (id,
 SQL;
           
           mysqli_query($link, $sql);
+          $sql = "SELECT date FROM imjurUploads WHERE slug LIKE BINARY \"$slug\"";
+          $res = mysqli_query($link, $sql);
+          $date = mysqli_fetch_assoc($res)['date'];
           $success         = true;
           $links[]         = "$uploadDir/$slug.$suffix";
           $sizes[]         = $size;
