@@ -188,7 +188,14 @@ export default {
           }, 1000)
           break
         case 'video':
-          requestAnimationFrame(this.Draw)
+          if(!this.img.videoWidth || !this.img.videoHeight){
+            setTimeout(()=>{
+              this.getThumb()
+              requestAnimationFrame(this.Draw)
+            }, 1000)
+          }else{
+            requestAnimationFrame(this.Draw)
+          }
           break
       }
     }
