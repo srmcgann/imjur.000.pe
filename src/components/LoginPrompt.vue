@@ -173,6 +173,8 @@ export default{
         .then(data => {
           console.log(data)
           if(data[0]){
+            this.state.modalContent = ''
+            this.state.showModal = false
             this.state.userName = this.state.regusername
             console.log('login succeeded!')
             this.state.loggedIn= true
