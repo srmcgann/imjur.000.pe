@@ -129,7 +129,7 @@ export default {
     border: 2px solid #40fa;
     height: 100%;
     width: 100%;
-    border-radius: 30px;
+    border-radius: 10px;
     cursor: pointer;
   }
   
