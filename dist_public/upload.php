@@ -10,6 +10,7 @@ error_reporting(E_ALL);
   $ct            = 0;
   $links         = [];
   $types         = [];
+  $dates         = [];
   $sizes         = [];
   $slugs         = [];
   $views         = [];
@@ -123,11 +124,15 @@ INSERT INTO imjurUploads (id,
 SQL;
           
           mysqli_query($link, $sql);
+          $sql = "SELECT date FROM imjurUploads WHERE slug LIKE BINARY \"$slug\"";
+          $res = mysqli_query($link, $sql);
+          $date = mysqli_fetch_assoc($res)['date'];
           $success         = true;
           $links[]         = "$uploadDir/$slug.$suffix";
           $sizes[]         = $size;
           $types[]         = $type;
           $slugs[]         = $slug;
+          $dates[]         = $date;
           $ids[]           = $id;
           $views[]         = 0;
           $origins[]       = $origin;
@@ -151,5 +156,5 @@ SQL;
     $error = 'ERROR<br>no files were received.<br><br>This usually means that the transfer was blocked by the server due to one or more files being too large...<br><br>Check your file sizes';
   }
   
-  echo json_encode([$success, $links, $sizes, $types, $ct, $error, $slugs, $originalSlugs, $origins, getServerTZOffset(), $views, $ids]);
+  echo json_encode([$success, $links, $sizes, $types, $ct, $error, $slugs, $originalSlugs, $origins, getServerTZOffset(), $views, $ids, $dates]);
 ?>
