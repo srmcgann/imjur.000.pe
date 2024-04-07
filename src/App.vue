@@ -743,8 +743,8 @@ export default {
         break
         case 27:
           this.state.showPreview = false
+          if(!this.state.uploadInProgress && !this.state.showLoginPrompt) this.state.showModal = false
           this.closePrompts()
-          if(!this.state.uploadInProgress) this.state.showModal = false
         break
       }
     }
