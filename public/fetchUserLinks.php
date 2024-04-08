@@ -19,7 +19,6 @@ error_reporting(E_ALL);
 
   $sql = "SELECT * FROM imjurUploads WHERE userID = $userID ORDER BY date DESC LIMIT $start, $maxResultsPerPage";
   $res = mysqli_query($link, $sql);
-  
   $uploadDir = 'uploads';
   $links = [];
   $meta = [];
@@ -39,6 +38,7 @@ error_reporting(E_ALL);
       'views' => $row['views'],
       'description' => $row['description'],
       'originalSlug' => $row['originalSlug'],
+      'originalDate' => $row['originalDate'],
       'serverTZO' => getServerTZOffset(),
     ];
     switch($row['filetype']){
