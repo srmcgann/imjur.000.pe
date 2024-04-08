@@ -14,7 +14,7 @@ todo
   ✔ lightbox sim / previews
   ✔ checkboxes & "with selected" toobar
   ✔ uploading progress bars
-  * upload progress bars
+  ✔ upload progress bars
   * download button on preview modal
   * users, optional logins/profiles
     └-> ✔ login button
@@ -42,21 +42,21 @@ todo
       <span style="font-size:.75em;margin-top:5px;display:block;color:#4f88;padding:0;margin-left:-34px;">select</span><br>
     </label>
     
-    <div class="views" v-html="views">
+    <div class="views" v-html="state.views(link)">
     </div>
     
     <div class="linkThumb" ref="linkThumb" @click.prevent.stop="preview()" title="view this asset"></div>
     <!--#{{link.ct+1}}-->
     <div class="linkButtons">
-      <div class="copyLinkButton" @click.prevent.stop="copy()" title="copy link to clipboard"></div><br>
-      <a :href="link.href" class="openButton" @click.prevent.stop="open()" title="open link in new tab"></a><br>
-      <div class="downloadButton" @click.prevent.stop="download()" title="download asset"></div><br>
+      <div class="copyLinkButton" @click.prevent.stop="state.copyLink(link.href)" title="copy link to clipboard"></div><br>
+      <a :href="link.href" class="openButton" @click.prevent.stop="stte.openLink(link)" title="open link in new tab"></a><br>
+      <div class="downloadButton" @click.prevent.stop="state.downloadLink(link, state.fileName(link))" title="download asset"></div><br>
     </div>
     <br>
     <table class="assetData">
-      <tr><td class="tdLeft">age</td><td class="tdRight" v-html="age"></td></tr>
-      <tr><td class="tdLeft">size</td><td class="tdRight" v-html="size"></td></tr>
-      <tr><td class="tdLeft">name</td><td class="tdRight" v-html="fileName"></td></tr>
+      <tr><td class="tdLeft">name</td><td class="tdRight" v-html="state.fileName(link)"></td></tr>
+      <tr><td class="tdLeft">age</td><td class="tdRight" v-html="state.age(link)"></td></tr>
+      <tr><td class="tdLeft">size</td><td class="tdRight" v-html="state.size(link)"></td></tr>
     </table>
     
     <!-- <span style="visibility: hidden; position: absolute;" v-html="link.href" ref="href"></span> -->
@@ -82,57 +82,8 @@ export default {
     }
   },
   computed: {
-    views(){
-      return 'views: ' + this.link.views.toLocaleString()
-    },
-    fileName(){
-      let ret = this.link.origin.split(': ')[1]
-      if(ret.length > 23) ret = ret.substring(0, 10) + '...' + ret.substring(ret.length-10)
-      return ret
-    },
-    size(){
-      let MB_ = 1024**2
-      let tbytes = this.link.size
-      let MB = tbytes / MB_ | 0
-      let KB = ((tbytes / MB_) - MB) * MB_ / 1024 | 0
-      let B = (((tbytes / MB_) - MB) * MB_ / 1024 - KB) * KB | 0
-      let ret
-      if(MB){
-        ret = (Math.round(tbytes / MB_*100)/100) + ' MB'
-      } else if(KB) {
-        ret = (Math.round(((tbytes / MB_) - MB) * MB_ / 1024*100)/100) + ' KB'
-      } else {
-        ret = this.link.size.toLocaleString() + ' B'
-      }
-      return ret
-    },
-    age(){
-      let tseconds = (((new Date()) - (new Date(this.link.date)))/1000|0) + 3600 * (((new Date).getTimezoneOffset()/60) - 4)
-      let years = (tseconds/31536000)|0
-      let days = (((tseconds/31536000)-years) * 31536000) / 86400 | 0
-      let hours = (((((tseconds/31536000)-years) * 31536000) / 86400) - days) * 86400 / 3600 | 0
-      let minutes = (((((((tseconds/31536000)-years) * 31536000) / 86400) - days) * 86400 / 3600) - hours) * 3600 / 60 | 0
-      let seconds = (((((((((tseconds/31536000)-years) * 31536000) / 86400) - days) * 86400 / 3600) - hours) * 3600 / 60) - minutes) * 60| 0
-      let ret = ''
-      ret += years ? `${years} year${years>1?'s':''}, ` : ''
-      ret += days ? `${days} day${days>1?'s':''}, ` : ''
-      ret += hours ? `${hours} hour${hours>1?'s':''}, ` : ''
-      ret += minutes ? `${minutes} minute${minutes>1?'s':''}` : ''
-      //ret += seconds? `${seconds} second${seconds>1?'s':''}` : ''
-      return ret ? ret : 'added just now...'
-    }
   },
   methods: {
-    download(){
-      let a = document.createElement('a')
-      a.download = this.fileName
-      a.href = this.link.href
-      a.style.position = 'absolute'
-      a.style.opacity = .01
-      document.body.appendChild(a)
-      a.click()
-      a.remove()
-    },
     updateLinkSelected(){
       if(this.link.selected){
         this.link.selected = false
@@ -140,12 +91,6 @@ export default {
         this.link.selected = true
       }
       console.log('selected', this.link.selected)
-    },
-    copy(){
-      this.state.copy(this.link.href)
-    },
-    open(){
-      open(this.link.href, '_blank')
     },
     preview(){
       this.state.previewPosition = this.link.ct
@@ -260,35 +205,6 @@ export default {
     padding: 3px;
     width: calc(100% - 10px);
   }
-  .copyLinkButton, .openButton, .downloadButton{
-    display: inline-block;
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-image: url(../assets/link.png);
-    width: 32px;
-    height: 32px;
-    border-radius: 0px;
-    border: none;
-    cursor: pointer;
-    margin-top: 0px;
-    margin-left: 3px;
-  }
-  .openButton{
-    background-image: url(../assets/open.png);
-    background-color: #08f;
-    background-size: 80% 80%;
-  }
-  .copyLinkButton{
-    background-size: contain;
-    background-image: url(../assets/link.png);
-    background-color: #f06;
-  }
-  .downloadButton{
-    background-size: contain;
-    background-image: url(../assets/download.png);
-    background-color: #0000;
-    background-size: 52px 37px;
-  }
   .linkThumb{
     float: left;
     width: 200px;
@@ -301,29 +217,6 @@ export default {
     background-repeat: no-repeat;
     background-color: #000;
     border-radius: 20px;
-  }
-  .assetData{
-    border-collapse: collapse;
-    font-size: 14px;
-    text-shadow: 2px 2px 2px #000;
-    background: #0003;
-    width: 100%;
-  }
-  .tdLeft{
-    text-align: right;
-    color: #f80;
-    border-bottom: 1px solid #4fc2;
-    padding: 3px;
-  }
-  .tdRight{
-    text-align: left;
-    color: #0f8;
-    border-bottom: 1px solid #4fc2;
-    padding: 3px;
-  }
-  .linkButtons{
-    margin-top: 11px;
-    display: inline-block;
   }
   .views{
     position: relative;

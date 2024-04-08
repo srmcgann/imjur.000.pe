@@ -53,6 +53,9 @@ export default {
         fetchUserLinks: null,
         setCookie: null,
         mode: null,
+        age: null,
+        views: null,
+        size: null,
         deleteSelected: null,
         getAvatar: null,
         showPreview: false,
@@ -70,9 +73,11 @@ export default {
           avatar: 'avatarDefault.png',
         },
         loggedinUserName: '',
-        copy: null,
+        copyLink: null,
+        downloadLink: null,
         next: null,
         prev: null,
+        fileName: null,
         login: null,
         register: null,
         URLbase: null,
@@ -225,7 +230,7 @@ export default {
         break
         case 'default':
           //window.location.href = this.URLbase + '/' + (this.state.curPage + 2) + search
-          if(this.state.curPage < this.state.totalPages) this.state.curPage++
+          if(this.state.curPage < this.state.totalPages-1) this.state.curPage++
           if(this.state.loggedIn) this.state.fetchUserLinks(this.state.loggedinUserID)
           history.pushState(null,null,this.URLbase + '/' + (this.state.curPage + 1))
         break
@@ -255,7 +260,20 @@ export default {
         break
       }
     },
-    copy(val){
+    downloadLink(link, fileName){
+      let a = document.createElement('a')
+      a.download = fileName
+      a.href = link.href
+      a.style.position = 'absolute'
+      a.style.opacity = .01
+      document.body.appendChild(a)
+      a.click()
+      a.remove()
+    },
+    openLink(link){
+      open(link.href, '_blank')
+    },
+    copyLink(val){
       let copyEl = document.createElement('div')
       copyEl.innerHTML = this.URLbase + '/' + val
       copyEl.style.opacity = .01
@@ -392,6 +410,7 @@ export default {
           this.state.loadingAssets = false
           if(!!(+data[0])){
             this.state.userLinks = []
+            this.state.links = []
             data[1].map((v, i) => {
               let obj = {
                 size: +data[2][i].size,
@@ -471,13 +490,11 @@ export default {
         .then(res => res.json()).then(data => {
           console.log(data)
           if(data[0]){
-            //this.state.links = this.state.links.filter((v, i) => !linksToProcess.filter(q => q == v.id).length)
-            //this.state.userLinks = this.state.userLinks.filter((v, i) => !userLinksToProcess.filter(q => q == v.id).length)
+            this.state.links = this.state.links.filter((v, i) => !linksToProcess.filter(q => q == v.id).length)
+            this.state.userLinks = this.state.userLinks.filter((v, i) => !userLinksToProcess.filter(q => q == v.id).length)
             console.log(`deleted ${count} items`)
-            //alert(`deleted ${count} items`)
-            this.state.links = []
-            this.fetchUserLinks(this.state.loggedinUserID)
-            //location.reload()
+            //this.state.links = []
+            //this.fetchUserLinks(this.state.loggedinUserID)
           }else{
             alert(`there was a problem deleting ${slugs.length > 1 ? 'these' : 'this'} asset${slugs.length > 1 ? 's' : ''}`)
           }
@@ -626,6 +643,45 @@ export default {
       this.state.loggedinUserID = this.state.loggedinUserName = ''
       window.location.reload()
     },
+    views(link){
+      return 'views: ' + link.views.toLocaleString()
+    },
+    size(link){
+      let MB_ = 1024**2
+      let tbytes = link.size
+      let MB = tbytes / MB_ | 0
+      let KB = ((tbytes / MB_) - MB) * MB_ / 1024 | 0
+      let B = (((tbytes / MB_) - MB) * MB_ / 1024 - KB) * KB | 0
+      let ret
+      if(MB){
+        ret = (Math.round(tbytes / MB_*100)/100) + ' MB'
+      } else if(KB) {
+        ret = (Math.round(((tbytes / MB_) - MB) * MB_ / 1024*100)/100) + ' KB'
+      } else {
+        ret = link.size.toLocaleString() + ' B'
+      }
+      return ret
+    },
+    age(link){
+      let tseconds = (((new Date()) - (new Date(link.date)))/1000|0) + 3600 * (((new Date).getTimezoneOffset()/60) - 4)
+      let years = (tseconds/31536000)|0
+      let days = (((tseconds/31536000)-years) * 31536000) / 86400 | 0
+      let hours = (((((tseconds/31536000)-years) * 31536000) / 86400) - days) * 86400 / 3600 | 0
+      let minutes = (((((((tseconds/31536000)-years) * 31536000) / 86400) - days) * 86400 / 3600) - hours) * 3600 / 60 | 0
+      let seconds = (((((((((tseconds/31536000)-years) * 31536000) / 86400) - days) * 86400 / 3600) - hours) * 3600 / 60) - minutes) * 60| 0
+      let ret = ''
+      ret += years ? `${years} year${years>1?'s':''}, ` : ''
+      ret += days ? `${days} day${days>1?'s':''}, ` : ''
+      ret += hours ? `${hours} hour${hours>1?'s':''}, ` : ''
+      ret += minutes ? `${minutes} minute${minutes>1?'s':''}` : ''
+      //ret += seconds? `${seconds} second${seconds>1?'s':''}` : ''
+      return ret ? ret : 'added just now...'
+    },
+    fileName(link){
+      let ret = link.origin.split(': ')[1]
+      if(ret.length > 23) ret = ret.substring(0, 10) + '...' + ret.substring(ret.length-10)
+      return ret
+    },    
     checkLogin(){
       let l = (document.cookie).split(';').filter(v=>v.split('=')[0].trim()==='loggedinuser')
       if(l.length){
@@ -676,7 +732,7 @@ export default {
   computed:{
     URLbase(){
       let ret = window.location.origin
-      if(ret.toLowerCase().indexOf('imjur.000.pe') === -1){
+      if(ret.toLowerCase().indexOf(this.state.rootDomain) === -1){
         ret += '/imjur'
       }
       return ret
@@ -748,13 +804,17 @@ export default {
         break
       }
     }
-    this.state.closeModal = this.closeModal
+    this.state.age = this.age
+    this.state.size = this.size
     this.state.prev = this.prev
     this.state.next = this.next
-    this.state.copy = this.copy
+    this.state.views = this.views
     this.state.login = this.login
     this.state.logout = this.logout
     this.state.URLbase = this.URLbase
+    this.state.fileName = this.fileName
+    this.state.copyLink = this.copyLink
+    this.state.openLink = this.openLink
     this.state.register = this.register
     this.state.lastPage = this.lastPage
     this.state.getPages = this.getPages
@@ -764,10 +824,12 @@ export default {
     this.state.setCookie = this.setCookie
     this.state.jumpToPage= this.jumpToPage
     this.state.checkLogin = this.checkLogin
+    this.state.closeModal = this.closeModal
     this.state.advancePage = this.advancePage
     this.state.regressPage = this.regressPage
     this.state.deSelectAll = this.deSelectAll
     this.state.closePrompts = this.closePrompts
+    this.state.downloadLink = this.downloadLink
     this.state.closePreview = this.closePreview
     this.state.setLinksOwner = this.setLinksOwner
     this.state.fetchUserLinks = this.fetchUserLinks
@@ -815,6 +877,25 @@ a:visited{
 button:focus{
   outline: none;
 }
+.assetData{
+  border-collapse: collapse;
+  font-size: 14px;
+  text-shadow: 2px 2px 2px #000;
+  background: #0003;
+  width: 100%;
+}
+.tdLeft{
+  text-align: right;
+  color: #f80;
+  border-bottom: 1px solid #4fc2;
+  padding: 3px;
+}
+.tdRight{
+  text-align: left;
+  color: #0f8;
+  border-bottom: 1px solid #4fc2;
+  padding: 3px;
+}
 button{
   font-size: 18px;
   border: 2px solid #0008;
@@ -833,6 +914,56 @@ button{
 a{
   text-decoration: none;
   color: #08f;
+}
+.cancelButton{
+  background: #822;
+  color: #f88;
+  text-shadow: 1px 1px 3px #40f;
+  font-weight: 900;
+  width: 125px;
+  font-family: Courier Prime;
+  font-size: 14px;
+  border: none;
+  border-radius: 10px;
+  padding: 5px;
+  position: absolute;
+  z-index: 1100;
+  right: 20px;
+  top: 14px;
+  min-width: 120px;
+}
+.copyLinkButton, .openButton, .downloadButton{
+  display: inline-block;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-image: url(./assets/link.png);
+  width: 32px;
+  height: 32px;
+  border-radius: 0px;
+  border: none;
+  cursor: pointer;
+  margin-top: 0px;
+  margin-left: 3px;
+}
+.openButton{
+  background-image: url(./assets/open.png);
+  background-color: #08f;
+  background-size: 80% 80%;
+}
+.copyLinkButton{
+  background-size: contain;
+  background-image: url(./assets/link.png);
+  background-color: #f06;
+}
+.downloadButton{
+  background-size: contain;
+  background-image: url(./assets/download.png);
+  background-color: #0000;
+  background-size: 52px 37px;
+}
+.linkButtons{
+  margin-top: 11px;
+  display: inline-block;
 }
 .copyButton{
   display: inline-block;

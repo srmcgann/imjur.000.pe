@@ -1,14 +1,37 @@
 <template>
-  <div class="preview">
+  <div class="preview" @mousemove="bumpNavButtonOpacity()" ref="preview">
     <button @click="close()" class="cancelButton" title="close this view">
       close/cancel
     </button>
     <div class="previewInner">
       <div class="slideshow" ref="slideshow"></div>
-      <div v-if="state.links.length > 1" class="leftButton" @click="state.prev()" title="view previous asset [left arrow]"></div>
-      <div v-if="state.links.length > 1" class="rightButton" @click="state.next()" title="view next asset [right arrow]"></div>
-      <div v-if="state.userLinks.length > 1" class="leftButton" @click="state.prev()" title="view previous asset [left arrow]"></div>
-      <div v-if="state.userLinks.length > 1" class="rightButton" @click="state.next()" title="view next asset [right arrow]"></div>
+      <div class="inputs fade" ref="inputs">
+        <div class="linkButtons">
+          <div class="copyLinkButton" @click.prevent.stop="state.copyLink(link.href)" title="copy link to clipboard"></div><br>
+          <a :href="link.href" class="openButton" @click.prevent.stop="state.openLink(link)" title="open link in new tab"></a><br>
+          <div class="downloadButton" @click.prevent.stop="state.downloadLink(link, state.fileName(link))" title="download asset"></div><br>
+        </div>
+        <table class="assetData">
+          <tr><td class="tdLeft">name</td><td class="tdRight" v-html="state.fileName(link)"></td></tr>
+          <tr><td class="tdLeft">age</td><td class="tdRight" v-html="state.age(link)"></td></tr>
+          <tr><td class="tdLeft">views</td><td class="tdRight" v-html="state.views(link)"></td></tr>
+          <tr><td class="tdLeft">size</td><td class="tdRight" v-html="state.size(link)"></td></tr>
+        </table>
+        <div
+          v-if="state.userLinks.length > 1"
+          class="leftButton"
+          ref = "leftButton"
+          @click="state.prev()"
+          title="view previous asset [left arrow]"
+        ></div>
+        <div
+          v-if="state.userLinks.length > 1"
+          class="rightButton"
+          ref = "rightButton"
+          @click="state.next()"
+          title="view next asset [right arrow]"
+        ></div>
+      </div>
     </div>
   </div>
 </template>
@@ -24,6 +47,11 @@ export default {
     }
   },
   methods: {
+    bumpNavButtonOpacity(){
+      this.$refs.inputs.classList.remove('fade')
+      this.$refs.inputs.style.height = this.$refs.leftButton.clientHeight + 'px'
+      this.$refs.inputs.classList.add('fade')
+    },
     close(){
       this.state.closePreview()
     }
@@ -96,22 +124,6 @@ export default {
     height: 100vh;
     font-size: 14px;
   }
-  .cancelButton{
-    background: #822;
-    color: #f88;
-    text-shadow: 1px 1px 3px #40f;
-    font-weight: 900;
-    width: 125px;
-    font-family: Courier Prime;
-    font-size: 14px;
-    border: none;
-    border-radius: 10px;
-    padding: 5px;
-    position: absolute;
-    z-index: 1100;
-    right: 20px;
-    top: 14px;
-  }
   .slideshow{
     margin: 100px;
     height: 100%;
@@ -129,6 +141,20 @@ export default {
     background-size: contain;
     cursor: pointer;
   }
+  @keyframes fadeOut{
+    0% {
+      opacity: 1;
+    }
+    66% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+  .fade{
+    animation: fadeOut 3s 1 linear;
+  }
   .leftButton{
     background-image: url(../assets/leftButton.png);
     left: 10px;
@@ -136,6 +162,9 @@ export default {
   .rightButton{
     background-image: url(../assets/rightButton.png);
     right: 10px;
+  }
+  .inputs{
+    opacity: 0;
   }
   .previewInner{
     text-align: center;
@@ -146,5 +175,21 @@ export default {
     color: #fff;
     text-shadow: 2px 2px 2px #000;
     background: #001b;
+  }
+  .linkButtons{
+    margin-top: 11px;
+    display: inline-block;
+    right: 23px;
+    position: absolute;
+    z-index: 10;
+    top: 42px;
+  }
+  .assetData{
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%);
+    background: #000a;
+    max-width: 500px;
   }
 </style>
