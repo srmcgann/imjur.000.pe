@@ -218,6 +218,7 @@ export default {
           //window.location.href = this.URLbase + '/' + this.state.totalPages + search
           this.state.curPage = this.state.totalPages - 1
           if(this.state.loggedIn) this.state.fetchUserLinks(this.state.loggedinUserID)
+          console.log('curPage', this.state.curPage)
           history.pushState(null,null,this.URLbase + '/' + (this.state.curPage + 1))
         break
         case 'track':
