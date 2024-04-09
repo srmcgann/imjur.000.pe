@@ -558,7 +558,7 @@ export default {
       })
     },
     getMode(){
-      let vars = window.location.pathname.split('/').filter(v=>v)
+      let vars = window.location.pathname.split('/').filter(v=>v && ''+v != 'NaN')
       console.log(vars)
       if(vars.length>0){
         switch(vars[0]){
