@@ -250,7 +250,7 @@ export default {
         break
         case 'default':
           //window.location.href = this.URLbase + '/' + this.state.curPage + search
-          if(this.state.curPage)this.state.curPage--
+          if(this.state.curPage) this.state.curPage--
           if(this.state.loggedIn) this.state.fetchUserLinks(this.state.loggedinUserID)
           if(this.state.curPage){
             history.pushState(null,null,this.URLbase + '/' + (this.state.curPage + 1))
@@ -274,7 +274,7 @@ export default {
       a.remove()
     },
     openLink(link){
-      open(link.href, '_blank')
+      open(`${this.URLbase}/` + link.href, '_blank')
     },
     copyLink(val){
       let copyEl = document.createElement('div')
@@ -758,6 +758,7 @@ export default {
   computed:{
     URLbase(){
       let ret = window.location.origin
+      console.log('ret', ret)
       if(ret.toLowerCase().split('.')[0].indexOf('imjur') === -1){
         ret += '/imjur'
       }
