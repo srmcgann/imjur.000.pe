@@ -19,6 +19,7 @@ error_reporting(E_ALL);
 
   $sql = "SELECT * FROM imjurUploads WHERE userID = $userID ORDER BY date DESC LIMIT $start, $maxResultsPerPage";
   $res = mysqli_query($link, $sql);
+  
   $uploadDir = 'uploads';
   $links = [];
   $meta = [];
