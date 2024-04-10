@@ -40,7 +40,7 @@ error_reporting(E_ALL);
     if(exists($url)){
       $path_parts = pathinfo($url);
       $ext=strtolower(substr($path_parts['extension'],0,strpos($path_parts['extension'],"?")?strpos($path_parts['extension'],"?"):1000));
-      //$name=substr($path_parts['basename'],0,strpos($path_parts['basename'],"?")?strpos($path_parts['basename'],"?"):1000);
+      $originalName=substr($path_parts['basename'],0,strpos($path_parts['basename'],"?")?strpos($path_parts['basename'],"?"):1000);
       switch($ext){
         case "jpg": $ok=1; break;
         case "zip": $ok=1; break;
@@ -130,11 +130,11 @@ error_reporting(E_ALL);
             }
             
             $id = alphaToDec($slug);
-            $original_name = basename($_FILES["uploads_$ct"]["name"]);
+            //$originalName = basename($_FILES["uploads_$ct"]["name"]);
             $meta = mysqli_real_escape_string($link, json_encode([
               "file size" => $size,
               "sender IP" => $_SERVER['REMOTE_ADDR'],
-              "original name" => $original_name,
+              "original name" => $originalName,
             ]));
             
             $userID = -1;
@@ -152,7 +152,7 @@ error_reporting(E_ALL);
             
             
             $description = '';
-            $origin = mysqli_real_escape_string($link, "user file: $original_name");
+            $origin = mysqli_real_escape_string($link, "user file: $originalName");
             
   $sql = <<<SQL
   INSERT INTO imjurUploads (id, 
