@@ -40,7 +40,7 @@ error_reporting(E_ALL);
     if(exists($url)){
       $path_parts = pathinfo($url);
       $ext=strtolower(substr($path_parts['extension'],0,strpos($path_parts['extension'],"?")?strpos($path_parts['extension'],"?"):1000));
-      $name=substr($path_parts['basename'],0,strpos($path_parts['basename'],"?")?strpos($path_parts['basename'],"?"):1000);
+      //$name=substr($path_parts['basename'],0,strpos($path_parts['basename'],"?")?strpos($path_parts['basename'],"?"):1000);
       switch($ext){
         case "jpg": $ok=1; break;
         case "zip": $ok=1; break;
@@ -62,14 +62,15 @@ error_reporting(E_ALL);
           $error = "too big";
         }elseif($size){
           //set_time_limit(0);
-          $fp = fopen ( $name, 'w');
+          //$fp = fopen ( $name, 'w');
           $ch = curl_init(str_replace(" ","%20",$url));
           //echo $name;
-          curl_setopt($ch, CURLOPT_FILE, $fp);
-          curl_setopt($ch, CURLOPT_RETURNTRANSFER, false);
+          //curl_setopt($ch, CURLOPT_FILE, $fp);
+          curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
           curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
           curl_setopt($ch, CURLOPT_USERAGENT, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.82 Safari/537.36 OPR/79.0.4143.73',);
-          curl_exec($ch); 
+          $file = curl_exec($ch); 
+          file_put_contents($name, $file);
           curl_close($ch);
           fclose($fp);
           //echo $name;
