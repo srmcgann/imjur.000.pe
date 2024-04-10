@@ -45,11 +45,11 @@
         type="text"
         ref="uploadURL"
         style="width:360px;height: calc(100% - 5px);font-size: 20px; background: #000; color: #4f8; border: 1px solid red; width: 310px"
-        @keydown.prevent.stop
+        @keydown.prevent
         v-model="state.uploadFromURL"
         placeholder="upload from a URL... it might work!" class="uploadFromURL"
       >
-      <button @click="uploadByURL()">go</button>
+      <button @click="uploadByURL()" class="goButton">go</button>
     </div>
   </div>
 </template>
@@ -129,5 +129,11 @@ export default {
   }
   .uploadFromURL{
     font-size: 20px;
+  }
+  .goButton{
+    min-widdth: unset;
+    width: 42px;
+    vertical-align: top;
+    height: 36px;
   }
 </style>
