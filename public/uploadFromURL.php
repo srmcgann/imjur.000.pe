@@ -72,7 +72,7 @@ error_reporting(E_ALL);
           $file = curl_exec($ch); 
           file_put_contents($name, $file);
           curl_close($ch);
-          fclose($fp);
+          //fclose($fp);
           //echo $name;
         }else{
           $error = "not found";
