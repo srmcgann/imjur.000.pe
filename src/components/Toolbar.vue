@@ -44,7 +44,7 @@
       <input
         type="text"
         ref="uploadURL"
-        style="width:360px;height: calc(100% - 5px);font-size: 20px; background: #000; color: #4f8; border: 1px solid red; width: 310px"
+        style="width:360px;height: calc(100% - 2px);font-size: 14px; background: #000; color: #4f8; width: 310px;"
         @keydown.stop
         @keypress.enter="uploadByURL()"
         v-model="state.uploadFromURL"
@@ -171,7 +171,7 @@ export default {
   }
   .goButton{
     min-width: unset;
-    width: 42px;
+    width: 46px;
     vertical-align: top;
     height: 36px;
   }
