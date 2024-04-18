@@ -896,7 +896,7 @@ export default {
                 serverTZO: data[2][i].serverTZO,
                 views: data[2][i].views
               }
-              this.state.miscLinks = [...this.state.miscLinks, obj]
+              this.state.miscLinks=[...this.state.miscLinks, obj]
             })
           }else{
             console.log('there was a problem loading the link', data)
