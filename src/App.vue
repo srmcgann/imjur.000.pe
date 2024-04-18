@@ -1120,7 +1120,7 @@ export default {
     'state.choice'(val){
       switch(val.name){
         case 'collection':  // delete asset from
-          val.obj = JSON.parse(val.obj)
+          //val.obj = JSON.parse(val.obj)
           this.state.modalContent = ''
           this.state.showModal = false
           this.state.editCollection[0].meta.slugs = val.obj.slugs
