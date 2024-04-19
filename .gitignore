@@ -1,5 +1,8 @@
 .DS_Store
 node_modules
+push_dir.php
+push.sh
+prebuild.sh
 /dist
 /dist_public
 
