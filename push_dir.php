@@ -3,19 +3,19 @@
   // RECURSIVE DIRECTORY FTP PUSH
 
   $servers = [
-    [
+    /*[
       'ftp_server' => 'files.000webhost.com',
       'ftp_user'   => 'orbstools',
       'ftp_pass'   => 'Chrome57253!*',
       'local_dir'  => '/home/scottmcgann4/imjur.000.pe/dist_public',
       'remote_dir' => '/public_html/imjur',
-    ],[
+    ],*/[
       'ftp_server'  => "ftpupload.net",
       'ftp_user'    => 'if0_35882111',
       'ftp_pass'    => 'GNS1oMHbsX',
       'local_dir'   => '/home/scottmcgann4/imjur.000.pe/dist_public',
       'remote_dir'  => '/imjur.000.pe/htdocs'
-    ],[
+    ],/*[
       'ftp_server'  => "ftpupload.net",
       'ftp_user'    => 'if0_35615011',
       'ftp_pass'    => 'ouVkeSu5FegeH',
@@ -87,19 +87,19 @@
       'ftp_pass'   => 'Chrome57253!*',
       'local_dir'  => '/home/scottmcgann4/imjur.000.pe/dist_public',
       'remote_dir' => '/public_html/imjur',
-    /*],[
-      'ftp_server' => 'files.000webhost.com',
-      'ftp_user'   => 'orbstools',
-      'ftp_pass'   => 'Chrome57253!*',
-      'local_dir'  => '/home/scottmcgann4/imjur.000.pe/dist_public',
-      'remote_dir' => '/public_html/imjur',*/
+    //],[
+    //  'ftp_server' => 'files.000webhost.com',
+    //  'ftp_user'   => 'orbstools',
+    //  'ftp_pass'   => 'Chrome57253!*',
+    //  'local_dir'  => '/home/scottmcgann4/imjur.000.pe/dist_public',
+    //  'remote_dir' => '/public_html/imjur',
     ],[
       'ftp_server' => 'files.000webhost.com',
       'ftp_user'   => 'gummier-fish',
       'ftp_pass'   => 'Chrome57253!*',
       'local_dir'  => '/home/scottmcgann4/imjur.000.pe/dist_public',
       'remote_dir' => '/public_html/imjur',
-    ],
+    ],*/
   ];
 
   function recurse($dir){
