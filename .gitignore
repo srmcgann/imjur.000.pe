@@ -1,27 +1,8 @@
-.DS_Store
 node_modules
-push_dir.php
+dist
+dist_public
+public/.htaccess
 push.sh
 prebuild.sh
-/dist
-/dist_public
-
-
-# local env files
-.env.local
-.env.*.local
-
-# Log files
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-pnpm-debug.log*
-
-# Editor directories and files
-.idea
-.vscode
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
-*.sw?
+push_dir.php
+.htaccess
