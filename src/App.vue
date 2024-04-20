@@ -892,7 +892,10 @@ export default {
             body: JSON.stringify(sendData),
           }).then(res => res.json()).then(data=>{
             if(data[0]){
-              
+              this.state.links.filter(v=> v.slug === link.slug)[0][property] = value
+              this.state.userLinks.filter(v=> v.slug === link.slug)[0][property] = value
+              this.state.miscLinks.filter(v=> v.slug === link.slug)[0][property] = value
+              this.state.cacheLinks.filter(v=> v.slug === link.slug)[0][property] = value
             }else{
               alert('there was a problem setting the property! d\'oh!')
             }
