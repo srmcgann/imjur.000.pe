@@ -104,6 +104,7 @@ export default {
         },
         loggedinUserName: '',
         copyLink: null,
+        viewCollection: null,
         deleteSingle: null,
         syncCache: null,
         deleteCollection: null,
@@ -228,6 +229,8 @@ export default {
     showUserSettings(){
       document.getElementsByTagName('HTML')[0].style.overflowY = 'hidden'
       this.state.userSettingsVisible = true
+    },
+    viewCollection(collection){
     },
     firstPage(){
       let search = this.state.search.string ? ('/1/' + (this.state.search.string)) : ''
@@ -812,6 +815,7 @@ export default {
     getMode(){
       let vars = window.location.pathname.split('/').filter(v=>v && ''+v != 'NaN')
       if(vars.length>0){
+        console.log('vars', vars)
         let l = location.origin.toLowerCase().indexOf('000webhostapp.com') !== -1 ? 1 : 0
         if(1||this.state.isNumber(vars[l])){
           this.state.mode = 'default'
@@ -1353,6 +1357,7 @@ export default {
     this.state.multipleLinks = this.multipleLinks
     this.state.setLinksOwner = this.setLinksOwner
     this.state.fetchUserLinks = this.fetchUserLinks
+    this.state.viewCollection = this.viewCollection
     this.state.deleteSelected = this.deleteSelected
     this.state.openCollection = this.openCollection
     this.state.setLinkProperty = this.setLinkProperty
