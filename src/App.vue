@@ -1568,8 +1568,10 @@ a{
   background: #84fd;
 }
 .viewCollectionButton, .editCollectionButton{
-  min-width: 50px;
   height: 24px;
+  line-height: 14px;
+  min-width: 85px;
+  padding: 5px;
   margin: unset;
   margin-right: 5px;
 }
