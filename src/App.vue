@@ -871,7 +871,7 @@ export default {
           property,
           value
         }))
-        this.state.modalContent = `<div style="font-size: .85em; text-align: left; width: 500px; padding: 50px; background: #400b; position:absolute; text-align: center; color: white; top: 50%; left: 50%; transform: translate(-50%, -50%);">Changes to the visibility of single assets are system-wide, which may affect public viewability of this item in other collections.<br><br> You will still see all your own items if logged in, regardless.<br><br>To make an item private in one collection but not another, create a separate, private collection for such items.<br><br><button style="width: 375px;" onclick="window.choose('${sendObj}')">OK, got it!</button></div>`
+        this.state.modalContent = `<div style="font-size: .85em; text-align: left; width: 500px; padding: 50px; background: #400b; position:absolute; color: white; top: 50%; left: 50%; transform: translate(-50%, -50%);">Changes to the visibility of single assets are system-wide, which may affect public viewability of this item in other collections.<br><br> You will still see all your own items if logged in, regardless.<br><br>To make an item private in one collection but not another, create a separate, private collection for such items.<br><br><button style="width: 375px;" onclick="window.choose('${sendObj}')">OK, got it!</button></div>`
         this.state.showModal = true
       }else{
         console.log('continuing with setLinkProperty', link, property, value)
@@ -892,10 +892,10 @@ export default {
             body: JSON.stringify(sendData),
           }).then(res => res.json()).then(data=>{
             if(data[0]){
-              this.state.links.filter(v=> v.slug === link.slug)[0][property] = value
-              this.state.userLinks.filter(v=> v.slug === link.slug)[0][property] = value
-              this.state.miscLinks.filter(v=> v.slug === link.slug)[0][property] = value
-              this.state.cacheLinks.filter(v=> v.slug === link.slug)[0][property] = value
+              this.state.links.map(v => { if(v.slug === link.slug) v[property] = value })
+              this.state.userLinks.map(v => { if(v.slug === link.slug) v[property] = value })
+              this.state.miscLinks.map(v => { if(v.slug === link.slug) v[property] = value })
+              this.state.cacheLinks.map(v => { if(v.slug === link.slug) v[property] = value })
             }else{
               alert('there was a problem setting the property! d\'oh!')
             }
