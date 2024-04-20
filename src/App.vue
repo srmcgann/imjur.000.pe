@@ -1644,7 +1644,7 @@ select:focus{
   height: 25px;
   width: 25px;
   border: 1px solid #2468;
-  background-color: #123;
+  background-color: #000;
   border-radius: 5px;
 }
 
