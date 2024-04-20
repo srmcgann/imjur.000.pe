@@ -853,7 +853,7 @@ export default {
           this.state.mode = vars[l]
           console.log('non-default mode detected: ', this.state.mode)
           switch(this.state.mode){
-            case 'col':
+            case 'collection':
               this.viewCollection(collection)
             break
           }
