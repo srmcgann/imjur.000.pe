@@ -1351,7 +1351,6 @@ export default {
       this.state.editCollection.length ,
       this.state.showCollectionTemplate ,
       this.state.showPreview ,
-      this.state.showAssetPreview ,
       this.state.showUploadModal ,
       this.state.showRegister)
       
@@ -1361,7 +1360,6 @@ export default {
       this.state.editCollection.length ||
       this.state.showCollectionTemplate ||
       this.state.showPreview ||
-      this.state.showAssetPreview ||
       this.state.showUploadModal ||
       this.state.showRegister
     }
