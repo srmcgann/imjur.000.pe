@@ -5,7 +5,7 @@
   $servers = [
     [
       'ftp_server' => 'files.000webhost.com',
-      'ftp_user'   => 'id22088531_imjur',
+      'ftp_user'   => 'assets3',
       'ftp_pass'   => 'Chrome57253!*',
       'local_dir'  => '/home/scottmcgann4/000assets/dist_public',
       'remote_dir' => '/public_html/assets',
