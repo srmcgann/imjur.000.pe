@@ -23,7 +23,7 @@
       //'remote_dir' => '/public_html/',
     //],[
     //],
-    [
+    /*[
       'ftp_server'  => "ftpupload.net",
       'ftp_user'    => 'if0_35615011',
       'ftp_pass'    => 'ouVkeSu5FegeH',
