@@ -9,13 +9,13 @@
       'ftp_pass'    => 'GNS1oMHbsX',
       'local_dir'   => '/home/whitehotrobot/imjur.000.pe/dist_public',
       'remote_dir'  => '/imjur.000.pe/htdocs'
-    ],[
-      'ftp_server' => 'files.000webhost.com',
-      'ftp_user'   => 'assets3',
-      'ftp_pass'   => 'Chrome57253!*',
-      'local_dir'  => '/home/whitehotrobot/imjur.000.pe/dist_public',
-      'remote_dir' => '/public_html',
-    ],//,[
+    ],//[
+      //'ftp_server' => 'files.000webhost.com',
+      //'ftp_user'   => 'assets3',
+      //'ftp_pass'   => 'Chrome57253!*',
+      //'local_dir'  => '/home/whitehotrobot/imjur.000.pe/dist_public',
+      //'remote_dir' => '/public_html',
+    //],[
       //'ftp_server' => 'files.000webhost.com',
       //'ftp_user'   => 'assets1',
       //'ftp_pass'   => 'Chrome57253!*',
