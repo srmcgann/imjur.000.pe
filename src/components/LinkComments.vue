@@ -36,16 +36,16 @@
         ></div>
         
         <span class="commentHeader">
-        <button
-          class="commentButton"
-          @click.stop.prevent="editComment(comment)"
-        >edit</button>
+          <button
+            class="commentButton"
+            @click.stop.prevent="editComment(comment)"
+          >edit</button>
 
-        <span class="commentHeader">
-        <button
-          class="commentButton"
-          @click.stop.prevent="deleteComment(comment)"
-        >delete</button>
+          <button
+            class="commentButton"
+            @click.stop.prevent="deleteComment(comment)"
+          >delete</button>
+        </span>
         
         {{header(comment)}}
         </span>
