@@ -46,12 +46,12 @@
   <div
     ref="commentList"
     class="commentList"
+    @mousemove="state.bumpADOpacity++"
     v-if="link.comments.length && numComments"
   >
     <div
       v-for="comment in filteredComments"
       class="commentRow"
-      @mousemove="state.bumpADOpacity++"
     >
       <div class="avatarContainer">
         <div
