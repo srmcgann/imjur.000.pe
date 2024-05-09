@@ -392,7 +392,7 @@ export default {
           if(this.state.curPage){
             history.pushState(null,null,this.URLbase + '/user/' + this.state.userID + '/' + (this.state.curPage + 1))
           }else{
-            history.pushState(null,null,this.URLbase + '/user/' + this.state.userID + '/1'
+            history.pushState(null,null,this.URLbase + '/user/' + this.state.userID + '/1')
           }
         break
         case 'default':
