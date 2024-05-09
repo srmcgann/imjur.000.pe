@@ -787,7 +787,7 @@ export default {
       })
     },
     fetchUserLinks(userID){
-      if(this.state.loggedinUserName) {
+      //if(this.state.loggedinUserName) {
         let sendData = {
           userID,
           passhash: this.state.passhash,
@@ -849,7 +849,7 @@ export default {
             this.state.showLoading = false
           }
         })
-      }
+//      }
     },
     syncCache(){
       this.state.links.map(link=>{
@@ -1259,7 +1259,7 @@ export default {
                 }
                 this.state.mode = 'user'
                 this.state.userID = +vars[l+1]
-                if(typeof vars[l+3] != undefined){
+                if(typeof vars[l+3] != 'undefined'){
                   this.state.curPage = (+vars[l+3])-1
                 }else{
                   this.state.curPage = 0
