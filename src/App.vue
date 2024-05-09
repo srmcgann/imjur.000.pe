@@ -1261,6 +1261,8 @@ export default {
                 this.state.userID = +vars[l+1]
                 if(typeof vars[l+3] != undefined){
                   this.state.curPage = (+vars[l+3])-1
+                }else{
+                  this.state.curPage = 0
                 }
                 this.state.fetchUserLinks(this.state.userID)
               } else {
