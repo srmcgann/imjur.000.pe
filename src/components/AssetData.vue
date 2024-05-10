@@ -130,7 +130,7 @@
       <td class="tdLeft">size</td>
       <td class="tdRight" v-html="state.size(link.size)"></td>
     </tr>
-    <tr v-if="!omitAssetData && link.userID == state.loggedinUserID || state.admin">
+    <tr v-if="!omitAssetData">
       <td class="tdLeft">collections</td><td class="tdRight">
         <CollectionSelection :state="state" :links="link" :mode="default" :someSelected="true"/>
       </td>
