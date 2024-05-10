@@ -22,7 +22,7 @@
             :style="`background-image: url(${state.avatar(link)})`"
           ></div>
         </div>
-        <div style="display: inline-block; float: left;color: #fff;text-shadow: 0 0 3px #40f;margin: 10px;font-size: 16px;">
+        <div style="display: inline-block; float: left;color: #fff;text-shadow: 0 0 3px #40f;margin: 10px;font-size: 16px; text-align: center; width:135px;">
           <button
             class="commentButton"
             @click="state.openUserPage(link.userID)"
