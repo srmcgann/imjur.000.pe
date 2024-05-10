@@ -599,6 +599,7 @@ export default {
         .then(res => res.json())
         .then(data => {
           console.log('checkEnabled.php: ', data)
+          this.getMode()
           if(!!(+data[0])){
             console.log('logged in.')
             this.state.loggedIn= true
@@ -629,7 +630,6 @@ export default {
             this.state.isAdmin = false
             this.state.invalidLoginAttempt = true
           }
-          this.getMode()
         })
       }
     },
@@ -1705,7 +1705,6 @@ export default {
           let l3 = (document.cookie).split(';').filter(v=>v.split('=')[0].trim()==='loggedinuserID')
           if(l3.length){
             this.state.loggedinUserID = +l3[0].split('=')[1]
-            this.getMode()
             this.checkEnabled()
           }
         }
