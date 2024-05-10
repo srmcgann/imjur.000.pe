@@ -613,10 +613,10 @@ export default {
             this.state.invalidLoginAttemp = false
             if(+data[3]) this.state.isAdmin = true
             switch(this.state.mode){
-              case: 'default':
+              case 'default':
                 this.state.fetchUserInfo(this.state.loggedinUserID)
               break
-              case: 'user':
+              case 'user':
                 this.state.fetchUserLinks(this.state.userID)
               break
             }
@@ -1710,7 +1710,7 @@ export default {
         }
       } else {
         this.state.loadingAssets = false
-        this.getMode() 
+        this.getMode()
       }
       //this.checkShowControlsPref()
       //this.checkAutoplayPref()
