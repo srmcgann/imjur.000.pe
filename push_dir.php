@@ -4,7 +4,7 @@
 
   $servers = [
     [
-      'ftp_server'  => "",
+      'ftp_server'  => "stuff.mywebcommunity.org",
       'ftp_user'    => '4483241_user',
       'ftp_pass'    => 'chrome57253',
       'local_dir'   => '/home/whitehotrobot/imjur.000.pe/dist_public',
