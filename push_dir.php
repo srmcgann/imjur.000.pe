@@ -14,7 +14,7 @@
       'ftp_user'   => '4483198_user',
       'ftp_pass'   => 'chrome57253',
       'local_dir'  => '/home/whitehotrobot/imjur.000.pe/dist_public',
-      'remote_dir' => '/efx.mygamesonline.org',
+      'remote_dir' => '/assets.mygamesonline.org',
     ],//[
       //'ftp_server' => 'files.000webhost.com',
       //'ftp_user'   => 'assets1',
