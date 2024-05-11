@@ -6,7 +6,7 @@
     [
       'ftp_server'  => "stuff.mywebcommunity.org",
       'ftp_user'    => '4483241_user',
-      'ftp_pass'    => 'chrome57253',
+      'ftp_pass'    => 'Chrome57253!*',
       'local_dir'   => '/home/whitehotrobot/imjur.000.pe/dist_public',
       'remote_dir'  => '/stuff.mywebcommunity.org'
     ],[
