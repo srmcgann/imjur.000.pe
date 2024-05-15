@@ -2013,6 +2013,15 @@ export default {
       })
     }
     
+    window.onmousewheel = e => {
+      if(this.state.showPreview){
+        if(e.wheelDeltaY){
+          this.state.magLevel += e.wheelDelta > 0 ? .1 : -.1
+          this.state.magLevel =  Math.max(0, Math.min(this.state.maxMagLevel, this.state.magLevel))
+        }
+      }
+    }
+    
     this.state.onkeydown = window.onkeydown = e => {
       if(this.state.editingComment) return
       this.state.keys[e.keyCode] = true
