@@ -1,5 +1,5 @@
 <template>
-  <div class="votes" :style="!!(+link.votesCast) ? '' : 'height:60px;'">
+  <div class="votes" :style="+links.votes && !!(+link.votesCast) ? '' : 'height:60px;'">
     <div class="votingTitle" v-html="vt"></div>
     <span
       v-for="idx in state.numv"
@@ -10,7 +10,7 @@
       @mouseover="mouseover(idx)"
       @mouseout="clearVel()"
     ></span>
-    <table v-if="!!(+link.votesCast)">
+    <table v-if="+links.votes && !!(+link.votesCast)">
       <tr>
         <td class="tdLeft">popularity</td>
         <td v-if="!!(+link.votesCast)" class="tdRight">
